@@ -1,0 +1,26 @@
+<div id="login-box">
+<h2>Crea tu contraseña</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => "login-form form-vertical" }) do |f| %>
+  <% if f.error_notification %>
+	<div class="alert alert-error">
+  		<%= f.error_notification %>
+	</div>
+  <% end %>
+
+  <%= f.input :reset_password_token, :as => :hidden %>
+  <%= f.full_error :reset_password_token %>
+
+  <div class="inputs">
+	<div class="control-group">
+    	<%= f.input :password, :label => false, :placeholder => "Contraseña", :required => true, :input_html => {:class => "login-field"},  error: false %>
+    </div>
+  </div>
+
+  <div class="actions">
+	    <%= f.button :submit, "Guardar contraseña", :class => "btn btn-primary btn-large btn-block" %>
+	  </div>
+  </div>
+<% end %>
+
+</div>

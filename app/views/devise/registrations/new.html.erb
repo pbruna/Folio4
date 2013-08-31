@@ -1,0 +1,25 @@
+<div id="login-box">
+	<h2>Prueba Folio</h2>
+
+	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "login-form form-vertical"}) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="inputs">
+		<div class="control-group">
+	    <%= f.input :email, :required => true, :autofocus => true, :label => false, :placeholder => "Email",  :input_html => {:class => "login-field"} %>
+		</div>
+		<div class="control-group">
+	    <%= f.input :password, :required => true, :label => false, :placeholder => "Contraseña",  :input_html => {:class => "login-field"} %>
+		</div>
+		<div class="control-group">
+	    <%= f.input :company_name, :required => true, :label => false, :placeholder => "Empresa",  :input_html => {:class => "login-field"} %>
+		</div>
+	  </div>
+
+	  <div class="actions">
+	    <%= f.button :submit, "Sign up", :class => "btn btn-primary btn-large btn-block"  %>
+	  </div>
+	<% end %>
+
+	<%= render :partial => "devise/shared/links" %>
+</div>

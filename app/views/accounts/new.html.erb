@@ -1,0 +1,34 @@
+<div id="login-box">
+	<h3>Regístrate para comenzar el trial</h3>
+	<%= simple_form_for(@account, :html => {:class => "login-form form-vertical"}) do |f| %>
+	<% if f.error_notification %>        
+   		  <h3 class="error" style="margin-top: -20px; "><%= f.error_notification %></h3>
+	<% else %>
+		<p>30 días gratis para conocer Folio</p>
+	<% end %>
+	  <div class="inputs">
+	  <%= f.simple_fields_for :users do |user_form| %>
+			<div class="control-group">
+		    <%= user_form.input :email, :required => true, :autofocus => true, :label => false, :placeholder => "Email",  :input_html => {:class => "login-field"} %>
+			</div>
+			<div class="control-group">
+		    <%= user_form.input :password, :required => true, :label => false, :placeholder => "Contraseña",  :input_html => {:class => "login-field"} %>
+			</div>
+		<% end %>
+		<div class="control-group">
+	    <%= f.input :name, :required => true, :label => false, :placeholder => "Empresa",  :input_html => {:class => "login-field"} %>
+		</div>
+		<div class="control-group">
+	    <%= f.input :subdomain, :label => false, :input_html => {:class => "login-field"}, :wrapper => :prepend do %>
+		<%= f.input_field :subdomain, :required => true, :disabled => false, :class => "login-field", :placeholder => "empresa" %>
+		<span class="folio-domain">.folio.cl</span>
+		<% end %>
+		</div>
+		
+	  </div>
+
+	  <div class="actions">
+	    <%= f.button :submit, "Comenzar trial", :class => "btn btn-primary btn-large btn-block"  %>
+	  </div>
+	<% end %>
+</div>

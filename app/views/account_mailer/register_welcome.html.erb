@@ -1,0 +1,11 @@
+<h2>Bienvenido a Folio</h2>
+<p>
+	Hola,<br/>
+	Bienvenido a Folio, puedes ingresar a tu cuenta con los siguientes datos:<br/>
+	<ul>
+		<li>URL: <%= link_to root_url(:subdomain => @account.subdomain), root_url(:subdomain => @account.subdomain) %> </li>
+		<li>Usuario: <%= @user.email %></li>
+	</ul>
+</p>
+<br/>
+Gracias

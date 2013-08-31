@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -30,6 +31,17 @@ gem 'jbuilder', '~> 1.0.1'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+
+group :test do
+  gem 'turn'
+  gem 'capybara'
+end
+
+group :development do
+  gem "letter_opener"
+  gem "selenium-webdriver"
 end
 
 # Use ActiveModel has_secure_password
@@ -43,3 +55,11 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'devise', :git => "https://github.com/plataformatec/devise"
+gem 'unicorn'
+gem 'simple_form'
+gem 'bourbon'
+gem 'bootstrap-sass'
+gem 'flat-ui-sass', :git => "https://github.com/kebab-project/flat-ui-sass"
+gem 'high_voltage'

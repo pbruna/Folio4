@@ -1,0 +1,41 @@
+@import "bootstrap";
+//@import "bootstrap-responsive";
+@import "devise";
+@import "bootstrap-overrides";
+
+
+
+.main {
+	.nav-pills > li > a.no-hover:hover {
+		background: none;
+	}
+	
+	.nav-pills {
+		border-bottom: 1px solid #eee;
+		
+		.no-hover {
+			margin-top: -10px;
+		}	
+	}
+}
+
+.blank-slate {
+	color: rgb(62,77,108);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+	h4, h5 {
+		margin: 0px;
+	}
+	h4 {
+		font-size: 17.5px;
+		color: rgb(62,77,108);
+	}
+	
+	h5 {
+		margin-top: 20px;
+		font-size: 15px;
+		color: rgb(119,187,65);
+	}
+	
+}
