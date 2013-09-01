@@ -19,4 +19,9 @@ module ApplicationHelper
     Rails.application.routes.recognize_path(url)[:controller]
   end
   
+  def get_indicator_value_for(indicador)
+    indicadores = Indicadores::Chile.new
+    indicadores.send(indicador)
+  end
+  
 end

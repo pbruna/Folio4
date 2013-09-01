@@ -40,4 +40,25 @@
 		}
 	}
 	
+	.pre-main-navbar {
+		font-family: 'Lato';
+		font-size: 13px;
+		font-weight: bold;
+		margin-bottom: 30px;
+		
+		li {
+			padding: 0px;
+			padding-left: 3px;
+		}
+		
+		li:nth-child(1):after {
+			content: "|";
+			margin-left: 5px;
+		}
+		
+		.account-menu {
+			margin-right: 10px;
+		}
+	}
+	
 }

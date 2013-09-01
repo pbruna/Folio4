@@ -1,0 +1,8 @@
+<div class="span6">
+<% cache "money-indicators", expires_in: 1.minutes do %>
+	<ul class="inline money-indicators">
+		<li>USD: <%=number_to_currency get_indicator_value_for "dolar" %></li>
+		<li>UF: <%= number_to_currency get_indicator_value_for "uf" %></li>
+	</ul>
+<% end %>
+</div>

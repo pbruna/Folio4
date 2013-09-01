@@ -63,3 +63,5 @@ gem 'bourbon'
 gem 'bootstrap-sass'
 gem 'flat-ui-sass', :git => "https://github.com/kebab-project/flat-ui-sass"
 gem 'high_voltage'
+gem 'indicadores_cl', :git => "https://github.com/pbruna/indicadores_cl", :branch => 'master'
+gem 'rails-i18n', '~> 4.0.0.pre'

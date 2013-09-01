@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
 
+  
+
   def current_account
     return if current_user.nil?
     current_user.account
