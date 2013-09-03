@@ -1,0 +1,27 @@
+<div class="row document">
+	<section>
+		<header class="section-header">
+			<h3>Edita la información de tu Empresa</h3>
+		</header>
+		
+		<%= simple_form_for @account, 
+			:html => {:class => "form-horizontal"},  
+			defaults: { input_html: { class: 'input-xlarge' } } do |f| %>
+
+			  <%= f.input :name, label: false, required: true, placeholder: "Nombre", autofocus: true  %>
+			  <%= f.input :rut, label: false, required: true, placeholder: "RUT" %>
+			  <%= f.input :address, label: false, placeholder: "Dirección" %>
+			  <%= f.input :city, label: false, placeholder: "Ciudad" %>
+			  <%= f.input :country, label: false, placeholder: "País" %>
+			  <%= f.input :phone, label: false, placeholder: "Teléfono" %>
+			
+			
+			  <div class="actions">
+			    <%= f.button :submit, "Guardar", :class => "btn btn-success"  %>
+				o <%= link_to "Cancelar", account_path(current_account) %>
+			  </div>
+			
+		<% end %>
+		
+	</section>
+</div>

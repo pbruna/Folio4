@@ -1,0 +1,21 @@
+.document {
+	border: 2px solid #EEE;
+	border-radius: 2px;
+	min-height: 100px;
+	padding: 20px;
+	
+	h2, h3 {
+		margin: 0px;
+	}
+	
+	section {
+		margin-bottom: 40px;
+		
+		.section-header {
+			margin: 0px;
+			margin-bottom: 15px;
+			border-bottom: 1px solid #eeeeee;
+		}
+	}
+	
+}

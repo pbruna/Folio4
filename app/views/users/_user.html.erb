@@ -1,0 +1,17 @@
+<article class="span3 person">
+	<div class="contact-info">
+		<p>
+			<% if user.full_name.nil? %>
+				<%= link_to "Completar datos", edit_user_path(user) %>
+			<% else %>
+				<%= link_to user.full_name, user_path(user) %>
+			<% end %>
+			<br>
+			<%= user.email %><br>
+			<span class="owner"><%= "Dueño" if user.owner? %></owner>
+		</p>
+	</div>
+	<div class="avatar">
+		<img src="data:image/png;base64,<%= user.avatar %>"/>
+	</div>
+</article>

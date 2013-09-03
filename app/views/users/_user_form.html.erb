@@ -1,0 +1,14 @@
+<%= simple_form_for @user, 
+		:html => {:class => "form-horizontal"},  
+		defaults: { input_html: { class: 'input-xlarge' } } do |f| %>
+
+		  <%= f.input :name, label: false, required: true, placeholder: "Nombre", autofocus: true  %>
+		  <%= f.input :email, label: false, required: true, placeholder: "Email" %>
+		  <%= f.input :password, label: false, required: true, placeholder: "Contraseña" %>
+		  <%= f.input :password_confirmation, label: false, required: true, placeholder: "Comprobar contraseña" %>
+		
+		  <div class="actions">
+		    <%= f.button :submit, "Guardar", :class => "btn btn-success"  %>
+		  </div>
+		
+	<% end %>

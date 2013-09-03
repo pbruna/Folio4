@@ -61,5 +61,18 @@ class AccountTest < ActiveSupport::TestCase
     @account.save
     assert(!@account.has_data?, "Should not have data because is new account")
   end
+  
+  test "account.owner_name should return a string" do
+    user = @account.users.build
+    user.email = "test@test.com"
+    user.password = "kdldlkdkdkd"
+    assert(@account.save, "Account not saved")
+    assert_not_nil(@account.owner_name)
+  end
+  
+  test "check for completeness of account contact info" do
+    @account.save
+    assert(!@account.contact_info_complete?, "No deberia estar completa")
+  end
 
 end

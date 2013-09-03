@@ -1,6 +1,7 @@
 <div class="account-menu">
 	<ul class="inline pull-right">
-		<li><%= link_to "Mi cuenta", account_path(current_account) %></li>
+		<li><%= link_to "Mi Empresa", account_path(current_account) %></li>
+		<li><%= link_to "Mis Datos", user_path(current_user) %></li>
 		<li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
 	</ul>
 </div>

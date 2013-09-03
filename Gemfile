@@ -58,10 +58,13 @@ end
 
 gem 'devise', :git => "https://github.com/plataformatec/devise"
 gem 'unicorn'
-gem 'simple_form'
+gem 'simple_form', "~> 3.0.0.rc"
 gem 'bourbon'
 gem 'bootstrap-sass'
 gem 'flat-ui-sass', :git => "https://github.com/kebab-project/flat-ui-sass"
 gem 'high_voltage'
 gem 'indicadores_cl', :git => "https://github.com/pbruna/indicadores_cl", :branch => 'master'
 gem 'rails-i18n', '~> 4.0.0.pre'
+gem "font-awesome-rails"
+gem 'country_select'
+gem 'ruby_identicon'

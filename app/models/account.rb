@@ -4,9 +4,10 @@ class Account < ActiveRecord::Base
   has_many :users, :dependent => :destroy
   has_many :invoices, :dependent => :destroy
   has_many :expenses, :dependent => :destroy
+  has_many :audits, :dependent => :destroy
   accepts_nested_attributes_for :users, :allow_destroy => true
   
-  validates_uniqueness_of :subdomain
+  validates_uniqueness_of :subdomain, :rut, :name
   validates_presence_of :subdomain, :name
   validate :check_users_number # The account must have at least one user
   
@@ -19,6 +20,15 @@ class Account < ActiveRecord::Base
   
   def owner
     User.find(owner_id)
+  end
+  
+  def contact_info_complete?
+    attributes.detect {|k,v| v.blank? }.nil?
+  end
+  
+  def owner_name
+    return owner.email if owner.full_name.nil?
+    owner.full_name
   end
   
   def trial?

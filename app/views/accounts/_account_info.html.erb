@@ -1,0 +1,13 @@
+<div class="span5 account-info">
+	<h4>
+		<%= @account.name.titleize %>
+		<br/>
+		<small><%= current_account.rut %></small>
+	</h4>
+	
+	<address>
+		<%= current_account.address %><br>
+		<%= "#{current_account.city} #{current_account.country}" %><br>
+		<%= current_account.phone %><br>
+	</address>
+</div>

@@ -21,7 +21,7 @@ class RegisterNewAccountTest < ActionDispatch::IntegrationTest
     click_button "Comenzar trial"
     assert page.current_url == "http://masev.example.com/", "No ingreso despues de crear la cuenta"
     # Empty account
-    assert page.has_content?("Conoce la salud de tu negocio"), "No carga el contenido sin datos"
+    assert page.has_content?("Quieres conocer la salud de tu negocio"), "No carga el contenido sin datos"
   end
   
 

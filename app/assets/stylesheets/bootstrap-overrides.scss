@@ -51,14 +51,21 @@
 			padding-left: 3px;
 		}
 		
-		li:nth-child(1):after {
+		li:nth-child(n):after {
 			content: "|";
 			margin-left: 5px;
+		}
+		
+		li:last-child:after {
+			content: "";
 		}
 		
 		.account-menu {
 			margin-right: 10px;
 		}
-	}
-	
+	}	
+}
+
+.form-horizontal .controls {
+	margin-left: 0px;
 }

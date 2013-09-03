@@ -14,12 +14,19 @@ class ApplicationController < ActionController::Base
     return if current_user.nil?
     current_user.account
   end
+  
+  def validate_owner!
+    return if current_user.owner?
+    flash[:alert] = "Sólo el dueño de la cuenta puede realizar esta operación."
+    redirect_to root_url(:subdomain => current_account.subdomain)
+  end
 
   protected
     def layout_by_resource
       if devise_controller? && resource_name == :user
         "sign_in_layout"
-      elsif params[:controller] == "accounts" && !(%w(show edit dashboard).include? params[:action])
+      #elsif params[:controller] == "accounts" && !(%w(show edit dashboard).include? params[:action])
+      elsif params[:controller] == "accounts" && request.subdomain != current_account.subdomain
         "sign_in_layout"
       else
         "application"

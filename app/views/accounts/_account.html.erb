@@ -1,0 +1,17 @@
+<section>
+	<header class="section-header">
+		<% if current_user.owner? %>
+			<%= link_to "Editar información", edit_account_path(current_account), :class => "btn btn-small pull-right" %>
+		<% end %>
+		<h3>Mi Empresa</h3>
+	</header>
+	
+	<div class="row">
+		
+		<%= render :partial => "account_info" %>
+		
+		<%= render :partial => 'account_stats_resume_box' %>
+		
+	</div>
+	
+</section>

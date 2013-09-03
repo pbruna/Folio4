@@ -1,0 +1,10 @@
+<div class="span4 well pull-right">
+	<ul>
+		<% if (!current_account.contact_info_complete? && current_user.owner?) %>
+			<li>
+				<strong><%= link_to "Completa los datos de tu empresa", edit_account_path(current_account) %></strong>
+			</li>
+		<% end %>
+		<li>El dueño de la cuenta es <%= link_to current_account.owner_name, user_path(current_account.owner) %> </li>
+	</ul>
+</div>

@@ -9,8 +9,9 @@ Folio::Application.routes.draw do
   
   #Restricted to subdomain
   constraints(Subdomain) do    
-    resources :accounts, :only => [:show, :edit, :index]
+    resources :accounts, :only => [:show, :edit, :index, :update]
     resources :expenses
+    resources :users
     resources :invoices do
       collection do
         get 'active'

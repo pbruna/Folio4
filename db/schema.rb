@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831140040) do
+ActiveRecord::Schema.define(version: 20130903120656) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -20,11 +20,27 @@ ActiveRecord::Schema.define(version: 20130831140040) do
     t.integer  "plan_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rut"
+    t.string   "address"
+    t.string   "city"
+    t.string   "phone"
+    t.string   "country"
   end
 
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", unique: true
   add_index "accounts", ["plan_id"], name: "index_accounts_on_plan_id"
+  add_index "accounts", ["rut"], name: "index_accounts_on_rut"
   add_index "accounts", ["subdomain"], name: "index_accounts_on_subdomain"
+
+  create_table "audits", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "audits", ["account_id"], name: "index_audits_on_account_id"
+  add_index "audits", ["user_id"], name: "index_audits_on_user_id"
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -105,6 +121,7 @@ ActiveRecord::Schema.define(version: 20130831140040) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "last_name"
   end
 
   add_index "users", ["email", "account_id"], name: "index_users_on_email_and_account_id", unique: true

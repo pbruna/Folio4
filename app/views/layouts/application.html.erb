@@ -8,7 +8,9 @@
 </head>
 <body>
 	<%= render :partial => 'shared/navbar' %>
+
 	<div class="container main">
+		<%= render :partial => 'shared/flash' %>
 		<%= yield %>
 	</div>
 </body>

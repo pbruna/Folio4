@@ -2,10 +2,16 @@
 //@import "bootstrap-responsive";
 @import "devise";
 @import "bootstrap-overrides";
+@import "font-awesome";
+@import "document";
+@import "accounts";
+@import "users";
 
 
 
 .main {
+	padding-left: 20px;
+	
 	.nav-pills > li > a.no-hover:hover {
 		background: none;
 	}
@@ -42,4 +48,9 @@
 		font-size: 15px;
 	}
 	
+}
+
+.cancel-link {
+	color: red;
+	text-decoration: underline;
 }
