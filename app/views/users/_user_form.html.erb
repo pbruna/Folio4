@@ -1,14 +1,29 @@
 <%= simple_form_for @user, 
-		:html => {:class => "form-horizontal"},  
+		:html => {:class => "form-horizontal"}, html: {multipart: true}, 
 		defaults: { input_html: { class: 'input-xlarge' } } do |f| %>
-
+		
+		  <table class="upload-picture">
+			<tr>
+				<td class="avatar"><%= display_user_avatar(@user) %></td>
+				<td>Cambia foto<p><%= f.input_field :avatar %></p></td>
+			</tr>
+		  </table>
 		  <%= f.input :name, label: false, required: true, placeholder: "Nombre", autofocus: true  %>
 		  <%= f.input :email, label: false, required: true, placeholder: "Email" %>
 		  <%= f.input :password, label: false, required: true, placeholder: "Contraseña" %>
 		  <%= f.input :password_confirmation, label: false, required: true, placeholder: "Comprobar contraseña" %>
 		
+		  <% unless @user.new_record? %>
+		  	<% unless @user.active? %>
+			<div class="important">
+				<%= f.input :active, :label => "Desbloquear", :wrapper => :inline_checkbox %>
+			</div>
+			<% end %>
+		  <% end %>
+		
 		  <div class="actions">
 		    <%= f.button :submit, "Guardar", :class => "btn btn-success"  %>
+			 o <%= link_to "Cancelar", account_path(current_account), :class => "cancel-link" %>
 		  </div>
 		
-	<% end %>
+<% end %>

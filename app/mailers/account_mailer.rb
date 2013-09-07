@@ -1,5 +1,5 @@
 class AccountMailer < ActionMailer::Base
-  default from: "folio@folio.cl"
+  layout 'mailer_default'
 
   def register_welcome(user_id)
     @user = User.find(user_id)

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
       if devise_controller? && resource_name == :user
         "sign_in_layout"
       #elsif params[:controller] == "accounts" && !(%w(show edit dashboard).include? params[:action])
-      elsif params[:controller] == "accounts" && request.subdomain != current_account.subdomain
+      elsif params[:controller] == "accounts" && (current_account.nil? || request.subdomain != current_account.subdomain)
         "sign_in_layout"
       else
         "application"

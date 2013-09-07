@@ -15,6 +15,27 @@ class User < ActiveRecord::Base
   has_many :audits, :dependent => :destroy
   
   before_destroy :check_owner
+  before_create  :active_user
+  
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "60x60>" }, default_url: :default_avatar_url
+  
+  def account_owner
+    account.owner
+  end
+  
+  def active_for_authentication?
+    active?
+  end
+  
+  def inactive_message
+    "El dueño de la cuenta ha bloqueado al usuario"
+  end
+  
+  def deactivate!
+    return false if owner?
+    self.active = false
+    save
+  end
   
   def owner?
     id == account.owner_id
@@ -29,13 +50,26 @@ class User < ActiveRecord::Base
     "#{name} #{last_name}"
   end
   
-  def avatar
-    generate_identicon
+  # def avatar
+  #    generate_identicon
+  #  end
+  
+  def default_avatar_url
+    identicon = generate_identicon
+    "data:image/png;base64,#{identicon}"
   end
   
   def generate_identicon
-    blob = RubyIdenticon.create("RubyIdenticon", key: self.encrypted_password)
+    key = self.encrypted_password.blank? ? "jdkdnajkdnjkandka" : self.encrypted_password
+    blob = RubyIdenticon.create("RubyIdenticon", key: key)
     Base64.strict_encode64 blob
+  end
+  
+  def self.new_from_owner(account_id, user_params)
+    @user = User.new(user_params)
+    @user.account_id = account_id
+    @user.reset_password_token= User.reset_password_token
+    @user
   end
 
   def self.find_for_authentication(warden_conditions)
@@ -50,6 +84,10 @@ class User < ActiveRecord::Base
     return unless self.owner?
     errors.add(:base, :user_is_owner)
     false
+  end
+  
+  def active_user
+    self.active = true    
   end
 
 end

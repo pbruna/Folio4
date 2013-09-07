@@ -5,32 +5,25 @@
 				<%= link_to "Editar información", edit_user_path(@user), :class => "btn btn-small pull-right" %>
 			<% end %>
 				<div class="avatar">
-					<img src="data:image/png;base64,<%= @user.avatar %>"/>
+					<%= display_user_avatar(@user) %>
 				</div>
 			<h3>
 				<%= @user.full_name %>
 			</h3>
-			<p class="user-email"><%= mail_to @user.email %></p>
+			<p class="user-email">
+				<%= mail_to @user.email %>
+				<%  unless @user.active?%><span class="label">Bloqueado</span> <% end %>
+			</p>
 		</header>
+		
+		<%= render :partial => 'activate_user' unless @user.active? %>
 		
 		<%= render :partial => 'recent_activity' %>
 
 	</section>
-	
-	<section>
-		<header class="section-header">
-			<h4>Desactivar usuario</h4>
-		</header>
-		<p>
-		 Al desactivar un usuario éste ya no puede ingresar más a Folio, pero todas sus acciones se mantienen para que conserves la historia de tu negocio.
-		</p>
-		<p>
-			<% if current_user.owner? %>
-				<%= link_to "Desactivar cuenta de #{@user.full_name}", user_path(@user), method: :delete, :class => "cancel-link" %>
-			<% end %>
-		</p>
-		
-	</section>
-	
+
+<% if current_user.owner? %>	
+	<%= render :partial => 'deactivate_user' if (@user.active? && !current_user.owner?) %>
+<% end %>	
 </div>
 

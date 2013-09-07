@@ -1,0 +1,14 @@
+<section>
+	<header class="section-header">
+		<h4>Desactivar usuario</h4>
+	</header>
+	<p>
+	 Al desactivar un usuario éste ya no puede ingresar más a Folio, pero todas sus acciones se mantienen para que conserves la historia de tu negocio.
+	</p>
+	<p>
+
+			<%= link_to "Desactivar cuenta de #{@user.full_name}", user_path(@user), method: :delete, :class => "cancel-link" %>
+
+	</p>
+	
+</section>

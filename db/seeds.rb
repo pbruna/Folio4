@@ -9,3 +9,4 @@
 [{:name => "trial"}, {:name => "pyme"}].each do |plan|
   Plan.create(plan)
 end
+

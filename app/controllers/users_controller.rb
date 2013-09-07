@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :validate_owner!, :only => ['create', 'new']
+  before_action :validate_owner!, :only => ['create', 'new', 'destroy']
 
   def show
     @user = User.find(params[:id])
@@ -18,28 +18,38 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "Usuario actualizado correctamente."
-      redirect_to account_url(current_account, :subdomain => current_account.subdomain)
+      redirect_to user_path(@user)
     else
       render :action => "edit"
     end
   end
 
   def create
-    @user = User.new(user_params)
-    @user.account_id = current_account.id
+    @user = User.new_from_owner(current_account.id, user_params)
     if @user.save
-      #AccountMailer.register_welcome(@account.owner.id).deliver
+      UserMailer.delay.welcome_email(@user.id)
       flash[:notice] = "Usuario creado correctamente"
-      redirect_to account_path(current_account)
+      redirect_to user_path(@user)
     else
       render 'new'
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    if @user.deactivate!
+      flash[:notice] = "Usuario desactivado correctamente."
+      redirect_to account_path(current_account)
+    else
+      flash[:alert] = "No es posible desactivar al dueño de la cuenta."
+      redirect_to account_path(current_account)
     end
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:avatar, :name, :email, :password, :password_confirmation, :active)
     end
 
     def validate_owner_or_same_user!

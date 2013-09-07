@@ -68,3 +68,7 @@ gem 'rails-i18n', '~> 4.0.0.pre'
 gem "font-awesome-rails"
 gem 'country_select'
 gem 'ruby_identicon'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem "paperclip", "~> 3.0"

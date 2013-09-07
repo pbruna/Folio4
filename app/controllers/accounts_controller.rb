@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      AccountMailer.register_welcome(@account.owner.id).deliver
+      AccountMailer.delay.register_welcome(@account.owner.id)
       flash[:notice] = "Cuenta creada correctamente, bienvenido a Folio"
       sign_in(:user, @account.owner)
       redirect_to root_url(:subdomain => @account.subdomain)

@@ -25,7 +25,7 @@
 	width: 50px;
 	height: 50px;
 	border: 2px solid #bbb;
-	padding: 5px;
+	padding: 1px;
 	radius: 5em;
 	background: #f0f0f0;
 	float: left;
@@ -36,5 +36,16 @@
 	.user-email {
 		margin-top: -5px;
 		margin-bottom: 15px;		
+	}
+}
+
+form.new_user, form.edit_user {
+	table.upload-picture {
+		margin-bottom: 20px;
+		
+		 input {
+			font-size: 12px;
+			line-height: 0px;
+		}
 	}
 }

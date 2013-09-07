@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
   has_many :audits, :dependent => :destroy
   accepts_nested_attributes_for :users, :allow_destroy => true
   
-  validates_uniqueness_of :subdomain, :rut, :name
+  validates_uniqueness_of :subdomain
   validates_presence_of :subdomain, :name
   validate :check_users_number # The account must have at least one user
   

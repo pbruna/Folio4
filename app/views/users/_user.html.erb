@@ -9,9 +9,10 @@
 			<br>
 			<%= user.email %><br>
 			<span class="owner"><%= "Dueño" if user.owner? %></owner>
+			<%  unless user.active?%> <span class="label">Bloqueado</span> <% end %>
 		</p>
 	</div>
 	<div class="avatar">
-		<img src="data:image/png;base64,<%= user.avatar %>"/>
+		<%= display_user_avatar(user) %>
 	</div>
 </article>

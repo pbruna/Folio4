@@ -33,3 +33,5 @@ Folio::Application.configure do
   config.i18n.default_locale = 'es-CL'
   config.i18n.available_locales = ['es-CL']
 end
+
+ActionMailer::Base.default :from => 'folio@folio.cl'
