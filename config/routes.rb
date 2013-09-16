@@ -12,6 +12,7 @@ Folio::Application.routes.draw do
     resources :accounts, :only => [:show, :edit, :index, :update]
     resources :expenses
     resources :users
+    resources :companies
     resources :invoices do
       collection do
         get 'active'

@@ -11,7 +11,7 @@ class InvoicesController < ApplicationController
 
 
   def index
-    @invoices = current_account.invoices
+    @invoices = Invoice.all
   end
 
 end

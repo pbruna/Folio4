@@ -23,7 +23,7 @@
 	</section>
 
 <% if current_user.owner? %>	
-	<%= render :partial => 'deactivate_user' if (@user.active? && !current_user.owner?) %>
+	<%= render :partial => 'deactivate_user' if (@user.active? && !@user.owner?) %>
 <% end %>	
 </div>
 

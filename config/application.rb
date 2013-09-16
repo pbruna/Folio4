@@ -26,5 +26,11 @@ module Folio
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.paths << "#{Rails.root}/app/assets/images"
+    
+    config.to_prepare do
+      Devise::Mailer.layout "mailer_default"
+    end
+    
+    
   end
 end

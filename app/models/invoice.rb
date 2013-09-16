@@ -6,6 +6,7 @@ class Invoice < ActiveRecord::Base
 
 
   #Scopes
+  default_scope { where(account_id: Account.current_id) }
   scope :for_account, ->(account_id) {where(:id => account_id)}
 
   STATUS_NAME.each do |status|

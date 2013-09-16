@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907143201) do
+ActiveRecord::Schema.define(version: 20130915222727) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -44,12 +44,20 @@ ActiveRecord::Schema.define(version: 20130907143201) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
-    t.string   "subdomain"
-    t.integer  "owner_id"
-    t.integer  "plan_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rut"
+    t.string   "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "phone"
+    t.string   "industry"
+    t.integer  "account_id"
   end
+
+  add_index "companies", ["account_id"], name: "index_companies_on_account_id"
+  add_index "companies", ["name"], name: "index_companies_on_name"
+  add_index "companies", ["rut"], name: "index_companies_on_rut"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
