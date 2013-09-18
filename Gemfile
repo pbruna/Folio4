@@ -72,3 +72,4 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem "paperclip", "~> 3.0"
+gem 'rut_chileno'

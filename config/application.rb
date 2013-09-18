@@ -27,6 +27,8 @@ module Folio
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.paths << "#{Rails.root}/app/assets/images"
     
+    config.i18n.default_locale = :"es-CL"
+    
     config.to_prepare do
       Devise::Mailer.layout "mailer_default"
     end

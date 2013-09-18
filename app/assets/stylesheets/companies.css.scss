@@ -1,3 +1,14 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form#new_company, form.edit_company {
+	table.upload-picture {
+		margin-bottom: 20px;
+		
+		 input {
+			font-size: 12px;
+			line-height: 0px;
+		}
+	}
+}

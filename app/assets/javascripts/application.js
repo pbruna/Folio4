@@ -13,5 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.Rut.min
 //= require bootstrap
+//= require jqBootstrapValidation
 //= require_tree .
+
+var Folio = Folio || {};
+
+$(function () { 
+	$("input,select,textarea").not("[type=submit]").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
+});

@@ -52,10 +52,6 @@ class User < ActiveRecord::Base
     "#{name} #{last_name}"
   end
   
-  # def avatar
-  #    generate_identicon
-  #  end
-  
   def default_avatar_url
     identicon = generate_identicon
     "data:image/png;base64,#{identicon}"

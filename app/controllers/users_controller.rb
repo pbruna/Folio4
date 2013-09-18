@@ -15,12 +15,12 @@ class UsersController < ApplicationController
 
   def update
     validate_owner_or_same_user!
-    @user = User.find(params[:id])
+    @user = current_account.users.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "Usuario actualizado correctamente."
       redirect_to user_path(@user)
     else
-      render :action => "edit"
+      render 'edit'
     end
   end
 

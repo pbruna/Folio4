@@ -1,5 +1,5 @@
 jQuery ->
-	$("#account_name}").change ->
+	$("#account_name").change ->
 		subdomain = $("#account_name").val().replace(/\s+/g, '').toLowerCase();
 		$("#account_subdomain").val(subdomain)
 		$("#account_subdomain").prop("disabled", false)

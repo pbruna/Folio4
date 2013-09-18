@@ -1,0 +1,23 @@
+<%= simple_form_for @company, 
+		:html => {:class => "form-horizontal"}, html: {multipart: true}, 
+		defaults: { input_html: { class: 'input-xlarge' } } do |f| %>
+		
+	  <table class="upload-picture">
+		<tr>
+			<td class="avatar"><%= display_company_avatar(@company) %></td>
+			<td>Cambiar logo de Empresa<p><%= f.input_field :avatar %></p></td>
+		</tr>
+	  </table>
+	
+		<%= f.input :rut, label: false, required: true, placeholder: "RUT", autofocus: true, :input_html => {:data => {:"validation-callback-callback"=>"Folio.check_rut_callback"}}  %>
+		<%= f.input :name, label: false, required: true, placeholder: "Nombre", autofocus: false  %>
+		<%= f.input :address, label: false, required: true, placeholder: "Dirección", autofocus: false  %>
+		<%= f.input :province, label: false, required: true, placeholder: "Comuna", autofocus: false  %>
+		<%= f.input :city, label: false, required: true, placeholder: "Ciudad", autofocus: false  %>
+		
+		  <div class="actions">
+		    <%= f.button :submit, "Guardar", :class => "btn btn-success"  %>
+			 o <%= link_to "Cancelar", companies_path(), :class => "cancel-link" %>
+		  </div>
+		
+<% end %>
