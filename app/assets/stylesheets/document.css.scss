@@ -1,8 +1,23 @@
 .document {
-	border: 2px solid #EEE;
+	background: white;
+	margin-left: 0px;
+	border: 1px solid #C9C4C4;
 	border-radius: 2px;
 	min-height: 100px;
-	padding: 20px;
+
+	.document-menu {
+		padding: 20px;
+		padding-left: 85px;
+		background: #6F7183;
+		padding-bottom: 15px;
+		padding-top: 25px;
+		
+		.document-actions {
+			margin-top: 10px;
+			margin-right: 10px;
+		}
+		
+	}
 	
 	h2, h3 {
 		margin: 0px;
@@ -10,11 +25,18 @@
 	
 	section {
 		margin-bottom: 40px;
+		padding: 20px;
 		
 		.section-header {
 			margin: 0px;
 			margin-bottom: 15px;
 			border-bottom: 1px solid #eeeeee;
+			
+			.section-menu {
+				@extend .pull-right;
+				margin-top: 15px;
+			}
+			
 		}
 	}
 	

@@ -1,7 +1,11 @@
 class CompaniesController < ApplicationController
 
   def index
-    @companies = current_account.companies
+    @companies = current_account.companies_in_alphabetycal_order(params[:company_name_like])
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def new
@@ -40,7 +44,7 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:avatar, :name, :city, :address, :province, :rut)
+      params.require(:company).permit(:avatar, :name, :city, :address, :province, :rut, :company_name_like)
     end
 
 

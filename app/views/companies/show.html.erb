@@ -1,16 +1,20 @@
-<div class="document">
+<% content_for :sub_navbar do %>
+	<div class="action-links pull-right">
+		<ul class="inline">
+				<li>
+					<%= link_to "Nueva Factura", new_invoice_path(:company => @company.id) %>
+				</li>
+				<li>
+					<%= link_to " Nueva Compra", edit_company_path(@company) %>
+				</li>
+				<li>
+					<%= link_to " Editar empresa", edit_company_path(@company) %>
+				</li>
+			</ul>
+	</div>
+	<h3><%= @company.name %></h3>
+<% end %>
 
-	<section>
-		<header class="section-header user-header">
-				<%= link_to "Editar información", edit_company_path(@company), :class => "btn btn-small pull-right" %>
-			<h2>
-				<%= @company.name %>
-			</h2>
-		</header>
-
-	</section>
-
-
-<%= @company.name %>
-<%= %>
+<div class="row document">
+	<%= render :partial => 'company_info' %>
 </div>

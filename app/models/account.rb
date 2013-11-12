@@ -26,6 +26,10 @@ class Account < ActiveRecord::Base
   def contact_info_complete?
     attributes.detect {|k,v| v.blank? }.nil?
   end
+  
+  def companies_in_alphabetycal_order(company_name_like)
+    companies.in_alphabetycal_order(company_name_like)
+  end
 
   def owner_name
     return owner.email if owner.full_name.nil?

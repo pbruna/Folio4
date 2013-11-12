@@ -5,6 +5,7 @@
 		  <%= menu_link "Activas", active_invoices_path %>
 		  <%= menu_link "Borrador", draft_invoices_path %>
           <%= menu_link "Vencidas", due_invoices_path %>
+		  <%= link_to content_tag(:i, " Nueva Empresa", :class => "icon-plus icon white"), new_company_path(), :class => "btn btn-success pull-right no-hover", :strong => "strong"%>
 		  <li class="pull-right"><a href="" class="no-hover"><btn class="btn btn-success"><i class="icon-plus icon-white"> </i> Nueva Factura</btn></a></li>
 		</ul>
 	</div>

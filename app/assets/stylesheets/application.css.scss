@@ -8,17 +8,20 @@
 @import "users";
 @import "companies";
 
-
-
 .main {
-	padding-left: 20px;
+	padding-left: 0px;
 	
 	.nav-pills > li > a.no-hover:hover {
 		background: none;
 	}
 	
-	.nav-pills {
+	.page_header {
 		border-bottom: 1px solid #eee;
+		margin-bottom: 20px;
+		
+		.nav {
+			margin-bottom: 0px;
+		}
 		
 		.no-hover {
 			margin-top: -10px;
@@ -54,4 +57,65 @@
 .cancel-link {
 	color: red;
 	text-decoration: underline;
+}
+
+.sub-navbar {
+	width: 998px;
+	min-height: 0px;
+	background: #ededed;
+	margin-top: -22px;
+	border-right: 1px solid #C9C4C4;
+	border-left: 1px solid #C9C4C4;
+	margin-bottom: 0px;
+	
+	.navbar {
+		padding-top: 5px;
+		padding-right: 25px;
+		padding-left: 25px;
+		margin-bottom: 0px;
+		padding-bottom: 5px;
+				
+		.action-links {
+			margin-left: 20px;
+			margin-right: 15px;
+			top: 25px;
+			position: relative;
+		}
+		
+		form {
+			margin: 0px;
+		}
+		
+		.search {
+			padding: 8px;
+			width: 28.5em;
+			margin-top: 15px;
+		}
+		
+	}
+	
+}
+
+.link-success {
+	color: #58b058;
+}
+
+a:hover.link-success {
+	color: #3B753B;	
+};
+
+.link-edit {
+	color: rgb(83,88,95);
+}
+
+.link-expense, a:hover.link-expense {
+	color: rgb(189,91,12);
+}
+
+a:hover.link-expense {
+	color: #9B4A0A;
+}
+
+.strong {
+	font-weight: bold;
 }

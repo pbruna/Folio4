@@ -1,11 +1,14 @@
+<% content_for :sub_navbar do %>
+	
+	<%= render :partial => "companies_search" %>
+		
+<% end %>
+
 <div class="row document">
 	<section>
-		<header class="section-header">
-			<%= link_to "Agregar Empresa", new_company_path(), :class => "btn btn-small btn-success pull-right" %>
-			<h3>Empresas</h3>
-		</header>
-		
 		<%= render :partial => "companies_empty" unless current_account.companies.any? %>
-		
+			<ul class="companies inline" id="companies_boxes">
+				<%= render :partial => "company", :collection => @companies %>
+			</ul>
 	</section>
 </div>

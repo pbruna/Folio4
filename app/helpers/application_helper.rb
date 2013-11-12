@@ -21,7 +21,11 @@ module ApplicationHelper
   
   def get_indicator_value_for(indicador)
     indicadores = Indicadores::Chile.new
-    indicadores.send(indicador)
+    begin
+      indicadores.send(indicador)
+    rescue Exception => e
+      0
+    end
   end
   
 end

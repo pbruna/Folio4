@@ -1,13 +1,6 @@
 <%= simple_form_for @company, 
 		:html => {:class => "form-horizontal"}, html: {multipart: true}, 
 		defaults: { input_html: { class: 'input-xlarge' } } do |f| %>
-		
-	  <table class="upload-picture">
-		<tr>
-			<td class="avatar"><%= display_company_avatar(@company) %></td>
-			<td>Cambiar logo de Empresa<p><%= f.input_field :avatar %></p></td>
-		</tr>
-	  </table>
 	
 		<%= f.input :rut, label: false, required: true, placeholder: "RUT", autofocus: true, :input_html => {:data => {:"validation-callback-callback"=>"Folio.check_rut_callback"}}  %>
 		<%= f.input :name, label: false, required: true, placeholder: "Nombre", autofocus: false  %>

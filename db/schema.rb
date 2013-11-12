@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917154441) do
+ActiveRecord::Schema.define(version: 20131029004622) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20130917154441) do
     t.decimal  "tax_amount",   default: 0.0
     t.decimal  "net_amount",   default: 0.0
     t.decimal  "total_amount", default: 0.0
-    t.integer  "customer_id"
+    t.integer  "company_id"
     t.integer  "contact_id"
     t.integer  "account_id"
     t.datetime "created_at"
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20130917154441) do
   end
 
   add_index "invoices", ["account_id"], name: "index_invoices_on_account_id"
+  add_index "invoices", ["company_id"], name: "index_invoices_on_company_id"
   add_index "invoices", ["contact_id"], name: "index_invoices_on_contact_id"
-  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id"
   add_index "invoices", ["tax_id"], name: "index_invoices_on_tax_id"
 
   create_table "plans", force: true do |t|

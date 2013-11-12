@@ -1,0 +1,3 @@
+$("#companies_boxes").empty();
+$("#companies_boxes").hide();
+$("#companies_boxes").append('<%= j render partial: "company", :collection => @companies %>').fadeIn(1000);

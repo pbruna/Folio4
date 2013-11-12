@@ -1,11 +1,12 @@
 class Company < ActiveRecord::Base
   belongs_to :account
+  has_many :invoices
   #default_scope { where(account_id: Account.current_id) }
   
   has_attached_file :avatar, :styles => { :large => "300x300>", :medium => "150x150>", :thumb => "60x60>" }, default_url: :default_avatar_url
   validates_presence_of :rut, :name, :address, :province, :city
   validates_uniqueness_of :rut, :scope => [:account_id]
-  #validates_with RutValidator
+  validates_with RutValidator
   
   def default_avatar_url
     identicon = generate_identicon
@@ -16,6 +17,28 @@ class Company < ActiveRecord::Base
     key = name.nil? ? random_string : name + "1234567891011121314"
     blob = RubyIdenticon.create("RubyIdenticon", key: key)
     Base64.strict_encode64 blob
+  end
+  
+  def has_invoices?
+    invoices.any?
+  end
+  
+  def self.in_alphabetycal_order(company_name_like)
+    return order("name") if company_name_like.nil?
+    where('name LIKE ?', "%#{company_name_like}%")
+  end
+
+  
+  def invoices_due_total
+    20090203
+  end
+  
+  def sales_total
+    209093293
+  end
+  
+  def payment_grade
+    4.5
   end
   
   private

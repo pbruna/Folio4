@@ -3,6 +3,7 @@ class Invoice < ActiveRecord::Base
   STATUS_NAME = %w(active draft due)
   
   belongs_to :account
+  belongs_to :company
 
 
   #Scopes

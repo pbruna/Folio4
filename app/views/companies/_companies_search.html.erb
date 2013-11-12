@@ -1,0 +1,9 @@
+<div class="action-links pull-right">
+	<%= link_to content_tag(:i, " Agregar Empresa", :class => "strong icon-plus icon white"), new_company_path(), :class => "link-success" %>	
+</div>
+
+<%= form_tag companies_path(), method: "get", remote: true do %>
+	<%= text_field_tag "company_name_like", nil, :class => "search",
+	:placeholder => "Buscar empresa", :autofocus => true %>		
+<% end %>
+
