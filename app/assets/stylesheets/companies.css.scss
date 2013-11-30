@@ -117,3 +117,62 @@ input[type="text"].company-search {
 	font-family: 'Lato';
 	font-size: 18px;
 }
+
+.totals-kpi-box {
+	padding-left: 10px;
+	padding-right: 10px;
+
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	background: #0265b0;;
+	
+	.totals-kpi-box-header {
+		margin-left: -10px;
+		margin-top: 0px;
+		margin-right: -10px;
+		color: white;
+		padding-left: 10px;
+	}
+	
+	.totals-kpi-box-body {
+		background: white;
+		padding: 10px;
+		margin-left: -10px;
+		margin-top: 0px;
+		margin-right: -10px;
+		padding-bottom: 20px;
+		padding-top: 20px;
+	}
+	
+	th {
+		background: #0265b0;
+		padding-left: 15px;
+		color: white;
+		text-align: left;
+	}
+	
+	td {
+		padding: 20px 0px 20px 0;
+	}
+	
+	.total-kpi {
+		width: 30%;
+		background: white;
+		border: 1px solid #ccc;
+		float: left;
+		padding: 10px;
+		padding-right: 5px;;
+		padding-top: 5px;
+		
+		.total-kpi-title {
+			font-size: 12px;
+		}
+		
+		.total-kpi-value {
+			margin-top: 5px;
+			font-size: 18px;
+		}
+		
+	}
+	
+}

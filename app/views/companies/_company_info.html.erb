@@ -1,16 +1,58 @@
-<section>
-	<header class="section-header">
-
-	</header>
-	
+<section>	
 	<div class="row">
-		<div class="span5 company-info">
-			dkadmla
+		<div class="span4 pull-right totals-kpi-box">
+				<div class="totals-kpi-box-header">
+					<h5>Información de Contacto</h5>
+				</div>
+				<div class="row  totals-kpi-box-body">
+					<ul class="unstyled">
+						<li><%= @company.rut %></li>
+						<li><%= @company.address %></li>
+						<li><%= @company.province %> - <%= @company.city %> </li>
+						<li><%= @company.phone %>
+					</ul>
+					<br>
+				</div>
 		</div>
-		<div class="span4 well pull-right">
-			<ul>
-				<li>Nivel de cumplimiento 6.3</li>
-			</ul>
+		<div class="row span7 totals-kpi-box">
+				<div class="totals-kpi-box-header">
+					<h5>Ventas</h5>
+				</div>
+				<div class="row span7 totals-kpi-box-body">
+					<div class="total-kpi">
+						<span class="total-kpi-title">Activas</span>
+						<div class="total-kpi-value">$ 943.434.344</div>
+					</div>
+					<div class="total-kpi">
+						<span class="total-kpi-title">Vencidas</span>
+						<div class="total-kpi-value">$ 43.434.344</div>
+					</div>
+					<div class="total-kpi">
+						<span class="total-kpi-title">Nos deben</span>
+						<div class="total-kpi-value">$ 986.434.344</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="span7 totals-kpi-box">
+				<div class="totals-kpi-box-header">
+					<h5>Gastos</h5>
+				</div>
+				<div class="row span7 totals-kpi-box-body">
+					<div class="total-kpi">
+						<span class="total-kpi-title">Activos</span>
+						<div class="total-kpi-value">$ 0</div>
+					</div>
+					<div class="total-kpi">
+						<span class="total-kpi-title">Vencidos</span>
+						<div class="total-kpi-value">$ 645.334</div>
+					</div>
+					<div class="total-kpi">
+						<span class="total-kpi-title">Debemos</span>
+						<div class="total-kpi-value">$ 645.334</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

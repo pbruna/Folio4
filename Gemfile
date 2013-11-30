@@ -60,7 +60,7 @@ gem 'devise', :git => "https://github.com/plataformatec/devise"
 gem 'unicorn'
 gem 'simple_form', "~> 3.0.0.rc"
 gem 'bourbon'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', "~> 2.3.2"
 gem 'flat-ui-sass', :git => "https://github.com/kebab-project/flat-ui-sass"
 gem 'high_voltage'
 gem 'indicadores_cl', :git => "https://github.com/pbruna/indicadores_cl", :branch => 'master'
@@ -73,3 +73,4 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem "paperclip", "~> 3.0"
 gem 'rut_chileno'
+gem "devise-encryptable"
