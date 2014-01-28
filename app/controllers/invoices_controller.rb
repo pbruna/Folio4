@@ -11,7 +11,11 @@ class InvoicesController < ApplicationController
 
 
   def index
-    @invoices = Invoice.all
+    @invoices = current_account.invoices.all
+  end
+  
+  def new
+    @invoice = current_account.invoices.new
   end
 
 end

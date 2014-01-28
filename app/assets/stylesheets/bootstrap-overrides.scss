@@ -1,5 +1,6 @@
 body {
-	background: url('/assets/grid.png') repeat;
+	background: url('/assets/body-background.jpg') repeat;
+	font-family: 'Lato';
 }
 
 .container {
@@ -32,8 +33,11 @@ body {
 		margin-top: -57px;
 		.nav-tabs > li.active > a {
 			color: #555555;
-			background-color: rgb(237,237,237);
-			border: 1px solid rgb(237,237,237);
+			//background-color: rgb(237,237,237);
+			background-color: white;
+			border-left: 1px solid rgb(237,237,237);
+			border-right: 1px solid rgb(237,237,237);
+			border-top: 1px solid rgb(237,237,237);
 		}
 		
 		.nav-tabs > li > a {
@@ -44,6 +48,8 @@ body {
 		
 		.nav-tabs > li > a:hover {
 			color: #16a085;
+			background: whitesmoke;
+			border-bottom: 1px solid white;
 		}
 	}
 	

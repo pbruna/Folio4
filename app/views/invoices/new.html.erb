@@ -1,0 +1,206 @@
+<div class="row document">
+	<form>
+		<div id="invoice" class="row span9">
+			<form class="">
+			<header style="padding: 10px; padding-left: 20px;
+	padding-right: 20px;
+	background: #f6f5ed;
+	border-bottom: 1px solid #C9C4C4;">
+				<span class="invoice-status invoice-draft pull-right" style="margin-top: 10px">Borrador</span>
+				<h4>Nueva Venta #3334</h4>
+			</header>
+			
+			<div class="invoice-details">
+				<table class="">
+					<tr class="large">
+						<td style="width: 80px;"><label>Para</label></td>
+						<td><input type="text" style="font-weight: bold"></td>
+					</tr>
+					<tr class="large">
+						<td style="width: 80px;"><label>Asunto</label></td>
+						<td><input type="text"></td>
+					</tr>
+				</table>
+				<table>
+					<tr class="small">
+						<td  style="width: 70px;"><label>Número</label></td>
+						<td><input type="text"></td>
+						<td><label>Fecha</label></td>
+						<td style=""><input type="text"></td>
+						<td><label>Vencimiento</label></td>
+						<td><input type="text" style="width: 55%"></td>
+					</tr>
+				</table>
+				<table>
+					<tr class="small">
+						<td  style="width: 80px; padding-top: 10px;"><label>Moneda</label></td>
+						<td style="padding-top: 10px; width: 150px;">
+							<select style="width: 110px; height: 25px; margin-bottom: 0px; font-size:12px">
+								<option>CLP</option>
+								<option>Dólares</option>
+								<option>UF</option>
+							</select>
+						</td>
+						<td style="padding-top: 10px; width: 45px">
+							<label>IVA</label>
+						</td>
+						<td style="padding-top: 10px;">
+							<select style="width: 110px; height: 25px; margin-bottom: 0px; font-size:12px">
+								<option>No</option>
+								<option>Sí</option>
+							</select>
+						</td>
+						
+					</tr>
+				</table>
+			</div>
+			
+			<div style="padding-left: 15px; padding-right:25px; margin-top:25px">
+				<span class="pull-right" style=""><a href="">+ Agregar</a></span>
+				<h4>Items</h4>
+			</div>
+			
+			<div id="invoice-items">
+				<table class="table" style="width: 100%">
+					<thead style="background: #f6f5ed; border-top: 1px solid #C9C4C4; border-bottom: #C9C4C4 1px solid;">
+						<tr>
+							<th style="padding-left: 15px">
+								Tipo
+							</th>
+							<th>Descripción</th>
+							<th style="text-align: center">Ctd.</th>
+							<th style="text-align: center; ">Precio</th>
+							<th style="text-align: center; padding-right: 25px">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="height: 10px"></tr>
+						<tr>
+							<td>
+								<select style="width: 100px"><option>Servicio</option></select>
+								<br/>
+								<span style="margin-left:5px"><a href="" style="color: red;">X borrar</a></span>
+							</td>
+							<td><textarea rows="3"></textarea></td>
+							<td style="text-align: center"><input type="text" style="width: 40%"></input></td>
+							<td><input type="text" style="width: 80%"></input></td>
+							<td><input type="text" style="width: 80%"></input></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div style="
+						margin-bottom: 50px;
+						padding-top: 10px;">
+				<span class="pull-right" style="padding: 20px;
+background: #f6f5ed;
+margin-bottom: 40px;
+font-size: 24px;
+border-top: 1px solid #C9C4C4;
+border-left: 1px solid #C9C4C4;
+border-bottom: 1px solid #C9C4C4;">
+					CLP $43.434.334
+				</span>
+				
+			</div>
+			
+		</div>
+		
+		<div id="invoice-options" class="span3" style="">
+			<div class="invoice-totals"  style="text-align: right; padding: 10px; border-bottom: 1px solid #C9C4C4;" >
+				<h3>$434.434.332</h3>
+				<h5 style="font-weight: normal; margin-bottom: 0px; margin-top: 0px;">
+					IVA $8.332.323
+				</h5>
+				<h5 style="
+			    font-weight: normal;
+			    margin-top: 5px;
+				">Neto $35.332.323</h5>
+			</div>
+			
+<!-- 			<div class="invoice-currency" style="padding-left:10px; padding-right: 10px; padding-bottom: 15px; border-bottom: 1px solid #C9C4C4;">
+				<h5>Moneda de la Venta<small>
+					<br>El valor se ajustará automáticamente.
+				</small></h5>
+				<table style="width: 100%">
+					<tr>
+						<td>
+							<label class='radio'>
+							<input type='radio' name='invoice_currency'>
+							CLP
+							</label>
+						</td>
+						<td style="text-align: right;">$ 434.434.332</td>
+					</tr>
+					<tr>
+						<td>
+							<label class='radio'>
+							<input type='radio' name='invoice_currency'>
+							UF
+							</label>
+						</td>
+						<td style="text-align: right;">$ 18.645</td>
+					</tr>
+					<tr>
+						<td>
+							<label class='radio'>
+							<input type='radio' name='invoice_currency'>
+							USD
+							</label>
+						</td>
+						<td style="text-align: right;">$ 819.000</td>
+					</tr>
+				</table>		
+			</div>
+		 -->	
+			<div class="invoice-reminders" style="padding-top: 10px; padding-left:10px; padding-right: 10px; padding-bottom: 15px; border-bottom: 1px solid #C9C4C4;">
+				
+				<div class="invoice-email-reminder">
+					<label class='checkbox' style="margin-bottom: 0px">
+					<input type='checkbox' name='invoice_email_reminder'>
+					<a href="">Enviar recordatorio</a>
+					</label>
+					<div style="margin-left: 20px">
+						<small>Martes 24 a Nadia Valencia (IT Linux) y Marcelo Carrillo (TVN)</small>
+					</div>
+				</div>
+				
+				<div class="invoice-email-recurrent" style="margin-top: 20px">
+					<label class='checkbox' style="margin-bottom: 0px">
+					<input type='checkbox' name='invoice_email_reminder'>
+					<a href="">Factura recurrente</a>
+					</label>
+					<div style="margin-left: 20px">
+						<small>
+							El primer Lunes de cada mes.<br/>
+							Finaliza el 23/11/2014.
+						</small>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			<div class="invoice-attachments" style=" padding-left:10px; padding-right: 10px; padding-bottom: 15px; border-bottom: 1px solid #C9C4C4;">
+				<h5>Documentos</h5>
+				<div style="padding: 10px; border: 2px dashed #bbb; text-align: center; color: #888">
+					<strong>+</strong> Arrastra tus archivos
+				</div>
+			</div>
+			
+			<div class="invoice-catergories" style=" padding-left:10px; padding-right: 10px; padding-bottom: 5px; ">
+				<h5>Caterogrías</h5>
+				<textarea style="width: 185px;"></textarea>
+			</div>
+			
+			<div class="invoice-catergories" style=" padding:10px; text-align: center; margin-bottom: 20px">
+				
+				<button class="btn btn-large btn-success">Guardar venta</button>
+				
+			</div>
+			
+		</div>
+	</form>
+	
+</div>

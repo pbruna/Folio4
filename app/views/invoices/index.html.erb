@@ -1,18 +1,29 @@
-<div class="page_header">
-	<%= render :partial => 'invoices/shared/invoices_header' %>
-</div>
+<% content_for :sub_navbar do %>
 
-<div class="row-fluid">
-	<div id="invoices" class="span9" style="padding-right: 20px">
-		<table class="table table-hover">
-			<thead style="background: #ededed; border: 1px solid #e3e3e3;">
-				<th style="padding: 10px">Número</th>
-				<th style="padding: 10px">Detalles</th>
-				<th class="pull-right" style="padding: 10px">Total</th>
-			</thead>
-		</table>
+	<div class="action-links pull-right" style="margin-top: -5px">
+		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
 	</div>
-	<div id="side-menu" class="span3 well">
-		hola
+	
+	<h4 style="font-weight:normal; padding: 10px; padding-left: 4px">Todas las ventas ordenadas <a href="#" style="border-bottom: dashed 1px solid;">por fecha</a> de <a href="#">mayor a menor</a></h4>
+	
+		
+<% end %>
+
+
+<div class="row document">
+	<%= render partial: "invoices_table" %>
+	
+	<div id="side-menu" class="span3">
+		<h5 class="section-title">Resumen de Totales</h5>
+		
+		<table id="invoices-totals-resume-table">
+			<form>
+				<%= totals_resume_invoices_row("due", 3949303) %>
+				<%= totals_resume_invoices_row("open", 19382029) %>
+				<%= totals_resume_invoices_row("draft", 3312343) %>
+				<%= totals_resume_invoices_row("closed", 23949303) %>
+			</form>
+		</table>
+		
 	</div>
 </div>

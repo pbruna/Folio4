@@ -1,3 +1,152 @@
 // Place all the styles related to the invoices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.invoice-status  {
+	@extend .label;
+}
+
+.invoice-active {
+	@extend .label-info;
+}
+
+.invoice-due {
+	@extend .label-important;
+}
+
+.invoice-draft {
+	@extend .label;
+}
+
+.invoice-closed {
+	@extend .label-success;
+}
+
+#invoices {
+	
+	padding-right: 20px;
+	margin-top: 10px;
+	margin-right: 20px;
+	
+	.invoices-table {
+		h4 {
+			margin-top: 0px;
+			margin-bottom: 5px;
+			font-weight: normal;
+		}
+		
+		td {
+			padding-bottom:20px;
+		}
+		
+	}
+	
+	.invoice-number {
+		
+	}
+	
+	
+	
+	.invoice-details-cell {
+		h4 { margin-bottom: 10px;}
+		.invoice-customer {
+			margin-top: 0px;
+		}
+		
+		p {
+			margin-bottom: 0px;
+
+		}
+		
+		.invoice-date1 {
+			margin-right: 20px;
+		}
+	}
+	
+	.invoice-total-cell {
+		text-align: right;
+	}
+	
+}
+
+#invoices-totals-resume-table {
+	width: 99%;
+	
+	.invoices-open {
+		color: $blue;
+	}
+	
+	.invoices-due {
+		color: $red;
+	}
+	
+	.invoices-draft {
+		color: $grayLight;
+	}
+	
+	.invoices-closed {
+		color: $green;
+	}
+		
+}
+
+#invoice {
+	border: 1px solid #C9C4C4;
+	margin-top: 20px;
+	border-radius: 1px;	
+	
+	.invoice-details {
+		padding: 10px;
+		padding-left: 15px;
+		
+		input[type="text"] {
+			border: none;
+			box-shadow: none;
+			border-bottom: gray dotted 1px;
+			border-radius: 0px;
+			width: 90%;
+		}
+		
+		table {
+			width: 100%;
+			
+		}		
+		
+		label {
+			display: inline;
+			font-weight: bold;
+		}
+		
+		.small {
+			input[type="text"] {
+				width: 60%;
+				margin-left: 10px;
+			}
+		}
+		
+		
+	}
+	
+	#invoice-items {
+		table {
+			tbody {
+				td {
+					padding-top: 10px;
+					padding-bottom: 20px;
+					border-top: none;
+					border-bottom: 1px solid #dddddd;
+				}
+			}
+		}
+	}
+	
+}
+
+#invoice-options {
+	border: 1px solid #C9C4C4;
+	margin-top: 20px;
+	border-radius: 1px;
+	min-height: 300px;
+	background: #f6f5ed;
+}

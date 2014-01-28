@@ -197,3 +197,12 @@ es-CL:
   activerecord:
     errors:
       <<: *errors
+  invoice:
+    open: activa
+    draft: borrador
+    due: vencida
+    closed: pagada
+    opens: activas
+    drafts: borrador
+    dues: vencidas
+    closeds: pagadas

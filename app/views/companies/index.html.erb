@@ -1,6 +1,12 @@
 <% content_for :sub_navbar do %>
+
+	<div class="action-links pull-right">
+		<%= search_add_record_link(new_company_path, "Agregar Empresa") %>
+	</div>
 	
-	<%= render :partial => "companies_search" %>
+	<%= render :partial => "shared/sub_navbar_search", locals: {
+	form_path: companies_path, text_field_tag: "company_name_like",
+	placeholder: "Buscar empresa"} %>
 		
 <% end %>
 

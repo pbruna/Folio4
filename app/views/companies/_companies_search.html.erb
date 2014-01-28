@@ -1,5 +1,5 @@
 <div class="action-links pull-right">
-	<%= link_to content_tag(:i, " Agregar Empresa", :class => "strong icon-plus icon white"), new_company_path(), :class => "link-success" %>	
+	<%= link_to content_tag(:i, nil, :class => "icon-plus icon-white").html_safe+" Agregar Empresa", new_company_path(), :class => "btn btn-success" %>	
 </div>
 
 <%= form_tag companies_path(), method: "get", remote: true do %>
