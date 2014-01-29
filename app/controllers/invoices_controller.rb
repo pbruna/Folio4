@@ -17,5 +17,9 @@ class InvoicesController < ApplicationController
   def new
     @invoice = current_account.invoices.new
   end
+  
+  def show
+    # @invoice = current_account.invoices.find(params[:id])
+  end
 
 end
