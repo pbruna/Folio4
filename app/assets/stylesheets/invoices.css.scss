@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+ul.ui-autocomplete {
+	border: 1px solid rgb(167, 202, 252);
+	padding: 5px;
+	background-color: white;
+	width: 532px;
+	
+	li.ui-menu-item {
+		list-style-type: none;
+		a {color: rgb(51, 51, 51);}
+	}
+	
+	.ui-state-focus
+	{
+	    background:rgb(167, 202, 252);
+	}
+	
+}
 
 .invoice-status  {
 	@extend .label;
@@ -130,7 +147,7 @@
 		}
 		
 		.small {
-			input[type="text"] {
+			input[type="text"], .value {
 				width: 60%;
 				margin-left: 10px;
 			}
@@ -156,6 +173,13 @@
 	}
 	
 	#invoice-items {
+		
+		input[disabled], textarea[disabled] {
+//			border: none;
+			background: white;
+			box-shadow: none;
+			resize: none;
+		}
 		
 		.invoice-item-delete {
 			margin-left :5px;
@@ -211,6 +235,16 @@
 			border-top: 1px solid #C9C4C4;
 			border-left: 1px solid #C9C4C4;
 			border-bottom: 1px solid #C9C4C4;
+			padding-left: 60px;
+			
+			.invoice-total-detail {
+				@extend .unstyled;
+				font-size: 16px;
+				text-align: right;
+				margin-right: 2px;
+				margin-top: 8px;
+			}
+			
 		}
 		
 	}
@@ -223,6 +257,59 @@
 	border-radius: 1px;
 	min-height: 300px;
 	background: #f6f5ed;
+	
+	#invoice-total {
+		text-align: center;
+		padding-top: 10px;
+		background: #999;
+		color: whitesmoke;
+		padding-bottom: 10px;	
+	}
+	
+	.invoice-status-open {
+		background: $blue;
+	}
+	
+	.invoice-status-due {
+		background: $red;
+	}
+	
+	.invoice-status-draft {
+		background: $grayLight;
+	}
+	
+	.invoice-status-closed {
+		background: $green;
+	}
+	
+	.invoice-actions {
+		padding-top: 20px;
+		padding-left:20px;
+		padding-right: 10px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #C9C4C4;
+		font-weight: bold;
+		
+		li {
+			margin-bottom: 10px;
+		}
+		
+		.fa {
+			width: 20px;
+			margin-right: 5px;
+			text-align: center;
+		}
+		
+		
+		.invoice-option-explain {
+			margin-left: 5px;
+		}
+		
+		small {
+			font-weight: normal;
+		}
+		
+	}
 	
 	.invoice-totals {
 		text-align: right;
@@ -255,7 +342,7 @@
 	}
 
 	.invoice-attachments {
-		padding-top: 10px;
+		padding-top: 0px;
 		padding-left:10px;
 		padding-right: 10px;
 		padding-bottom: 15px;

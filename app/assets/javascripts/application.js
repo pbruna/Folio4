@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.Rut.min
+//= require autocomplete-rails
 //= require bootstrap
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker.es.js
 //= require jqBootstrapValidation
 //= require_tree .
 

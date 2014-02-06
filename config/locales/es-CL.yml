@@ -197,6 +197,13 @@ es-CL:
   activerecord:
     errors:
       <<: *errors
+    attributes:
+      invoice:
+        aasm_state:
+          draft: "borrador"
+          open: "activa"
+          due: "vencida"
+          closed: "pagada"
   invoice:
     open: activa
     draft: borrador

@@ -15,4 +15,18 @@ module InvoicesHelper
   end
   
   
+  def display_input_or_value_for(f, value=nil)
+    return "<td style='height: 35px'><div class='value'>value</div></td>".html_safe if params[:action] == "show"
+    "<td>#{f.text_field value }</td>".html_safe
+  end
+  
+  
+  def display_select_or_value_for(f, value=nil,array)
+    f.select value, options_for_select(array) unless params[:action] == "show"
+  end
+  
+  def input_disabled?
+    return "disabled" if params[:action] == "show"
+  end
+  
 end

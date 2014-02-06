@@ -1,5 +1,7 @@
 <div id="invoice-items-header">
-	<span class="pull-right"><a href="">+ Agregar</a></span>
+	<% unless params[:action] == "show" %>
+		<span class="pull-right"><a href="">+ Agregar</a></span>
+	<% end %>
 	<h4>Items</h4>
 </div>
 
@@ -8,7 +10,7 @@
 		<thead>
 			<tr>
 				<th>Tipo</th>
-				<th>Descripción</th>
+				<th style="padding-left: 10px; text-align: left;">Descripción</th>
 				<th>Ctd.</th>
 				<th>Precio</th>
 				<th>Total</th>

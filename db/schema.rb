@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029004622) do
+ActiveRecord::Schema.define(version: 20140205234227) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -121,11 +121,15 @@ ActiveRecord::Schema.define(version: 20131029004622) do
     t.integer  "tax_id"
     t.string   "tax_name"
     t.float    "tax_rate"
+    t.string   "aasm_state",   default: "draft"
+    t.string   "currency",     default: "clp"
   end
 
+  add_index "invoices", ["aasm_state"], name: "index_invoices_on_aasm_state"
   add_index "invoices", ["account_id"], name: "index_invoices_on_account_id"
   add_index "invoices", ["company_id"], name: "index_invoices_on_company_id"
   add_index "invoices", ["contact_id"], name: "index_invoices_on_contact_id"
+  add_index "invoices", ["currency"], name: "index_invoices_on_currency"
   add_index "invoices", ["tax_id"], name: "index_invoices_on_tax_id"
 
   create_table "plans", force: true do |t|

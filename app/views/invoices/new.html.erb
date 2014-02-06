@@ -1,16 +1,14 @@
 <div class="row document">
-	<form>
+	<%= form_for @invoice do |f| -%>
+	 
 		<div id="invoice" class="row span9">
 			<form class="">
-			<header>
-				<span class="invoice-label invoice-draft">
-					Borrador
-				</span>
-				<h4>Nueva Venta #3334</h4>
-			</header>
+			
+			<%= render :partial => 'invoices/shared/invoice_header' %>
+			
 			<%= render :partial => 'shared/flash' %>
 			
-			<%= render :partial => 'invoices/shared/invoice_details'%>
+			<%= render :partial => 'invoices/shared/invoice_details', locals: {f: f}%>
 			
 			<%= render :partial => "invoices/shared/invoice_items" %>
 			
@@ -19,8 +17,8 @@
 		</div>
 		
 		
-		<%= render :partial => "invoice_sidebar" %>
+		<%= render :partial => "invoice_form_sidebar" %>
 		
-	</form>
+	<% end -%>
 	
 </div>

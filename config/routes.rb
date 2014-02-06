@@ -17,6 +17,7 @@ Folio::Application.routes.draw do
       resources :expenses
     end
     resources :invoices do
+      get :autocomplete_company_name, :on => :collection
       collection do
         get 'active'
         get 'draft'

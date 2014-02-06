@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+  autocomplete :company, :name, :full => true, :scopes => [:for_account]
 
   # Methods to get the invoice given their status_name
   # status_name defined in Invoice model

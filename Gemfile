@@ -74,3 +74,5 @@ gem 'daemons'
 gem "paperclip", "~> 3.0"
 gem 'rut_chileno'
 gem "devise-encryptable"
+gem 'aasm'
+gem 'rails4-autocomplete'

@@ -2,43 +2,40 @@
 	<table>
 		<tr class="large">
 			<td style="width: 80px;"><label>Para</label></td>
-			<td><input type="text" style="font-weight: bold"></td>
+			<td><%= autocomplete_field_tag "company_name",'', autocomplete_company_name_invoices_path, :id_element => '#invoice_company_id' %></td>
+			<!-- <%= display_input_or_value_for(f, :company_id) %> -->
+			<%= f.hidden_field :company_id %>
 		</tr>
 		<tr class="large">
 			<td style="width: 80px;"><label>Asunto</label></td>
-			<td><input type="text"></td>
+			<%= display_input_or_value_for(f, :subject) %>
 		</tr>
 	</table>
 	<table>
 		<tr class="small">
 			<td  style="width: 70px;"><label>Número</label></td>
-			<td><input type="text"></td>
+			<%= display_input_or_value_for(f, :suggested_number) %>
 			<td><label>Fecha</label></td>
-			<td><input type="text"></td>
+			<td><%= f.text_field :open_date, :data => {"date-format" => "dd/mm/yyyy"} %></td>
 			<td><label>Vencimiento</label></td>
-			<td><input type="text" style="width: 55%"></td>
+			<%= display_input_or_value_for(f, :due_date) %>
 		</tr>
 	</table>
-	<table>
-		<tr class="small">
-			<td  style="width: 80px; padding-top: 10px;"><label>Moneda</label></td>
-			<td style="padding-top: 10px; width: 150px;">
-				<select style="width: 110px; height: 25px; margin-bottom: 0px; font-size:12px">
-					<option>CLP</option>
-					<option>Dólares</option>
-					<option>UF</option>
-				</select>
-			</td>
-			<td style="padding-top: 10px; width: 45px">
-				<label>IVA</label>
-			</td>
-			<td style="padding-top: 10px;">
-				<select style="width: 110px; height: 25px; margin-bottom: 0px; font-size:12px">
-					<option>No</option>
-					<option>Sí</option>
-				</select>
-			</td>
+	<% unless params[:action] == "show" %>
+		<table>
+			<tr class="small">
+				<td  style="width: 80px; padding-top: 10px;"><label>Moneda</label></td>
+				<td style="padding-top: 10px; width: 150px;">
+					<%= display_select_or_value_for(f, :currency, Invoice.currencies) %>
+				</td>
+				<td style="padding-top: 10px; width: 45px">
+					<label>IVA</label>
+				</td>
+				<td style="padding-top: 10px;">
+					<%= display_select_or_value_for(f, :taxed,[["Si", true],["No", false]]) %>
+				</td>
 			
-		</tr>
-	</table>
+			</tr>
+		</table>
+	<% end %>
 </div>

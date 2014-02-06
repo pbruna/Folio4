@@ -1,35 +1,35 @@
 <div id="invoice-sidebar" class="span3">
-	<div class="invoice-totals">
+	<div id="invoice-total" class="invoice-status-draft">
 		<h3>$434.434.332</h3>
-		<h5>IVA $8.332.323</h5>
-		<h5>Neto $35.332.323</h5>
 	</div>
 	
-	<div class="invoice-reminders">
-		
-		<div class="invoice-email-reminder">
-			<label class='checkbox'>
-			<input type='checkbox' name='invoice_email_reminder'>
-			<a href="">Enviar recordatorio</a>
-			</label>
-			<div class="invoice-option-explain">
-				<small>Martes 24 a Nadia Valencia (IT Linux) y Marcelo Carrillo (TVN)</small>
-			</div>
-		</div>
-		
-		<div class="invoice-email-recurrent" style="margin-top: 20px">
-			<label class='checkbox'>
-			<input type='checkbox' name='invoice_email_reminder'>
-			<a href="">Factura recurrente</a>
-			</label>
-			<div class="invoice-option-explain">
-				<small>
-					El primer Lunes de cada mes.<br/>
-					Finaliza el 23/11/2014.
-				</small>
-			</div>
-		</div>
-		
+	<div class="invoice-actions">		
+		<ul class="unstyled">
+			<li><%= fa_icon "check-square-o"%><a href="" class="invoices-open"> Activar venta</a></li>
+			<li><%= fa_icon "edit"%><a href=""> Editar venta</a></li>
+			<li><%= fa_icon "camera"%><a href=""> Duplicar venta</a></li>
+			<li><%= fa_icon "trash-o"%><a href="" class="invoices-due"> Borrar venta</a></li>
+		</ul>
+	</div>
+	
+	<div class="invoice-actions">
+		<ul class="unstyled">
+			<li>
+				<%= fa_icon "calendar"%><a href="">Recordatorio</a>
+				<div class="invoice-option-explain">
+					<small>Martes 24 a Nadia Valencia (IT Linux) y Marcelo Carrillo (TVN)</small>
+				</div>
+			</li>
+			<li>
+				<%= fa_icon "repeat"%><a href="">Factura recurrente</a>
+				<div class="invoice-option-explain">
+					<small>
+						El primer Lunes de cada mes.<br/>
+						Finaliza el 23/11/2014.
+					</small>
+				</div>
+			</li>
+		</ul>
 	</div>
 	
 	
@@ -40,15 +40,5 @@
 		</div>
 	</div>
 	
-	<div class="invoice-catergories">
-		<h5>Caterogrías</h5>
-		<textarea></textarea>
-	</div>
-	
-	<div class="invoice-submit">
-		
-		<button class="btn btn-large btn-success">Guardar venta</button>
-		
-	</div>
 	
 </div>

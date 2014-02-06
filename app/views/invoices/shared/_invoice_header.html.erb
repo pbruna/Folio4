@@ -1,0 +1,10 @@
+<header>
+	<ul class="unstyled inline pull-right">
+		<li><span class="invoice-label invoice-draft"><%= @invoice.aasm_human_state.titleize %></span></li>
+		<% if input_disabled? %>
+			<li><span class="invoice-label invoice-draft">UF</span></li>
+			<li><span class="invoice-label invoice-draft">IVA</span></li>
+		<% end %>
+	</ul>
+	<h4>Nueva Venta # <%= @invoice.suggested_number %></h4>
+</header>

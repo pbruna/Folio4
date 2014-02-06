@@ -1,5 +1,12 @@
 <div id="invoice-total">
-	<span class="invoice-total-number">
+	<div class="invoice-total-number">
 		CLP $43.434.334
-	</span>	
+		<% if input_disabled? %>
+			<ul class="invoice-total-detail">
+				<li><ul class="unstyled inline"><li style="text-align: left">IVA</li><li style="width: 100px;">$88.983.389</li></ul></li>
+				<li><ul class="unstyled inline"><li style="text-align: left">Neto</li><li style="width: 100px;">$36.323.333</li></ul></li>
+				<li><ul class="unstyled inline"><li style="text-align: left">UF</li><li style="width: 100px;">2.950</li></ul></li>
+			</ul>
+		<% end %>
+	</div>
 </div>
