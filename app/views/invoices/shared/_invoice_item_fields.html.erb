@@ -3,15 +3,23 @@
 		<% if input_disabled? %>
 			<div style="margin-left: 10px; padding-right: 10px; padding-top: 4px; font-weight: bold;">Servicio</div>
 		<% else %>
-			<%= f.select :type, options_for_select(["producto", "servicio"])%>
+			<%= f.select :type, options_for_select(invoice_item_types_for_select)%>
 		<% end %>
 		<br/>
 		<span class="invoice-item-delete">
-			<% unless input_disabled? %><a href="#" onclick="remove_fields(this);return false;">borrar</a><% end %>
+			<% unless input_disabled? %><a href="#" onclick="remove_invoice_item_fields(this);return false;">- borrar</a><% end %>
 		</span>
 	</td>
-	<td><textarea rows="3" <%= input_disabled? %>></textarea></td>
-	<td style="text-align: center"><input type="text" style="width: 40%" <%= input_disabled? %>></input></td>
-	<td><input type="text" style="width: 80%" <%= input_disabled? %> ></input></td>
-	<td><input type="text" style="width: 80%" <%= input_disabled? %>></input></td>
+	<td>
+		<%= f.text_area :description, disabled: input_disabled?, :rows => 3 %>
+	</td>
+	<td style="text-align: center">
+		<%= f.text_field :quantity, disabled: input_disabled?, style: "width: 40%" %>
+	</td>
+	<td>
+		<%= f.text_field :price, disabled: input_disabled?, style: "width: 80%" %>
+	</td>
+	<td>
+		<%= f.text_field :total, disabled: input_disabled?, style: "width: 80%" %>
+	</td>
 </tr>

@@ -120,6 +120,7 @@ ul.ui-autocomplete {
 		font-size:12px
 	}
 	
+	
 	textarea {
 		resize: vertical;
 	}
@@ -134,13 +135,20 @@ ul.ui-autocomplete {
 			border-bottom: gray dotted 1px;
 			border-radius: 0px;
 			width: 90%;
-			font-size: 16px;
 			padding-bottom: 0px;
 			margin-bottom: 15px;
 		}
 		
+		.field_with_errors > input, .field_with_errors > select {
+			border: 1px solid #b94a48;
+		}
+		
 		table {
 			width: 100%;
+			
+			td {
+				vertical-align:top;
+			}
 			
 			.input-label {
 				width: 80px;
@@ -328,6 +336,7 @@ ul.ui-autocomplete {
 			font-weight: normal;
 			margin-bottom: 0px;
 			margin-top: 0px;
+			padding-right: 3px;
 		}
 		
 	}
@@ -382,4 +391,10 @@ ul.ui-autocomplete {
 		margin-bottom: 20px
 	}
 	
+}
+
+.invoice-item-fields {
+	input[type="text"] {
+		text-align: right;
+	}
 }

@@ -11,8 +11,11 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
   
   # Validations
-  validates_presence_of :company_id, :subject, :number, :open_date, :due_days, :currency, :taxed
+  validates_presence_of :company_id, :subject, :number, :open_date, :due_days, :currency
   validates_numericality_of :number, :due_days
+  validates_numericality_of :total, :greater_than => 0
+  validates_numericality_of :net_total, :greater_than => 0
+  validates_uniqueness_of :number
 
   #Scopes
   default_scope { where(account_id: Account.current_id) }
@@ -31,6 +34,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def company_name
+    return "" if company_id.nil?
     company.name
   end
   

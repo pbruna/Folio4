@@ -1,6 +1,8 @@
 <% flash.each do |name, msg| %>
-	<div class="alert alert-<%= name == :notice ? "success" : "error" %>" style="text-align: center;">
+	<div class="alert alert-<%= name == :notice ? "success" : "error" %>" >
     	<a class="close" data-dismiss="alert">×</a>
     	<%= msg %>
+		<br/>
+		<%= yield :form_errors %>
   	</div>
 <% end %>

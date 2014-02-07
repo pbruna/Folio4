@@ -1,11 +1,32 @@
 <div id="invoice-total">
 	<div class="invoice-total-number">
-		CLP $43.434.334
+		<%= "UF #{number_to_currency(@invoice.total)}" %>
 		<% if input_disabled? %>
 			<ul class="invoice-total-detail">
-				<li><ul class="unstyled inline"><li style="text-align: left">IVA</li><li style="width: 100px;">$88.983.389</li></ul></li>
-				<li><ul class="unstyled inline"><li style="text-align: left">Neto</li><li style="width: 100px;">$36.323.333</li></ul></li>
-				<li><ul class="unstyled inline"><li style="text-align: left">UF</li><li style="width: 100px;">2.950</li></ul></li>
+				<li>
+					<ul class="unstyled inline">
+						<li style="text-align: left">IVA</li>
+						<li style="width: 100px;">
+							<%= number_to_currency(@invoice.tax_total) %>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="unstyled inline">
+						<li style="text-align: left">Neto</li>
+						<li style="width: 100px;">
+							<%= number_to_currency(@invoice.net_total) %>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="unstyled inline">
+						<li style="text-align: left"><%= @invoice.currency.upcase %></li>
+						<li style="width: 100px;">
+							<%= number_to_currency(@invoice.currency_total) %>
+						</li>
+					</ul>
+				</li>
 			</ul>
 		<% end %>
 	</div>

@@ -1,7 +1,7 @@
 <div id="invoice-items-header">
 	<% unless params[:action] == "show" %>
 		<span class="pull-right">
-			<%= link_to_add_fields "+ Agregar" ,f, :invoice_items, "invoices/shared" %>
+			<%= link_to_add_invoice_item_fields "+ Agregar" ,f, :invoice_items, "invoices/shared" %>
 			<%= hidden_field_tag "invoice_items_index", @invoice.invoice_items.size %>
 		</span>
 	<% end %>

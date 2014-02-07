@@ -1,12 +1,22 @@
 <div class="row document">
 	<%= form_for @invoice do |f| -%>
-	 
 		<div id="invoice" class="row span9">
-			<form class="">
+
 			
 			<%= render :partial => 'invoices/shared/invoice_header' %>
 			
+			<% content_for :form_errors do %>
+					<% if @invoice.errors.size > 0 %>
+					    <ul>
+					       <% @invoice.errors.full_messages.each do |msg| %>
+					       		<li><%= msg %></li>
+					       <% end %>
+					    </ul>
+					<% end %>
+			<% end %>
+			
 			<%= render :partial => 'shared/flash' %>
+				
 			
 			<%= render :partial => 'invoices/shared/invoice_details', locals: {f: f}%>
 			

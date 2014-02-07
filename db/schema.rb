@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207010937) do
+ActiveRecord::Schema.define(version: 20140207091924) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -89,10 +89,10 @@ ActiveRecord::Schema.define(version: 20140207010937) do
 
   create_table "invoice_items", force: true do |t|
     t.integer  "account_id"
-    t.integer  "quantity"
+    t.integer  "quantity",    default: 0
     t.text     "description"
-    t.integer  "price"
-    t.integer  "total_amount", default: 0
+    t.integer  "price",       default: 0
+    t.integer  "total",       default: 0
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -104,10 +104,10 @@ ActiveRecord::Schema.define(version: 20140207010937) do
   add_index "invoice_items", ["type"], name: "index_invoice_items_on_type"
 
   create_table "invoices", force: true do |t|
-    t.integer  "number",       default: 0
-    t.decimal  "tax_amount",   default: 0.0
-    t.decimal  "net_amount",   default: 0.0
-    t.decimal  "total_amount", default: 0.0
+    t.integer  "number",                   default: 0
+    t.decimal  "tax_total",                default: 0.0
+    t.decimal  "net_total",                default: 0.0
+    t.decimal  "total",                    default: 0.0
     t.integer  "company_id"
     t.integer  "contact_id"
     t.integer  "account_id"
@@ -121,9 +121,10 @@ ActiveRecord::Schema.define(version: 20140207010937) do
     t.integer  "tax_id"
     t.string   "tax_name"
     t.float    "tax_rate"
-    t.string   "aasm_state",   default: "draft"
-    t.string   "currency",     default: "clp"
-    t.integer  "due_days",     default: 30
+    t.string   "aasm_state",               default: "draft"
+    t.string   "currency",                 default: "clp"
+    t.integer  "due_days",                 default: 30
+    t.float    "currency_convertion_rate", default: 1.0
   end
 
   add_index "invoices", ["aasm_state"], name: "index_invoices_on_aasm_state"

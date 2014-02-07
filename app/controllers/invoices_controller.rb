@@ -14,10 +14,10 @@ class InvoicesController < ApplicationController
   def create
     @invoice = current_account.invoices.new(invoice_params)
     if @invoice.save
-      flash[:notice] = "Venta guardada correctamente."
+      flash.now[:notice] = "Venta guardada correctamente."
       redirect_to invoice_path(@invoice)
     else
-      flash[:error] = "No pudimos guardar esta venta, por favor corrige los errores indicados."
+      flash.now[:error] = "No pudimos guardar esta venta, por favor corrige los errores indicados."
       render 'new'
     end
   end
