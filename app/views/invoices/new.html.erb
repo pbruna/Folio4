@@ -10,7 +10,7 @@
 			
 			<%= render :partial => 'invoices/shared/invoice_details', locals: {f: f}%>
 			
-			<%= render :partial => "invoices/shared/invoice_items" %>
+			<%= render :partial => "invoices/shared/invoice_items", locals: {f: f} %>
 			
 			<%= render :partial => "invoices/shared/invoice_total"%>
 			

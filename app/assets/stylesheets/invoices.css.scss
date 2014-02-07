@@ -134,10 +134,17 @@ ul.ui-autocomplete {
 			border-bottom: gray dotted 1px;
 			border-radius: 0px;
 			width: 90%;
+			font-size: 16px;
+			padding-bottom: 0px;
+			margin-bottom: 15px;
 		}
 		
 		table {
 			width: 100%;
+			
+			.input-label {
+				width: 80px;
+			}
 			
 		}		
 		
@@ -148,8 +155,8 @@ ul.ui-autocomplete {
 		
 		.small {
 			input[type="text"], .value {
-				width: 60%;
-				margin-left: 10px;
+				width: 80px;
+				text-align: center;
 			}
 		}
 	}

@@ -1,24 +1,26 @@
 <div class="invoice-details">
 	<table>
 		<tr class="large">
-			<td style="width: 80px;"><label>Para</label></td>
+			<td class="input-label"><label>Para</label></td>
 			<td><%= autocomplete_field_tag "company_name",'', autocomplete_company_name_invoices_path, :id_element => '#invoice_company_id' %></td>
 			<!-- <%= display_input_or_value_for(f, :company_id) %> -->
 			<%= f.hidden_field :company_id %>
 		</tr>
 		<tr class="large">
-			<td style="width: 80px;"><label>Asunto</label></td>
+			<td class="input-label"><label>Asunto</label></td>
 			<%= display_input_or_value_for(f, :subject) %>
 		</tr>
 	</table>
 	<table>
 		<tr class="small">
-			<td  style="width: 70px;"><label>Número</label></td>
+			<td class="input-label"><label>Número</label></td>
 			<%= display_input_or_value_for(f, :suggested_number) %>
-			<td><label>Fecha</label></td>
+			<td class="input-label"><label>Fecha</label></td>
 			<td><%= f.text_field :open_date, :data => {"date-format" => "dd/mm/yyyy"} %></td>
-			<td><label>Vencimiento</label></td>
-			<%= display_input_or_value_for(f, :due_date) %>
+			<td class="input-label"><label>Vence en</label></td>
+			<td>
+				<%= display_select_or_value_for(f, :due_days,[["30 días", 30], ["45 días", 45], ["60 días", 60], ["90 días", 90]]) %>
+			</td>
 		</tr>
 	</table>
 	<% unless params[:action] == "show" %>

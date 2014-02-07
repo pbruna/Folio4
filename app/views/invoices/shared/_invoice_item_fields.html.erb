@@ -1,0 +1,17 @@
+<tr class="invoice-item-fields">
+	<td>
+		<% if input_disabled? %>
+			<div style="margin-left: 10px; padding-right: 10px; padding-top: 4px; font-weight: bold;">Servicio</div>
+		<% else %>
+			<%= f.select :type, options_for_select(["producto", "servicio"])%>
+		<% end %>
+		<br/>
+		<span class="invoice-item-delete">
+			<% unless input_disabled? %><a href="#" onclick="remove_fields(this);return false;">borrar</a><% end %>
+		</span>
+	</td>
+	<td><textarea rows="3" <%= input_disabled? %>></textarea></td>
+	<td style="text-align: center"><input type="text" style="width: 40%" <%= input_disabled? %>></input></td>
+	<td><input type="text" style="width: 80%" <%= input_disabled? %> ></input></td>
+	<td><input type="text" style="width: 80%" <%= input_disabled? %>></input></td>
+</tr>

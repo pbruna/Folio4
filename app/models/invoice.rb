@@ -4,8 +4,15 @@ class Invoice < ActiveRecord::Base
   STATUS_NAME = %w(active draft due)
   CURRENCIES = %w(CLP UF USD)
   
+  # Asociatons
   belongs_to :account
   belongs_to :company
+  has_many :invoice_items, :dependent => :destroy
+  accepts_nested_attributes_for :invoice_items, :allow_destroy => true
+  
+  # Validations
+  validates_presence_of :company_id, :subject, :number, :open_date, :due_days, :currency, :taxed
+  validates_numericality_of :number, :due_days
 
   #Scopes
   default_scope { where(account_id: Account.current_id) }

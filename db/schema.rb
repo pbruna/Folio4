@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205234227) do
+ActiveRecord::Schema.define(version: 20140207010937) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20140205234227) do
 
   create_table "invoice_items", force: true do |t|
     t.integer  "account_id"
-    t.integer  "product_id"
     t.integer  "quantity"
     t.text     "description"
     t.integer  "price"
@@ -97,11 +96,12 @@ ActiveRecord::Schema.define(version: 20140205234227) do
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
   add_index "invoice_items", ["account_id"], name: "index_invoice_items_on_account_id"
   add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id"
-  add_index "invoice_items", ["product_id"], name: "index_invoice_items_on_product_id"
+  add_index "invoice_items", ["type"], name: "index_invoice_items_on_type"
 
   create_table "invoices", force: true do |t|
     t.integer  "number",       default: 0
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20140205234227) do
     t.float    "tax_rate"
     t.string   "aasm_state",   default: "draft"
     t.string   "currency",     default: "clp"
+    t.integer  "due_days",     default: 30
   end
 
   add_index "invoices", ["aasm_state"], name: "index_invoices_on_aasm_state"
