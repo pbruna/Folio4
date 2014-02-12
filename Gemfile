@@ -37,11 +37,18 @@ end
 group :test do
   gem 'turn'
   gem 'capybara'
+  gem 'factory_girl'
+  gem 'mocha'
 end
 
 group :development do
   gem "letter_opener"
   gem "selenium-webdriver"
+  gem 'guard-minitest'
+  gem 'rb-fsevent'
+  gem 'pry'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password

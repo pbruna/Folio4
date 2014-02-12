@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207091924) do
+ActiveRecord::Schema.define(version: 20140211004008) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(version: 20140207091924) do
     t.string   "currency",                 default: "clp"
     t.integer  "due_days",                 default: 30
     t.float    "currency_convertion_rate", default: 1.0
+    t.decimal  "original_currency_total",  default: 0.0
+    t.decimal  "total_payed",              default: 0.0
   end
 
   add_index "invoices", ["aasm_state"], name: "index_invoices_on_aasm_state"
