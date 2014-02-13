@@ -1,5 +1,5 @@
 <div id="invoice-items-header">
-	<% unless params[:action] == "show" %>
+	<% unless input_disabled? %>
 		<span class="pull-right">
 			<%= link_to_add_invoice_item_fields "+ Agregar" ,f, :invoice_items, "invoices/shared" %>
 			<%= hidden_field_tag "invoice_items_index", @invoice.invoice_items.size %>
@@ -21,9 +21,13 @@
 		</thead>
 		<tbody>
 			<tr></tr>
-			<%= f.fields_for :invoice_items do |builder| %>
-				<%= render :partial => "invoices/shared/invoice_item_fields", locals: {f: builder}%>
-		   <% end %>
+			<% if input_disabled? %>
+				<%= render partial: "invoices/shared/show_invoice_item_fields", collection: @invoice.invoice_items, as: :invoice_item %>
+			<% else %>
+				<%= f.fields_for :invoice_items do |builder| %>
+					<%= render :partial => "invoices/shared/invoice_item_fields", locals: {f: builder}%>
+			   <% end %>
+			<% end %>
 		</tbody>
 	</table>
 </div>

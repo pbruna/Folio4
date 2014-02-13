@@ -18,6 +18,11 @@ module InvoicesHelper
     InvoiceItem.types.map {|ii| ii.titleize}
   end
   
+  def invoice_tax_label(invoice)
+    return "Afecta" if invoice.taxed?
+    return "Exenta"
+  end
+  
   # TODO: Hacer esto unnobstrusive
   def link_to_add_invoice_item_fields(name, f, association, partial_folder, locals={})
     #debug f.object.class.reflect_on_association(association.to_sym).klass.new

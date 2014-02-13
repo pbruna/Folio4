@@ -1,0 +1,24 @@
+<div class="invoice-details">
+	<table>
+		<tr class="large">
+			<td class="input-label"><label>Para</label></td>
+			<td><%= @invoice.company_name %></td>
+		</tr>
+		<tr class="large">
+			<td class="input-label"><label>Asunto</label></td>
+			<td><%= @invoice.subject %></td>
+		</tr>
+	</table>
+	<table>
+		<tr class="small">
+			<td class="input-label"><label>Número</label></td>
+			<td><%= @invoice.number %></td>
+			<td class="input-label"><label>Fecha</label></td>
+			<td><%= @invoice.open_date %></td>
+			<td class="input-label"><label>Vence en</label></td>
+			<td>
+				<%= @invoice.due_date %>
+			</td>
+		</tr>
+	</table>
+</div>

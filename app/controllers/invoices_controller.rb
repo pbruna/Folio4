@@ -21,6 +21,10 @@ class InvoicesController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    @invoice = current_account.invoices.find(params[:id])
+  end
 
   def index
     @invoices = current_account.invoices.all
@@ -32,13 +36,13 @@ class InvoicesController < ApplicationController
   end
   
   def show
-    # @invoice = current_account.invoices.find(params[:id])
+    @invoice = current_account.invoices.find(params[:id])
   end
   
   private
     def invoice_params
       params.require(:invoice).permit(:company_id, :subject,:number, :open_date, 
-      :due_days, :currency, :taxed,invoice_items_attributes: [:type, :description, :qty, :price, :total])
+      :due_days, :currency, :taxed,invoice_items_attributes: [:type, :description, :quantity, :price, :total])
     end
   
 

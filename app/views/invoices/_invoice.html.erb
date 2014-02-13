@@ -1,0 +1,29 @@
+<tr>
+	<td class="invoice-number-cell">
+		<ul class="unstyled">
+			<li class="invoice-number"><h4><%= link_to "##{invoice.number}", invoice_path(invoice) %></h4></li>
+			<li class="">
+				<span class="invoice-status invoice-active"><%= invoice.status %></span>
+			</li>
+		</ul>
+	</td>
+	<td class="invoice-details-cell">
+		<h4 class="invoice-customer"><%= invoice.company_name %>
+			<br/><small><%= invoice.subject %></small>
+		</h4>
+		<p><strong>Categorías:</strong> Contraros, Soporte</p>
+		<p>
+			<span class="invoice-date1">
+				Emitida: <%= I18n.l invoice.open_date, format: :dd_MM_yy %>
+			</span>
+			<span class="invoice-date2">
+				Vence: <%= I18n.l invoice.due_date, format: :dd_MM_yy %>
+			</span>
+		</p>
+	</td>
+	<td class="invoice-total-cell">
+		<h4><%= number_to_currency invoice.total %><br><small><%= invoice_tax_label invoice %></small>
+		</h4>
+	</td>
+</tr>
+<tr>

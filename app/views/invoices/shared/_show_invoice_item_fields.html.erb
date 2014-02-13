@@ -1,0 +1,18 @@
+<tr class="invoice-item-fields">
+	<td>
+			<div style="margin-left: 10px; padding-right: 10px; padding-top: 4px; font-weight: bold;"><%= invoice_item.type %></div>
+		</span>
+	</td>
+	<td>
+		<%= invoice_item.description %>
+	</td>
+	<td style="text-align: center">
+		<%= invoice_item.quantity %>
+	</td>
+	<td style="text-align: center">
+		<%= number_to_currency invoice_item.price %>
+	</td>
+	<td style="text-align: center">
+		<%= number_to_currency invoice_item.total %>
+	</td>
+</tr>

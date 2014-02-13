@@ -29,7 +29,7 @@ class Invoice < ActiveRecord::Base
   validate :invoice_open_for_payment
 
   #Scopes
-  default_scope { where(account_id: Account.current_id) }
+  #default_scope { where(account_id: Account.current_id) }
   scope :for_account, ->(account_id) {where(:id => account_id)}
   
   # States

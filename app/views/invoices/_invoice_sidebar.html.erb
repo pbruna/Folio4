@@ -6,7 +6,7 @@
 	<div class="invoice-actions">		
 		<ul class="unstyled">
 			<li><%= fa_icon "check-square-o"%><a href="" class="invoices-open"> Activar venta</a></li>
-			<li><%= fa_icon "edit"%><a href=""> Editar venta</a></li>
+			<li><%= fa_icon "edit"%><%= link_to " Editar venta", edit_invoice_path(@invoice) %></li>
 			<li><%= fa_icon "camera"%><a href=""> Duplicar venta</a></li>
 			<li><%= fa_icon "trash-o"%><a href="" class="invoices-due"> Borrar venta</a></li>
 		</ul>

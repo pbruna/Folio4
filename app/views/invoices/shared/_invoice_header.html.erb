@@ -2,9 +2,15 @@
 	<ul class="unstyled inline pull-right">
 		<li><span class="invoice-label invoice-draft"><%= @invoice.aasm_human_state.titleize %></span></li>
 		<% if input_disabled? %>
-			<li><span class="invoice-label invoice-draft">UF</span></li>
-			<li><span class="invoice-label invoice-draft">IVA</span></li>
+			<li><span class="invoice-label invoice-draft"><%= @invoice.currency.upcase %></span></li>
+			<li>
+				<span class="invoice-label invoice-draft"><%= invoice_tax_label @invoice %></span>
+			</li>
 		<% end %>
 	</ul>
-	<h4>Nueva Venta # <%= @invoice.suggested_number %></h4>
+	<% if input_disabled? %>
+		<h4>Venta # <%= @invoice.number %></h4>
+	<% else %>
+		<h4>Nueva Venta </h4>
+	<% end %>
 </header>

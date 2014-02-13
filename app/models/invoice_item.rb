@@ -6,9 +6,17 @@ class InvoiceItem < ActiveRecord::Base
   
   # Asociations
   belongs_to :invoice
+  delegate :account, :to => :invoice
   
   #Callbacks
-  before_save :permform_calculations
+  before_validation :permform_calculations
+  
+  # Validations
+  validates_presence_of :price, :quantity, :total
+  validates_numericality_of :price, greater_than: 0
+  validates_numericality_of :total, greater_than: 0
+  validates_numericality_of :quantity, greater_than: 0
+  
   
   def self.types
     TYPES

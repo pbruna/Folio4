@@ -9,54 +9,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="invoice-number-cell">
-					<ul class="unstyled">
-						<li class="invoice-number"><h4><%= link_to "#43434", invoice_path("43434") %></h4></li>
-						<li class="">
-							<span class="invoice-status invoice-active">activa</span>
-						</li>
-					</ul>
-				</td>
-				<td class="invoice-details-cell">
-					<h4 class="invoice-customer">Televisión Nacional de Chile
-						<br/><small>Soporte Plafatorma Web 1 de 12</small>
-					</h4>
-					<p><strong>Categorías:</strong> Contraros, Soporte</p>
-					<p>
-						<span class="invoice-date1">Emitida: 28 Jun 2013</span>
-						<span class="invoice-date2">Vence: 28 Jul 2013</span>
-					</p>
-				</td>
-				<td class="invoice-total-cell">
-					<h4>$10.233.232<br><small>exenta</small>
-					</h4>
-				</td>
-			</tr>
-			<tr>
-				<td class="invoice-number-cell">
-					<ul class="unstyled">
-						<li class="invoice-number"><h4><%= link_to "#43434", invoice_path("43434") %></h4></li>
-						<li class="">
-							<span class="invoice-status invoice-active">activa</span>
-						</li>
-					</ul>
-				</td>
-				<td class="invoice-details-cell">
-					<h4 class="invoice-customer">Proyecto Educativo Integral Colegios Padre Hurtado y Teresita de los Andes SA
-						<br/><small>Soporte Plafatorma Web 1 de 12</small>
-					</h4>
-					<p><strong>Categorías:</strong> Contraros, Soporte</p>
-					<p>
-						<span class="invoice-date1">Emitida: 28 Jun 2013</span>
-						<span class="invoice-date2">Vence: 28 Jul 2013</span>
-					</p>
-				</td>
-				<td class="invoice-total-cell">
-					<h4>$120.233.232<br>
-					</h4>
-				</td>
-			</tr>
+			<%= render partial: "invoice", collection: @invoices %>
 		</tbody>
 	</table>
 	

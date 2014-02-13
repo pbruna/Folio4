@@ -1,7 +1,6 @@
 class Company < ActiveRecord::Base
   belongs_to :account
   has_many :invoices
-  #default_scope { where(account_id: Account.current_id) }
   
   scope :for_account, -> {where(account_id: Account.current_id)}
   
