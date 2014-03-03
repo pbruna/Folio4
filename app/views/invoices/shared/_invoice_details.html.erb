@@ -14,9 +14,9 @@
 	<table>
 		<tr class="small">
 			<td class="input-label"><label>Número</label></td>
-			<%= display_input_or_value_for(f, :number) %>
+			<td><%= f.text_field :number, value: suggested_number(@invoice) %></td>
 			<td class="input-label"><label>Fecha</label></td>
-			<td><%= f.text_field :open_date, :data => {"date-format" => "dd/mm/yyyy"} %></td>
+			<td><%= f.text_field :open_date, value: suggested_open_date(@invoice), data: {"date-format" => "dd/mm/yyyy"} %></td>
 			<td class="input-label"><label>Vence en</label></td>
 			<td>
 				<%= display_select_or_value_for(f, :due_days,[["30 días", 30], ["45 días", 45], ["60 días", 60], ["90 días", 90]]) %>
@@ -28,13 +28,13 @@
 			<tr class="small">
 				<td  style="width: 80px; padding-top: 10px;"><label>Moneda</label></td>
 				<td style="padding-top: 10px; width: 150px;">
-					<%= display_select_or_value_for(f, :currency, Invoice.currencies) %>
+					<%= f.select :currency, options_for_select(Invoice.currencies, @invoice.currency), {}, {data: {bind: "value: invoice_currency"}}%>
 				</td>
 				<td style="padding-top: 10px; width: 45px">
 					<label>IVA</label>
 				</td>
 				<td style="padding-top: 10px;">
-					<%= display_select_or_value_for(f, :taxed,[["No", false], ["Si", true]]) %>
+					<%= f.select :taxed, options_for_select([["No", false], ["Si", true]], @invoice.taxed), {},  {data: {bind: "value: invoice_taxed"}} %>
 				</td>
 			
 			</tr>

@@ -83,3 +83,5 @@ gem 'rut_chileno'
 gem "devise-encryptable"
 gem 'aasm'
 gem 'rails4-autocomplete'
+gem 'knockoutjs-rails'
+gem 'autonumeric-rails'

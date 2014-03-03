@@ -12,6 +12,7 @@ class InvoicesController < ApplicationController
 
 
   def create
+    params = prices_to_numbers
     @invoice = current_account.invoices.new(invoice_params)
     if @invoice.save
       flash.now[:notice] = "Venta guardada correctamente."
@@ -43,6 +44,14 @@ class InvoicesController < ApplicationController
     def invoice_params
       params.require(:invoice).permit(:company_id, :subject,:number, :open_date, 
       :due_days, :currency, :taxed,invoice_items_attributes: [:type, :description, :quantity, :price, :total])
+    end
+    
+    def prices_to_numbers
+      params["invoice"]["invoice_items_attributes"].each do |key,value|
+        price = params["invoice"]["invoice_items_attributes"][key]["price"].to_s.gsub(/\$\s+/,"").gsub(/\./,"").to_i
+        params["invoice"]["invoice_items_attributes"][key]["price"] = price
+      end
+      params
     end
   
 

@@ -1,24 +1,22 @@
-<div class="invoice-details">
-	<table>
-		<tr class="large">
-			<td class="input-label"><label>Para</label></td>
-			<td><%= @invoice.company_name %></td>
-		</tr>
-		<tr class="large">
-			<td class="input-label"><label>Asunto</label></td>
-			<td><%= @invoice.subject %></td>
-		</tr>
-	</table>
-	<table>
-		<tr class="small">
-			<td class="input-label"><label>Número</label></td>
-			<td><%= @invoice.number %></td>
-			<td class="input-label"><label>Fecha</label></td>
-			<td><%= @invoice.open_date %></td>
-			<td class="input-label"><label>Vence en</label></td>
-			<td>
-				<%= @invoice.due_date %>
-			</td>
-		</tr>
-	</table>
+<div class="invoice-details row" style="padding-left: 15px;">
+	<div class="span2 pull-right" style="margin-top: 10px; margin-right: 15px;">
+		<ul class="unstyled" style="font-size: 15px">
+			<li style="text-align: right;">Emitida: <%= I18n.l @invoice.open_date, format: :dd_MM_yy %></li>
+			<li style="text-align: right;">Vence: <%= I18n.l @invoice.due_date, format: :dd_MM_yy %></li>
+		</ul>
+	</div>
+	<div class="span6">
+		<h4 class="invoice-customer">
+			<%= link_to @invoice.company_name, company_path(@invoice.company) %>
+			<br>
+			<small style="color: #444"><%= @invoice.subject %></small>
+		</h4>
+		<div class="tags">
+			<span class="label" style="background: white; color: #666; border: #999 solid 1px;">Productos</span>
+			<span class="label" style="background: white; color: #666; border: #999 solid 1px;">Soportes</span>
+		</div>
+	</div>
 </div>
+
+
+

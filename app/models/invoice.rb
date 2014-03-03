@@ -63,6 +63,19 @@ class Invoice < ActiveRecord::Base
     return total_payed == total
   end
   
+  def invoices_for_account
+    begin
+      account.invoices
+    rescue Exception => e
+      raise "The invoice must belong to an account"
+    end
+  end
+  
+  def last_used_number
+    invoices_for_account.last.number
+  end
+  
+  
   def status
     aasm_state
   end
@@ -70,12 +83,10 @@ class Invoice < ActiveRecord::Base
   def self.currencies
     CURRENCIES
   end
-  
-  
+    
   def suggested_number
-    return 1 if read_attribute("number") == 0
-    return account.invoices.last.number + 1 if number.nil?
-    return number
+    return 1 unless invoices_for_account.any?
+    return last_used_number + 1
   end
 
   STATUS_NAME.each do |status|

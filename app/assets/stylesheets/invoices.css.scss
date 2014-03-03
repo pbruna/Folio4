@@ -168,6 +168,15 @@ ul.ui-autocomplete {
 				text-align: center;
 			}
 		}
+		
+		.invoice-customer {
+			font-size: 18px;
+			small {
+				font-size: 16px;
+				line-height: 25px;
+			}
+		}
+		
 	}
 	
 	header {
@@ -180,6 +189,10 @@ ul.ui-autocomplete {
 			@extend .invoice-status;
 			@extend .pull-right;
 			margin-top: 15px;
+		}
+		
+		.invoice-currency {
+			background-color: #333333;
 		}
 		
 	}
@@ -244,6 +257,7 @@ ul.ui-autocomplete {
 		
 		.invoice-total-number {
 			@extend .pull-right;
+			text-align: right;
 			padding: 20px;
 			background: #f6f5ed;
 			margin-bottom: 40px;

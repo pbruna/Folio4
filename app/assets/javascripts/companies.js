@@ -5,22 +5,6 @@ var Folio = Folio || {};
 
 $().ready(function() {
 
-	// $("#company_name_like").keyup(function(){
-	//     	typingTimer = setTimeout(doneTyping, doneTypingInterval);
-	// });
-	// 
-	// $("#company_name_like").keydown(function(){
-	//     	clearTimeout(typingTimer);
-	// });
-	// 
-	// function doneTyping () {
-	// 	var company_name = $("#company_name_like").val();
-	// 	$.ajax({
-	// 		type: "GET",
-	// 		url: "/companies.js",
-	// 		data: {company_name_like: $("#company_name_like").val()}
-	// 	});	
-	// }
 	
 });
 

@@ -1,6 +1,6 @@
 <div class="row document">
 	<%= form_for @invoice do |f| -%>
-		<div id="invoice" class="row span9">
+		<div id="invoice" class="row span9" data-invoice="<%= @invoice.to_json({:include => :invoice_items}) %>">
 
 			
 			<%= render :partial => 'invoices/shared/invoice_header' %>
@@ -32,3 +32,4 @@
 	<% end -%>
 	
 </div>
+

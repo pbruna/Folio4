@@ -1,8 +1,8 @@
 <div id="invoice-items-header">
 	<% unless input_disabled? %>
 		<span class="pull-right">
-			<%= link_to_add_invoice_item_fields "+ Agregar" ,f, :invoice_items, "invoices/shared" %>
 			<%= hidden_field_tag "invoice_items_index", @invoice.invoice_items.size %>
+			<%= link_to "+ Agregar", nil, data: {bind: "click: addItem"} %>
 		</span>
 	<% end %>
 	<h4>Items</h4>
@@ -19,7 +19,8 @@
 				<th>Total</th>
 			</tr>
 		</thead>
-		<tbody>
+		<!-- <tbody data-bind="foreach: invoice_items items-fields-template"> -->
+		<tbody data-bind="template: { name: 'items-fields-template', foreach: invoice_items}"></tbody>
 			<tr></tr>
 			<% if input_disabled? %>
 				<%= render partial: "invoices/shared/show_invoice_item_fields", collection: @invoice.invoice_items, as: :invoice_item %>
@@ -28,6 +29,6 @@
 					<%= render :partial => "invoices/shared/invoice_item_fields", locals: {f: builder}%>
 			   <% end %>
 			<% end %>
-		</tbody>
+
 	</table>
 </div>

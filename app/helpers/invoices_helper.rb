@@ -48,4 +48,14 @@ module InvoicesHelper
 		</tr>".html_safe
   end
   
+  def suggested_number(invoice)
+    return invoice.number if invoice.number_changed?
+    return invoice.suggested_number
+  end
+  
+  def suggested_open_date(invoice)
+    return l invoice.open_date if invoice.open_date_changed?
+    return l Date.today
+  end
+  
 end

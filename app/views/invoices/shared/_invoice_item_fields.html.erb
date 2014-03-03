@@ -1,25 +1,29 @@
+<script type="text/html" id="items-fields-template">
 <tr class="invoice-item-fields">
 	<td>
 		<% if input_disabled? %>
 			<div style="margin-left: 10px; padding-right: 10px; padding-top: 4px; font-weight: bold;">Servicio</div>
 		<% else %>
-			<%= f.select :type, options_for_select(invoice_item_types_for_select)%>
+			<%= f.select :type, options_for_select(invoice_item_types_for_select), {}, data: {bind: "value: type, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][type]'}"}%>
 		<% end %>
 		<br/>
 		<span class="invoice-item-delete">
-			<% unless input_disabled? %><a href="#" onclick="remove_invoice_item_fields(this);return false;">- borrar</a><% end %>
+			<% unless input_disabled? %>
+			<%= link_to "- borrar", nil, data: {bind: "click: $parent.removeItem, visible: $index() > 0 "} %>
+			<% end %>
 		</span>
 	</td>
 	<td>
-		<%= f.text_area :description, disabled: input_disabled?, :rows => 3 %>
+		<%= f.text_area :description, disabled: input_disabled?, :rows => 3, data: {bind: "value: description, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][description]'}"} %>
 	</td>
-	<td style="text-align: center">
-		<%= f.text_field :quantity, disabled: input_disabled?, style: "width: 40%" %>
-	</td>
-	<td>
-		<%= f.text_field :price, disabled: input_disabled?, style: "width: 80%" %>
+	<td style="text-align: center; width: 20px">
+		<%= f.text_field :quantity, disabled: input_disabled?, style: "width: 30px", data: {bind: "value: quantity, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][quantity]'}"} %>
 	</td>
 	<td>
-		<%= f.text_field :total, disabled: input_disabled?, style: "width: 80%" %>
+		<%= f.text_field :price, disabled: input_disabled?, style: "width: 80%", data: {bind: "value: price, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][price]'}"}, class: "currency" %>
+	</td>
+	<td>
+		<%= f.text_field :total, disabled: true, style: "width: 80%", data: {bind: "value: total, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][total]'}"}, class: "currency" %>
 	</td>
 </tr>
+</script>

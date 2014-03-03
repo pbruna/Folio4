@@ -1,13 +1,16 @@
 <div id="invoice-total">
 	<div class="invoice-total-number">
-		<%= "#{@invoice.currency.upcase} #{number_to_currency(@invoice.total)}" %>
+		<ul class="unstyled inline">
+			<li style="text-align: left"><span data-bind="text: invoice_currency_label"><%= @invoice.currency.upcase%></span></li>
+			<li style="width: 200px;" data-bind="text: invoice_total"><%= number_to_currency(@invoice.total)%></li>
+		</ul>
 		<% if input_disabled? %>
 			<ul class="invoice-total-detail">
 				<li>
 					<% if @invoice.taxed? %>
 						<ul class="unstyled inline">
 							<li style="text-align: left">IVA</li>
-							<li style="width: 100px;">
+							<li style="width: 200px;">
 								<%= number_to_currency(@invoice.tax_total) %>
 							</li>
 						</ul>
@@ -16,7 +19,7 @@
 				<li>
 					<ul class="unstyled inline">
 						<li style="text-align: left">Neto</li>
-						<li style="width: 100px;">
+						<li style="width: 200px;">
 							<%= number_to_currency(@invoice.net_total) %>
 						</li>
 					</ul>
@@ -24,7 +27,7 @@
 				<li>
 					<ul class="unstyled inline">
 						<li style="text-align: left"><%= @invoice.currency.upcase %></li>
-						<li style="width: 100px;">
+						<li style="width: 200px;">
 							<%= number_to_currency(@invoice.original_currency_total) %>
 						</li>
 					</ul>
