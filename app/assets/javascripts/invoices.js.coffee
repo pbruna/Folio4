@@ -43,6 +43,7 @@ class Invoice
 			
 		@addItem = (data, event) ->
 			@invoice_items.push(new InvoiceItem {price: "$ 0", quantity: 0, description: "", type: ""})
+			$(document).trigger('refresh_autonumeric');
 			
 		@removeItem = (item) =>
 			if @invoice_items().length == 1
@@ -91,7 +92,7 @@ $ ->
 	ko.applyBindings(new Invoice($("#invoice").data("invoice")));
 	
 	$("#invoice_open_date").datepicker({language: "es", weekStart: 1, autoclose: true})
-	# $(".currency").autoNumeric('init', autonumeric_options)
+	$(".currency").autoNumeric('init', autonumeric_options)
 	
 	
 		
