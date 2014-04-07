@@ -2,37 +2,10 @@
 	<div class="invoice-total-number">
 		<ul class="unstyled inline">
 			<li style="text-align: left"><span data-bind="text: invoice_currency_label"><%= @invoice.currency.upcase%></span></li>
-			<li style="width: 200px;" data-bind="text: invoice_total"><%= number_to_currency(@invoice.total)%></li>
+			<li style="width: 150px;" data-bind="text: original_currency_total().formatMoney(0)"><%= round_number_and_delimiter(@invoice.original_currency_total)%></li>
 		</ul>
 		<% if input_disabled? %>
-			<ul class="invoice-total-detail">
-				<li>
-					<% if @invoice.taxed? %>
-						<ul class="unstyled inline">
-							<li style="text-align: left">IVA</li>
-							<li style="width: 200px;">
-								<%= number_to_currency(@invoice.tax_total) %>
-							</li>
-						</ul>
-					<% end %>
-				</li>
-				<li>
-					<ul class="unstyled inline">
-						<li style="text-align: left">Neto</li>
-						<li style="width: 200px;">
-							<%= number_to_currency(@invoice.net_total) %>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<ul class="unstyled inline">
-						<li style="text-align: left"><%= @invoice.currency.upcase %></li>
-						<li style="width: 200px;">
-							<%= number_to_currency(@invoice.original_currency_total) %>
-						</li>
-					</ul>
-				</li>
-			</ul>
+			
 		<% end %>
 	</div>
 </div>

@@ -1,8 +1,18 @@
 <div id="invoice-sidebar" class="span3">
 	<div class="invoice-totals">
-		<h3><%= number_to_currency(@invoice.total) %></h3>
-		<h5>Neto <%= number_to_currency(@invoice.net_total) %></h5>
-		<h5 data-bind="if: show_tax">IVA <%= number_to_currency(@invoice.tax_total) %></h5>
+		<h3>
+			<span data-bind="text: invoice_total().formatMoney(0)"><%= number_to_currency(@invoice.total) %></span>
+		</h3>
+		<h5 data-bind="if: show_tax">
+			Neto <span data-bind="text: net_total().formatMoney(0)">
+				<%= number_to_currency(@invoice.net_total) %>
+			</span>
+		</h5>
+		<h5 data-bind="if: show_tax">
+			IVA <span data-bind="text: tax_total().formatMoney(0)">
+				<%= number_to_currency(@invoice.tax_total) %>
+			</span>
+		</h5>
 	</div>
 	
 	<div class="invoice-reminders">

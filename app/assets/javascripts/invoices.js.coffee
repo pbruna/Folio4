@@ -21,6 +21,9 @@ class InvoiceItem
 		@description = ko.observable(invoice_item.description)
 		@type = ko.observable(invoice_item.type)
 	
+		@id = () ->
+			return invoice_item.id
+	
 		@formatcurrency = (value) ->
 			return "$" + value
 	
@@ -49,7 +52,10 @@ class Invoice
 			if @invoice_items().length == 1
 				false
 			else
-				@invoice_items.remove(item)
+				removed = @invoice_items.remove(item)
+				item_index = @invoice_items().length
+				element_name = "invoice[invoice_items_attributes][" + item_index + "[_destroy]"
+				$("#new_invoice_items").append("<input type='hidden' name='" + element_name + "' value=1 />")
 				
 		@invoice_items = ko.observableArray(build_items_array(invoice.invoice_items))
 		@invoice_taxed = ko.observable(invoice.taxed) 
@@ -73,21 +79,39 @@ class Invoice
 		@invoice_currency_label = ko.computed =>
 			@invoice_currency()
 			
-		@invoice_total = ko.computed =>
+		@original_currency_total = ko.computed =>
 			total = 0
 			$.each @invoice_items(), ->
 				total += parseInt(@total().replace(/\$\s+/,"").replace(/\./g,""))
 				return
-				
-			total.formatMoney(0)
+			total
+		
+		@net_total = ko.computed =>
+			total = 0
+			conversion_rate = Folio.getCurrencyValue(@invoice_currency());
+			total = @original_currency_total() * conversion_rate;
+			return total
+		
+		@tax_total = ko.computed =>
+			tax_rate = if @show_tax() then 19 else 0
+			total = @net_total() * tax_rate / 100
+			total 
 			
+		@invoice_total = ko.computed =>
+			total = 0
+			if @original_currency_total() < 1
+				return total
+			else
+				conversion_rate = Folio.getCurrencyValue(@invoice_currency());
+				total = @net_total() + @tax_total();
+				total
 
 window.Invoice = Invoice
 
 
 
 $ ->
-	autonumeric_options = {aSep: '.', aDec: ',', aSign: '$ ', aPad: "false"}
+	autonumeric_options = {aSep: '.', aDec: ',', aSign: '', aPad: "false"}
 	
 	ko.applyBindings(new Invoice($("#invoice").data("invoice")));
 	

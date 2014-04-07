@@ -93,7 +93,7 @@ class Invoice < ActiveRecord::Base
     scope status.to_sym, -> {(all)}
   end
   
-  private
+  
   def set_due_date
     self.due_date = open_date + due_days
   end
@@ -105,14 +105,13 @@ class Invoice < ActiveRecord::Base
     self.total = tax_total + net_total
   end
   
-  def calculate_clp_from_currency
-    return if currency.downcase == "clp"
-    self.original_currency_total = net_total
+  def calculate_net_total_from_currency_total
     self.net_total = original_currency_total * currency_convertion_rate
   end
   
-  def calculate_net_total_from_invoice_items
-    self.net_total = invoice_items.reject(&:marked_for_destruction?).map(&:calculate_total).sum
+  def calculate_original_currency_total_from_invoice_items
+    items_sum = invoice_items.reject(&:marked_for_destruction?).map(&:calculate_total).sum
+    self.original_currency_total = items_sum 
   end
   
   # Cerrar la factura si el monto de pago calza con el total de la factura
@@ -132,9 +131,21 @@ class Invoice < ActiveRecord::Base
   
   
   def permform_calculations
-    calculate_net_total_from_invoice_items
-    calculate_clp_from_currency
+    set_currency_convertion_rate(currency.downcase)
+    calculate_original_currency_total_from_invoice_items
+    calculate_net_total_from_currency_total
     calculate_tax
+  end
+  
+  def set_currency_convertion_rate(indicador)
+    indicador = "dolar" if indicador == "usd"
+    self.currency_convertion_rate = 1
+    indicadores = Indicadores::Chile.new
+    begin
+      self.currency_convertion_rate = indicadores.send(indicador)
+    rescue Exception => e
+    end
+    
   end
 
 end

@@ -253,27 +253,19 @@ ul.ui-autocomplete {
 	
 	#invoice-total {
 		margin-bottom: 50px;
-		padding-top: 10px;
-		
+	
 		.invoice-total-number {
 			@extend .pull-right;
 			text-align: right;
 			padding: 20px;
+			padding-bottom: 10px;
 			background: #f6f5ed;
 			margin-bottom: 40px;
 			font-size: 24px;
 			border-top: 1px solid #C9C4C4;
 			border-left: 1px solid #C9C4C4;
 			border-bottom: 1px solid #C9C4C4;
-			padding-left: 60px;
-			
-			.invoice-total-detail {
-				@extend .unstyled;
-				font-size: 16px;
-				text-align: right;
-				margin-right: 2px;
-				margin-top: 8px;
-			}
+			padding-left: 30px;
 			
 		}
 		
@@ -294,6 +286,14 @@ ul.ui-autocomplete {
 		background: #999;
 		color: whitesmoke;
 		padding-bottom: 10px;	
+		
+		.original-currency-total {
+			color: whitesmoke;
+			margin-top: -5px;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		
 	}
 	
 	.invoice-status-open {
@@ -310,6 +310,12 @@ ul.ui-autocomplete {
 	
 	.invoice-status-closed {
 		background: $green;
+	}
+	
+	.invoice-total-detail {
+		padding: 20px;
+		padding-top: 15px;
+		border-bottom: 1px solid #C9C4C4;
 	}
 	
 	.invoice-actions {

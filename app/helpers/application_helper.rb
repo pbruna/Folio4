@@ -28,6 +28,10 @@ module ApplicationHelper
     end
   end
   
+  def round_number_and_delimiter(number)
+    number_with_delimiter(number.ceil)
+  end
+  
   def search_add_record_link(path, title)
     	link_to content_tag(:i, nil, :class => "icon-plus icon-white").html_safe+" #{title}", path, :class => "btn btn-success"
   end

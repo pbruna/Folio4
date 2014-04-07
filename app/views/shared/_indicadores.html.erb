@@ -1,8 +1,9 @@
 <div class="span6">
 <% cache "money-indicators", expires_in: 60.minutes do %>
 	<ul class="inline money-indicators">
-		<li id="dolar-conversion-rate" data-value="<%= get_indicator_value_for 'dolar' %>">Dólar: <%=number_to_currency get_indicator_value_for("dolar"), precision: 2 %></li>
-		<li id="uf-conversion-rate" data-value="<%= get_indicator_value_for 'uf' %>">UF: <%= number_to_currency get_indicator_value_for("uf"), precision: 2 %></li>
+		<li id="usd-conversion-rate" data-value="<%= get_indicator_value_for 'dolar' %>">Dólar: <%=number_to_currency get_indicator_value_for("dolar"), precision: 2 %></li>
+		<li id="uf-conversion-rate" data-value="<%= get_indicator_value_for 'uf' %>">UF: <%= number_to_currency get_indicator_value_for("uf"), precision: 2 %></li>	
 	</ul>
+	<span id="clp-conversion-rate" data-value="1" />
 <% end %>
 </div>

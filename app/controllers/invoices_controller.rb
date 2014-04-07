@@ -23,6 +23,18 @@ class InvoicesController < ApplicationController
     end
   end
   
+  def update
+    params = prices_to_numbers
+    @invoice = current_account.invoices.find(params[:id])
+    if @invoice.update_attributes(invoice_params)
+      flash.now[:notice] = "Venta guardada correctamente."
+      redirect_to invoice_path(@invoice)
+    else
+      flash.now[:error] = "No pudimos guardar la venta, por favor corrige los errores indicados."
+      render :action => "edit"
+    end
+  end
+  
   def edit
     @invoice = current_account.invoices.find(params[:id])
   end
@@ -42,8 +54,8 @@ class InvoicesController < ApplicationController
   
   private
     def invoice_params
-      params.require(:invoice).permit(:company_id, :subject,:number, :open_date, 
-      :due_days, :currency, :taxed,invoice_items_attributes: [:type, :description, :quantity, :price, :total])
+      params.require(:invoice).permit(:id, :company_id, :subject,:number, :open_date, 
+      :due_days, :currency, :taxed,invoice_items_attributes: [:id, :type, :description, :quantity, :price, :total, :_destroy])
     end
     
     def prices_to_numbers

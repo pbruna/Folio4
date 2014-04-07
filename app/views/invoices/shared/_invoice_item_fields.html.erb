@@ -9,6 +9,7 @@
 		<br/>
 		<span class="invoice-item-delete">
 			<% unless input_disabled? %>
+			<%= f.hidden_field :_destroy, data: {bind: "attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][_destroy]', id: 'invoice_invoice_items_attributes_' + $index() + '__destroy'}"} %>
 			<%= link_to "- borrar", nil, data: {bind: "click: $parent.removeItem, visible: $index() > 0 "} %>
 			<% end %>
 		</span>

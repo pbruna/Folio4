@@ -30,12 +30,12 @@ $(function () {
 });
 
 Folio.getCurrencyValue = function(currency) {
-	value = $("#" + currency + "-conversion-rate").attr("data-value");
+	value = $("#" + currency.toLowerCase() + "-conversion-rate").attr("data-value");
 	return parseFloat(value);
 }
 
 Folio.getDolarValue = function(){
-	return Folio.getCurrencyValue("dolar");
+	return Folio.getCurrencyValue("usd");
 }
 
 Folio.getUfValue = function(){

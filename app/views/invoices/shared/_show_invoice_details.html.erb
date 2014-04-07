@@ -1,11 +1,11 @@
 <div class="invoice-details row" style="padding-left: 15px;">
-	<div class="span2 pull-right" style="margin-top: 10px; margin-right: 15px;">
+	<div class="span3 pull-right" style="margin-top: 10px; margin-right: 15px;">
 		<ul class="unstyled" style="font-size: 15px">
 			<li style="text-align: right;">Emitida: <%= I18n.l @invoice.open_date, format: :dd_MM_yy %></li>
 			<li style="text-align: right;">Vence: <%= I18n.l @invoice.due_date, format: :dd_MM_yy %></li>
 		</ul>
 	</div>
-	<div class="span6">
+	<div class="span5">
 		<h4 class="invoice-customer">
 			<%= link_to @invoice.company_name, company_path(@invoice.company) %>
 			<br>
