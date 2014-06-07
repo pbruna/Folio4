@@ -8,7 +8,7 @@ class InvoiceItemTest < ActiveSupport::TestCase
     @plan.save
     @account.save
     @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
-                                    open_date: "10/02/2014", due_days: 30, currency: "CLP", 
+                                    active_date: "10/02/2014", due_days: 30, currency: "CLP", 
                                     taxed: false, company_id: 10, total: 1000, net_total: 1000
                                     )
     @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 1, price: 1000)

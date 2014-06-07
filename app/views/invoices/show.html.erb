@@ -16,5 +16,13 @@
 		
 		<%= render :partial => "invoice_sidebar" %>
 		
+		<%= render_modal_form(
+			id: "invoice-change-status",
+			title: "Activar Factura",
+			method: "edit",
+			object: "invoice",
+			object_id: @invoice.id,
+			body: ()) %>
+		
 	
 </div>

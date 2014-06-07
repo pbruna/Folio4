@@ -6,6 +6,7 @@ class Account < ActiveRecord::Base
   has_many :expenses, :dependent => :destroy
   has_many :audits, :dependent => :destroy
   has_many :companies, :dependent => :destroy
+  has_many :contacts, through: :companies
   accepts_nested_attributes_for :users, :allow_destroy => true
 
   validates_uniqueness_of :subdomain
@@ -17,6 +18,12 @@ class Account < ActiveRecord::Base
 
   def self.subdomain_available?(subdomain)
     exists?(:subdomain => subdomain).nil? ? true : false
+  end
+  
+  def check_invoice_number_availability(number, taxed)
+    value = number.to_i
+    return !invoices.not_draft.taxed.where(number: value).any? if taxed.to_s == "true"
+    return !invoices.not_draft.not_taxed.where(number: value).any?
   end
 
   def owner

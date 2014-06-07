@@ -6,6 +6,14 @@ class AccountsController < ApplicationController
   def dashboard
 
   end
+  
+  def check_invoice_number_availability
+    valid = current_account.check_invoice_number_availability(params[:value],params[:taxed])
+    respond_to do |format| 
+      format.html {render :json => ""}
+      format.json {render :json => {value: params[:value].to_i, valid: valid, message: "Número ya en uso"}}
+    end 
+  end
 
   def new
     @account = Account.new
@@ -52,7 +60,7 @@ class AccountsController < ApplicationController
   private
 
     def account_params
-      params.require(:account).permit(:name, :city, :phone, :rut, :address, :subdomain, :country, users_attributes: [:email, :password])
+      params.require(:account).permit(:name, :city, :phone, :rut, :address, :subdomain, :country, :value, users_attributes: [:email, :password])
     end
 
     def subdomain_params

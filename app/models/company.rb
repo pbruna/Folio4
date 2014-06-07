@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   belongs_to :account
   has_many :invoices
+  has_many :contacts
   
   scope :for_account, -> {where(account_id: Account.current_id)}
   
@@ -22,6 +23,10 @@ class Company < ActiveRecord::Base
   
   def has_invoices?
     invoices.any?
+  end
+
+  def has_contacts?
+    contacts.any?
   end
   
   def self.in_alphabetycal_order(company_name_like)

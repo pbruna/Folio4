@@ -21,12 +21,28 @@
 //= require jqBootstrapValidation
 //= require autonumeric
 //= require knockout
+//= require bootstrap.file-input
 //= require_tree .
 
 var Folio = Folio || {};
 
 $(function () { 
-	$("input,select,textarea").not("[type=submit]").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
+	$("input,select,textarea").not("[type=submit],.no-validate").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
+	$('input[type=file]').bootstrapFileInput();
+
+
+	// Funcion para submit form apretando el boton
+	// del footer de un modal.
+	$("button[data-submit='submit']").click(function() {
+		var form = $(this).data("formid");
+		$("#"+form).submit();
+	});
+
+	// Esto permite que un modal que carga datos remotos
+	// se destruya cuando se presione cancelar, y que al 
+	// mostrarlo de nuevo empiece con una ventana limpia
+	$(".modal").on('hidden', function(){$(this).removeData('modal')})
+
 });
 
 Folio.getCurrencyValue = function(currency) {
@@ -42,4 +58,19 @@ Folio.getUfValue = function(){
 	return Folio.getCurrencyValue("uf");
 }
 
-
+Folio.getCompanyContacts = function(company_id) {
+	var contacts = [];
+	json_url = "/contacts?company_id=" + company_id;
+	$.ajax({
+          url: json_url,
+		  async: false,
+		  dataType: 'json',
+          type: 'GET',
+          success: function(data){
+	  		$.each(data, function(k,v){
+	  			contacts.push(v);
+	  		})
+          }
+       });
+	return contacts;
+}

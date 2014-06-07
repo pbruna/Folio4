@@ -36,12 +36,11 @@ class InvoiceItem
 				
 			(quantity * price).formatMoney(0)
 
-		
-
 class Invoice
 	constructor: (invoice) ->
 		
 		build_items_array = (items_array) ->
+			return [] unless items_array
 			items_array.map (item) -> new InvoiceItem item
 			
 		@addItem = (data, event) ->
@@ -60,15 +59,21 @@ class Invoice
 		@invoice_items = ko.observableArray(build_items_array(invoice.invoice_items))
 		@invoice_taxed = ko.observable(invoice.taxed) 
 		@invoice_currency = ko.observable(invoice.currency)
+		@invoice_company_id = ko.observable(invoice.company_id)
+		@invoice_contact_id = ko.observable(invoice.contact_id)
 
 		@quantity = ko.observable(0)
 		@price = ko.observable(0)			
-
+		
 		@invoice_tax_label = ko.computed =>
 			if @invoice_taxed() == "false"
 				"Exenta"
 			else
 				"Afecta"
+		
+		@invoice_contacts = ko.computed =>
+			return [] if @invoice_company_id() == (null || "null")
+			Folio.getCompanyContacts(@invoice_company_id())
 		
 		@show_tax = ko.computed =>
 			if @invoice_taxed() == "false"
@@ -111,33 +116,40 @@ window.Invoice = Invoice
 
 
 $ ->
-	autonumeric_options = {aSep: '.', aDec: ',', aSign: '', aPad: "false"}
+		autonumeric_options = {aSep: '.', aDec: ',', aSign: '', aPad: "false"}
+		# Este if es para que solo se aplique el Binding the Knockout si es que existe
+		# el formulario
+		if $("#invoice.invoice-form").length > 0
+			ko.applyBindings(new Invoice($("#invoice").data("invoice")));
 	
-	ko.applyBindings(new Invoice($("#invoice").data("invoice")));
-	
-	$("#invoice_open_date").datepicker({language: "es", weekStart: 1, autoclose: true})
-	$(".currency").autoNumeric('init', autonumeric_options)
+		$("#invoice_active_date").datepicker({language: "es", weekStart: 1, autoclose: true})
+		$("#invoice_reminder_attributes_notification_date").datepicker({language: "es", weekStart: 1, autoclose: true})
+		$(".currency").autoNumeric('init', autonumeric_options)
+		
+		$("#company_name").bind "railsAutocomplete.select", (event, data) ->
+			$("#invoice_company_id").trigger("change")
+			return
 	
 	
 		
-	@remove_invoice_item_fields = (link) ->
-		return false if $(".invoice-item-fields").size() <= 1
-		index = parseInt($("#invoice_items_index").val())
-		new_index = index - 1
-		$("#invoice_items_index").val new_index
-		$(link).prev("input[type=hidden]").val "1"
-		$(link).parent().parent().find(".item-total").val 0
-		$(link).closest(".invoice-item-fields").remove()
-		return
+		@remove_invoice_item_fields = (link) ->
+			return false if $(".invoice-item-fields").size() <= 1
+			index = parseInt($("#invoice_items_index").val())
+			new_index = index - 1
+			$("#invoice_items_index").val new_index
+			$(link).prev("input[type=hidden]").val "1"
+			$(link).parent().parent().find(".item-total").val 0
+			$(link).closest(".invoice-item-fields").remove()
+			return
 	  
-	@add_invoice_item_fields = (link, association, content) ->
-		index = parseInt($("#invoice_items_index").val())
-		new_index = index + 1
-		$("#invoice_items_index").val new_index
-		new_id = new Date().getTime()
-		regexp = new RegExp("_replaceme_", "g")
-		$("#new_invoice_items").append content.replace(regexp, index)
-		return
+		@add_invoice_item_fields = (link, association, content) ->
+			index = parseInt($("#invoice_items_index").val())
+			new_index = index + 1
+			$("#invoice_items_index").val new_index
+			new_id = new Date().getTime()
+			regexp = new RegExp("_replaceme_", "g")
+			$("#new_invoice_items").append content.replace(regexp, index)
+			return
 		
 	
 	

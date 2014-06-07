@@ -35,5 +35,13 @@ module ApplicationHelper
   def search_add_record_link(path, title)
     	link_to content_tag(:i, nil, :class => "icon-plus icon-white").html_safe+" #{title}", path, :class => "btn btn-success"
   end
+
+  def render_modal(options=Hash.new(""))
+    render partial: "shared/modal", locals: {options: options}
+  end
+
+  def render_modal_form(options=Hash.new(""))
+    render partial: "shared/modal_form", locals: {options: options}
+  end
   
 end

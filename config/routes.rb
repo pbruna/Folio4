@@ -8,13 +8,21 @@ Folio::Application.routes.draw do
   get 'accounts/check_subdomain' => 'accounts#check_subdomain', :as => :check_subdomain
   
   #Restricted to subdomain
-  constraints(Subdomain) do    
-    resources :accounts, :only => [:show, :edit, :index, :update]
+  constraints(Subdomain) do
+    get 'contacts/new_from_modal' => 'contacts#new_from_modal', :as => :new_contact_from_modal
+    get 'invoices/:id/activate_from_modal' => 'invoices#activate_from_modal', :as => :activate_invoice_from_modal
+    patch 'invoices/:id/change_status' => 'invoices#change_status', :as => :change_invoice_status
+    get 'accounts/check_invoice_number_availability' => 'accounts#check_invoice_number_availability', as: :check_invoice_number_availability
+    resources :accounts, :only => [:show, :edit, :index, :update, :check_invoice_number_availability] do
+
+    end
     resources :expenses
     resources :users
+    resources :contacts
     resources :companies do
       resources :invoices
       resources :expenses
+      resources :contacts
     end
     resources :invoices do
       get :autocomplete_company_name, :on => :collection

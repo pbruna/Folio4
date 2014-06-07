@@ -20,15 +20,25 @@ ul.ui-autocomplete {
 	
 }
 
+
+.invoice-label {
+	@extend .invoice-status;
+	@extend .pull-right;
+	margin-top: 15px;
+}
+
 .invoice-status  {
 	@extend .label;
 }
 
 .invoice-active {
+	@extend .label;
 	@extend .label-info;
+	background: $blue;
 }
 
 .invoice-due {
+	@extend .label;
 	@extend .label-important;
 }
 
@@ -37,6 +47,7 @@ ul.ui-autocomplete {
 }
 
 .invoice-closed {
+	@extend .label;
 	@extend .label-success;
 }
 
@@ -91,7 +102,7 @@ ul.ui-autocomplete {
 #invoices-totals-resume-table {
 	width: 99%;
 	
-	.invoices-open {
+	.invoices-active {
 		color: $blue;
 	}
 	
@@ -184,13 +195,7 @@ ul.ui-autocomplete {
 		padding-right: 20px;
 		background: #f6f5ed;
 		border-bottom: 1px solid #C9C4C4;
-		
-		.invoice-label {
-			@extend .invoice-status;
-			@extend .pull-right;
-			margin-top: 15px;
-		}
-		
+				
 		.invoice-currency {
 			background-color: #333333;
 		}
@@ -283,7 +288,6 @@ ul.ui-autocomplete {
 	#invoice-total {
 		text-align: center;
 		padding-top: 10px;
-		background: #999;
 		color: whitesmoke;
 		padding-bottom: 10px;	
 		
@@ -296,7 +300,7 @@ ul.ui-autocomplete {
 		
 	}
 	
-	.invoice-status-open {
+	.invoice-status-active {
 		background: $blue;
 	}
 	
@@ -394,7 +398,20 @@ ul.ui-autocomplete {
 		
 	}
 	
-	.invoice-catergories {
+	.invoice-contact {
+		padding-top: 0px;
+		padding-left:10px;
+		padding-right: 10px;
+		padding-bottom: 5px; 
+		border-bottom: 1px solid #C9C4C4;
+		
+		select {
+			width: 185px;
+			resize: vertical;
+		}
+	}
+	
+	.invoice-categories {
 		padding-top: 10px;
 		padding-left:10px;
 		padding-right: 10px;

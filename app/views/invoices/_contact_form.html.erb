@@ -1,0 +1,13 @@
+<% if @invoice.company.nil? %>
+
+	<div class="alert alert-error">
+		Primero debe seleccionar una empresa
+	</div>
+
+<% else %>
+
+<p>
+	Ingrea los datos para agregar un nuevo contacto a <%= @company.name %>
+</p>
+
+<% end %>

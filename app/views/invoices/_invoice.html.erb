@@ -2,8 +2,10 @@
 	<td class="invoice-number-cell">
 		<ul class="unstyled">
 			<li class="invoice-number"><h4><%= link_to "##{invoice.number}", invoice_path(invoice) %></h4></li>
-			<li class="">
-				<span class="invoice-status invoice-active"><%= invoice.status %></span>
+			<li>
+				<span class=" invoice-<%= invoice.aasm_state %>">
+					<%= invoice.aasm_human_state.titleize %>
+				</span>
 			</li>
 		</ul>
 	</td>
@@ -14,7 +16,7 @@
 		<p><strong>Categorías:</strong> Contraros, Soporte</p>
 		<p>
 			<span class="invoice-date1">
-				Emitida: <%= I18n.l invoice.open_date, format: :dd_MM_yy %>
+				Emitida: <%= I18n.l invoice.active_date, format: :dd_MM_yy %>
 			</span>
 			<span class="invoice-date2">
 				Vence: <%= I18n.l invoice.due_date, format: :dd_MM_yy %>

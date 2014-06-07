@@ -1,0 +1,28 @@
+<div id="<%= "#{options[:id]}-modal" %>" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= options[:title] %></h4>
+      </div>
+	  <% flash.each do |name, msg| %>
+	  	<div class="alert alert-<%= name == :notice ? "success" : "error" %>" >
+	      	<a class="close" data-dismiss="alert">×</a>
+	      	<%= msg %>
+	  		<br/>
+	  		<%= yield :form_errors %>
+	    	</div>
+	  <% end %>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		<% if options[:method] == "edit" %>
+			<button type="button" class="btn btn-primary" data-submit="submit" data-formid="<%= "#{options[:method]}_#{options[:object]}_#{options[:object_id]}" %>">Guardar</button>
+		<% else %>
+			<button type="button" class="btn btn-primary" data-submit="submit" data-formid="<%= "#{options[:method]}_#{options[:object]}" %>">Guardar</button>
+		<% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

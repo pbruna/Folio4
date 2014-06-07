@@ -1,4 +1,4 @@
-<div id="invoice-sidebar" class="span3">
+<div id="invoice-sidebar" class="span3 sidebar">
 	<div class="invoice-totals">
 		<h3>
 			<span data-bind="text: invoice_total().formatMoney(0)"><%= number_to_currency(@invoice.total) %></span>
@@ -14,16 +14,20 @@
 			</span>
 		</h5>
 	</div>
+
+	<%= render :partial => "invoices/sidebar/invoice_contact", locals: {f: f} %>
 	
 	<div class="invoice-reminders">
 		
 		<div class="invoice-email-reminder">
 			<label class='checkbox'>
 			<input type='checkbox' name='invoice_email_reminder'>
-			<a href="">Enviar recordatorio</a>
+			<a data-toggle="modal" data-target="#invoice-reminder-modal" href="">Enviar recordatorio</a>
 			</label>
 			<div class="invoice-option-explain">
-				<small>Martes 24 a Nadia Valencia (IT Linux) y Marcelo Carrillo (TVN)</small>
+				<small>
+					<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> y <%= @invoice.contact_name %>
+				</small>
 			</div>
 		</div>
 		
@@ -49,15 +53,16 @@
 			<strong>+</strong> Arrastra tus archivos
 		</div>
 	</div>
-	
+	<!-- 
 	<div class="invoice-catergories">
 		<h5>Caterogrías</h5>
 		<textarea></textarea>
-	</div>
+	</div> -->
 	
 	<div class="invoice-submit">
 		
 		<button class="btn btn-large btn-success">Guardar venta</button>
+		<p class="cancel-link"><%= link_to "Cancelar", invoices_path() %></p>
 		
 	</div>
 	

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211004008) do
+ActiveRecord::Schema.define(version: 20140529144435) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20140211004008) do
   add_index "accounts", ["plan_id"], name: "index_accounts_on_plan_id"
   add_index "accounts", ["rut"], name: "index_accounts_on_rut"
   add_index "accounts", ["subdomain"], name: "index_accounts_on_subdomain"
+
+  create_table "attachments", force: true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "resource_file_name"
+    t.string   "resource_content_type"
+    t.integer  "resource_file_size"
+    t.datetime "resource_updated_at"
+  end
 
   create_table "audits", force: true do |t|
     t.integer  "account_id"
@@ -62,6 +75,17 @@ ActiveRecord::Schema.define(version: 20140211004008) do
   add_index "companies", ["account_id"], name: "index_companies_on_account_id"
   add_index "companies", ["name"], name: "index_companies_on_name"
   add_index "companies", ["rut"], name: "index_companies_on_rut"
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -104,7 +128,7 @@ ActiveRecord::Schema.define(version: 20140211004008) do
   add_index "invoice_items", ["type"], name: "index_invoice_items_on_type"
 
   create_table "invoices", force: true do |t|
-    t.integer  "number",                   default: 0
+    t.integer  "number"
     t.decimal  "tax_total",                default: 0.0
     t.decimal  "net_total",                default: 0.0
     t.decimal  "total",                    default: 0.0
@@ -115,7 +139,7 @@ ActiveRecord::Schema.define(version: 20140211004008) do
     t.datetime "updated_at"
     t.boolean  "taxed"
     t.date     "due_date"
-    t.date     "open_date"
+    t.date     "active_date"
     t.date     "close_date"
     t.string   "subject"
     t.integer  "tax_id"
@@ -141,6 +165,22 @@ ActiveRecord::Schema.define(version: 20140211004008) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reminders", force: true do |t|
+    t.date     "notification_date"
+    t.integer  "remindable_id"
+    t.string   "remindable_type"
+    t.boolean  "sent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "notification_days"
+    t.date     "due_date"
+    t.string   "subject"
+    t.text     "message"
+    t.boolean  "active",            default: false
+  end
+
+  add_index "reminders", ["remindable_id"], name: "index_reminders_on_remindable_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

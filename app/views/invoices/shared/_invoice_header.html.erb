@@ -1,6 +1,6 @@
 <header>
 	<ul class="unstyled inline pull-right">
-		<li><span class="invoice-label invoice-draft"><%= @invoice.aasm_human_state.titleize %></span></li>
+		<li><span class="invoice-label invoice-<%= @invoice.aasm_state %>"><%= @invoice.aasm_human_state.titleize %></span></li>
 		<li>
 			<span class="invoice-label invoice-currency" data-bind="text: invoice_tax_label"><%= invoice_tax_label @invoice %></span>
 		</li>

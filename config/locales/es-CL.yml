@@ -202,15 +202,15 @@ es-CL:
       invoice:
         aasm_state:
           draft: "borrador"
-          open: "activa"
+          active: "activa"
           due: "vencida"
           closed: "pagada"
   invoice:
-    open: activa
+    active: activa
     draft: borrador
     due: vencida
     closed: pagada
-    opens: activas
+    actives: activas
     drafts: borrador
     dues: vencidas
     closeds: pagadas

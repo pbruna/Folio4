@@ -1,0 +1,18 @@
+<div class="invoice-contact">
+		<h5>Contacto</h5>
+
+		<% visible = @invoice.company_has_contact? %>
+		
+		<%= f.select :contact_id, options_from_collection_for_select(@invoice.company_contacts, 'id', 'name'), {}, data: {bind: "options:invoice_contacts, optionsText:'name', optionsValue:'id', value:invoice_contact_id, visible:invoice_contacts().length > 0"}, class: "no-validate" %>
+
+		<p style="text-align: center">
+			<a data-toggle="modal" data-target="#invoice-contact-modal" data-bind="attr: {href: '/contacts/new_from_modal?company_id=' + invoice_company_id()} , visible:invoice_contacts().length < 1 && invoice_company_id()">
+				Crear contacto
+			</a>
+		</p>
+
+		<p style="text-align: center; color: #888" data-bind="visible: !invoice_company_id()">
+			Primero seleccione empresa
+		</p>
+		
+</div>

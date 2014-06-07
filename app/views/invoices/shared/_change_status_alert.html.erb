@@ -1,0 +1,4 @@
+<div class="alert alert-info">
+	<a class="close" data-dismiss="alert">×</a>
+	Recuerde que para activar la factura <%= link_to "necesita completar: #{activation_requirements_message(@invoice)}", edit_invoice_path(@invoice, flash[:notice] = "WTF")%>.
+</div>

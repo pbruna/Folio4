@@ -1,0 +1,49 @@
+<%= javascript_tag "$('input[type=file]').bootstrapFileInput();" %>
+<%= javascript_tag do %>
+$("input,select,textarea").not("[type=submit],.no-validate").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
+<% end %>
+
+<%= simple_form_for @invoice, 
+	:html => {:class => "form-horizontal"}, html: {multipart: true}, 
+	defaults: { input_html: { class: 'input-xlarge' } },
+	url: change_invoice_status_path, remote: true do |f| %>
+	
+	<% if @invoice.may_active? %>
+		<p>
+			Estas a punto de Activar la Venta para <strong><%= @invoice.company_name %></strong>.
+		</p>
+
+		<ul>
+			<li>Total: <%= number_to_currency @invoice.total %></li>
+			<li>Emisión: <%= I18n.l @invoice.active_date, format: :dd_MM_yy %></li>
+			<li>Vencimiento: <%= I18n.l @invoice.due_date, format: :dd_MM_yy %></li>
+			<li>Contacto: <%= @invoice.contact_name %></li>
+		</ul>
+
+		<p>
+			<u>Si los datos son correctos presione el botón Activar para activar la factura</u>.
+		</p>
+	<% else %>
+		<h5>Por favor completa los siguientes datos para activar la factura</h5>
+			
+		<%= f.input :number, label: "Número", required: true, autofocus: true, 
+			input_html: {data: {:"validation-ajax-ajax" => 					"/accounts/check_invoice_number_availability?taxed=#{@invoice.taxed?}"}} 
+		%>
+				
+		<% unless @invoice.has_contact? %>
+			<%= f.input :contact, label: "Contacto", required: true, collection: @invoice.company_contacts %>
+		<% end %>
+	
+		<% unless @invoice.has_invoice_attachment? %>
+			<%= f.fields_for :attachments do |att| %>
+				<%= att.input :resource, label: "Factura en PDF", as: :file, input_html: {title: "Adjuntar documento de Factura", :"data-filename-placement"=>"inside"} %>
+				<%= att.input :category, as: :hidden, input_html: {value: Attachment.categories[:invoice]}%>
+			<% end %>
+		<% end %>
+	
+	
+	<% end %>
+	
+	<%= f.hidden_field :new_state, value: "active" %>
+	
+<% end %>
