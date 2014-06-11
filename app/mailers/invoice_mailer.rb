@@ -1,3 +1,13 @@
 class InvoiceMailer < ActionMailer::Base
-  default from: "from@example.com"
+  layout 'mailer_default'
+  default from: "notificaciones@folio.cl"
+  
+  
+  def activation_notification(invoice)
+    @invoice = Invoice.find(invoice.id, include: [:company, :contact, :account])
+    @account = @invoice.account
+    @contact = @invoice.contact
+    
+    mail to: @contact.email, subject: "#{@account.name} ha emitido una nueva factura para tu empresa."
+  end
 end

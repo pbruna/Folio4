@@ -1,0 +1,13 @@
+<p>
+	Hola <%= @contact.name %>,<br/>
+	Te envíamos este correo para avisarte que <%= @account.name %> ha emitido una nueva factura para tu empresa con los siguientes datos:<br/>
+	<ul>
+		<li><strong>Asunto</strong>: <%= @invoice.subject%></li>
+		<li><strong>Factura No</strong>: <%= @invoice.number%></li>
+		<li><strong>Total</strong>: <%= number_to_currency @invoice.total %></li>
+		<li><strong>Fecha de Vencimiento</strong>: <%= I18n.l @invoice.due_date, format: :dd_MM_yy %></li>
+	</ul>
+	<p>
+		Puedes descargar la factura en el siguiente enlace <%= link_to "#{root_url}/#{@invoice.dte_attachment_url}", "#{root_url}/#{@invoice.dte_attachment_url}" %>
+	</p>
+</p>

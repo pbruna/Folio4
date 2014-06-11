@@ -136,4 +136,6 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.save
     assert(!@invoice.may_active?, "Failure message.")
   end
+
+  
 end

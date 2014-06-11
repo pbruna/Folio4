@@ -195,6 +195,7 @@ ul.ui-autocomplete {
 		padding-right: 20px;
 		background: #f6f5ed;
 		border-bottom: 1px solid #C9C4C4;
+		height: 45px;
 				
 		.invoice-currency {
 			background-color: #333333;
@@ -286,10 +287,11 @@ ul.ui-autocomplete {
 	background: #f6f5ed;
 	
 	#invoice-total {
+		height: 45px;
 		text-align: center;
-		padding-top: 10px;
+		padding-top: 5px;
 		color: whitesmoke;
-		padding-bottom: 10px;	
+		padding-bottom: 15px;
 		
 		.original-currency-total {
 			color: whitesmoke;

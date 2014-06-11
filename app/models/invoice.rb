@@ -126,6 +126,14 @@ class Invoice < ActiveRecord::Base
   def has_invoice_attachment?
     attachments.where(category: "invoice").any?
   end
+  
+  def dte_attachment
+    attachments.where(category: "invoice").first
+  end
+  
+  def dte_attachment_url
+    dte_attachment.resource.url
+  end
 
   def contact_name
     return "" unless has_contact?

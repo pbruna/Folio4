@@ -1,0 +1,21 @@
+<div id="invoice-items-header">
+	<h4>Items</h4>
+</div>
+
+<div id="invoice-items">
+	<table id="new_invoice_items" class="table">
+		<thead>
+			<tr>
+				<th>Tipo</th>
+				<th style="padding-left: 10px; text-align: left;">Descripción</th>
+				<th>Ctd.</th>
+				<th>Precio</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<!-- <tbody data-bind="foreach: invoice_items items-fields-template"> -->
+		<tbody data-bind="template: { name: 'items-fields-template', foreach: invoice_items}"></tbody>
+			<tr></tr>
+			<%= render partial: "invoices/shared/show_invoice_item_fields", collection: @invoice.invoice_items, as: :invoice_item %>
+	</table>
+</div>

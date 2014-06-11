@@ -57,7 +57,9 @@
 			<li>
 				<%= fa_icon "calendar"%><a href="">Recordatorio</a>
 				<div class="invoice-option-explain">
-					<small>Martes 24 a Nadia Valencia (IT Linux) y Marcelo Carrillo (TVN)</small>
+					<small>
+						<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> y <%= @invoice.contact_name %>
+					</small>
 				</div>
 			</li>
 			<li>
