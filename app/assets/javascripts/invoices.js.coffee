@@ -74,6 +74,10 @@ class Invoice
 		@invoice_contacts = ko.computed =>
 			return [] if @invoice_company_id() == (null || "null")
 			Folio.getCompanyContacts(@invoice_company_id())
+			
+		@invoice_contact_selected = ko.computed =>
+			if @invoice_contact_id()
+				' y ' + $("#invoice_contact_id option:selected").text();
 		
 		@show_tax = ko.computed =>
 			if @invoice_taxed() == "false"

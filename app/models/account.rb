@@ -17,7 +17,7 @@ class Account < ActiveRecord::Base
   before_validation :clear_subdomain
 
   def self.subdomain_available?(subdomain)
-    exists?(:subdomain => subdomain).nil? ? true : false
+    !exists?(:subdomain => subdomain.downcase)
   end
   
   def check_invoice_number_availability(number, taxed)
