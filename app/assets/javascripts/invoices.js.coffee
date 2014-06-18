@@ -77,7 +77,12 @@ class Invoice
 			
 		@invoice_contact_selected = ko.computed =>
 			if @invoice_contact_id()
-				' y ' + $("#invoice_contact_id option:selected").text();
+				$("#invoice_contact_id option:selected").text();
+		
+		@invoice_reminder_message = ko.computed =>
+			message = "Hola " + @invoice_contact_selected() + ", \n";
+			message = message + "El siguiente mensaje es para recordar que tienes una factura que vencerá pronto." 
+			message
 		
 		@show_tax = ko.computed =>
 			if @invoice_taxed() == "false"

@@ -26,7 +26,7 @@
 			</label>
 			<div class="invoice-option-explain">
 				<small>
-					<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> <span data-bind="text: invoice_contact_selected()"> <%= @invoice.contact_name %></span>
+					<%= I18n.l @invoice.notification_date, format: :short %> a: <span data-bind="text: invoice_contact_selected()"> <%= @invoice.contact_name %></span>
 				</small>
 			</div>
 		</div>

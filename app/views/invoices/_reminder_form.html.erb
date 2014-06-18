@@ -1,4 +1,7 @@
 <%= f.fields_for :reminder do |builder| %>
+<p>
+	A continuación puede modificar el mensaje que se enviará a <span data-bind="text: invoice_contact_selected"><%= @invoice.contact_name%></span> para avisar sobre vencimiento de esta venta.
+</p>
 	<div class="form-group">
 	    <label for="exampleInputEmail1">¿Cuándo se envía?</label>
 	    <%= builder.text_field :notification_date, value: I18n.l(@invoice.notification_date, format: :default),  data: {"date-format" => "dd/mm/yyyy"} %>
@@ -6,6 +9,6 @@
 	</div>
 	<div class="form-group">
 	    <label for="exampleInputPassword1">Mensaje del recordatorio</label>
-	    <%= builder.text_area :subject, :style=> "width: 75%" %>
+	    <%= builder.text_area :message, :style=> "width: 95%", rows: 6, data: {bind: "value: invoice_reminder_message"}%>
 	</div>
 <% end %>
