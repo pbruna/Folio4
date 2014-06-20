@@ -5,7 +5,7 @@
 	Para comenzar sólo debes ingresar al siguiente enlace y crear tu contraseña:
 </p>
 <p>
-<%= link_to edit_password_url(@user, :reset_password_token => @user.reset_password_token, :subdomain => @user.account_subdomain), edit_password_url(@user, :reset_password_token => @user.reset_password_token, :subdomain => @user.account_subdomain)%>
+<%= link_to edit_password_url(@user, :reset_password_token => @user.reset_password_token, :subdomain => @user.account_subdomain), edit_password_url(@user, :reset_password_token => @token, :subdomain => @user.account_subdomain)%>
 </p>
 <p>
 <br>

@@ -6,7 +6,8 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.welcome_email.subject
   #
-  def welcome_email(user_id)
+  def welcome_email(user_id, token)
+    @token = token
     @user = User.find(user_id)
     @account = @user.account
     @account_owner = @user.account_owner

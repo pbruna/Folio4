@@ -3,7 +3,6 @@ class Reminder < ActiveRecord::Base
 
 	before_save :set_notification_date
   before_validation :check_subject 
-	validates_presence_of  :subject
   
 	# if days for reminder is not set
 	# the default notification date will be the nearest tuesday of the before week

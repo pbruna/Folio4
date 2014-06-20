@@ -66,14 +66,21 @@ class User < ActiveRecord::Base
   def self.new_from_owner(account_id, user_params)
     @user = User.new(user_params)
     @user.account_id = account_id
-    @user.reset_password_token= User.reset_password_token
-    @user
+    token = @user.reset_password_token
+    [@user, token]
   end
 
   def self.find_for_authentication(warden_conditions)
     if account = Account.where(:subdomain => warden_conditions[:subdomain]).first
       account.users.find_by_email(warden_conditions[:email])
     end
+  end
+  
+  def reset_password_token
+    raw, enc = Devise.token_generator.generate(User, :reset_password_token)
+    self.reset_password_token = enc
+    self.reset_password_sent_at = Time.now.utc
+    raw
   end
 
   # Setup accessible (or protected) attributes for your model

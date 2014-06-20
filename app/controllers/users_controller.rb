@@ -25,9 +25,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new_from_owner(current_account.id, user_params)
+    @user, token = User.new_from_owner(current_account.id, user_params)
     if @user.save
-      UserMailer.delay.welcome_email(@user.id)
+      UserMailer.delay.welcome_email(@user.id, token)
       flash[:notice] = "Usuario creado correctamente"
       redirect_to user_path(@user)
     else
