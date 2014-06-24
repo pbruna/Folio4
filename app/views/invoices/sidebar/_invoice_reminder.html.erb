@@ -1,0 +1,23 @@
+<div class="invoice-email-reminder">
+  <%= f.fields_for :reminder do |reminder| %>
+		<label class='checkbox'>
+		<!-- <input type='checkbox' name='invoice_email_reminder'> -->
+		<%= reminder.check_box :active %>
+		<a data-toggle="modal" data-target="#invoice-reminder-modal" href="">Enviar recordatorio</a>
+		</label>
+		<div class="invoice-option-explain">
+			<small>
+				<span data-bind="text: invoice_reminder_notification_date_display">
+					<%= I18n.l @invoice.notification_date, format: :short %> 
+				</span> a: 
+					<span data-bind="text: invoice_contact_selected()"> <%= @invoice.contact_name %></span>
+			</small>
+		</div>
+
+		<%= render_modal(
+			id: "invoice-reminder",
+			title: "Programar recordatorio",
+			body: (render partial: "reminder_form_modal", locals: {reminder: reminder})) %>
+	
+	<% end %>
+</div>

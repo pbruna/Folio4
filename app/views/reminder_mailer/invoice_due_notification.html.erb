@@ -1,0 +1,16 @@
+<p>
+	Hola <%= @invoice_contact.name %>,<br/>
+	Te envíamos este correo para recordate que el día <%= I18n.l @invoice.due_date, format: :dd_MM_yy %> vencerá la siguiente factura emitida por <%= @account.name %>:<br/>
+	<ul>
+		<li><strong>Asunto</strong>: <%= @invoice.subject%></li>
+		<li><strong>Factura No</strong>: <%= @invoice.number%></li>
+		<li><strong>Total</strong>: <%= number_to_currency @invoice.total %></li>
+		<li><strong>Fecha de Vencimiento</strong>: <%= I18n.l @invoice.due_date, format: :dd_MM_yy %></li>
+	</ul>
+</p>
+<p>
+	Puedes descargar la factura en el siguiente enlace <%= link_to "#{root_url}/#{@invoice.dte_attachment_url}", "#{root_url}/#{@invoice.dte_attachment_url}" %>
+</p>
+<p>
+	<strong>Te pedimos que por favor nos avises respondiendo este correo la fecha y medio por la cual será cancelada.</strong>
+</p>

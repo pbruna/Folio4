@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529144435) do
+ActiveRecord::Schema.define(version: 20140620123729) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -178,6 +178,8 @@ ActiveRecord::Schema.define(version: 20140529144435) do
     t.string   "subject"
     t.text     "message"
     t.boolean  "active",            default: false
+    t.text     "account_users_ids"
+    t.text     "company_users_ids"
   end
 
   add_index "reminders", ["remindable_id"], name: "index_reminders_on_remindable_id"

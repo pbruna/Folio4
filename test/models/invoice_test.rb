@@ -7,10 +7,12 @@ class InvoiceTest < ActiveSupport::TestCase
   # end
   
   def setup
-    @account = Account.new(:name => "Masev", :subdomain => "masev")
     @plan = Plan.new(:name => "trial")
     @plan.save
+    @account = Account.new(:name => "Masev", :subdomain => "maseva")
+    @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
     @account.save
+    @user.save
     @contact = Contact.new(company_id: 10, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save
     @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
@@ -21,6 +23,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 2, price: 1000)
     resource = File.new(Rails.root.to_s + "/test/fixtures/files/test-file.png")
     @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource)
+    @reminder = @invoice.build_reminder
   end
   
   # test "suggested number should return the next invoice number" do
@@ -58,7 +61,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.currency_convertion_rate = 500
     assert(@invoice.save, "No se guardó.")
     expected_net_total = @invoice.calculate_net_total_from_currency_total
-    assert_equal(expected_net_total, @invoice.net_total.to_i)
+    assert_equal(expected_net_total.to_i, @invoice.net_total.to_i)
   end
   
   test "close_date nil if total_payed is < total" do
@@ -123,9 +126,10 @@ class InvoiceTest < ActiveSupport::TestCase
   
   test "update reminder date when activating invoice" do
     @invoice.save
-    @invoice.active_date = Date.parse("01/07/2014")
+    @invoice.active_date = Date.parse("2014-07-01")
     @invoice.save
     @invoice.active
+    @invoice.save
     assert_equal("2014-07-22", @invoice.reminder.notification_date.to_s)
   end
 

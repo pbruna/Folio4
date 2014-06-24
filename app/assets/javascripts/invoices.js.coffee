@@ -35,6 +35,10 @@ class InvoiceItem
 				price = @price().replace(/\$\s+/,"").replace(/\./g,"")
 				
 			(quantity * price).formatMoney(0)
+			
+class Reminder
+	constructor: (reminder) ->
+		@notification_date = ko.observable(reminder.notification_date)
 
 class Invoice
 	constructor: (invoice) ->
@@ -61,6 +65,13 @@ class Invoice
 		@invoice_currency = ko.observable(invoice.currency)
 		@invoice_company_id = ko.observable(invoice.company_id)
 		@invoice_contact_id = ko.observable(invoice.contact_id)
+		@reminder = ko.observable(invoice.reminder)
+		@invoice_reminder_notification_date = ko.observable(@reminder().notification_date.split(/-/).reverse().join("/"))
+		
+		
+		@invoice_reminder_notification_date_display = ko.computed =>
+			org_date = @invoice_reminder_notification_date()
+			return org_date.split(/\//).splice(0,2).join("/")
 
 		@quantity = ko.observable(0)
 		@price = ko.observable(0)			

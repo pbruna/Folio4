@@ -20,7 +20,7 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   
   #Callbacks
-  before_save :set_due_date_and_reminder, on: :create
+  before_validation :set_due_date_and_reminder, if: :draft?
   before_validation :permform_calculations
   before_update :close_invoice_if_total_payed_match_total
   
@@ -45,6 +45,10 @@ class Invoice < ActiveRecord::Base
   scope :not_draft, ->() {where.not(aasm_state: "draft")}
   scope :taxed, ->() {where(taxed: true)}
   scope :not_taxed, ->() {where(taxed: false)}
+  
+  STATUS_NAME.each do |status|
+    scope status.to_sym, ->() {where(aasm_state: status)}
+  end
   
   # States
   aasm :create_scopes => false, :whiny_transitions => false do
@@ -175,10 +179,6 @@ class Invoice < ActiveRecord::Base
   def update_invoice(params)
       update_attributes(params)
   end
-
-  STATUS_NAME.each do |status|
-    scope status.to_sym, -> {(all)}
-  end
   
   def default_reminder_subject
     number_string = number.to_s || "NA"
@@ -191,14 +191,29 @@ class Invoice < ActiveRecord::Base
   
   def set_due_date_and_reminder
     self.due_date = active_date + due_days
-    self.build_reminder(due_date: due_date, subject: default_reminder_subject)
+    self.update_reminder
   end
   
   def update_reminder
-    reminder = self.reminder
-    reminder.subject = default_reminder_subject
-    reminder.due_date = due_date
+    self.reminder.subject = default_reminder_subject
+    self.reminder.notification_date = nil 
+    self.reminder.due_date = due_date
+    self.set_reminder_contacts
     reminder
+  end
+  
+  def set_reminder_contacts
+    reminder.account_users_ids = account_users_ids
+    reminder.company_users_ids = company_users_ids
+  end
+  
+  def account_users_ids
+    account.users.map {|u| u.id}
+  end
+  
+  def company_users_ids
+    return [] if contact.nil?
+    [contact.id]
   end
   
   def calculate_tax

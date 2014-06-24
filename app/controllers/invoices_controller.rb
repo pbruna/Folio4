@@ -84,7 +84,7 @@ class InvoicesController < ApplicationController
     def invoice_params
       params.require(:invoice).permit(:id, :company_id, :new_state, :subject,:number, :active_date, 
       :due_days, :currency, :contact_id, :taxed,invoice_items_attributes: [:id, :type, :description, :quantity, :price, :total, :_destroy],
-        reminder_attributes: [:notification_date, :subject, :message],
+        reminder_attributes: [:notification_date, :subject, :message, :active, :id],
         attachments_attributes: [:name, :category, :resource])
     end
     

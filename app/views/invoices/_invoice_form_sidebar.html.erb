@@ -19,17 +19,7 @@
 	
 	<div class="invoice-reminders">
 		
-		<div class="invoice-email-reminder">
-			<label class='checkbox'>
-			<input type='checkbox' name='invoice_email_reminder'>
-			<a data-toggle="modal" data-target="#invoice-reminder-modal" href="">Enviar recordatorio</a>
-			</label>
-			<div class="invoice-option-explain">
-				<small>
-					<%= I18n.l @invoice.notification_date, format: :short %> a: <span data-bind="text: invoice_contact_selected()"> <%= @invoice.contact_name %></span>
-				</small>
-			</div>
-		</div>
+		<%= render partial: "invoices/sidebar/invoice_reminder", locals: {f: f} %>
 		
 		<div class="invoice-email-recurrent" style="margin-top: 20px">
 			<label class='checkbox'>

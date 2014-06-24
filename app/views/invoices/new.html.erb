@@ -1,6 +1,6 @@
 <div class="row document">
 	<%= form_for @invoice do |f| -%>
-		<div id="invoice" class="invoice-form row span9" data-invoice="<%= @invoice.to_json({:include => :invoice_items}) %>">
+		<div id="invoice" class="invoice-form row span9" data-invoice="<%= @invoice.to_json({:include => [:invoice_items, :reminder]}) %>">
 
 			
 			<%= render :partial => 'invoices/shared/invoice_header' %>
@@ -30,11 +30,7 @@
 		<%= render :partial => "invoice_form_sidebar", locals: {f: f} %>
 		
 		<!-- Modals -->
-		<%= render_modal(
-			id: "invoice-reminder",
-			title: "Programar recordatorio",
-			body: (render partial: "reminder_form", locals: {f: f})) %>
-	
+		
 	<% end -%>
 
 		<%= render_modal_form(
