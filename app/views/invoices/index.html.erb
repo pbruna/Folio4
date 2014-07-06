@@ -4,13 +4,13 @@
 		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
 	</div>
 	
-	<h4 style="font-weight:normal; padding: 10px; padding-left: 4px">Todas las ventas ordenadas <a href="#" style="border-bottom: dashed 1px solid;">por fecha</a> de <a href="#">mayor a menor</a></h4>
+	<h4 style="font-weight:normal; padding: 10px; padding-left: 4px">Todas las ventas ordenadas <a href="#" style="border-bottom: dashed 1px solid;">por fecha de emisión</a> de <a href="#">mayor a menor</a></h4>
 	
-		
 <% end %>
 
 
 <div class="row document">
+	<%= render :partial => 'shared/flash' %>
 	<%= render partial: "invoices_table" %>
 	
 	<div id="side-menu" class="span3">

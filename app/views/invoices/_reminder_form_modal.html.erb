@@ -3,7 +3,7 @@
 </p>
 	<div class="form-group">
 	    <label for="exampleInputEmail1">¿Cuándo se envía?</label>
-	    <%= reminder.text_field :notification_date, value: I18n.l(@invoice.notification_date, format: :default),  data: {"date-format" => "dd/mm/yyyy", bind: "value: invoice_reminder_notification_date"} %>
+	    <%= reminder.text_field :notification_date, value: I18n.l(@invoice.notification_date, format: :default),  data: {"date-format" => "dd/mm/yyyy", bind: "value: reminder.notification_date"} %>
 	    
 	</div>
 	<div class="form-group">

@@ -1,0 +1,24 @@
+<div id="<%= "pay-invoice-#{@invoice.id}-modal" %>" class="modal fade" style="display: none;">
+	<%= form_for @invoice, url: pay_invoice_path(@invoice) do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Registrar pago</h4>
+      </div>
+      <div class="modal-body">
+		<div class="input-prepend input-append">
+		  <span class="add-on">Pagar</span>
+		  <%= f.text_field :total_payed, value: "#{@invoice.debt.to_i}", class: "span2 currency" %>
+		  <span class="add-on">de</span>
+		  <span class="add-on" style="width: 150px; text-align: left; padding-left: 10px;" id="debt" data-debt="<%= @invoice.debt.to_i %>"> <%= number_with_delimiter @invoice.debt.to_i %> </span>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		<%= f.submit 'Pagar total',  class: "btn btn-primary" %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  <% end %>
+</div><!-- /.modal -->

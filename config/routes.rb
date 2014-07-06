@@ -12,6 +12,8 @@ Folio::Application.routes.draw do
     get 'contacts/new_from_modal' => 'contacts#new_from_modal', :as => :new_contact_from_modal
     get 'invoices/:id/activate_from_modal' => 'invoices#activate_from_modal', :as => :activate_invoice_from_modal
     patch 'invoices/:id/change_status' => 'invoices#change_status', :as => :change_invoice_status
+    patch 'invoices/:id/cancel' => 'invoices#cancel', :as => :cancel_invoice
+    patch 'invoices/:id/patch' => "invoices#pay", :as => :pay_invoice
     get 'accounts/check_invoice_number_availability' => 'accounts#check_invoice_number_availability', as: :check_invoice_number_availability
     resources :accounts, :only => [:show, :edit, :index, :update, :check_invoice_number_availability] do
 

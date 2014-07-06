@@ -24,6 +24,9 @@ class Invoice < ActiveRecord::Base
   before_validation :permform_calculations
   before_update :close_invoice_if_total_payed_match_total
   
+  # Solo borramos si esta en Draft
+  before_destroy {|record| return false unless record.draft? }
+  
   
   # Validations
   validates_presence_of :company_id, :contact_id, :subject, :active_date, :due_days, :currency, :currency_convertion_rate
@@ -33,7 +36,7 @@ class Invoice < ActiveRecord::Base
   validates_numericality_of :net_total, :greater_than => 0
   validates_numericality_of :total_payed, :on => :update, less_than_or_equal_to: ->(invoice) { invoice.total }
   validates :invoice_items, length: {minimum: 1, message: "Debe tener al menos un Item"}
-  validate :invoice_ready_for_payment
+  #validate :invoice_ready_for_payment
   validates_presence_of :number, unless: :draft?
   validates_numericality_of :number, unless: :draft?
   validates :number, uniqueness: {scope: [:taxed, :account_id]}, unless: :draft?
@@ -55,9 +58,14 @@ class Invoice < ActiveRecord::Base
     state :draft, initial: true
     state :active
     state :closed
+    state :cancelled
     
     event :active, after: Proc.new { run_activation_jobs } do 
       transitions from: :draft, to: :active, guard: :ready_for_activation?
+    end
+    
+    event :cancel do
+      transitions from: :active, to: :cancelled
     end
     
     event :close do
@@ -138,6 +146,10 @@ class Invoice < ActiveRecord::Base
   def dte_attachment_url
     dte_attachment.resource.url
   end
+  
+  def debt
+    total - total_payed
+  end
 
   def contact_name
     return "" unless has_contact?
@@ -145,7 +157,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def is_really_payed?
-    return total_payed == total
+    return total_payed.to_i == total.to_i
   end
   
   def invoices_for_account
@@ -160,6 +172,10 @@ class Invoice < ActiveRecord::Base
     last_active_invoice = invoices_for_account.actives.last
     return 0 if last_active_invoice.nil?
     last_active_invoice.number
+  end
+  
+  def may_edit?
+    draft? || active?
   end
   
   
@@ -188,6 +204,12 @@ class Invoice < ActiveRecord::Base
   # def reminder
   #   reminders.first
   # end
+  
+  def pay(amount)
+    return false unless active?
+    self.total_payed = amount.to_s.gsub(/[^\d]/,"").to_i + total_payed.to_i
+    self.save
+  end
   
   def set_due_date_and_reminder
     self.due_date = active_date + due_days

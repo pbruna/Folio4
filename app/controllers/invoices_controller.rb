@@ -21,6 +21,18 @@ class InvoicesController < ApplicationController
     end
   end
   
+  def cancel
+    @invoice = current_account.invoices.find(params[:id])
+    if @invoice.cancel!
+      flash[:notice] = "Venta anulada"
+      redirect_to invoice_path(@invoice)
+    else
+      flash.now[:error] = "No es posible anular esta venta."
+      redirect_to invoice_path(@invoice)
+    end
+      
+  end
+  
   def change_status
     @invoice = current_account.invoices.find(params[:id])
     
@@ -46,6 +58,17 @@ class InvoicesController < ApplicationController
     else
       flash.now[:error] = "No pudimos guardar esta venta, por favor corrige los errores indicados."
       render 'new'
+    end
+  end
+  
+  def destroy
+    @invoice = current_account.invoices.find(params[:id])
+    if @invoice.destroy
+      flash[:notice] = "Venta borrada correctamente."
+      redirect_to invoices_path()
+    else
+      flash[:alert] = "Sólo se pueden borrar ventas que estén en borrador."
+      redirect_to @invoice
     end
   end
   
@@ -76,13 +99,26 @@ class InvoicesController < ApplicationController
     @invoice.build_reminder
   end
   
+  def pay
+    @invoice = current_account.invoices.find(params[:id])
+    logger.debug("----AQUI #{invoice_params}")
+    if @invoice.pay(invoice_params[:total_payed])
+      flash[:notice] = "Pago registrado correctamente."
+      flash[:notice] << "\nVenta cerrada." if @invoice.closed?
+      redirect_to @invoice
+    else
+      flash[:error] = "No pudimos registrar el pago."
+      redirect_to @invoice
+    end
+  end
+  
   def show
     @invoice = current_account.invoices.find(params[:id])
   end
   
   private
     def invoice_params
-      params.require(:invoice).permit(:id, :company_id, :new_state, :subject,:number, :active_date, 
+      params.require(:invoice).permit(:id, :company_id, :new_state, :subject,:number, :active_date, :total_payed,
       :due_days, :currency, :contact_id, :taxed,invoice_items_attributes: [:id, :type, :description, :quantity, :price, :total, :_destroy],
         reminder_attributes: [:notification_date, :subject, :message, :active, :id],
         attachments_attributes: [:name, :category, :resource])

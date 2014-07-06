@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$cancelled: #5C0000;
+
 ul.ui-autocomplete {
 	border: 1px solid rgb(167, 202, 252);
 	padding: 5px;
@@ -49,6 +51,12 @@ ul.ui-autocomplete {
 .invoice-closed {
 	@extend .label;
 	@extend .label-success;
+}
+
+.invoice-cancelled {
+	@extend .label;
+	@extend .label-important;
+	background: $cancelled;
 }
 
 #invoices {
@@ -316,6 +324,10 @@ ul.ui-autocomplete {
 	
 	.invoice-status-closed {
 		background: $green;
+	}
+	
+	.invoice-status-cancelled {
+		background: $cancelled;
 	}
 	
 	.invoice-total-detail {

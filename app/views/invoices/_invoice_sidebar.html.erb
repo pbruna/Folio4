@@ -1,54 +1,45 @@
+<!-- Modals -->
+<%= render partial: "invoices/show_partials/delete_modal" if @invoice.draft? %>
+<%= render partial: "invoices/show_partials/cancel_modal" if @invoice.may_cancel? %>
+<%= render partial: "invoices/show_partials/pay_modal" if @invoice.active? %>
+
 <div id="invoice-sidebar" class="span3">
-	<div id="invoice-total" class="invoice-status-<%= @invoice.status %>">
-		<h3><%= number_to_currency(@invoice.total)%></h3>
-		<% if @invoice.currency != "CLP" %>
-			<div class="original-currency-total">
-				<%= "#{@invoice.currency.upcase} #{ round_number_and_delimiter @invoice.original_currency_total}"%>
-			</div>
-		<% end %>
-	</div>
-	
-	<% if @invoice.taxed? || @invoice.currency != "CLP" %>
-		<ul class="invoice-total-detail unstyled">
-			<% if @invoice.taxed? %>
-				<li>
-					<ul class="unstyled inline">
-						<li style="text-align: left; width: 50px;">Neto</li>
-						<li style="text-align: right; width: 100px;">
-							<%= "$ " + round_number_and_delimiter(@invoice.net_total) %>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<ul class="unstyled inline">
-						<li style="text-align: left; width: 50px;">IVA</li>
-						<li style="text-align: right; width: 100px;">
-							<%= "$ " + round_number_and_delimiter(@invoice.tax_total) %>
-						</li>
-					</ul>
-				</li>
-			<% end %>
-			<% if @invoice.currency != "CLP" %>
-				<ul class="unstyled inline currency-rate">
-					<li style="width: 50px; text-align: left">Cambio</li>
-					<li style="text-align: right; width: 100px;">
-						<%= "$ " + round_number_and_delimiter(@invoice.currency_convertion_rate) %>
-					</li>
-				</ul>
-			<% end %>
-		</ul>
-	<% end %>
+	<%= render partial: "invoices/show_partials/sidebar_total" %>
 	
 	<div class="invoice-actions">		
 		<ul class="unstyled">
-			<li><%= fa_icon "check-square-o"%>
-				<a data-toggle="modal" data-target="#invoice-change-status-modal" href="/invoices/<%= @invoice.id %>/activate_from_modal" class="invoices-active">
-					<%= change_invoice_state_menu(@invoice) %>
-				</a>
-			</li>
-			<li><%= fa_icon "edit"%><%= link_to " Editar venta", edit_invoice_path(@invoice) %></li>
+			
+			<% if @invoice.draft? %>
+				<li><%= fa_icon "check-square-o"%>
+					<a data-toggle="modal" data-target="#invoice-change-status-modal" href="/invoices/<%= @invoice.id %>/activate_from_modal" class="invoices-active">
+						<%= change_invoice_state_menu(@invoice) %>
+					</a>
+				</li>
+			<% end %>
+			
+			<% if @invoice.active? %>
+				<li><%= fa_icon "dollar"%>
+					<%= link_to "Recibir pago", "#", data: {toggle: "modal", target: "#pay-invoice-#{@invoice.id}-modal"}, class: "invoices-pay"  %>
+				</li>
+			<% end %>
+			
+			<% if @invoice.may_edit? %>
+				<li><%= fa_icon "edit"%><%= link_to " Editar venta", edit_invoice_path(@invoice) %></li>
+			<% end %>
 			<li><%= fa_icon "camera"%><a href=""> Duplicar venta</a></li>
-			<li><%= fa_icon "trash-o"%><a href="" class="invoices-due"> Borrar venta</a></li>
+			
+			<% if @invoice.draft? %>
+				<li><%= fa_icon "trash-o"%>
+					<%= link_to "Borrar venta", "#", data: {toggle: "modal", target: "#delete-invoice-#{@invoice.id}-modal"}, class: "invoices-due"  %>
+				</li>
+			<% end %>
+			
+			<% if @invoice.may_cancel? %>
+				<li><%= fa_icon "trash-o"%>
+					<%= link_to "Anular venta", "#", data: {toggle: "modal", target: "#cancel-invoice-#{@invoice.id}-modal"}, class: "invoices-due"  %>
+				</li>
+			<% end %>
+			
 		</ul>
 	</div>
 	

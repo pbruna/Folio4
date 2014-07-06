@@ -205,6 +205,8 @@ es-CL:
           active: "activa"
           due: "vencida"
           closed: "pagada"
+          cancelled: "anulada"
+
   invoice:
     active: activa
     draft: borrador

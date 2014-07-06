@@ -147,3 +147,14 @@ a:hover.link-expense {
 	font-weight: bold;
 }
 
+.confirmation-modal {
+	.modal-header {
+		border-bottom: none;
+	}
+	
+	.modal-body {
+		font-size: 18px;
+		padding: 20px;
+		text-align: center;
+	}
+}

@@ -1,0 +1,16 @@
+<div id="<%= "delete-invoice-#{@invoice.id}-modal" %>" class="modal fade confirmation-modal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span >¿Seguro que quieres borrar esta venta?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No, cancelar</button>
+		<%= link_to 'Sí, borrar venta',  @invoice,  method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

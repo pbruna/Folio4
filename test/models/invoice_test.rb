@@ -26,6 +26,10 @@ class InvoiceTest < ActiveSupport::TestCase
     @reminder = @invoice.build_reminder
   end
   
+  def teardown
+    @invoice.delete
+  end
+  
   # test "suggested number should return the next invoice number" do
   #   assert_equal(21, @invoice.suggested_number)
   # end
@@ -82,7 +86,8 @@ class InvoiceTest < ActiveSupport::TestCase
     assert(!@invoice.save, "Should not be saved")
   end
   
-  test "only close the invoice when total_payed is equal to total" do@invoice.save
+  test "only close the invoice when total_payed is equal to total" do
+    @invoice.save
     @invoice.active
     @invoice.total_payed = @invoice.total - 100
     @invoice.save
@@ -139,6 +144,53 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.contact = nil
     @invoice.save
     assert(!@invoice.may_active?, "Failure message.")
+  end
+
+  test "1destroy only if is draft" do
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    assert(!@invoice.destroy, "Solo debe poder eliminar si es Draft")
+  end
+  
+  test "only cancel an invoice if is active" do
+    @invoice.save
+    assert(!@invoice.may_cancel?, "No debería ser anulada si esta draft")
+    @invoice.active
+    @invoice.total_payed = @invoice.total
+    @invoice.close
+    @invoice.save
+    assert(!@invoice.may_cancel?, "No debería ser anulada si esta cerrada")
+  end
+
+  test "invoice#pay return false unless invoice is active" do
+    assert(!@invoice.pay(38373), "Pay funciona sólo si la factura está activa")
+  end
+
+  test "invoice#pay should convert string to int" do
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    @invoice.pay("$ 323.343")
+    assert_equal(323343, @invoice.total_payed.to_i)
+  end
+  
+  test "sum the total_payed when doing payments" do
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    @invoice.pay(@invoice.total.to_i - 200)
+    @invoice.pay(200)
+    assert(@invoice.closed?, "No se están sumando los abonos")
+  end
+  
+  
+  test "close invoice when amount payed is equal than total" do
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    @invoice.pay("$ #{@invoice.total.to_i}")
+    assert(@invoice.closed?, "Factura debería estar cerrada")
   end
 
   
