@@ -22,6 +22,18 @@ ul.ui-autocomplete {
 	
 }
 
+.due {
+	color: $red;
+}
+
+.draft {
+	color: $grayLight;
+}
+
+.closed {
+	color: $green;
+}
+
 
 .invoice-label {
 	@extend .invoice-status;
@@ -334,6 +346,28 @@ ul.ui-autocomplete {
 		padding: 20px;
 		padding-top: 15px;
 		border-bottom: 1px solid #C9C4C4;
+	}
+	
+	#invoice-payments {
+		font-weight: normal;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		padding-right: 0px;
+		h5 {
+			font-size: 14px;
+			margin: 0px;	
+		}
+		
+		ul {
+			margin-bottom: 5px;
+		}
+		
+		ul.inline > li {
+			padding: 0px;
+			width: 45%;
+		}
+		
+		
 	}
 	
 	.invoice-actions {

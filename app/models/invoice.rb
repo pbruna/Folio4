@@ -147,6 +147,10 @@ class Invoice < ActiveRecord::Base
     dte_attachment.resource.url
   end
   
+  def has_debt?
+    total_payed.to_i > 0 && total_payed.to_i < total.to_i
+  end
+  
   def debt
     total - total_payed
   end

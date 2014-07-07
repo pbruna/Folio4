@@ -37,3 +37,19 @@
 		<% end %>
 	</ul>
 <% end %>
+
+
+<% if @invoice.has_debt? %>
+	<div id="invoice-payments" class="invoice-actions">
+		<ul class="unstyled inline">
+		<li>
+			<h5>Pagado</h5>
+			<span class="closed"><%= number_to_currency(@invoice.total_payed) %></span>
+		</li>
+		<li>
+			<h5>Deuda</h5>
+			<span class="due"><%= number_to_currency(@invoice.debt)%></span>
+		</li>
+		</ul>
+	</div>
+<% end %>
