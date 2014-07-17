@@ -48,6 +48,13 @@ class InvoicesController < ApplicationController
       end
     end
   end
+  
+  def clone
+    source_invoice = current_account.invoices.find(params[:id])
+    @invoice = source_invoice.clone!
+    @invoice.attachments.build
+    @invoice.build_reminder
+  end
 
   def create
     params = prices_to_numbers

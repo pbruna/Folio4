@@ -1,0 +1,44 @@
+<div class="row document">
+	<%= form_for @invoice do |f| -%>
+		<div id="invoice" class="invoice-form row span9" data-invoice="<%= @invoice.to_json({:include => [:invoice_items, :reminder]}) %>">
+
+			
+			<%= render :partial => 'invoices/shared/invoice_header' %>
+			
+			<% content_for :form_errors do %>
+					<% if @invoice.errors.size > 0 %>
+					    <ul>
+					       <% @invoice.errors.full_messages.each do |msg| %>
+					       		<li><%= msg %></li>
+					       <% end %>
+					    </ul>
+					<% end %>
+			<% end %>
+			
+			<%= render :partial => 'shared/flash' %>
+				
+			
+			<%= render :partial => 'invoices/shared/invoice_details', locals: {f: f}%>
+			
+			<%= render :partial => "invoices/shared/invoice_items", locals: {f: f} %>
+			
+			<%= render :partial => "invoices/shared/invoice_total"%>
+			
+		</div>
+		
+		
+		<%= render :partial => "invoice_form_sidebar", locals: {f: f} %>
+		
+		<!-- Modals -->
+		
+	<% end -%>
+
+		<%= render_modal_form(
+		id: "invoice-contact",
+		title: "Agregar contacto",
+		body: "",
+		method: "new",
+		object: "contact") %>
+	
+</div>
+

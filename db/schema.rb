@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620123729) do
+ActiveRecord::Schema.define(version: 20140714204746) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -54,6 +54,22 @@ ActiveRecord::Schema.define(version: 20140620123729) do
 
   add_index "audits", ["account_id"], name: "index_audits_on_account_id"
   add_index "audits", ["user_id"], name: "index_audits_on_user_id"
+
+  create_table "comments", force: true do |t|
+    t.string   "subject"
+    t.text     "message"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id"
+  add_index "comments", ["author_type"], name: "index_comments_on_author_type"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
 
   create_table "companies", force: true do |t|
     t.string   "name"

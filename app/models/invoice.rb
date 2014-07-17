@@ -14,6 +14,7 @@ class Invoice < ActiveRecord::Base
   has_many :invoice_items, dependent: :destroy
   has_one :reminder, as: :remindable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :contact
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
   accepts_nested_attributes_for :reminder, :allow_destroy => true
@@ -97,6 +98,31 @@ class Invoice < ActiveRecord::Base
     end
     self.send(new_state)
     save
+  end
+  
+  def clone!
+    source_invoice = self.reset_for_cloning
+    new_invoice = source_invoice.dup
+    new_invoice.invoice_items << source_invoice.clone_items
+    new_invoice
+  end
+  
+  def clone_items
+    invoice_items_tmp = Array.new
+    return false if invoice_items.size < 0
+    invoice_items.each_with_index do |line, index|
+      line.invoice_id = nil
+      invoice_items_tmp << line.dup
+    end
+    invoice_items_tmp
+  end
+  
+  def reset_for_cloning
+    self.active_date = Date.today
+    self.aasm_state = "draft"
+    self.total_payed = 0
+    self.number = nil
+    self
   end
   
   def company_name=

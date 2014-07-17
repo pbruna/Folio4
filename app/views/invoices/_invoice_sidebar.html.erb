@@ -26,7 +26,10 @@
 			<% if @invoice.may_edit? %>
 				<li><%= fa_icon "edit"%><%= link_to " Editar venta", edit_invoice_path(@invoice) %></li>
 			<% end %>
-			<li><%= fa_icon "camera"%><a href=""> Duplicar venta</a></li>
+			<li>
+				<%= fa_icon "camera"%>
+				<%= link_to " Duplicar venta", clone_invoice_path(@invoice) %>
+			</li>
 			
 			<% if @invoice.draft? %>
 				<li><%= fa_icon "trash-o"%>

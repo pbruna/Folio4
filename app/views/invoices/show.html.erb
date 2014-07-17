@@ -1,20 +1,34 @@
 <div class="row document">
-		<div id="invoice" class="row span9">
+	<div class="row span9">
+		<div id="invoice">
 			
 			<%= render :partial => 'invoices/shared/invoice_header'%>
 			
 			<%= render :partial => 'shared/flash' %>
 			
 			<%= render :partial => 'invoices/shared/show_invoice_details'%>
+
+
+			<div style="padding-left:15px ">
+				<a type="button" class="" href="#" data-toggle="collapse" 						data-target="#invoice-<%= @invoice.id %>-details">
+					Detalles
+			    </a>
+			</div>
 			
-			<%= render :partial => "invoices/shared/show_invoice_items" %>
+			<div id="invoice-<%= @invoice.id %>-details" class="collapse">
+				<%= render :partial => "invoices/shared/show_invoice_items" %>
 			
-			<%= render :partial => "invoices/shared/invoice_total"%>
+				<%= render :partial => "invoices/shared/invoice_total"%>
+			</div>
 			
 		</div>
 		
+		<%= render :partial => "invoices/shared/invoice_extra_info" %>
+		
+	</div>
 		
 		<%= render :partial => "invoice_sidebar" %>
+		
 		
 		<%= render_modal_form(
 			id: "invoice-change-status",
@@ -23,6 +37,6 @@
 			object: "invoice",
 			object_id: @invoice.id,
 			body: ()) %>
-		
-	
+			
+
 </div>
