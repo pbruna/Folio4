@@ -1,13 +1,13 @@
 <div id="invoice-extra-info">
 	<ul class="nav nav-tabs">
-	  <li class="active"><a href="#comments" data-toggle="tab">Comentarios</a></li>
-	  <li><a href="#attachments" data-toggle="tab">Adjuntos</a></li>			  
+	  <li class="active"><a href="#invoice-comments" data-toggle="tab">Comentarios</a></li>
+	  <li><a href="#invoice-attachments" data-toggle="tab">Adjuntos</a></li>			  
 	</ul>
 	<div class="tab-content">
-		<div id="comments" class="tab-pane active">
-			Comentarios
+		<div id="invoice-comments" class="tab-pane active">
+			<%= render partial: "comments/comments", locals: {object: @invoice} %>
 		</div>
-		<div id="attachments" class="tab-pane">
+		<div id="invoice-attachments" class="tab-pane">
 			Adjuntos
 		</div>
 	</div>

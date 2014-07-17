@@ -1,0 +1,27 @@
+<div class="comment">
+	<ul class="inline unstyled">
+		<li class="avatar">
+			<%= display_user_avatar(current_user) %>
+		</li>
+		<li>
+			<%= form_for @comment do |f| -%>
+				<div class="comment-body">
+					<div class="comment-body-header">
+						<div class="comment-body-header-text">
+							Agregar comentario
+						</div>
+						<div classs="comment-body-header-menu"></div>
+					</div>
+					<div class="comment-body-content">
+						<%= f.text_area :message, placeholder: "Escribe tu comentario" %>
+					</div>
+					<div class="comment-body-footer">
+						<div class="form-actions" style="text-align: right;">
+							<%= f.submit "Comentar", class: "btn btn-success"%>
+						</div>
+					</div>
+				</div>
+			<% end -%>
+		</li>
+	</ul>
+</div>
