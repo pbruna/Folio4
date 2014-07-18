@@ -1,10 +1,10 @@
-<div class="comment">
+<div class="comment comment-form">
 	<ul class="inline unstyled">
 		<li class="avatar">
 			<%= display_user_avatar(current_user) %>
 		</li>
 		<li>
-			<%= form_for @comment do |f| -%>
+			<%= form_for @comment, remote: true do |f| -%>
 				<div class="comment-body">
 					<div class="comment-body-header">
 						<div class="comment-body-header-text">
@@ -12,11 +12,21 @@
 						</div>
 						<div classs="comment-body-header-menu"></div>
 					</div>
+					<div class="comment-error-block">
+						No fue posible agregar el comentario, por favor prueba nuevamente.
+					</div>
 					<div class="comment-body-content">
 						<%= f.text_area :message, placeholder: "Escribe tu comentario" %>
+						<%= f.hidden_field :author_id, value: current_user.id %>
+						<%= f.hidden_field :author_type, value: current_user.class.to_s %>
+						<%= f.hidden_field :commentable_id, value: object.id %>
+						<%= f.hidden_field :commentable_type, value: object.class.to_s %>
 					</div>
 					<div class="comment-body-footer">
-						<div class="form-actions" style="text-align: right;">
+						<div class="comment-email-alert">
+							El comentario se enviará por correo a todos los usuarios de Folio.
+						</div>
+						<div class="form-actions">
 							<%= f.submit "Comentar", class: "btn btn-success"%>
 						</div>
 					</div>

@@ -1,0 +1,4 @@
+$("#comments").append("<%= escape_javascript(render(:partial => 'comments/comment', :locals => {:comment => @comment})) %>");
+$("#comment-<%= @comment.id %>").hide();
+$("#comment-<%= @comment.id %>").fadeIn();
+$("#new_comment")[0].reset();

@@ -44,4 +44,8 @@ module ApplicationHelper
     render partial: "shared/modal_form", locals: {options: options}
   end
   
+  def textarea_display(text)
+      text.gsub(/\n/, "<br/>").html_safe
+  end
+  
 end

@@ -66,6 +66,10 @@ class Account < ActiveRecord::Base
   def self.current_id
     Thread.current[:tenant_id]
   end
+  
+  def users_emails_array
+    users.map {|u| u.email}
+  end
 
   private
 
