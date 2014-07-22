@@ -25,6 +25,8 @@
 			<div class="form-actions">
 				<%= f.hidden_field :attachable_id, value: object.id %>
 				<%= f.hidden_field :attachable_type, value: object.class.to_s %>
+				<%= f.hidden_field :author_id, value: current_user.id %>
+				<%= f.hidden_field :author_type, value: current_user.class.to_s %>
 				<%= f.submit "Adjuntar", class: "btn btn-success"%>
 			</div>
 		</div>
