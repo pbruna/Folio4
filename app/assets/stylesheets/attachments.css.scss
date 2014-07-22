@@ -1,0 +1,158 @@
+// Place all the styles related to the attachments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.attachment-form {
+	border-top: 2px solid #f3f3f3;
+	padding-top: 20px;
+}
+
+.attachment {
+	
+	.attachment-ul {
+		margin-bottom: 5px;
+	}
+	
+	.avatar {
+		padding: 0px;
+		width: 48px;
+		height: 48px;
+		border: 1px solid #bbb;
+		border-radius: 4px;
+	}
+	
+	.attachment-bridge {
+		border-left: 1px solid #ddd;
+		height: 15px;
+		margin-left: 20px;
+	}
+	
+}
+
+.attachment-body {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	position: relative;
+	
+	.attachment-error-block {
+		@extend .alert;
+		@extend .alert-error;
+		margin-bottom: 5px;
+		border-radius: 0px;
+		display: none;
+	}
+	
+	&:before {
+		position: absolute;
+		top: 11px;
+		left: -16px;
+		right: 100%;
+		width: 0;
+		height: 0;
+		display: block;
+		content: " ";
+		border-color: transparent;
+		border-style: solid solid outset;
+		pointer-events: none;
+		border-right-color: #dddddd;
+		border-width: 8px;
+		transition: border-right-color 0.65s ease-out;
+		-webkit-transition: border-right-color 0.65s ease-out 0;
+	}
+	
+	&:after {
+		border-width: 7px;
+		border-right-color: #f7f7f7;
+		margin-top: 1px;
+		margin-left: 2px;
+		transition: border-right-color 0.65s ease-out;
+		-webkit-transition: border-right-color 0.65s ease-out 0;
+	}
+	
+	.attachment-body-header {
+		background: #f7f7f7;
+		padding: 6px 10px 0;
+		border-radius: 3px 3px 0 0;
+		border-bottom: 1px solid #eee;
+		
+		.attachment-body-header-text {
+			max-width: 78%;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			font-size: 13px;
+			
+			.author {
+				font-weight: bold;
+				color: #555;
+			}
+			
+			.date {
+				color: rgb(119,119,119);
+			}
+			
+		}
+		
+	}
+	
+	.attachment-body-content{
+		color: #888;
+		font-size: 13px;
+		padding: 10px;
+		border: 1px dashed #ddd;
+		margin: 20px;
+		min-height: 80px;
+		border-radius: 4px;
+		
+		.file-input-container {
+			position: relative;
+			overflow: hidden;
+			
+			input[type=file]{
+				position: absolute;
+			    top: 0;
+			    right: 0;
+			    min-width: 100%;
+			    min-height: 100%;
+			    font-size: 999px;
+			    text-align: right;
+			    filter: alpha(opacity=0);
+			    opacity: 0;
+			    outline: none;
+			    background: white;
+			    cursor: pointer;
+			    display: block;
+			}
+		}
+		
+		.attachment-resources {
+			color: black;
+			padding: 15px;
+			
+			.upload {
+				float: left;
+				margin-right: 20px;
+			}
+		}
+		
+	}
+	
+	.attachment-body-footer {
+		.form-actions {
+			margin: 0px;
+			background-color: white;
+			border-top: none;
+			padding: 0px 17px 20px;
+			text-align: right;
+		}
+		
+		.attachment-email-alert {
+			float: left;
+			color: #777777;
+			margin-left: 20px;
+		}
+		
+	}
+	
+
+	
+}

@@ -22,13 +22,16 @@
 //= require autonumeric
 //= require knockout
 //= require bootstrap.file-input
+//= require jquery.remotipart
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require_tree .
 
 var Folio = Folio || {};
 
 $(function () { 
 	$("input,select,textarea").not("[type=submit],.no-validate").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
-	$('input[type=file]').bootstrapFileInput();
+	$('.file-inputs').bootstrapFileInput();
 
 
 	// Funcion para submit form apretando el boton

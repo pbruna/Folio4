@@ -23,6 +23,7 @@ Folio::Application.routes.draw do
     resources :users
     resources :contacts
     resources :comments
+    resources :attachments
     resources :companies do
       resources :invoices
       resources :expenses

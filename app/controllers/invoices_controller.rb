@@ -122,6 +122,7 @@ class InvoicesController < ApplicationController
   def show
     @invoice = current_account.invoices.find(params[:id])
     @comment = @invoice.comments.build
+    @attachment = @invoice.attachments.build
   end
   
   private

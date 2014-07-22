@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include UrlHelper
   before_action :authenticate_user!
   before_action :set_account
-  #around_action :scope_current_account, :unless => :devise_controller?
+  around_action :scope_current_account, :unless => :devise_controller?
   protect_from_forgery with: :exception
   layout :layout_by_resource
 

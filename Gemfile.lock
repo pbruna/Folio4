@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/Springest/jquery-fileupload-rails.git
+  revision: 2ebfdf1cc9a768f36420aaad9668ba68f2a5943b
+  specs:
+    jquery-fileupload-rails (0.4.2)
+      actionpack (>= 4)
+      railties (>= 4)
+
+GIT
   remote: https://github.com/kebab-project/flat-ui-sass
   revision: 7d1c1a29f9c4847a8f0318f1038f683eb3f69845
   specs:
@@ -198,6 +206,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.1)
       json (~> 1.4)
+    remotipart (1.2.1)
     ruby_identicon (0.0.3)
       chunky_png (~> 1.3.0)
     rubyzip (1.1.4)
@@ -281,6 +290,7 @@ DEPENDENCIES
   high_voltage
   indicadores_cl!
   jbuilder (~> 1.0.1)
+  jquery-fileupload-rails!
   jquery-rails
   jquery-ui-rails
   knockoutjs-rails
@@ -293,6 +303,7 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0.pre)
   rails4-autocomplete!
   rb-fsevent
+  remotipart (~> 1.2)
   ruby_identicon
   rut_chileno
   sass-rails (~> 4.0.2)

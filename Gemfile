@@ -85,3 +85,5 @@ gem 'aasm'
 gem 'rails4-autocomplete', git: "https://github.com/pbruna/rails4-autocomplete", branch: "master"
 gem 'knockoutjs-rails'
 gem 'autonumeric-rails'
+gem 'remotipart', '~> 1.2'
+gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'

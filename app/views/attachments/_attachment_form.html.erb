@@ -1,0 +1,77 @@
+<div class="attachment attachment-form">
+	<%= form_for Attachment.new, :html => { :multipart => true  } do |f| %>
+	<div class="attachment-body">
+		<div class="attachment-body-header">
+			<div class="attachment-body-header-text">
+				Adjuntar archivos
+			</div>
+			<div classs="attachment-body-header-menu"></div>
+		</div>
+		<div class="attachment-body-content">
+			<div>
+				<%= fa_icon "paperclip"%> Para adjuntar arrasta y suelta aquí los archivos o
+				<span class="file-input-container">
+					<a href="#">seleccionalos de tu computador</a> <%= f.file_field :resource, :multiple => true%>
+				</span>
+			</div>
+			<div class="attachment-resources">
+				
+			</div>
+		</div>
+		<div class="attachment-body-footer">
+			<div class="attachment-email-alert">
+				Se notificará a todos los usuarios de Folio
+			</div>
+			<div class="form-actions">
+				<%= f.hidden_field :attachable_id, value: object.id %>
+				<%= f.hidden_field :attachable_type, value: object.class.to_s %>
+				<%= f.submit "Adjuntar", class: "btn btn-success"%>
+			</div>
+		</div>
+	</div>
+	  
+	<% end %>
+	<script>
+	  var fileUploadErrors = {
+	    maxFileSize: 'File is too big',
+	    minFileSize: 'File is too small',
+	    acceptFileTypes: 'Filetype not allowed',
+	    maxNumberOfFiles: 'Max number of files exceeded',
+	    uploadedBytes: 'Uploaded bytes exceed file size',
+	    emptyResult: 'Empty file upload result'
+	  };
+	</script>
+
+	<script type="text/javascript" charset="utf-8">
+	    $(function () {
+	        // Initialize the jQuery File Upload widget:
+			$('#new_attachment').fileupload({
+			  dataType: "script",
+			  dropZone: ".attachment-body-content",
+			  autoUpload: false,
+			  add: function(e, data) {
+			    data.context = $(tmpl("template-upload", data.files[0]));
+			    $('#new_attachment .attachment-resources').append(data.context);
+			    return data.submit();
+			  },
+			  progress: function(e, data) {
+			    var progress;
+			    if (data.context) {
+			      progress = parseInt(data.loaded / data.total * 100, 10);
+			      return data.context.find('.bar').css('width', progress + '%');
+			    }
+			  }
+			});
+	        
+	    });
+	</script>
+</div>
+
+<script id="template-upload" type="text/x-tmpl">
+<div>
+	 <div class="upload">
+	  <%= fa_icon "times-circle "%> {%=o.name%}
+	 </div>
+	<div class="progress"><div class="bar" style="width: 0%;"></div></div>
+</div>
+</script>
