@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   belongs_to :account
   has_many :audits, :dependent => :destroy
   has_many :comments, as: :author
+  has_many :attachments, as: :author
   
   before_destroy :check_owner
   before_create  :active_user

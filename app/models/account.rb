@@ -7,6 +7,7 @@ class Account < ActiveRecord::Base
   has_many :audits, :dependent => :destroy
   has_many :companies, :dependent => :destroy
   has_many :contacts, through: :companies
+  has_many :attachments, :dependent => :destroy
   accepts_nested_attributes_for :users, :allow_destroy => true
 
   validates_uniqueness_of :subdomain

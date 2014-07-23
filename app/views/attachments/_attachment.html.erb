@@ -1,3 +1,17 @@
 <% unless attachment.id.nil? %>
+<tr id="attachment-<%= attachment.id %>">
+	<td class="attachment-name"><%= attachment.name %></td>
+	<td class="attachment-details"><%= I18n.l attachment.created_at.to_date, format: :dd_MM_yy %></td>
+	<td class="attachment-details"><%= attachment.author_name %></td>
+	<td class="attachment-actions">
+		<%= link_to attachment.download_url, class: "btn-download" do %>
+			<%= fa_icon "download" %> <span style="margin-left: 5px;">Descargar</span>
+		<% end %>
+		
+		<%= link_to attachment_path(attachment.id), remote: true, method: :delete, class: "btn-delete delete" do %>
+			<%= fa_icon "times-circle" %>
+		<% end %>
+	</td>
+</tr>
 
 <% end %>

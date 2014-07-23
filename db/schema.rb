@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722151732) do
+ActiveRecord::Schema.define(version: 20140722184057) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 20140722151732) do
     t.datetime "resource_updated_at"
     t.integer  "author_id"
     t.string   "author_type"
+    t.integer  "account_id"
   end
 
+  add_index "attachments", ["account_id"], name: "index_attachments_on_account_id"
   add_index "attachments", ["author_id", "author_type"], name: "index_attachments_on_author_id_and_author_type"
 
   create_table "audits", force: true do |t|

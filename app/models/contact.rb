@@ -3,6 +3,7 @@ class Contact < ActiveRecord::Base
 	belongs_to :account
 	belongs_to :company
   has_many :comments, as: :author
+  has_many :attachments, as: :author
 
 	validates_presence_of :name, :company_id, :email
 	validates_format_of :email, :with  => Devise.email_regexp

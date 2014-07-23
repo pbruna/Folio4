@@ -25,6 +25,8 @@
 //= require jquery.remotipart
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require underscore
+//= require jquery-uuid
 //= require_tree .
 
 var Folio = Folio || {};

@@ -2,9 +2,83 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#show-attachment-body {
+	text-align: right;
+}
+
+.btn-download {
+	@extend .btn;
+	@extend .btn-mini;
+	background: white;
+	color: #777;
+}
+
+.btn-addfiles {
+	@extend .btn;
+	@extend .btn-mini;
+	margin-right: 35px;
+}
+
+.btn-delete {
+	@extend .btn;
+	@extend .btn-mini;
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-color: none;
+	margin-left: 5px;
+}
+
+.btn-delete:hover {
+	background: none;
+}
+
+a.delete {
+	color: gray;
+	font-size: 18px;
+}
+
+a.delete:hover {
+	color: #bd362f;
+};
+
 .attachment-form {
-	border-top: 2px solid #f3f3f3;
-	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.table-attachments {
+	@extend .table;
+	@extend .table-striped;
+	margin-top: -27px;
+	
+	td, th {
+		vertical-align: middle;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: #666;
+	}
+	
+	th {
+		color: black;
+	}
+	
+	.attachment-details {
+		font-weight: 300;
+		font-size: 13px;
+	}
+	
+	.attachment-name {
+		font-weight: bold;
+		font-weight: bold;
+		width: 260px;
+		color: black;
+	}
+	
+	.attachment-actions {
+		padding-right: 0px;
+		text-align: center;
+	}
+	
 }
 
 .attachment {
@@ -131,6 +205,7 @@
 			.upload {
 				float: left;
 				margin-right: 20px;
+
 			}
 		}
 		

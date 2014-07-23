@@ -1,4 +1,7 @@
-<div class="attachment attachment-form">
+<div id="show-attachment-body" style="<%= "display: none;" unless object.attachments.any?%>">
+	<a class="btn-addfiles">Agregar archivos</a>
+</div>
+<div class="attachment attachment-form" style="<%= "display: none;" if object.attachments.any?%>">
 	<%= form_for Attachment.new, :html => { :multipart => true  } do |f| %>
 	<div class="attachment-body">
 		<div class="attachment-body-header">
@@ -11,7 +14,8 @@
 			<div>
 				<%= fa_icon "paperclip"%> Para adjuntar arrasta y suelta aquí los archivos o
 				<span class="file-input-container">
-					<a href="#">seleccionalos de tu computador</a> <%= f.file_field :resource, :multiple => true%>
+					<a href="#">seleccionalos de tu computador</a> 
+					<%= f.file_field :resource, :multiple => true, :name => "attachment[resource]"%>
 				</span>
 			</div>
 			<div class="attachment-resources">
@@ -20,14 +24,15 @@
 		</div>
 		<div class="attachment-body-footer">
 			<div class="attachment-email-alert">
-				Se notificará a todos los usuarios de Folio
+				
 			</div>
 			<div class="form-actions">
 				<%= f.hidden_field :attachable_id, value: object.id %>
 				<%= f.hidden_field :attachable_type, value: object.class.to_s %>
 				<%= f.hidden_field :author_id, value: current_user.id %>
 				<%= f.hidden_field :author_type, value: current_user.class.to_s %>
-				<%= f.submit "Adjuntar", class: "btn btn-success"%>
+				<%= f.button "Cancelar", class: "btn", name: "cancel" %>
+				<%= f.submit "Aceptar", class: "btn btn-success" %>
 			</div>
 		</div>
 	</div>
@@ -46,12 +51,22 @@
 
 	<script type="text/javascript" charset="utf-8">
 	    $(function () {
+			// Generamos un uuid para poder identificar el adjunto y
+			// así poder identificarlo por si el usuario lo quiere borrar
+			// Este uuid se usa en el template
+			var uuid = $.uuid();
 	        // Initialize the jQuery File Upload widget:
 			$('#new_attachment').fileupload({
 			  dataType: "script",
 			  dropZone: ".attachment-body-content",
+			  formData: function(){
+				  array = $('#new_attachment').serializeArray();
+				  array.push({name: "uuid", value: uuid});
+				  return array;
+			  },
 			  autoUpload: false,
 			  add: function(e, data) {
+				data.files[0].uuid = uuid;
 			    data.context = $(tmpl("template-upload", data.files[0]));
 			    $('#new_attachment .attachment-resources').append(data.context);
 			    return data.submit();
@@ -70,9 +85,12 @@
 </div>
 
 <script id="template-upload" type="text/x-tmpl">
-<div>
+<div id="{%= o.uuid %}">
 	 <div class="upload">
-	  <%= fa_icon "times-circle "%> {%=o.name%}
+		 <%= link_to attachment_path(), class: "delete" do %>
+		  <%= fa_icon "times-circle" %>
+		 <% end %>
+		 {%=o.name%}
 	 </div>
 	<div class="progress"><div class="bar" style="width: 0%;"></div></div>
 </div>

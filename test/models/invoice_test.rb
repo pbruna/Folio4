@@ -91,7 +91,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.active
     @invoice.total_payed = @invoice.total - 100
     @invoice.save
-    assert_equal("active", @invoice.status)
+    assert_not_equal("closed", @invoice.status)
   end
   
   test "when total_payed is equal to total the invoice gets closed" do
@@ -191,6 +191,15 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.save
     @invoice.pay("$ #{@invoice.total.to_i}")
     assert(@invoice.closed?, "Factura debería estar cerrada")
+  end
+  
+  test "if today is greater tha due date, the invoice is due" do
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    @invoice.due_date = Date.today.months_ago 2
+    @invoice.save
+    assert_equal("due", @invoice.status)
   end
 
   

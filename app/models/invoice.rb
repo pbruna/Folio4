@@ -210,7 +210,13 @@ class Invoice < ActiveRecord::Base
   
   
   def status
+    return "due" if is_due?
     aasm_state
+  end
+  
+  # Esta vencida si se pasó la fecha y está activa
+  def is_due?
+    due_date < Date.today && active?
   end
   
   def self.currencies

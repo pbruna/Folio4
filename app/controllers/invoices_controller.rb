@@ -102,7 +102,6 @@ class InvoicesController < ApplicationController
   def new
     @invoice = current_account.invoices.new
     @invoice.invoice_items.build
-    @invoice.attachments.build
     @invoice.build_reminder
   end
   
@@ -122,7 +121,6 @@ class InvoicesController < ApplicationController
   def show
     @invoice = current_account.invoices.find(params[:id])
     @comment = @invoice.comments.build
-    @attachment = @invoice.attachments.build
   end
   
   private

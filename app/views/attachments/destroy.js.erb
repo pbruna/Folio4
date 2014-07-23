@@ -1,0 +1,8 @@
+<% if @attachment.valid? %>
+alert('No se pudo borrar: <%= j @attachment.errors.full_messages.join(', ').html_safe %>');
+<% else %>
+$("#attachment-<%= @attachment.id %>").fadeOut("slow", function(){
+	$("#attachment-<%= @attachment.id %>").remove();	
+});
+
+<% end %>
