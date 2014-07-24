@@ -1,8 +1,18 @@
 <div class="invoice-details row" style="padding-left: 15px;">
 	<div class="span3 pull-right" style="margin-top: 10px; margin-right: 15px;">
 		<ul class="unstyled" style="font-size: 15px">
-			<li style="text-align: right;">Emitida: <%= I18n.l @invoice.active_date, format: :dd_MM_yy %></li>
-			<li style="text-align: right;">Vence: <%= I18n.l @invoice.due_date, format: :dd_MM_yy %></li>
+			<li style="text-align: right;">
+				<span class="draft">Emitida el <%= I18n.l @invoice.active_date, format: :dd_MM_yy %></span>
+			</li>
+			<li style="text-align: right;">
+				<% if @invoice.is_due? %>
+					<span class="due ">Atrasada <%= @invoice.late_days %> días</span>
+				<% elsif @invoice.closed? %>
+					<span class="closed">Pagada el <%= I18n.l @invoice.close_date, format: :dd_MM_yy %></span>
+				<% else %>
+					Vence <%= I18n.l @invoice.due_date, format: :dd_MM_yy %>
+				<% end %>
+			</li>
 		</ul>
 	</div>
 	<div class="span5">

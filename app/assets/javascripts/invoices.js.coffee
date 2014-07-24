@@ -142,6 +142,9 @@ window.Invoice = Invoice
 
 
 $ ->
+		# Activamos los Tooltips de ayuda en el pago de abonos
+		$("#invoice-total .invoice-advances span").tooltip()
+		
 		autonumeric_options = {aSep: '.', aDec: ',', aSign: '', aPad: "false"}
 		# Este if es para que solo se aplique el Binding the Knockout si es que existe
 		# el formulario
@@ -159,11 +162,8 @@ $ ->
 	
 		$("#invoice_total_payed").keyup () ->
 			payment = $(this).val().replace(/(\$\s+|\.)/ig,"")
-			console.log payment
 			debt = $("#debt").data("debt")
-			console.log debt
 			delta = debt - payment 
-			console.log delta
 			if delta > 0
 				$("div[id^='pay-invoice'] input[type=submit]").
 				removeClass("btn-primary").addClass("btn-warning").

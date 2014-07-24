@@ -5,7 +5,32 @@
 			<li style="width: 150px;" data-bind="text: original_currency_total().formatMoney(0)"><%= round_number_and_delimiter(@invoice.original_currency_total)%></li>
 		</ul>
 		<% if input_disabled? %>
-			
+			<% if @invoice.taxed? || @invoice.currency != "CLP" %>
+				<ul class="invoice-total-detail unstyled">
+					<% if @invoice.currency != "CLP" %>
+						<li class="<%= 'currency-rate-border' if @invoice.taxed? %>">
+							<div class="left">Cambio</div>
+							<div class="right">
+								<%= "$ " + round_number_and_delimiter(@invoice.currency_convertion_rate) %>
+							</div>
+						</li>
+					<% end %>
+					<% if @invoice.taxed? %>
+						<li>
+							<ul class="unstyled">
+								<li class="left">Neto</li>
+								<li class="right">
+									<%= "$ " + round_number_and_delimiter(@invoice.net_total) %>
+								</li>
+								<li class="left">IVA</li>
+								<li class="right">
+									<%= "$ " + round_number_and_delimiter(@invoice.tax_total) %>
+								</li>
+							</ul>
+						</li>
+					<% end %>
+				</ul>
+			<% end %>
 		<% end %>
 	</div>
 </div>

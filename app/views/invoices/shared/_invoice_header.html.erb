@@ -1,12 +1,14 @@
 <header>
-	<ul class="unstyled inline pull-right">
+	<ul class="invoice-header-labels">
 		<li>
-			<span class="invoice-label invoice-<%= @invoice.status %>">
-				<%= (I18n.t "invoice.#{@invoice.status}").humanize %>
+			<span class="invoice-header-label invoice-label invoice-currency" data-bind="text: invoice_tax_label">
+				<%= invoice_tax_label @invoice %>
 			</span>
 		</li>
 		<li>
-			<span class="invoice-label invoice-currency" data-bind="text: invoice_tax_label"><%= invoice_tax_label @invoice %></span>
+			<span class="invoice-header-label invoice-label invoice-<%= @invoice.status %>">
+				<%= (I18n.t "invoice.#{@invoice.status}").humanize %>
+			</span>
 		</li>
 	</ul>
 	<% if input_disabled? %>

@@ -48,14 +48,16 @@
 	
 	<div class="invoice-actions">
 		<ul class="unstyled">
-			<li>
-				<%= fa_icon "calendar"%><a href="">Recordatorio</a>
-				<div class="invoice-option-explain">
-					<small>
-						<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> y <%= @invoice.contact_name %>
-					</small>
-				</div>
-			</li>
+			<% unless @invoice.closed? %>
+				<li>
+					<%= fa_icon "calendar"%><a href="">Recordatorio</a>
+					<div class="invoice-option-explain">
+						<small>
+							<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> y <%= @invoice.contact_name %>
+						</small>
+					</div>
+				</li>
+			<% end %>
 			<li>
 				<%= fa_icon "repeat"%><a href="">Factura recurrente</a>
 				<div class="invoice-option-explain">

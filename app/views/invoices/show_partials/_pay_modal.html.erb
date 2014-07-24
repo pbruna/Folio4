@@ -9,7 +9,7 @@
       <div class="modal-body">
 		<div class="input-prepend input-append">
 		  <span class="add-on">Pagar</span>
-		  <%= f.text_field :total_payed, value: "#{@invoice.debt.to_i}", class: "span2 currency" %>
+		  <%= f.text_field :total_payed, value: "#{@invoice.debt.to_i}", class: "span2 currency", autofocus: true %>
 		  <span class="add-on">de</span>
 		  <span class="add-on" style="width: 150px; text-align: left; padding-left: 10px;" id="debt" data-debt="<%= @invoice.debt.to_i %>"> <%= number_with_delimiter @invoice.debt.to_i %> </span>
 		</div>

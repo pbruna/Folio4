@@ -223,6 +223,22 @@ ul.ui-autocomplete {
 			background-color: #333333;
 		}
 		
+		.invoice-header-labels {
+			@extend .unstyled;
+			@extend .inline;
+			@extend .pull-right;
+			margin-top: -10px;
+			
+			.invoice-header-label {
+				font-size: 14px;
+				line-height: 18px;
+				padding: 5px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+		}
+		
 	}
 	
 	#invoice-items-header {
@@ -288,13 +304,42 @@ ul.ui-autocomplete {
 			padding: 20px;
 			padding-bottom: 10px;
 			background: #f6f5ed;
-			margin-bottom: 40px;
+			margin-bottom: 20px;
 			font-size: 24px;
 			border-top: 1px solid #C9C4C4;
 			border-left: 1px solid #C9C4C4;
 			border-bottom: 1px solid #C9C4C4;
-			padding-left: 30px;
+			padding-left: 40px;
 			
+		}
+		
+		.invoice-total-detail {
+			font-size: 16px;
+			font-weight: 300;
+			margin-top: 15px;
+		
+			.currency-rate {
+				@extend .unstyled;
+				@extend .inline;
+			}
+		
+			.currency-rate-border {
+				border-bottom: 1px #bbb dashed;
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+			}
+		
+			.left {
+				float: left;
+				text-align: left;
+				padding-left: 5px;
+			}
+		
+			.right {
+				text-align: right;
+				padding-right: 8px;
+			}
+		
 		}
 		
 	}
@@ -313,7 +358,13 @@ ul.ui-autocomplete {
 		text-align: center;
 		padding-top: 5px;
 		color: whitesmoke;
-		padding-bottom: 15px;
+		padding-bottom: 16px;
+		
+		.invoice-advances {
+			margin-top: -5px;
+			font-size: 13px;
+			font-weight: 300;
+		}
 		
 		.original-currency-total {
 			color: whitesmoke;
@@ -344,11 +395,6 @@ ul.ui-autocomplete {
 		background: $cancelled;
 	}
 	
-	.invoice-total-detail {
-		padding: 20px;
-		padding-top: 15px;
-		border-bottom: 1px solid #C9C4C4;
-	}
 	
 	#invoice-payments {
 		font-weight: normal;

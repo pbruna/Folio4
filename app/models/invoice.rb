@@ -210,6 +210,7 @@ class Invoice < ActiveRecord::Base
   
   
   def status
+    return "draft" if new_record?
     return "due" if is_due?
     aasm_state
   end
@@ -217,6 +218,10 @@ class Invoice < ActiveRecord::Base
   # Esta vencida si se pasó la fecha y está activa
   def is_due?
     due_date < Date.today && active?
+  end
+  
+  def late_days
+    (Date.today - due_date).to_i
   end
   
   def self.currencies
@@ -314,7 +319,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def ready_for_activation?
-    return (has_contact? && has_number? && has_invoice_attachment? && valid?)
+    return (has_contact? && has_number? && valid?)
   end
   
   def set_currency_convertion_rate(indicador)

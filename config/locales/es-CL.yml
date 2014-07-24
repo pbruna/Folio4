@@ -214,7 +214,7 @@ es-CL:
     draft: borrador
     due: vencida
     closed: pagada
-    cancelled: cancelada
+    cancelled: anulada
     actives: activas
     drafts: borrador
     dues: vencidas

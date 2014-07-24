@@ -48,9 +48,9 @@ $(function () {
 	// mostrarlo de nuevo empiece con una ventana limpia
 	$(".modal").on('hidden', function(){$(this).removeData('modal')})
 	
-	// Esto permite activar el tab correspondiente
+	// Esto permite activar el tab correspondiente en las facturas
 	var url = document.location.toString();
-	if (url.match('#')) {
+	if (url.match(/#\w+/)) {
 	    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
 	} 
 
