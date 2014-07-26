@@ -150,7 +150,7 @@ $ ->
 			$("#invoices-totals-resume-table input[type=checkbox]:checked").each ->
 				$(this).prop "checked", false
 				
-			$(this).prop "checked", true
+			$(this).prop "checked", checkedState
 			$("#status_search").submit()
 			
 		# Activamos los Tooltips de ayuda en el pago de abonos
