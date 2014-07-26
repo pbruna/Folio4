@@ -142,7 +142,50 @@ window.Invoice = Invoice
 
 
 $ ->
-	
+		# Para ordenar las facturas en el Index
+		$(".dropdown-sorter.column ul li").click () ->
+			original_link = $(this).parent().siblings("a")
+			selected_link = $(this).children("a")
+			
+			selected_link_text = selected_link.text()
+			original_link_text = original_link.text()
+			
+			selected_link_sorted_by = selected_link.data("sorted_by")
+			original_link_sorted_by = original_link.data("sorted_by")
+			
+			# Ahora hacemos los cambiamos
+			original_link.data("sorted_by", selected_link_sorted_by)
+			selected_link.data("sorted_by", original_link_sorted_by)
+			original_link.text(selected_link_text)
+			selected_link.text(original_link_text)
+			
+			sorted_direction_selected = $(".dropdown-sorter.direction a.selected").data("sorted_direction")
+			sorted_by_selected = $(".dropdown-sorter.column a.selected").data("sorted_by")
+			
+			jQuery.get("/invoices.js/?search[sorted_direction]="+sorted_direction_selected + "&search[sorted_by]=" + sorted_by_selected )
+			
+			
+		$(".dropdown-sorter.direction ul li").click () ->
+			original_link = $(this).parent().siblings("a")
+			selected_link = $(this).children("a")
+			
+			selected_link_text = selected_link.text()
+			original_link_text = original_link.text()
+			
+			selected_link_sorted_by = selected_link.data("sorted_direction")
+			original_link_sorted_by = original_link.data("sorted_direction")
+			
+			# Ahora hacemos los cambiamos
+			original_link.data("sorted_direction", selected_link_sorted_by)
+			selected_link.data("sorted_direction", original_link_sorted_by)
+			original_link.text(selected_link_text)
+			selected_link.text(original_link_text)
+			
+			sorted_direction_selected = $(".dropdown-sorter.direction a.selected").data("sorted_direction")
+			sorted_by_selected = $(".dropdown-sorter.column a.selected").data("sorted_by")
+			
+			jQuery.get("/invoices.js/?search[sorted_direction]="+sorted_direction_selected + "&search[sorted_by]=" + sorted_by_selected )
+
 		# Envia la busqueda por estado al elegir un checkbox
 		$("#status_search input[type=checkbox]").change () ->
 			checkedState = $(this).prop("checked")

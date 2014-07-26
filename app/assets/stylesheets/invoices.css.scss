@@ -533,3 +533,25 @@ ul.ui-autocomplete {
 		text-align: right;
 	}
 }
+
+.invoices-sorter-menu {
+	@extend h4;
+	font-weight:normal;
+	padding: 10px;
+	padding-left: 4px;
+	
+	.dropdown-sorter {
+		@extend .dropdown;
+		display: inline;
+		padding: 5px;
+		border: 1px dashed #bbb;
+		margin-left: 5px;
+		margin-right: 5px;
+		
+		a {
+			border-bottom: dashed 1px solid;
+		}
+		
+	}
+	
+}

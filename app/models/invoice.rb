@@ -316,10 +316,10 @@ class Invoice < ActiveRecord::Base
     Rails.logger.debug("AQUI #{params}")
     params = Hash.new(nil) if params.nil?
     status = params["status"].nil? ? "all_invoices" : params["status"]
-    sorted_by = params["sorted"].nil? ? "active_date" : params["sorted"]
-    sorted_direcction = params["direcction"].nil? ? "DESC" : params["direcction"]
+    sorted_by = params["sorted_by"].nil? ? "active_date" : params["sorted_by"]
+    sorted_direction = params["sorted_direction"].nil? ? "DESC" : params["sorted_direction"]
     query_items = params["query_items"].nil? ? {} : params["query_items"]
-    send(status).where(query_items).order("#{sorted_by} #{sorted_direcction}")
+    send(status).where(query_items).order("#{sorted_by} #{sorted_direction}")
   end
   
   # Return the sum of the totals

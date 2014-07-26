@@ -4,24 +4,29 @@
 		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
 	</div>
 	
-	<h4 style="font-weight:normal; padding: 10px; padding-left: 4px">
-		<div >
-			Todas las ventas ordenadas 
-			<div class="dropdown" style="display: inline; display: inline;
-padding: 5px;
-border: 1px dashed #ddd;
-margin-left: 5px;
-margin-right: 5px;">
-				<a href="#" style="border-bottom: dashed 1px solid;" class="dropdown-toggle" data-toggle="dropdown">por fecha de emisión</a>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					<li role="presentation"><a role="menuitem" href="#">Menu 1</a></li>
-					<li role="presentation"><a role="menuitem" href="#">Menu 2</a></li>
-				</ul>
-			</div>
-			 de 
-			<a href="#">mayor a menor</a>
+	<div class="invoices-sorter-menu">
+		Todas las ventas ordenadas 
+		<div class="dropdown-sorter column">
+			<a href="#" class="dropdown-toggle selected" data-sorted_by="active_date" data-toggle="dropdown">por fecha de emisión</a>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<li role="presentation">
+					<a role="menuitem" data-sorted_by="total" href="#">por monto total</a>
+				</li>
+				<li role="presentation">
+					<a role="menuitem" data-sorted_by="number" href="#">por número</a>
+				</li>
+			</ul>
 		</div>
-	</h4>
+		 de
+ 		<div class="dropdown-sorter direction">
+ 			<a href="#" class="dropdown-toggle selected" data-sorted_direction="DESC" data-toggle="dropdown">de mayor a menor</a>
+ 			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+ 				<li role="presentation">
+					<a role="menuitem" data-sorted_direction="ASC" href="#">de menor a mayor</a>
+				</li>
+ 			</ul>
+ 		</div> 
+	</div>
 	
 <% end %>
 
