@@ -200,7 +200,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def last_used_number
-    last_active_invoice = invoices_for_account.actives.last
+    last_active_invoice = invoices_for_account.active.last
     return 0 if last_active_invoice.nil?
     last_active_invoice.number
   end

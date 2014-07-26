@@ -4,7 +4,24 @@
 		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
 	</div>
 	
-	<h4 style="font-weight:normal; padding: 10px; padding-left: 4px">Todas las ventas ordenadas <a href="#" style="border-bottom: dashed 1px solid;">por fecha de emisión</a> de <a href="#">mayor a menor</a></h4>
+	<h4 style="font-weight:normal; padding: 10px; padding-left: 4px">
+		<div >
+			Todas las ventas ordenadas 
+			<div class="dropdown" style="display: inline; display: inline;
+padding: 5px;
+border: 1px dashed #ddd;
+margin-left: 5px;
+margin-right: 5px;">
+				<a href="#" style="border-bottom: dashed 1px solid;" class="dropdown-toggle" data-toggle="dropdown">por fecha de emisión</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li role="presentation"><a role="menuitem" href="#">Menu 1</a></li>
+					<li role="presentation"><a role="menuitem" href="#">Menu 2</a></li>
+				</ul>
+			</div>
+			 de 
+			<a href="#">mayor a menor</a>
+		</div>
+	</h4>
 	
 <% end %>
 
