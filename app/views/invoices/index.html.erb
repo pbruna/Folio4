@@ -4,25 +4,25 @@
 		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
 	</div>
 	
-	<div class="invoices-sorter-menu">
+	<div class="invoices-sorter-menu" data-search-params="<%= @search_params %>">
 		Todas las ventas ordenadas 
-		<div class="dropdown-sorter column">
-			<a href="#" class="dropdown-toggle selected" data-sorted_by="active_date" data-toggle="dropdown">por fecha de emisión</a>
+		<div class="dropdown-sorter sorted-by">
+			<a href="#" class="dropdown-toggle selected" data-sorted-by="active_date" data-toggle="dropdown">por fecha de emisión</a>
 			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				<li role="presentation">
-					<a role="menuitem" data-sorted_by="total" href="#">por monto total</a>
+					<a role="menuitem" data-sorted-by="total" href="#">por monto total</a>
 				</li>
 				<li role="presentation">
-					<a role="menuitem" data-sorted_by="number" href="#">por número</a>
+					<a role="menuitem" data-sorted-by="number" href="#">por número</a>
 				</li>
 			</ul>
 		</div>
 		 de
- 		<div class="dropdown-sorter direction">
- 			<a href="#" class="dropdown-toggle selected" data-sorted_direction="DESC" data-toggle="dropdown">de mayor a menor</a>
+ 		<div class="dropdown-sorter sorted-direction">
+ 			<a href="#" class="dropdown-toggle selected" data-sorted-direction="DESC" data-toggle="dropdown">de mayor a menor</a>
  			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
  				<li role="presentation">
-					<a role="menuitem" data-sorted_direction="ASC" href="#">de menor a mayor</a>
+					<a role="menuitem" data-sorted-direction="ASC" href="#">de menor a mayor</a>
 				</li>
  			</ul>
  		</div> 
@@ -47,6 +47,8 @@
 				<%= totals_resume_invoices_row("draft", current_account.total_draft) %>
 				<%= totals_resume_invoices_row("closed", current_account.total_closed) %>
 			</table>
+			<%= hidden_field_tag "search[sorted_by]" %>
+			<%= hidden_field_tag "search[sorted_direction]" %>
 		<% end %>
 		
 	</div>

@@ -103,6 +103,7 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = current_account.invoices_search(params[:search])
+    @search_params = params.to_param
     respond_to do |format|
       format.html
       format.js

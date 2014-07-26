@@ -1,2 +1,3 @@
 $("#invoices").html("<%= escape_javascript(render partial: 'invoices_table', locals: {invoices: @invoices}) %>");
+$(".invoices-sorter-menu").data("search-params", "<%= @search_params %>");
 $("#invoices").effect("highlight", {color: "whiteSmoke"});
