@@ -16,16 +16,25 @@
 		<p><strong>Categorías:</strong> Contraros, Soporte</p>
 		<p>
 			<span class="invoice-date1">
-				Emitida: <%= I18n.l invoice.active_date, format: :dd_MM_yy %>
+				Emitida <%= I18n.l invoice.active_date, format: :dd_MM_yy %>
 			</span>
 			<span class="invoice-date2">
-				Vence: <%= I18n.l invoice.due_date, format: :dd_MM_yy %>
+				<% if invoice.is_due? %>
+					<span class="due "><strong>Atrasada <%= invoice.late_days %> días</strong></span>
+				<% elsif invoice.closed? %>
+					<span class="">Pagada el <%= I18n.l invoice.close_date, format: :dd_MM_yy %></span>
+				<% else %>
+					Vence <%= I18n.l invoice.due_date, format: :dd_MM_yy %>
+				<% end %>
 			</span>
 		</p>
 	</td>
 	<td class="invoice-total-cell">
 		<h4><%= number_to_currency invoice.total %><br><small><%= invoice_tax_label invoice %></small>
 		</h4>
+		<% if invoice.has_debt? %>
+			<span class="label label-white" style="margin-top: 21px;">Con abono</span>
+		<% end %>
 	</td>
 </tr>
 <tr>

@@ -1,0 +1,10 @@
+<% if invoice.has_debt? %>
+	<p class="invoice-advances">
+		<span class="invoice-closed" data-toggle="tooltip" data-placement="left" title="Abono">
+			<%= number_to_currency(invoice.total_payed) %>
+		</span> | 
+		<span class="invoice-due" data-toggle="tooltip" data-placement="right" title="Deuda">
+			<%= number_to_currency(invoice.debt)%>
+		</span>
+	</p>
+<% end %>
