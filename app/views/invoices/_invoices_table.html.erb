@@ -1,17 +1,14 @@
-<div id="invoices" class="span8">
-	
-	<table class="table invoices-table table-hover">
-		<thead>
-			<tr>
-				<th>Número</th>
-				<th>Detalles</th>
-				<th style="text-align: right;">Total</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render partial: "invoice", collection: @invoices %>
-		</tbody>
-	</table>
-	
-	
-</div>
+<table class="table invoices-table table-hover">
+	<thead>
+		<tr>
+			<th>Número</th>
+			<th>Detalles</th>
+			<th style="text-align: right;">Total</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render partial: "invoice", collection: invoices %>
+	</tbody>
+</table>
+
+

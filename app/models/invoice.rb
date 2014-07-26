@@ -45,14 +45,15 @@ class Invoice < ActiveRecord::Base
   #Scopes
   #default_scope { where(account_id: Account.current_id) }
   scope :for_account, ->(account_id) {where(:id => account_id)}
-  scope :actives, ->() {where(aasm_state: "active")}
+  scope :active, ->() {where("aasm_state = ? and due_date >= ?", "active", Date.today )}
+  scope :due, ->() {where("aasm_state = ? and due_date < ?", "active", Date.today )}
+  scope :draft, ->() {where(aasm_state: "draft")}
   scope :not_draft, ->() {where.not(aasm_state: "draft")}
+  scope :closed, ->() {where(aasm_state: "closed")}
+  scope :cacncelled, ->() {where.not(aasm_state: "cancelled")}
   scope :taxed, ->() {where(taxed: true)}
   scope :not_taxed, ->() {where(taxed: false)}
-  
-  STATUS_NAME.each do |status|
-    scope status.to_sym, ->() {where(aasm_state: status)}
-  end
+  scope :all_invoices, ->() {all}
   
   # States
   aasm :create_scopes => false, :whiny_transitions => false do
@@ -310,6 +311,34 @@ class Invoice < ActiveRecord::Base
     errors.add(:total_payed, "Sólo se puede pagar cuando la venta está activa")
   end
   
+  # Búsqueda simple
+  def self.search(params)
+    Rails.logger.debug("AQUI #{params}")
+    params = Hash.new(nil) if params.nil?
+    status = params["status"].nil? ? "all_invoices" : params["status"]
+    sorted_by = params["sorted"].nil? ? "active_date" : params["sorted"]
+    sorted_direcction = params["direcction"].nil? ? "DESC" : params["direcction"]
+    query_items = params["query_items"].nil? ? {} : params["query_items"]
+    send(status).where(query_items).order("#{sorted_by} #{sorted_direcction}")
+  end
+  
+  # Return the sum of the totals
+  def self.total_due
+    due.sum(&:total).to_i
+  end
+  
+  def self.total_active
+    active.sum(&:total).to_i
+  end
+  
+  def self.total_closed
+    closed.sum(&:total).to_i
+  end
+  
+  def self.total_draft
+    draft.sum(&:total).to_i
+  end
+  
   
   def permform_calculations
     set_currency_convertion_rate(currency.downcase)
@@ -319,7 +348,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def ready_for_activation?
-    return (has_contact? && has_number? && valid?)
+    return (has_contact? && has_valid_number? && valid?)
   end
   
   def set_currency_convertion_rate(indicador)

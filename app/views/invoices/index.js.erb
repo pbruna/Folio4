@@ -1,0 +1,2 @@
+$("#invoices").html("<%= escape_javascript(render partial: 'invoices_table', locals: {invoices: @invoices}) %>");
+$("#invoices").effect("highlight", {color: "whiteSmoke"});

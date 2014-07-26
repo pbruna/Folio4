@@ -1,0 +1,25 @@
+<div id="<%= "activate-invoice-#{@invoice.id}-modal" %>" class="modal fade" style="display: none;">
+	<%= form_for @invoice, url: activate_invoice_path(@invoice) do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Activar venta</h4>
+      </div>
+      <div class="modal-body">
+			<div class="alert <%= 'alert-error' unless @invoice.has_valid_number? %>">
+				<p><strong>Confirme el número de la factura</strong></p>
+				<%= number_field_tag :number, @invoice.number, data: {"validation-number-message" => "Tiene que ser un numero"} %>
+				<% unless @invoice.has_valid_number? %>
+					<span style="margin-left: 10px;">Este número no esta disponible</span>
+				<% end %>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		<%= f.submit 'Activar',  class: "btn btn-primary" %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  <% end %>
+</div><!-- /.modal -->

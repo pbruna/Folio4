@@ -10,20 +10,22 @@
 
 
 <div class="row document">
-	<%= render :partial => 'shared/flash' %>
-	<%= render partial: "invoices_table" %>
+	<%= render partial: 'shared/flash' %>
+	<div id="invoices" class="span8">
+		<%= render partial: "invoices_table", locals: {invoices: @invoices} %>
+	</div>
 	
 	<div id="side-menu" class="span3">
 		<h5 class="section-title">Resumen de Totales</h5>
 		
-		<table id="invoices-totals-resume-table">
-			<form>
-				<%= totals_resume_invoices_row("due", 3949303) %>
-				<%= totals_resume_invoices_row("active", 19382029) %>
-				<%= totals_resume_invoices_row("draft", 3312343) %>
-				<%= totals_resume_invoices_row("closed", 23949303) %>
-			</form>
-		</table>
+		<%= form_tag invoices_path(), id: "status_search", method: :get, remote: true do |f|%>
+			<table id="invoices-totals-resume-table">
+				<%= totals_resume_invoices_row("due", current_account.total_due) %>
+				<%= totals_resume_invoices_row("active", current_account.total_active) %>
+				<%= totals_resume_invoices_row("draft", current_account.total_draft) %>
+				<%= totals_resume_invoices_row("closed", current_account.total_closed) %>
+			</table>
+		<% end %>
 		
 	</div>
 </div>

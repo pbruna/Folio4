@@ -142,6 +142,17 @@ window.Invoice = Invoice
 
 
 $ ->
+	
+		# Envia la busqueda por estado al elegir un checkbox
+		$("#status_search input[type=checkbox]").change () ->
+			checkedState = $(this).prop("checked")
+			#$(this).parent("div").children(".checkbox:checked").each ->
+			$("#invoices-totals-resume-table input[type=checkbox]:checked").each ->
+				$(this).prop "checked", false
+				
+			$(this).prop "checked", true
+			$("#status_search").submit()
+			
 		# Activamos los Tooltips de ayuda en el pago de abonos
 		$("#invoice-total .invoice-advances span").tooltip()
 		

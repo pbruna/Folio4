@@ -1,4 +1,5 @@
 <!-- Modals -->
+<%= render partial: "invoices/show_partials/activate_modal" if @invoice.draft? %>
 <%= render partial: "invoices/show_partials/delete_modal" if @invoice.draft? %>
 <%= render partial: "invoices/show_partials/cancel_modal" if @invoice.may_cancel? %>
 <%= render partial: "invoices/show_partials/pay_modal" if @invoice.active? %>
@@ -9,11 +10,13 @@
 	<div class="invoice-actions">		
 		<ul class="unstyled">
 			
+			<!-- <li>
+				<%= fa_icon "calendar"%>
+				<%= link_to " Agregar recordatorio", clone_invoice_path(@invoice) %>
+			</li> -->
 			<% if @invoice.draft? %>
 				<li><%= fa_icon "check-square-o"%>
-					<a data-toggle="modal" data-target="#invoice-change-status-modal" href="/invoices/<%= @invoice.id %>/activate_from_modal" class="invoices-active">
-						<%= change_invoice_state_menu(@invoice) %>
-					</a>
+					<%= link_to "Activar venta", "#", data: {toggle: "modal", target: "#activate-invoice-#{@invoice.id}-modal"}, class: "invoices-pay"  %>
 				</li>
 			<% end %>
 			
@@ -50,7 +53,7 @@
 		<ul class="unstyled">
 			<% unless @invoice.closed? %>
 				<li>
-					<%= fa_icon "calendar"%><a href="">Recordatorio</a>
+					<%= fa_icon "calendar"%>Recordatorios
 					<div class="invoice-option-explain">
 						<small>
 							<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> y <%= @invoice.contact_name %>
@@ -58,7 +61,7 @@
 					</div>
 				</li>
 			<% end %>
-			<li>
+			<!-- <li>
 				<%= fa_icon "repeat"%><a href="">Factura recurrente</a>
 				<div class="invoice-option-explain">
 					<small>
@@ -66,7 +69,7 @@
 						Finaliza el 23/11/2014.
 					</small>
 				</div>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 	

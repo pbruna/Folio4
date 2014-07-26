@@ -51,6 +51,10 @@ class Account < ActiveRecord::Base
   def has_data?
     invoices.any? || expenses.any?
   end
+  
+  def invoices_search(params)
+    invoices.search(params)
+  end
 
 
   Invoice::STATUS_NAME.each do |status|
@@ -66,6 +70,23 @@ class Account < ActiveRecord::Base
 
   def self.current_id
     Thread.current[:tenant_id]
+  end
+  
+  # Invoice totals
+  def total_due
+    invoices.total_due
+  end
+  
+  def total_active
+    invoices.total_active
+  end
+  
+  def total_closed
+    invoices.total_closed
+  end
+  
+  def total_draft
+    invoices.total_draft
   end
   
   def users_emails_array

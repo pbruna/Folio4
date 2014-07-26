@@ -33,17 +33,23 @@ class InvoicesController < ApplicationController
       
   end
   
-  def change_status
+  def activate
     @invoice = current_account.invoices.find(params[:id])
-    
+    @invoice.number = params[:number].to_i
     respond_to do |format|
-      if @invoice.change_status(invoice_params)
-        flash.now[:notice] = "Venta activada correctamente"
-        format.html {redirect_to @invoice}
+      if @invoice.may_active?
+        @invoice.active
+        @invoice.save
+        format.html {
+          flash[:notice] = "Venta activada correctamente"
+          redirect_to @invoice
+        }
         format.js { render 'show'}
       else
-        flash[:error] = "No pudo cambiarse el estado de la venta"
-        format.html { redirect_to @invoice }
+        format.html {
+          flash[:error] = "No se pudo activar la venta"
+          redirect_to @invoice 
+        }
         format.js { render 'change_status_error'}
       end
     end
@@ -96,7 +102,11 @@ class InvoicesController < ApplicationController
   end
 
   def index
-    @invoices = current_account.invoices.all
+    @invoices = current_account.invoices_search(params[:search])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def new
@@ -107,7 +117,6 @@ class InvoicesController < ApplicationController
   
   def pay
     @invoice = current_account.invoices.find(params[:id])
-    logger.debug("----AQUI #{invoice_params}")
     if @invoice.pay(invoice_params[:total_payed])
       flash[:notice] = "Pago registrado correctamente."
       flash[:notice] << "\nVenta cerrada." if @invoice.closed?
