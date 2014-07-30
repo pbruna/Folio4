@@ -54,11 +54,13 @@ module InvoicesHelper
   def totals_resume_invoices_row(status, total)
     status_text = I18n.t "invoice.#{status}".pluralize
     total_text = number_to_currency(total)
+    checked = checkbox_status_checked?(status)
     
 		"<tr class='invoices-#{status}'>
 			<td class="">
 				<label class='checkbox'>
-				      <input type='checkbox' value='#{status}' name='search[status]'> #{status_text.titleize}
+              #{ check_box_tag 'search[status]', status, checked }
+				       #{status_text.titleize}
 				    </label>
 			</td>
 			<td class='total-amount'' style='text-align: right; vertical-align: top;'>#{total_text}</td>
@@ -74,5 +76,12 @@ module InvoicesHelper
     return l invoice.active_date unless invoice.active_date.nil?
     return l Date.today
   end
+  
+  def checkbox_status_checked?(status)
+    return false if params["search"].nil?
+    return false if params["search"]["status"].nil?
+    return params["search"]["status"] == status
+  end
+  
   
 end

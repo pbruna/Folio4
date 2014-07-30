@@ -164,12 +164,16 @@ $ ->
 				sorted_by_selected = $(".dropdown-sorter.sorted-by a.selected").data("sorted-by")
 				search_params = $(".invoices-sorter-menu").data("search-params")
 			
-				jQuery.get("/invoices.js/?" + search_params + "&search[sorted_direction]="+sorted_direction_selected + "&search[sorted_by]=" + sorted_by_selected )
+				jQuery.ajax({
+					url: "/invoices",
+					data: search_params + "&search[sorted_direction]="+sorted_direction_selected + "&search[sorted_by]=" + sorted_by_selected,
+					dataType: "script"
+					})
 			
 			
 		sorter_menu_box("sorted-by")
 		sorter_menu_box("sorted-direction")
-		
+			
 		# Envia la busqueda por estado al elegir un checkbox
 		$("#status_search input[type=checkbox]").change () ->
 			checkedState = $(this).prop("checked")

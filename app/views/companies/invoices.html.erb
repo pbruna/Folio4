@@ -1,0 +1,28 @@
+<%= render "show" %>
+
+<div class="navbar-header container sub-navbar">
+	<div class="nav navbar nav-tabs sub-navbar-menu-tab">
+		<li><%= link_to "Resumen", company_path(@company) %></li>
+		<li class="active"><%= link_to "Ventas", invoices_company_path(@company) %></li>
+		<li><%= link_to "Pagos", company_expenses_path(@company) %></li>
+	</div>
+</div>
+
+
+<div class="row document">
+	
+	<div class="span8">
+		<div style="border-bottom: 1px solid #ddd">
+			<%= render partial: "invoices/shared/subnav_sorter", locals: {search_params: @search_params} %>
+		</div>
+		<div id="invoices">
+			<%= render partial: "invoices/invoices_table", locals: {invoices: @invoices} %>
+		</div>
+	</div>
+	<div id="side-menu" class="span3" style="margin-top: 14px">
+		<%= form_tag invoices_path(), id: "status_search", method: :get, remote: true do |f|%>
+			<%= render partial: "invoices/sidebar/invoice_total_resume", locals: {invoices: @invoices} %>
+			<%= hidden_field_tag "search[query_items][company_id]", @company.id %>
+		<% end %>
+	</div>
+</div>

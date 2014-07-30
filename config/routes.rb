@@ -26,7 +26,7 @@ Folio::Application.routes.draw do
     resources :comments
     resources :attachments
     resources :companies do
-      resources :invoices
+      get 'invoices', :on => :member
       resources :expenses
       resources :contacts
     end

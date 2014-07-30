@@ -1,0 +1,11 @@
+<div id="invoices-sidebar-total-resume">
+	<h5 class="section-title">Resumen de Totales</h5>
+	<table id="invoices-totals-resume-table">
+		<%= totals_resume_invoices_row("due", invoices.total_due) %>
+		<%= totals_resume_invoices_row("active", invoices.total_active) %>
+		<%= totals_resume_invoices_row("draft", invoices.total_draft) %>
+		<%= totals_resume_invoices_row("closed", invoices.total_closed) %>
+	</table>
+	<%= hidden_field_tag "search[sorted_by]" %>
+	<%= hidden_field_tag "search[sorted_direction]" %>
+</div>

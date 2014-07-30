@@ -7,6 +7,7 @@ class Invoice < ActiveRecord::Base
   STATUS_NAME = %w(active draft closed)
   CURRENCIES = %w(CLP UF USD)
   TAX_RATE = 19
+  self.per_page = 5
   
   # Asociatons
   belongs_to :account
@@ -254,7 +255,8 @@ class Invoice < ActiveRecord::Base
   end
   
   def set_due_date_and_reminder
-    self.due_date = active_date + due_days
+    date = active_date || Date.today
+    self.due_date = date + due_days
     self.update_reminder
   end
   
@@ -315,28 +317,38 @@ class Invoice < ActiveRecord::Base
   def self.search(params)
     Rails.logger.debug("AQUI #{params}")
     params = Hash.new(nil) if params.nil?
+    query_items = params["query_items"].nil? ? {} : params["query_items"].delete_if {|k,v| v.empty?}
+    start_date = Date.parse(query_items.delete("start_date")) unless query_items["start_date"].nil?
+    end_date = Date.parse(query_items.delete("end_date")) unless query_items["end_date"].nil?
     status = params["status"].nil? ? "all_invoices" : params["status"]
     sorted_by = params["sorted_by"].nil? ? "active_date" : params["sorted_by"]
     sorted_direction = params["sorted_direction"].nil? ? "DESC" : params["sorted_direction"]
-    query_items = params["query_items"].nil? ? {} : params["query_items"]
-    send(status).where(query_items).order("#{sorted_by} #{sorted_direction}")
+    results = send(status).where(query_items)
+    if start_date && end_date.nil?
+      results = results.where("active_date >= ?", start_date)
+    elsif start_date.nil? && end_date
+      results = results.where("active_date <= ?", end_date)
+    elsif start_date && end_date
+      results = results.where(active_date: start_date..end_date)
+    end
+    results.order("#{sorted_by} #{sorted_direction}").includes(:company)
   end
   
   # Return the sum of the totals
   def self.total_due
-    due.sum(&:total).to_i
+    due.to_a.sum(&:total).to_i
   end
   
   def self.total_active
-    active.sum(&:total).to_i
+    active.to_a.sum(&:total).to_i
   end
   
   def self.total_closed
-    closed.sum(&:total).to_i
+    closed.to_a.sum(&:total).to_i
   end
   
   def self.total_draft
-    draft.sum(&:total).to_i
+    draft.to_a.sum(&:total).to_i
   end
   
   

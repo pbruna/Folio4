@@ -7,6 +7,13 @@ class CompaniesController < ApplicationController
       format.js
     end
   end
+  
+  def invoices
+    @company = current_account.companies.find(params[:id])
+    params[:search] = {company_id: @company.id}
+    @invoices = @company.invoices_search(params[:search]).page(params[:page]) 
+    @search_params = params.to_param
+  end
 
   def new
     @company = Company.new

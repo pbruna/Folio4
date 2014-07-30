@@ -1,0 +1,26 @@
+<div class="invoices-sorter-menu" data-search-params="<%= search_params %>">
+	Todas las ventas ordenadas 
+	<div class="dropdown-sorter sorted-by">
+		<a href="#" class="dropdown-toggle selected" data-sorted-by="active_date" data-toggle="dropdown">por fecha de emisión</a>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<li role="presentation">
+				<a role="menuitem" data-sorted-by="total" href="#">por monto total</a>
+			</li>
+			<li role="presentation">
+				<a role="menuitem" data-sorted-by="number" href="#">por número</a>
+			</li>
+		</ul>
+	</div>
+	 de
+	<div class="dropdown-sorter sorted-direction">
+		<a href="#" class="dropdown-toggle selected" data-sorted-direction="DESC" data-toggle="dropdown">de mayor a menor</a>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<li role="presentation">
+				<a role="menuitem" data-sorted-direction="ASC" href="#">de menor a mayor</a>
+			</li>
+		</ul>
+	</div> 
+</div>
+<p class="invoices-remove-search-filter">
+	<%= link_to "#{fa_icon 'times-circle'} Mostrar todas las facturas".html_safe, invoices_path(), class: "" %>
+</p>

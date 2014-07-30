@@ -1,3 +1,5 @@
-$("#invoices").html("<%= escape_javascript(render partial: 'invoices_table', locals: {invoices: @invoices}) %>");
 $(".invoices-sorter-menu").data("search-params", "<%= @search_params %>");
+$("#invoices").html("<%= escape_javascript(render partial: 'invoices_table', locals: {invoices: @invoices}) %>");
+// $("#invoices-sidebar-total-resume").html("<%= escape_javascript(render partial: 'invoices/sidebar/invoice_total_resume', locals: {invoices: @invoices}) %>");
+$(".invoices-remove-search-filter").show();
 $("#invoices").effect("highlight", {color: "whiteSmoke"});

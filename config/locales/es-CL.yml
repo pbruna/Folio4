@@ -197,17 +197,35 @@ es-CL:
       <<: *errors
   activerecord:
     models:
-      invoice: "venta"
+      invoice:
+        one: "venta"
+        other: "ventas"
+      company: "Empresa"
     errors:
       <<: *errors
     attributes:
       invoice:
+        subject: "Asunto"
+        net_total: "Total neto"
+        contact_id: "Contacto de la empresa"
+        company_id: "Para"
+        number: "Número"
+        active_date: "Fecha"
+        total: "Total dela venta"
+      invoice/invoice_items:
+        price: "Precio del item"
+        total: "Total del item"
+        quantity: "Cantidad del item"
         aasm_state:
           draft: "borrador"
           active: "activa"
           due: "vencida"
           closed: "pagada"
           cancelled: "anulada"
+      invoice_item:
+          price: "Precio"
+          total: "Total"
+          quantity: "Cantidad"
 
   invoice:
     active: activa
@@ -219,3 +237,7 @@ es-CL:
     drafts: borrador
     dues: vencidas
     closeds: pagadas
+
+  will_paginate:
+    next_label: siguiente
+    previous_label: anterior

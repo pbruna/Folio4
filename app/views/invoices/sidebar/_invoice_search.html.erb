@@ -1,0 +1,29 @@
+<div id="invoices-side-search">
+	<h5 class="section-title" style="margin-top:20px">Búsqueda</h5>		
+		<div class="input-prepend">
+		  <span class="add-on">@</span>
+		  <%= autocomplete_field_tag "company_name", nil, autocomplete_company_name_invoices_path, :id_element => '#search_query_items_company_id', placeholder: "Empresa", :"data-autocomplete-label" => "No existe", class: "invoices-index-autocomplete" %>
+		  <%= hidden_field_tag "search[query_items][company_id]" %>
+		</div>
+	
+		<div class="input-prepend input-append">
+		  <span class="add-on"><%= fa_icon "calendar"%></span>
+		  <%= text_field_tag "search[query_items][start_date]", nil, class: "prependedInput middle date-input", placeholder: "Desde", data: {"date-format" => "dd/mm/yyyy" } %>
+		  <span class="add-on"><%= fa_icon "calendar"%></span>
+		  <%= text_field_tag "search[query_items][end_date]", nil, class: "middle date-input", placeholder: "Hasta", style: "border-radius: 0 4px 4px 0;", data: {"date-format" => "dd/mm/yyyy" } %>
+		</div>
+		
+		<div class="input-prepend">
+		  <span class="add-on"><%= fa_icon "barcode"%></span>
+		  <%= text_field_tag "search[query_items][number]", nil, class: "prependedInput", placeholder: "Número de venta"%>
+		</div>
+		
+		<!-- <div class="input-prepend">
+		  <span class="add-on"><%= fa_icon "dollar"%></span>
+		  <%= text_field_tag "search[query_items][Total]", nil, class: "prependedInput", placeholder: "Total aproximado"%>
+		</div> -->		
+		<div style="text-align: right">
+			<%= submit_tag "Buscar", class: "btn btn-info", style: "text-align: right" %>
+		</div>
+
+</div>

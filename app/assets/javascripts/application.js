@@ -27,6 +27,7 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require underscore
 //= require jquery-uuid
+//= require pagination
 //= require_tree .
 
 var Folio = Folio || {};
@@ -34,6 +35,9 @@ var Folio = Folio || {};
 $(function () { 
 	$("input,select,textarea").not("[type=submit],.no-validate").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
 	$('.file-inputs').bootstrapFileInput();
+	
+	// Mostramos el calendario cuando deben seleccionar una fecha
+	$(".date-input").datepicker({language: "es", weekStart: 1, autoclose: true})
 
 
 	// Funcion para submit form apretando el boton
@@ -58,6 +62,11 @@ $(function () {
 	$('.nav-tabs a').on('shown', function (e) {
 	    window.location.hash = e.target.hash;
 	})
+	
+	// # Agrega la clase invoices-index-autocomplete al autocomplete de nombre de la empresa
+	// # en Invoice#Index Sidebar
+	
+	$(".invoices-index-autocomplete").autocomplete().autocomplete("widget").addClass("invoices-index-autocomplete");
 
 });
 

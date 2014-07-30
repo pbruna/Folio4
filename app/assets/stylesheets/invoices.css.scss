@@ -555,3 +555,31 @@ ul.ui-autocomplete {
 	}
 	
 }
+
+#invoices-side-search {
+	input[type=text] {
+		width: 180px;
+		font-weight: 300;
+		font-size: 13px;
+	}
+	
+	input[type=text].middle {
+		width: 70px;
+	}	
+}
+
+ul.ui-autocomplete.invoices-index-autocomplete {
+	width: 234px;
+}
+
+.invoices-index-autocomplete {
+	font-size: 13px;
+	font-weight: 300;
+	
+}
+
+.invoices-remove-search-filter {
+	margin-top: -10px;
+	margin-left: 5px;
+	display: none;
+}

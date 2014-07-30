@@ -1,0 +1,16 @@
+<% content_for :sub_navbar do %>
+	<div class="action-links pull-right">
+		<ul class="inline">
+				<li>
+					<%= link_to "Nueva Factura", new_invoice_path(:company => @company.id) %>
+				</li>
+				<li>
+					<%= link_to " Nueva Compra", edit_company_path(@company) %>
+				</li>
+				<li>
+					<%= link_to " Editar empresa", edit_company_path(@company) %>
+				</li>
+			</ul>
+	</div>
+	<h3><%= @company.name %></h3>
+<% end %>

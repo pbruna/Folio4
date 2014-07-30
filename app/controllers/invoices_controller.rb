@@ -102,7 +102,10 @@ class InvoicesController < ApplicationController
   end
 
   def index
-    @invoices = current_account.invoices_search(params[:search])
+    @invoices = current_account.invoices_search(params[:search]).page(params[:page])
+    params.delete(:controller)
+    params.delete(:action)
+    params.delete("_")
     @search_params = params.to_param
     respond_to do |format|
       format.html

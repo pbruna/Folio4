@@ -4,29 +4,7 @@
 		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
 	</div>
 	
-	<div class="invoices-sorter-menu" data-search-params="<%= @search_params %>">
-		Todas las ventas ordenadas 
-		<div class="dropdown-sorter sorted-by">
-			<a href="#" class="dropdown-toggle selected" data-sorted-by="active_date" data-toggle="dropdown">por fecha de emisión</a>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-				<li role="presentation">
-					<a role="menuitem" data-sorted-by="total" href="#">por monto total</a>
-				</li>
-				<li role="presentation">
-					<a role="menuitem" data-sorted-by="number" href="#">por número</a>
-				</li>
-			</ul>
-		</div>
-		 de
- 		<div class="dropdown-sorter sorted-direction">
- 			<a href="#" class="dropdown-toggle selected" data-sorted-direction="DESC" data-toggle="dropdown">de mayor a menor</a>
- 			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
- 				<li role="presentation">
-					<a role="menuitem" data-sorted-direction="ASC" href="#">de menor a mayor</a>
-				</li>
- 			</ul>
- 		</div> 
-	</div>
+	<%= render partial: "invoices/shared/subnav_sorter", locals: {search_params: @search_params} %>
 	
 <% end %>
 
@@ -38,18 +16,9 @@
 	</div>
 	
 	<div id="side-menu" class="span3">
-		<h5 class="section-title">Resumen de Totales</h5>
-		
 		<%= form_tag invoices_path(), id: "status_search", method: :get, remote: true do |f|%>
-			<table id="invoices-totals-resume-table">
-				<%= totals_resume_invoices_row("due", current_account.total_due) %>
-				<%= totals_resume_invoices_row("active", current_account.total_active) %>
-				<%= totals_resume_invoices_row("draft", current_account.total_draft) %>
-				<%= totals_resume_invoices_row("closed", current_account.total_closed) %>
-			</table>
-			<%= hidden_field_tag "search[sorted_by]" %>
-			<%= hidden_field_tag "search[sorted_direction]" %>
+			<%= render partial: "invoices/sidebar/invoice_total_resume", locals: {invoices: @invoices} %>
+			<%= render partial: "invoices/sidebar/invoice_search", locals: {invoices: @invoices} %>
 		<% end %>
-		
 	</div>
 </div>

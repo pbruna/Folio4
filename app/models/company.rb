@@ -34,6 +34,9 @@ class Company < ActiveRecord::Base
     where('name LIKE ?', "%#{company_name_like}%")
   end
 
+  def invoices_search(params)
+    invoices.search(params)
+  end
   
   def invoices_due_total
     20090203
