@@ -14,6 +14,14 @@ class CompaniesController < ApplicationController
     @invoices = @company.invoices_search(params[:search]).page(params[:page]) 
     @search_params = params.to_param
   end
+  
+  def expenses
+    @company = current_account.companies.find(params[:id])
+  end
+  
+  def contacts
+    @company = current_account.companies.find(params[:id])
+  end
 
   def new
     @company = Company.new

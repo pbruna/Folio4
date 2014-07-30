@@ -1,13 +1,6 @@
 <%= render "show" %>
 
-<div class="navbar-header container sub-navbar">
-	<div class="nav navbar nav-tabs sub-navbar-menu-tab">
-		<li class="active"><%= link_to "Resumen", company_path(@company) %></li>
-		<li><%= link_to "Ventas", invoices_company_path(@company) %></li>
-		<li><%= link_to "Pagos", company_expenses_path(@company) %></li>
-	</div>
-</div>
-
+<%= render partial: "companies/shared/navbar" %>
 
 <div class="row document">
 	<%= render :partial => 'company_info' %>

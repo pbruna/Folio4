@@ -1,0 +1,16 @@
+<div class="navbar-header container sub-navbar">
+	<div class="nav navbar nav-tabs sub-navbar-menu-tab">
+		<li class="<%= (url_for == company_path(@company)) ? "active" : '' %>">
+			<%= link_to "Resumen", company_path(@company) %>
+		</li>
+		<li class="<%= (url_for == invoices_company_path(@company)) ? "active" : '' %>">
+			<%= link_to "Ventas", invoices_company_path(@company) %>
+		</li>
+		<li class="<%= (url_for == expenses_company_path(@company)) ? "active" : '' %>">
+			<%= link_to "Pagos", expenses_company_path(@company) %>
+		</li>
+		<li class="<%= (url_for == contacts_company_path(@company)) ? "active" : '' %>">
+			<%= link_to "Contactos", contacts_company_path(@company) %>
+		</li>
+	</div>
+</div>

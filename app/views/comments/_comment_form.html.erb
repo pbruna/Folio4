@@ -24,7 +24,10 @@
 					</div>
 					<div class="comment-body-footer">
 						<div class="comment-email-alert">
-							El comentario se enviará por correo a todos los usuarios de Folio.
+			  				<label class='checkbox'>
+								<%= check_box_tag "comment[notify_account_users]", nil, false %>
+								Notificar por correo a todos los usuarios de Folio.
+							</label>
 						</div>
 						<div class="form-actions">
 							<%= f.submit "Comentar", class: "btn btn-success"%>

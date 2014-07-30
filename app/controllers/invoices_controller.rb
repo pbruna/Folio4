@@ -117,6 +117,7 @@ class InvoicesController < ApplicationController
     @invoice = current_account.invoices.new
     @invoice.invoice_items.build
     @invoice.build_reminder
+    @invoice.company_id = params[:company_id] unless params[:company_id].nil?
   end
   
   def pay

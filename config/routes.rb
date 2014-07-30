@@ -27,8 +27,8 @@ Folio::Application.routes.draw do
     resources :attachments
     resources :companies do
       get 'invoices', :on => :member
-      resources :expenses
-      resources :contacts
+      get 'contacts', :on => :member
+      get 'expenses', :on => :member
     end
     resources :invoices do
       get :autocomplete_company_name, :on => :collection

@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  attr_accessor :notify_account_users
   belongs_to :commentable, polymorphic: true
   belongs_to :author, polymorphic: true
   
@@ -29,6 +30,7 @@ class Comment < ActiveRecord::Base
   private
   
   def notify
+    return unless notify_account_users
     CommentMailer.delay.comment_notification(id)
   end
   
