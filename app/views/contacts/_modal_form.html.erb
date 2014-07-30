@@ -1,0 +1,32 @@
+	<%= simple_form_for contact, :html => {:class => "form-horizontal"},
+		defaults: { input_html: { class: 'input-xlarge' } }, remote: true do |f| -%>
+
+		<%= f.input :name, label: false, required: true, wrapper: :prepend do %>
+			<span class="add-on"><%= fa_icon "user"%></span>
+			<%= f.input_field :name, placeholder: "Nombre completo", autofocus: true %>
+		<% end %>
+
+		<%= f.input :email, label: false, required: true, wrapper: :prepend do %>
+			<span class="add-on"><%= fa_icon "envelope"%></span>
+			<%= f.input_field :email, placeholder: "nombre@example.com" %>
+		<% end %>
+		
+		<%= f.input :title, label: false, required: false, wrapper: :prepend do %>
+			<span class="add-on"><%= fa_icon "sitemap"%></span>
+			<%= f.input_field :title, placeholder: "Cargo (Jefe de Pagos)" %>
+		<% end %>
+		
+		<%= f.input :phone, label: false, required: false, wrapper: :prepend do %>
+			<span class="add-on"><%= fa_icon "phone"%></span>
+			<%= f.input_field :phone, placeholder: "(+56-2) 2963 9270" %>
+		<% end %>
+		
+		<%= f.input :mobile_phone, label: false, required: false, wrapper: :prepend do %>
+			<span class="add-on"><%= fa_icon "mobile-phone"%></span>
+			<%= f.input_field :mobile_phone, placeholder: "(+56-9) 8899 6618" %>
+		<% end %>
+		
+		<%= f.input :description, label: false, required: false, placeholder: "Puedes ingresar comentarios sobre el contacto" %>
+		
+		<%= f.input :company_id, as: :hidden, input_html: {value: @contact.company_id} %>
+	<% end %>

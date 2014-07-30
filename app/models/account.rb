@@ -17,6 +17,10 @@ class Account < ActiveRecord::Base
   after_save :initialize_account
   before_validation :clear_subdomain
 
+  def self.per_page
+    
+  end
+
   def self.subdomain_available?(subdomain)
     !exists?(:subdomain => subdomain.downcase)
   end

@@ -1,0 +1,24 @@
+<li id="contact-<%= contact.id %>" class="contact">
+	<div class="contact-box">
+		<div class="contact-box-header">
+			<div class="pull-right">
+				<%= link_to "Editar", edit_contact_path(contact), class: "btn btn-mini", data: {
+					 toggle: "modal", target: "#edit-company-contact-modal"
+				} %>
+			</div>
+			<h4>
+				<%= contact.name %>
+				<br><small><%= contact.title %></small>
+			</h4>
+		</div>
+		<div class="contact-box-body">
+			<ul class="company-contact-info">
+				<li><%= mail_to contact.email %></li>
+				<%= show_attribute_contact contact.phone, "phone"  %>
+				<%= show_attribute_contact contact.mobile_phone, "mobile-phone"  %>
+			</ul>
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+</li>

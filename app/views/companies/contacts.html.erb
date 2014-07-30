@@ -2,13 +2,40 @@
 
 <%= render partial: "companies/shared/navbar" %>
 
+<%= render_modal_form(
+	id: "company-contact",
+	title: "Agregar contacto",
+	body: "",
+	method: "new",
+	object: "contact") 
+%>
+
+<%= render_modal_form(
+	id: "edit-company-contact",
+	title: "Editar contacto",
+	body: "",
+	method: "edit",
+	object: "contact") 
+%>
 
 <div class="row document">
+
+	<div id="company-contacts" class="span12" style="">
+		<div class="action-links pull-right">
+			<%= search_add_record_link(new_contact_from_modal_path(company_id: @company.id), "Agregar Contacto", {toggle: "modal", target: "#company-contact-modal"}) %>
+		</div>
 	
-	<div class="span8">
-		
+		<%= render :partial => "shared/sub_navbar_search", locals: {
+		form_path: contacts_company_path(@company.id), text_field_tag: "contact_name_like",
+		placeholder: "Buscar contacto"} %>		
 	</div>
-	<div id="side-menu" class="span3" style="margin-top: 14px">
-		
-	</div>
+	
+	<%= render :partial => "companies/shared/contacts_empty" unless @company.contacts.any? %>
+	
+	<section>
+			<ul class="companies inline" id="contacts_boxes">
+				<%= render :partial => "companies/shared/contact", :collection => @contacts %>
+			</ul>
+	</section>
+
 </div>

@@ -1,0 +1,7 @@
+<% unless @contact.valid? %>
+	$("#edit_contact_<%= @contact.id %>").html("<%= escape_javascript(render 'edit_from_modal') %>");
+<% else %>
+	$("#edit-company-contact-modal").modal("hide");
+	$("#contact-<%= @contact.id %>").html("<%= j render :partial => 'companies/shared/contact', locals: {contact: @contact} %>")
+	$("#contact-<%= @contact.id %> div").effect("highlight");
+<% end %>

@@ -22,10 +22,43 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         format.html {redirect_to company_path(@contact.company), notice: "Contacto guardado correctamente."}
-        format.js {render action: "create_success"}
+        format.js
       else
         format.html {render action: "new"}
-        format.js {render action: "create_error"}
+        format.js
+      end
+    end
+  end
+
+  def edit
+    @contact = current_account.contacts.find(params[:id])
+    @company = @contact.company
+    respond_to do |format|
+      format.html {render :template => "contacts/edit_from_modal", layout: false}
+      format.js {render :template => "edit_from_modal", layout: false}
+    end
+  end
+  
+  def update
+    @contact = current_account.contacts.find(params[:id])
+    @company = @contact.company
+    respond_to do |format|
+      if @contact.update_attributes(contact_params)
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+  
+  def destroy
+    @contact = current_account.contacts.find(params[:id])
+    @company = @contact.company
+    respond_to do |format|
+      if @contact.destroy
+        format.js
+      else
+        format.js
       end
     end
   end
@@ -43,6 +76,6 @@ class ContactsController < ApplicationController
   
   private
     def contact_params
-      params.require(:contact).permit(:name, :email, :company_id)
+      params.require(:contact).permit(:name, :email, :company_id, :phone, :mobile_phone, :title, :description)
     end
 end

@@ -1,0 +1,10 @@
+<% unless @contact.valid? %>
+	$("#edit_contact_<%= @contact.id %>").html("<%= escape_javascript(render 'edit_from_modal') %>");
+<% else %>
+	if($("li[id^='contact-']").size() > 1) {
+		$("#edit-company-contact-modal").modal("hide");
+		$("#contact-<%= @contact.id %>").remove()
+	} else {
+		window.location.href = "<%= contacts_company_path(@company) %>"
+	}
+<% end %>

@@ -58,7 +58,7 @@ form#new_company, form.edit_company {
 	margin-right: 12px;
 	margin-bottom: 19px;
 	width: 270px;
-	min-height: 180px;
+	min-height: 140px;
 	position: relative;
 	background: white;
 	box-shadow: rgba(0, 0, 0, 0.298039) 0px 0px 6px 0px;
@@ -175,4 +175,20 @@ input[type="text"].company-search {
 		
 	}
 	
+}
+
+#company-contacts {
+	border-bottom: 1px solid #ddd;
+	padding: 15px;
+	padding-bottom: 0px;
+	margin-bottom: 20px;
+	
+	form {
+		margin-bottom: 0px;
+	}
+	
+	.search {
+		padding: 8px;
+		width: 28.5em;
+	}
 }

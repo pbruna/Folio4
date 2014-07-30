@@ -1,0 +1,39 @@
+#contacts_boxes {
+	.contact {
+		vertical-align: top;
+	}
+}
+
+.delete-contact {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	margin-left: -10px;
+}
+
+.contact-box {
+	@extend .company-box;
+	min-height: 160px;
+	
+	.contact-box-header {
+		border-bottom: 1px dashed #ddd;
+		margin-bottom: 10px;
+	}
+	
+}
+
+form {
+	#contact_description {
+		width: 295px;
+		resize: none;
+		height: 80px;
+	}
+}
+
+.company-contact-info {
+	li {
+		i.fa {
+			color: black;
+			padding-right: 5px;
+		}
+	}
+}

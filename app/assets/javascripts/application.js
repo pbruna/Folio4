@@ -46,6 +46,10 @@ $(function () {
 		var form = $(this).data("formid");
 		$("#"+form).submit();
 	});
+	
+	$("#edit-company-contact-modal button[data-submit='submit']").click(function() {
+		$("form[id^='edit_contact_']").submit();
+	});
 
 	// Esto permite que un modal que carga datos remotos
 	// se destruya cuando se presione cancelar, y que al 

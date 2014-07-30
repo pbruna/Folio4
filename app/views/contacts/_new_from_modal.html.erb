@@ -5,16 +5,11 @@
 	</div>
 
 <% else %>
-	<%= simple_form_for @contact, :html => {:class => "form-horizontal"},
-		defaults: { input_html: { class: 'input-xlarge' } }, remote: true do |f| -%>
-		
-<p>
-	Ingresa los datos para agregar un nuevo contacto a <%= @company.name %>
-</p>
-	   <%= f.input :name, label: false, required: true, autofocus: true, placeholder: "Nombre completo" %>
-	   <%= f.input :email, label: false, required: true, placeholder: "nombre@example.com" %>
-	   <%= f.input :company_id, as: :hidden, input_html: {value: @contact.company_id} %>
-	<% end %>
+	<p>
+		Ingresa los datos para agregar un nuevo contacto a <%= @company.name %>
+	</p>
+
+	<%= render partial: "contacts/modal_form", locals: {contact: @contact} %>
 
 
 <% end %>

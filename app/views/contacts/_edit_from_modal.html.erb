@@ -1,0 +1,16 @@
+<% if @company.nil? %>
+
+	<div class="alert alert-error">
+		Primero debe seleccionar una empresa
+	</div>
+
+<% else %>
+	<%= render partial: "contacts/modal_form", locals: {contact: @contact} %>
+
+	<div class="delete-contact">		
+		<%= link_to contact_path(@contact), method: :delete, remote: true, class: "btn-delete delete" do %>
+			<%= fa_icon "times-circle" %> Eliminar contacto
+		<% end %>
+	</div>
+	
+<% end %>

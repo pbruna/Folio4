@@ -1,0 +1,3 @@
+$("#contacts_boxes").empty();
+$("#contacts_boxes").hide();
+$("#contacts_boxes").append('<%= j render partial: "companies/shared/contact", :collection => @contacts %>').fadeIn(1000);

@@ -1,0 +1,14 @@
+<div class="alert alert-block blank-slate">
+	<h3>Al final del día siempre es una relación entre personas</h3>
+	<p>
+		Los contactos son las personas con las que te comunicas en las empresas con las cuales haces negocios. Una vez que comiences a <%= link_to "agregar contactos", new_contact_from_modal_path(company_id: @company.id), data: {toggle: "modal", target: "#company-contact-modal"} %> estos estarán visibles en esta sección.
+	</p>
+	<h4>Asocia tus ventas y compras con personas</h4>
+	<p>
+		Cuando asocias un contacto con una venta o compra se hace más fácil la gestión de tu negocio y tienes una visión clara de con quien hablar si tienes dudas.
+	</p>
+	<p>
+		<br/>
+		¿Qué esperas? <%= link_to "Agrega tu primer contacto ahora!!", new_contact_from_modal_path(company_id: @company.id), data: {toggle: "modal", target: "#company-contact-modal"} %> 
+	</p>
+</div>

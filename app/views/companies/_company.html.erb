@@ -1,6 +1,5 @@
 <li class="company">
 	<div class="company-box">
-
 			<h4>
 				<%= link_to company.name, company_path(company) %>
 				<br><small><%= company.rut %></small>
@@ -11,8 +10,6 @@
 				<li><%= company.phone %> </li>
 			</ul>
 			<div class="footer">
-				<%= link_to "Ver", company_path(company)%> 
-				<%= link_to "Nueva Factura", new_invoice_path({:company => company.id}), :class => "", :style =>  "margin-left: 10px"%>
 			</div>
 	</div>
 </li>

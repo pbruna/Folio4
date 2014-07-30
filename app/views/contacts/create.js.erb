@@ -1,0 +1,30 @@
+<% if @contact.new_record? %>
+	$("#new_contact").html("<%= escape_javascript(render 'new_from_modal') %>");
+<% else %>
+	// Este bloque es por si se creo el contacto desde una factura
+	if($("#invoice-contact-modal").size() > 0) {
+		$("#invoice-contact-modal .modal-footer button").hide();
+		$("#invoice-contact-modal .modal-body").html("<div style='text-align: center'><h3 class='alert alert-success'>Contacto guardado correctamente</h3></div>");
+		setTimeout(function(){$("#invoice-contact-modal").modal("hide")},2000)
+
+		var invoice_company_id = $("#invoice_company_id").val()
+		$("#invoice_company_id").val("null")
+		$("#invoice_company_id").trigger("change")
+		$("#invoice_company_id").val(invoice_company_id)
+		$("#invoice_company_id").trigger("change")
+	}
+	// Este bloque es por si se creo el contacto desde una empresa
+	else if ($("#contacts_boxes")) {
+		if($(".blank-slate").size() > 0) {
+			$(".blank-slate").remove();
+			$("#company-contact-modal").modal("hide");
+			$("#contacts_boxes").html("<%= j render :partial => 'companies/shared/contact', :collection => @contact.company.contacts %>")
+			$("#contact-<%= @contact.id %> div").effect("highlight");
+		} else {
+			$("#company-contact-modal").modal("hide");
+			$("#contacts_boxes").prepend("<%= j render :partial => 'companies/shared/contact', locals: {contact: @contact} %>");
+			$("#contact-<%= @contact.id %> div").effect("highlight");
+		}
+	}
+	
+<% end %>

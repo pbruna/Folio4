@@ -10,6 +10,11 @@ class Company < ActiveRecord::Base
   validates_uniqueness_of :rut, :scope => [:account_id]
   validates_with RutValidator
   
+  def contacts_in_alphabetycal_order(contact_name_like)
+    return contacts.order("name") if contact_name_like.nil?
+    contacts.where('name LIKE ?', "%#{contact_name_like}%")
+  end
+  
   def default_avatar_url
     identicon = generate_identicon
     "data:image/png;base64,#{identicon}"

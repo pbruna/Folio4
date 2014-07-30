@@ -21,6 +21,11 @@ class CompaniesController < ApplicationController
   
   def contacts
     @company = current_account.companies.find(params[:id])
+    @contacts = @company.contacts_in_alphabetycal_order(params[:contact_name_like])
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def new

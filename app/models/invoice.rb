@@ -7,7 +7,7 @@ class Invoice < ActiveRecord::Base
   STATUS_NAME = %w(active draft closed)
   CURRENCIES = %w(CLP UF USD)
   TAX_RATE = 19
-  self.per_page = 5
+  self.per_page = 10
   
   # Asociatons
   belongs_to :account
