@@ -1,8 +1,14 @@
 <% if @attachment.valid? %>
 alert('No se pudo borrar: <%= j @attachment.errors.full_messages.join(', ').html_safe %>');
 <% else %>
-$("#attachment-<%= @attachment.id %>").fadeOut("slow", function(){
-	$("#attachment-<%= @attachment.id %>").remove();	
-});
+if($(".table-attachments tbody tr").size() > 1) {
+	$("#attachment-<%= @attachment.id %>").fadeOut("slow", function(){
+		$("#attachment-<%= @attachment.id %>").remove();	
+	});
+} else {
+	$(".table-attachments").remove()
+	$("#show-attachment-body").hide()
+	$(".attachment-form").show()
+}
 
 <% end %>

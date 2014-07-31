@@ -15,6 +15,6 @@ $ ->
 		$("#show-attachment-body").show()
 		location.reload()
 		
-	$("#show-attachment-body").click (e) ->
+	$("#show-attachment-body a.btn-addfiles").click (e) ->
 		$("#show-attachment-body").hide()
 		$(".attachment-form").show()
