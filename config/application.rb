@@ -20,6 +20,10 @@ module Folio
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/lib)
+    
+    # Muestra las paginas personalizadas de errores
+    config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
+    config.action_dispatch.rescue_responses["BadTaste"] = :bad_request
 
     
     # This is for bootstrap-sass

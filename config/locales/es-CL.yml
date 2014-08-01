@@ -241,3 +241,20 @@ es-CL:
   will_paginate:
     next_label: siguiente
     previous_label: anterior
+
+  exception:
+      show:
+        not_found:
+          error: "404"
+          title: "Este documento no existe"
+          description: "No tenemos la página o documento que buscas. Probablemente escribiste o copiaste mal la dirección."
+        internal_server_error:
+          error: "50x"
+          title: "Houston!!! Tenemos un problema"
+          description: "Lo sentimos, algo funcionó mal en Folio y arrojó este error, el cual fue notificado a nuestro equipo y ya estamos trabajando para resolverlo."
+        bad_request:
+          title: "Qué estas tratando de hacer?"
+          description: "No entiendo lo que pides, seguramente apretaste mal un botón. No te preocupes, a veces pasa."
+          bad_taste:
+            title: "Bad Taste"
+            description: "Sorry, the server thinks you've got a bad taste for food (%{exception_message})."

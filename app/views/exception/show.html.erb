@@ -1,0 +1,28 @@
+<div class="error-wrapper">
+	<div class="error-code <%= "alert-danger" if @status_code.to_i >= 500 %>">
+		<h1>
+			Error <%= details[:error]%><br/>
+			<small>
+				<%= details[:name] %>
+			</small>
+		</h1>
+		<% if @status_code.to_i >= 500 %>
+			<p style="margin-bottom: 0;">El código de error es <%= @status_code%></p>
+		<% end %>
+	</div>
+</div>
+
+
+<div class="error-box">
+
+	<div class="error-box-body">
+		<p><%= details[:message] %></p>		
+	</div>
+	<div class="error-box-footer">
+		<p>
+			<%= link_to "Volver a mi página de inicio", root_path, class: "btn btn-info" %>
+            <span class="mail"><%= mail_to "ayuda@folio.cl", "Solicitar ayuda", class: "btn btn-danger" %></span>
+		</p>
+	</div>
+</div>
+
