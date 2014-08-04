@@ -16,3 +16,4 @@
 /RailsApp/tmp
 
 /RailsApp/public/system/*
+./*.swp
