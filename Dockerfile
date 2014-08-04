@@ -13,7 +13,7 @@ ADD ./RailsApp /home/folio/app
 
 WORKDIR /home/folio/app
 
-RUN bundle install --binstubs --deployment
+RUN bundle install --deployment
 RUN rake db:migrate
 RUN rake assets:precompile
 
