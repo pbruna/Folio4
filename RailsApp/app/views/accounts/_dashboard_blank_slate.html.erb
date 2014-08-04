@@ -1,0 +1,16 @@
+<div class="alert alert-block blank-slate">
+	<div class="blank-slate-example">
+			<%= image_tag "blank_slates/folio_sales_example.png", :title => "Ejemplo de Ventas de Folio", :class => "img-polaroid" %>
+	</div>
+	
+	<div class="blank-slate-text">
+		<h3>Los indicadores muestran la salud de tu negocio</h3>
+		<p>
+			Una vez que comiences a ingresar ventas y gastos está página mostrará la salud de tu empresa. Datos tales como <strong>cuanto debes pagar</strong> este mes, <strong>cuanto debes cobrar</strong> y <strong>hasta cuando te alcanza</strong> el dinero que tienes.
+		</p>
+		<h4>¿Quieres conocer la salud de tu negocio?</h4>
+		<p>
+			Entonces ingresa tu <%= link_to "primera venta", new_invoice_path() %> o registra tu <%= link_to "primer gasto", new_expense_path() %>.
+		</p>
+	</div>
+</div>

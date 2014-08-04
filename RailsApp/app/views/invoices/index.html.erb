@@ -1,24 +1,28 @@
-<% content_for :sub_navbar do %>
+<% if current_account.has_invoices? %>
+	<% content_for :sub_navbar do %>
 
-	<div class="action-links pull-right" style="margin-top: -5px">
-		<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
+		<div class="action-links pull-right" style="margin-top: -5px">
+			<%= search_add_record_link(new_invoice_path, "Ingresar venta") %>
+		</div>
+	
+		<%= render partial: "invoices/shared/subnav_sorter", locals: {search_params: @search_params} %>
+	
+	<% end %>
+
+
+	<div class="row document">
+		<%= render partial: 'shared/flash' %>
+		<div id="invoices" class="span8">
+			<%= render partial: "invoices_table", locals: {invoices: @invoices} %>
+		</div>
+	
+		<div id="side-menu" class="span3">
+			<%= form_tag invoices_path(), id: "status_search", method: :get, remote: true do |f|%>
+				<%= render partial: "invoices/sidebar/invoice_total_resume", locals: {invoices: @invoices} %>
+				<%= render partial: "invoices/sidebar/invoice_search", locals: {invoices: @invoices} %>
+			<% end %>
+		</div>
 	</div>
-	
-	<%= render partial: "invoices/shared/subnav_sorter", locals: {search_params: @search_params} %>
-	
+<% else %>
+	<%= render :partial => "invoices_blank_slate" %>
 <% end %>
-
-
-<div class="row document">
-	<%= render partial: 'shared/flash' %>
-	<div id="invoices" class="span8">
-		<%= render partial: "invoices_table", locals: {invoices: @invoices} %>
-	</div>
-	
-	<div id="side-menu" class="span3">
-		<%= form_tag invoices_path(), id: "status_search", method: :get, remote: true do |f|%>
-			<%= render partial: "invoices/sidebar/invoice_total_resume", locals: {invoices: @invoices} %>
-			<%= render partial: "invoices/sidebar/invoice_search", locals: {invoices: @invoices} %>
-		<% end %>
-	</div>
-</div>

@@ -22,7 +22,7 @@ form#new_company, form.edit_company {
 }
 
 .label-provider {
-	@extend .label-default;
+	@extend .label;
 }
 
 .company {

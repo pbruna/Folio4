@@ -1,15 +1,15 @@
 FROM pbruna/centos-rails:4.0.0
 MAINTAINER Patricio Bruna <pbruna@itlinux.cl>
 
-mkdir -p /home/folio
-WORKDIR /home/folio
-RUN git clone https://github.com/pbruna/Folio4.git
+RUN mkdir -p /home/folio/RailsApp
 
-ADD RailsApp/Gemfile /home/folio/Folio4/RailsApp/Gemfile
-ADD RailsApp/Gemfile.lock /home/folio/Folio4/RailsApp/Gemfile.lock
+ADD RailsApp/Gemfile /home/folio/RailsApp/Gemfile
+ADD RailsApp/Gemfile.lock /home/folio/RailsApp/Gemfile.lock
 
-WORKDIR /home/folio/Folio4/RailsApp
+WORKDIR /home/folio/RailsApp
 RUN bundle install
+
+ADD RailsApp /home/folio/
 
 RUN RAILS_ENV=production rake db:migrate
 RUN RAILS_ENV=production rake db:seed

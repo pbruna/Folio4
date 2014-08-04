@@ -56,6 +56,10 @@ class Account < ActiveRecord::Base
     invoices.any? || expenses.any?
   end
   
+  def has_invoices?
+    invoices.any?
+  end
+  
   def invoices_search(params)
     invoices.search(params)
   end
