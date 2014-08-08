@@ -12,7 +12,7 @@
 /RailsApp/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/RailsApp/log/*.log
+/RailsApp/log/*
 /RailsApp/tmp
 
 /RailsApp/public/system/*

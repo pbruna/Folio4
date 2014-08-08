@@ -4,6 +4,8 @@
 Ejecutar:
 
 ```bash
-RAILS_ENV=production rake db:migrate
-RAILS_ENV=production rake db:seed
+RUN RAILS_ENV=production rake db:migrate
+RUN RAILS_ENV=production rake db:seed
+RUN RAILS_ENV=production rake assets:precompile
+RUN RAILS_ENV=production rake tmp:create
 ```
