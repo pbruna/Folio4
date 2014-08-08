@@ -18,6 +18,7 @@
 /public/system/*
 /public/storage/development/*
 /public/assets/*
+/public/production/*
 ./*.swp
 
 # Ignore some configs
