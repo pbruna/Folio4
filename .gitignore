@@ -19,6 +19,11 @@
 /public/storage/development/*
 /public/assets/*
 /public/production/*
+/public/*.gz
+/public/*.css
+/public/*.js
+/public/*.jpg
+/public/*.ico
 ./*.swp
 
 # Ignore some configs
