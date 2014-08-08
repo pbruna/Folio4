@@ -159,6 +159,11 @@ GEM
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
+    griddler (1.0.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-mandrill (1.0.1)
+      griddler
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -170,6 +175,7 @@ GEM
       minitest (>= 3.0)
     high_voltage (2.1.0)
     hike (1.2.3)
+    htmlentities (4.3.2)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -349,6 +355,8 @@ DEPENDENCIES
   factory_girl
   flat-ui-sass!
   font-awesome-rails
+  griddler
+  griddler-mandrill
   guard-minitest
   high_voltage
   indicadores_cl!

@@ -27,12 +27,9 @@ Folio::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = false
-  config.action_mailer.default_url_options = { :host => 'folio4.dev' }
-  config.action_mailer.delivery_method = :letter_opener
+
   
   #Locale
   config.i18n.default_locale = 'es-CL'
   config.i18n.available_locales = ['es-CL']
 end
-
-ActionMailer::Base.default :from => 'folio@folio.cl'

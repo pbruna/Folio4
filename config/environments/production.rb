@@ -59,7 +59,7 @@ Folio::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.assets.initialize_on_precompile = true
-  config.action_controller.asset_host = "//#{asset_sync_config[:fog_directory]}.s3.amazonaws.com"
+  config.action_controller.asset_host = "http://#{asset_sync_config[:fog_directory]}.s3.amazonaws.com"
   config.assets.prefix = "/production"
   config.assets.enabled = true
 

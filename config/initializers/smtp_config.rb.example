@@ -1,0 +1,19 @@
+ActionMailer::Base.default :from => 'notifications@folio.cl'
+
+if Rails.env.production?
+  ActionMailer::Base.asset_host = Folio::Application.config.action_controller.asset_host
+  ActionMailer::Base.default_url_options = { :host => 'pimg.folio.cl' }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'folio.cl'
+  }
+else
+  ActionMailer::Base.default_url_options = { :host => 'folio4.dev' }
+  ActionMailer::Base.delivery_method = :letter_opener
+  ActionMailer::Base.default :from => 'alertas@folio.cl'
+end%

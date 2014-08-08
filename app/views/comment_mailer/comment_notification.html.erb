@@ -22,7 +22,7 @@
 	<table>
 		<tr>
 		<td class="avatar">
-			<%= content_tag(:img, nil,:src => root_url + @comment.author.avatar.url(:thumb)) %>
+			<%= content_tag(:img, nil,:src => @comment.author.avatar.url(:thumb)) %>
 		</td>
 		<td style="padding-left: 20px; color: #b94a48"><%= @comment.author.name.titleize %> escribió este comentario en Folio</td>
 	</tr>
