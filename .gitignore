@@ -5,16 +5,17 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/RailsApp/.bundle
+/.bundle
 
 # Ignore the default SQLite database.
-/RailsApp/db/*.sqlite3
-/RailsApp/db/*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/RailsApp/log/*
-/RailsApp/tmp
+/log/*
+/tmp
 
-/RailsApp/public/system/*
-/RailsApp/public/*
+/public/system/*
+/public/storage/development/*
+/public/assets/*
 ./*.swp
