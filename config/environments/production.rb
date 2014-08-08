@@ -1,4 +1,7 @@
 Folio::Application.configure do
+
+  # Load asset_sync config
+  asset_sync_config = YAML.load(ERB.new(File.read("#{Rails.root}/config/asset_sync.yml")).result)[Rails.env].symbolize_keys!
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -20,7 +23,7 @@ Folio::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -55,7 +58,10 @@ Folio::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.assets.initialize_on_precompile = true
+  config.action_controller.asset_host = "//#{asset_sync_config[:fog_directory]}.s3.amazonaws.com"
+  config.assets.prefix = "/production"
+  config.assets.enabled = true
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.

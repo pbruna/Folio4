@@ -24,6 +24,7 @@ module Folio
     # Muestra las paginas personalizadas de errores
     config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
     config.action_dispatch.rescue_responses["BadTaste"] = :bad_request
+    config.assets.precompile += %w(devise.css flat-ui.css public.css)
 
     
     # This is for bootstrap-sass

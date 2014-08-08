@@ -22,4 +22,4 @@
 
 # Ignore some configs
 /config/aws.yml
-/config/aws_assets.yml
+/config/asset_sync.yml
