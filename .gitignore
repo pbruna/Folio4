@@ -19,3 +19,6 @@
 /public/storage/development/*
 /public/assets/*
 ./*.swp
+
+# Ignore some configs
+/config/aws.yml

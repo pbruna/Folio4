@@ -96,3 +96,4 @@ gem 'raygun4ruby'
 gem 'mysql2'
 gem 'rake'
 gem 'rails_12factor', group: :production
+gem 'aws-sdk'
