@@ -12,6 +12,7 @@ class Account < ActiveRecord::Base
 
   validates_uniqueness_of :subdomain
   validates_presence_of :subdomain, :name
+  validates_format_of :subdomain, :with => /^((?!^(www|folio|app)).)*$/, :message => "No puedes usar ese nombre", multiline: true
   validate :check_users_number # The account must have at least one user
 
   after_save :initialize_account

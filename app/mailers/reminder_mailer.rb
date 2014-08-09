@@ -1,6 +1,5 @@
 class ReminderMailer < ActionMailer::Base
   layout 'mailer_default'
-  default from: "notificaciones@folio.cl"
   
   def invoice_due_notification(reminder_id)
     @reminder = Reminder.find(reminder_id, include: [:remindable])

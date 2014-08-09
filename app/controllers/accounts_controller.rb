@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:new, :create]
+  skip_before_action :authenticate_user!, :only => [:new, :create, :check_subdomain]
   before_action :validate_owner!, :only => ['edit', 'update']
   respond_to :html, :xml, :json
 

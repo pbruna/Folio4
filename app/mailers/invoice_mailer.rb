@@ -1,7 +1,5 @@
 class InvoiceMailer < ActionMailer::Base
   layout 'mailer_default'
-  default from: "notificaciones@folio.cl"
-  
   
   def activation_notification(invoice)
     @invoice = Invoice.find(invoice.id, include: [:company, :contact, :account])
