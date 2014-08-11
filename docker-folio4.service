@@ -1,0 +1,12 @@
+[Unit]
+Description=Folio4 Rails container
+Requires=docker.service
+After=docker.service docker-folio4-mysql.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a folio4
+ExecStop=/usr/bin/docker stop -t 2 folio4
+
+[Install]
+WantedBy=local.target
