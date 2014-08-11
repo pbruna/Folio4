@@ -42,6 +42,6 @@ Folio::Application.routes.draw do
     root :to => "accounts#dashboard"
   end
   
-  resources :accounts, :only => [:new, :create] , :constraints => { :subdomain => /www|app/ }
+  resources :accounts, :only => [:new, :create] , :constraints => { :subdomain => /(app|www)/ }
   
 end

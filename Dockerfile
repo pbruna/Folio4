@@ -12,7 +12,6 @@ ADD . /usr/src/app
 
 ENV RAILS_ENV production
 
-RUN rake db:setup
 RUN rake db:migrate
 RUN rake db:seed
 RUN rake assets:precompile
