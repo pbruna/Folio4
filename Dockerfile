@@ -1,4 +1,4 @@
-FROM pbruna/centos-rails
+FROM pbruna/centos-rails:4.0.2
 MAINTAINER Patricio Bruna <pbruna@itlinux.cl>
 
 RUN mkdir -p /usr/src/app
@@ -6,9 +6,9 @@ WORKDIR /usr/src/app
 
 ADD Gemfile /usr/src/app/
 ADD Gemfile.lock /usr/src/app/
-RUN bundle install --system
+RUN bundle install
 
-ONBUILD ADD . /usr/src/app
+ADD . /usr/src/app
 
 ENV RAILS_ENV production
 
