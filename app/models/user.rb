@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
   
   def full_name
-    return nil if (name.nil?)
+    return email if (name.nil?)
     "#{name} #{last_name}"
   end
   

@@ -45,7 +45,6 @@ class Account < ActiveRecord::Base
   end
 
   def owner_name
-    return owner.email if owner.full_name.nil?
     owner.full_name
   end
 

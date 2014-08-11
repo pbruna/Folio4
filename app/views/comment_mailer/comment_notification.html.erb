@@ -1,43 +1,28 @@
-<style>
-.avatar img {
-	padding: 0px;
-	width: 48px;
-	height: 48px;
-	border: 1px solid #bbb;
-	border-radius: 4px;
-}
-.comment {
-	margin-left: 75px;
-	margin-top: -20px;
-	margin-right: 25px;
-}
-.comment-contacts {
-	margin-top: 40px;
-	color: #777;
-	font-size: 12px;
-}
-</style>
-
 <div>
 	<table>
 		<tr>
-		<td class="avatar">
-			<%= content_tag(:img, nil,:src => @comment.author.avatar.url(:thumb)) %>
+		<td style="width: 50px !important;">
+			<%= content_tag(:img, nil,:src => @comment.author.avatar.url(:thumb), style: "padding: 0px;
+	width: 48px !important;
+	height: 48px !important;
+	max-width: none;
+	border: 1px solid #bbb;
+	border-radius: 4px;") %>
 		</td>
-		<td style="padding-left: 20px; color: #b94a48"><%= @comment.author.name.titleize %> escribió este comentario en Folio</td>
+		<td style="padding-left: 25px; color: #b94a48; vertical-align: middle;"><%= @comment.author_name.titleize %> escribió este comentario en Folio</td>
 	</tr>
 	</table>
-	<div class="comment">
+	<div style="margin-left: 75px; margin-top: -10px; margin-right: 25px;">
 		<h3><%= @comment.commentable.subject.titleize %></h3>
-		<p style="margin-top: -10px;">
+		<p style="margin-top: 5px;">
 			<%= textarea_display @comment.message %>
 		</p>
 		<p style="margin-top: 30px;">
-			<%= link_to "Verlo en Folio", invoice_url(@comment.commentable_id) + "#comment-#{@comment.id}" %>
-		</p>
+			<%= link_to "Verlo en Folio", invoice_url(@comment.commentable_id, subdomain: @account.subdomain) + "#comment-#{@comment.id}" %>
+		</p>	
 	</div>
 	
-	<div class="comment-contacts">
+	<div style="margin-top: 40px; color: #777; font-size: 12px;">
 		Este correo fue enviado a: <%= @comment.contacts_emails.join(", ") %>.
 	</div>
 	

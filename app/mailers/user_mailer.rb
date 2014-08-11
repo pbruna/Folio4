@@ -10,7 +10,6 @@ class UserMailer < ActionMailer::Base
     @token = token
     @user = User.find(user_id)
     @account = @user.account
-    @account_owner = @user.account_owner
     mail to: @user.email, subject: "Bienvenido a la cuenta Folio de #{@account.name}"
   end
 end

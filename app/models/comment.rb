@@ -10,8 +10,12 @@ class Comment < ActiveRecord::Base
   validates_presence_of :message, :author_type, :author_id, :commentable_id, :commentable_type
   
   
+  def account
+    author.account
+  end
+  
   def author_name
-    return "" if author.name.empty?
+    return author.email if author.name.nil?
     author.name
   end
   
@@ -19,22 +23,15 @@ class Comment < ActiveRecord::Base
     account_emails
   end
   
-  # Generar reply
-  # object_name-object_id-account_id_hash@folio.cl
-  # invoice-343-363jdj739@folio.cl
-  
   def email_reply_to
     # lo que va despues del arroba
-    host = ActionMailer::Base.default_url_options[:host]
-    "#{object_name}-#{object_id}-#{encoded_account_id}@#{host}"
+    host = "app.folio.cl"
+    mailbox = "#{object_name}-#{commentable.id}-#{encoded_account_id}"
+    "#{mailbox}@#{host}"
   end
   
   def object_name
     commentable.class.to_s.downcase
-  end
-  
-  def object_id
-    commentable.id
   end
   
   def account_id
