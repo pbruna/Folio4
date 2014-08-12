@@ -74,5 +74,21 @@ class AccountTest < ActiveSupport::TestCase
     @account.save
     assert(!@account.contact_info_complete?, "No deberia estar completa")
   end
+  
+  test "account subdmain can not be www" do
+    user = @account.users.build
+    user.email = "test@test.com"
+    user.password = "kdldlkdkdkd"
+    @account.subdomain = "WwW"
+    assert(!@account.save, "Account saved")
+  end
+  
+  test "account subdmain can not be app" do
+    user = @account.users.build
+    user.email = "test@test.com"
+    user.password = "kdldlkdkdkd"
+    @account.subdomain = "APp"
+    assert(!@account.save, "Account saved")
+  end
 
 end
