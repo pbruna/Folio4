@@ -3,11 +3,11 @@
 <% else %>
 	// Este bloque es por si se creo el contacto desde una factura
 	if($("#invoice-contact-modal").size() > 0) {
-		$("#invoice-contact-modal .modal-footer button").hide();
+		// $("#invoice-contact-modal .modal-footer button").hide();
 		$("#invoice-contact-modal").modal("hide")
 
 		var invoice_company_id = $("#invoice_company_id").val()
-		$("#invoice_company_id").val("null")
+		$("#invoice_company_id").val(null)
 		$("#invoice_company_id").trigger("change")
 		$("#invoice_company_id").val(invoice_company_id)
 		$("#invoice_company_id").trigger("change")

@@ -89,8 +89,10 @@ class Invoice
 				"Afecta"
 		
 		@invoice_contacts = ko.computed =>
-			return [] if @invoice_company_id() == (null || "null")
-			Folio.getCompanyContacts(@invoice_company_id())
+			if @invoice_company_id()
+				Folio.getCompanyContacts(@invoice_company_id())
+			else
+				return []
 			
 		@invoice_contact_selected = ko.computed =>
 			if @invoice_contact_id()
