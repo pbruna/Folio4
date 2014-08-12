@@ -55,14 +55,24 @@ class User < ActiveRecord::Base
   end
   
   def default_avatar_url
-    identicon = generate_identicon
+    identicon = Base64.strict_encode64 generate_identicon
     "data:image/png;base64,#{identicon}"
   end
   
   def generate_identicon
-    key = self.encrypted_password.blank? ? "jdkdnajkdnjkandka" : self.encrypted_password
-    blob = RubyIdenticon.create("RubyIdenticon", key: key)
-    Base64.strict_encode64 blob
+    if self.new_record?
+      key = (0...20).map { (65 + rand(26)).chr }.join
+    else
+      key = self.encrypted_password
+    end
+    RubyIdenticon.create("RubyIdenticon", key: key)
+  end
+  
+  def identicon_file
+    data = StringIO.new(generate_identicon)
+    data.original_filename = "#{full_name.downcase.gsub(/\s+/,"")}-avatar.png"
+    data.content_type = "image/png"
+    data
   end
   
   def self.new_from_owner(account_id, user_params)
@@ -94,7 +104,19 @@ class User < ActiveRecord::Base
   end
   
   def active_user
-    self.active = true    
+    self.avatar = set_avatar
+    self.active = true
+  end
+  
+  def set_avatar
+    return identicon_file if avatar.nil?
+    return identicon_file if (/^data:image\/png;base64,/).match(avatar.url)
+    avatar
   end
 
+end
+
+
+class StringIO
+  attr_accessor :original_filename, :content_type
 end
