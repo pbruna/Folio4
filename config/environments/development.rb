@@ -10,7 +10,7 @@ Folio::Application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true # true default
+  config.consider_all_requests_local       = false # true default
   config.action_controller.perform_caching = true
   config.enable_reporting = true
 

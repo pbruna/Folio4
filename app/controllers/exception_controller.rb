@@ -1,4 +1,5 @@
 class ExceptionController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:show]
   layout "sign_in_layout"
  
     def show
