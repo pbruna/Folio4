@@ -9,11 +9,10 @@ ADD Gemfile.lock /usr/src/app/
 RUN bundle install
 
 ADD . /usr/src/app
-RUN bundle install -—binstubs
 
 ENV RAILS_ENV production
 
 RUN rake tmp:create
 RUN rake tmp:clear
 
-CMD ["bin/delayed_job", "-n 4 start"]
+CMD rake jobs:work
