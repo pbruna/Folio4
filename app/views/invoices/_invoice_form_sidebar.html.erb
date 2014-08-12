@@ -45,7 +45,11 @@
 	<div class="invoice-submit">
 		
 		<button class="btn btn-large btn-success">Guardar venta</button>
-		<p class="cancel-link"><%= link_to "Cancelar", invoices_path() %></p>
+		<% if @invoice.new_record? %>
+			<p class="cancel-link"><%= link_to "Cancelar", invoices_path() %></p>
+		<% else %>
+			<p class="cancel-link"><%= link_to "Cancelar", invoice_path(@invoice) %></p>
+		<% end %>
 		
 	</div>
 	
