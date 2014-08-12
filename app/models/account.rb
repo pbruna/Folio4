@@ -23,6 +23,7 @@ class Account < ActiveRecord::Base
   end
 
   def self.subdomain_available?(subdomain)
+    return false if "/^((?!^(www|folio|app)).)*$/i".match(subdomain)
     !exists?(:subdomain => subdomain.downcase)
   end
   

@@ -11,8 +11,8 @@ $ ->
 		
 	$("#new_attachment input[type=submit]").click (e) ->
 		e.preventDefault()
-		$(".attachment-form").hide();
-		$("#show-attachment-body").show()
+		# $(".attachment-form").hide();
+		# $("#show-attachment-body").show()
 		location.reload()
 		
 	$("#show-attachment-body a.btn-addfiles").click (e) ->
