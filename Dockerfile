@@ -1,4 +1,4 @@
-FROM pbruna/centos-rails:4.0.2
+FROM pbruna/folio4
 MAINTAINER Patricio Bruna <pbruna@itlinux.cl>
 
 RUN mkdir -p /usr/src/app
