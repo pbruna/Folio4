@@ -583,3 +583,11 @@ ul.ui-autocomplete.invoices-index-autocomplete {
 	margin-left: 5px;
 	display: none;
 }
+
+#new_company_from_invoice {
+	padding: 5px;
+	a {
+		@extend .btn;
+		margin-left: 10px;
+	}
+}

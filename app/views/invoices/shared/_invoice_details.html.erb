@@ -2,7 +2,9 @@
 	<table>
 		<tr class="large">
 			<td class="input-label"><label>Para</label></td>
-			<td><%= autocomplete_field_tag "company_name", @invoice.company_name, autocomplete_company_name_invoices_path, :id_element => '#invoice_company_id', placeholder: "Nombre del receptor", :"data-autocomplete-label" => "No encontramos ninguna empresa con ese nombre" %></td>
+				<td>
+					<%= autocomplete_field_tag "company_name", @invoice.company_name, autocomplete_company_name_invoices_path, :id_element => '#invoice_company_id', placeholder: "Escriba el nombre del cliente", :"data-autocomplete-label" => "<div id='new_company_from_invoice'>Esta empresa no existe #{link_to 'Créala ahora!', new_company_path()}</div>" %>
+				</td>
 			<!-- <%= display_input_or_value_for(f, :company_id) %> -->
 			<%= f.hidden_field :company_id, data: {bind: "value: invoice_company_id"} %>
 		</tr>

@@ -28,6 +28,7 @@
 //= require underscore
 //= require jquery-uuid
 //= require pagination
+//= require jquery.ui.autocomplete.html.js
 //= require_tree .
 
 var Folio = Folio || {};

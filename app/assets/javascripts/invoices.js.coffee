@@ -204,7 +204,12 @@ $ ->
 		$("#company_name").bind "railsAutocomplete.select", (event, data) ->
 			$("#invoice_company_id").trigger("change")
 			return
-	
+		
+		# Esto permite mostrar el link para crear nueva empresa desde la factura
+		$("#company_name").autocomplete({html: true})
+		$("#new_company_from_invoice").click (e) ->
+			e.preventDefault()
+			window.location = "/companies/new"
 	
 		$("#invoice_total_payed").keyup () ->
 			payment = $(this).val().replace(/(\$\s+|\.)/ig,"")
