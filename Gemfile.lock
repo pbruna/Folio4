@@ -22,10 +22,10 @@ GIT
 
 GIT
   remote: https://github.com/pbruna/rails4-autocomplete
-  revision: 8f89746978d2b5ed26e6e94366b51a36bcd53fef
+  revision: b8fe1c338a07db66423eca843a52f8c51216463b
   branch: master
   specs:
-    rails4-autocomplete (1.0.9.7)
+    rails4-autocomplete (1.0.9.8)
       rails (>= 3.0)
 
 GIT
