@@ -162,7 +162,7 @@ GEM
     griddler (1.0.0)
       htmlentities
       rails (>= 3.2.0)
-    griddler-mandrill (1.0.1)
+    griddler-mailgun (1.0.1)
       griddler
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -348,7 +348,7 @@ DEPENDENCIES
   flat-ui-sass!
   font-awesome-rails
   griddler
-  griddler-mandrill
+  griddler-mailgun
   guard-minitest
   high_voltage
   indicadores_cl!
