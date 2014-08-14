@@ -98,4 +98,4 @@ gem 'rails_12factor', group: :production
 gem 'aws-sdk'
 gem 'asset_sync', group: :assets
 gem 'griddler'
-gem 'griddler-mandrill'
+gem 'griddler-mailgun'

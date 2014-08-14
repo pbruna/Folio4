@@ -6,13 +6,19 @@ AWS.config(logger: Rails.logger)
 AWS.config(Rails.configuration.aws)
  
 # config/initializers/paperclip.rb
-Paperclip::Attachment.default_options.merge!(
-  url:                  ':s3_domain_url',
-  path:                 ':class/:attachment/:id/:style/:filename',
-  storage:              :s3,
-  s3_credentials:       Rails.configuration.aws,
-  s3_protocol:          'https'
-)
+if Rails.env.production?
+  Paperclip::Attachment.default_options.merge!(
+    url:                  ':s3_domain_url',
+    path:                 ':class/:attachment/:id/:style/:filename',
+    storage:              :s3,
+    s3_credentials:       Rails.configuration.aws,
+    s3_protocol:          'https'
+  )
+else
+  Paperclip::Attachment.default_options.merge!(
+    url:                 "/storage/#{Rails.env}/:class/:attachment/:id/:style/:filename",
+  )
+end
  
 #config/initializers/s3_direct_upload.rb
 # S3DirectUpload.config do |c|
