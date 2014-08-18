@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730141735) do
+ActiveRecord::Schema.define(version: 20140818115130) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20140730141735) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "alias"
+    t.string   "country"
   end
 
   add_index "companies", ["account_id"], name: "index_companies_on_account_id"
