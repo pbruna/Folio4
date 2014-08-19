@@ -51,7 +51,7 @@ class Invoice < ActiveRecord::Base
   scope :draft, ->() {where(aasm_state: "draft")}
   scope :not_draft, ->() {where.not(aasm_state: "draft")}
   scope :closed, ->() {where(aasm_state: "closed")}
-  scope :cacncelled, ->() {where.not(aasm_state: "cancelled")}
+  scope :cancelled, ->() {where(aasm_state: "cancelled")}
   scope :taxed, ->() {where(taxed: true)}
   scope :not_taxed, ->() {where(taxed: false)}
   scope :all_invoices, ->() {all}
@@ -151,7 +151,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def notification_date
-    return reminder.notification_date unless reminder.notification_date.nil?
+    return reminder.notification_date unless (reminder.nil? || reminder.notification_date.nil?)
     Date.today + 30 
   end
 

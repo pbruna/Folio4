@@ -1,5 +1,8 @@
 <% if current_account.has_data? %>
-
+	<div style="background: white; border: 1px dashed gray; text-align: center; padding: 10px">
+		<h2>Esto está en construcción</h2>
+	</div>
+	<%= render :partial => "dashboard_blank_slate" %>
 <% else %>
 	<%= render :partial => "dashboard_blank_slate" %>
 <% end %>
