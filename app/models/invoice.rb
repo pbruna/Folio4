@@ -261,7 +261,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def update_reminder
-    self.reminder ||= build_reminder(due_date: i.due_date)
+    self.reminder ||= build_reminder(due_date: due_date)
     self.reminder.subject = default_reminder_subject
     self.reminder.notification_date = nil 
     self.reminder.due_date = due_date
