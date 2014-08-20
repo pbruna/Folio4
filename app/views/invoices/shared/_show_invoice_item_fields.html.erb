@@ -3,16 +3,16 @@
 			<div style="margin-left: 10px; padding-right: 10px; padding-top: 4px; font-weight: bold;"><%= invoice_item.type %></div>
 		</span>
 	</td>
-	<td>
+	<td style="width: 350px;">
 		<%= textarea_display invoice_item.description %>
 	</td>
 	<td style="text-align: center">
 		<%= invoice_item.quantity %>
 	</td>
-	<td style="text-align: center">
+	<td style="text-align: center; width: 80px;">
 		<%= number_to_currency invoice_item.price %>
 	</td>
-	<td style="text-align: center">
+	<td style="text-align: center; width: 80px;">
 		<%= number_to_currency invoice_item.total %>
 	</td>
 </tr>
