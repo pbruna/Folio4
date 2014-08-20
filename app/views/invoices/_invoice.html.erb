@@ -1,7 +1,7 @@
 <tr>
 	<td class="invoice-number-cell">
 		<ul class="unstyled">
-			<li class="invoice-number"><h4><%= link_to "##{invoice.number}", invoice_path(invoice) %></h4></li>
+			<li class="invoice-number"><h4><%= link_to index_invoice_number_display(invoice), invoice_path(invoice) %></h4></li>
 			<li>
 				<span class=" invoice-<%= invoice.status %>">
 					<%= (I18n.t "invoice.#{invoice.status}").humanize %>

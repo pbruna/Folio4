@@ -17,6 +17,7 @@
 
 /public/system/*
 /public/storage/development/*
+/public/storage/test/*
 /public/assets/*
 /public/production/*
 /public/*.gz

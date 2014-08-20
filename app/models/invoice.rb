@@ -167,6 +167,15 @@ class Invoice < ActiveRecord::Base
     attachments.where(category: "invoice").any?
   end
   
+  def in_clp?
+    currency.downcase == "clp"
+  end
+  
+  def price_precision
+    return 0 if in_clp?
+    2
+  end
+  
   def dte_attachment
     attachments.where(category: "invoice").first
   end
@@ -295,8 +304,16 @@ class Invoice < ActiveRecord::Base
   end
   
   def calculate_original_currency_total_from_invoice_items
+    self.invoice_items = invoice_items_round_price if currency.downcase == "clp"
     items_sum = invoice_items.reject(&:marked_for_destruction?).map(&:calculate_total).sum
     self.original_currency_total = items_sum 
+  end
+  
+  def invoice_items_round_price
+    invoice_items.each do |invoice_item|
+      invoice_item.price = invoice_item.price.round
+    end
+    invoice_items
   end
   
   # Cerrar la factura si el monto de pago calza con el total de la factura

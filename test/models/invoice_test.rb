@@ -146,7 +146,7 @@ class InvoiceTest < ActiveSupport::TestCase
     assert(!@invoice.may_active?, "Failure message.")
   end
 
-  test "1destroy only if is draft" do
+  test "destroy only if is draft" do
     @invoice.save
     @invoice.active
     @invoice.save
@@ -201,6 +201,35 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.save
     assert_equal("due", @invoice.status)
   end
-
+  
+  test "save original original_currency_total with 2 decimals when currency is UF" do
+    @invoice_item.price = 12.2
+    @invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 1, price: 12.1)
+    @invoice.currency = "UF"
+    @invoice.save
+    assert_equal(36.5, @invoice.original_currency_total.to_f)
+  end
+  
+  test "save original original_currency_total with 2 decimals when currency is USD" do
+    @invoice_item.price = 101.2
+    @invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 1, price: 103.2)
+    @invoice.currency = "USD"
+    @invoice.save
+    assert_equal(305.6, @invoice.original_currency_total.to_f)
+  end
+  
+  test "save round down original_currency_total when currency is CLP" do
+    @invoice_item.price = 12.2
+    @invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 1, price: 12.2)
+    @invoice.save
+    assert_equal(36, @invoice.original_currency_total.to_i)
+  end
+  
+  test "save round up original_currency_total when currency is CLP" do
+    @invoice_item.price = 12.6
+    @invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 1, price: 12.4)
+    @invoice.save
+    assert_equal(38, @invoice.original_currency_total.to_i)
+  end
   
 end

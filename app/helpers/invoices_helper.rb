@@ -63,7 +63,7 @@ module InvoicesHelper
 				       #{status_text.titleize}
 				    </label>
 			</td>
-			<td class='total-amount'' style='text-align: right; vertical-align: top;'>#{total_text}</td>
+			<td class='total-amount'>#{total_text}</td>
 		</tr>".html_safe
   end
   
@@ -81,6 +81,11 @@ module InvoicesHelper
     return false if params["search"].nil?
     return false if params["search"]["status"].nil?
     return params["search"]["status"] == status
+  end
+  
+  def index_invoice_number_display(invoice)
+    return "id-#{invoice.id}" if invoice.number.nil?
+    "##{invoice.number}"
   end
   
   

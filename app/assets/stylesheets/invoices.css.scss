@@ -122,20 +122,37 @@ ul.ui-autocomplete {
 #invoices-totals-resume-table {
 	width: 99%;
 	
+	tr {
+		border-bottom: solid white 10px;
+		color: white;
+		
+		td {
+			padding-left: 10px;
+			padding-top: 5px;
+		}
+		
+		td.total-amount {
+			text-align: right;
+			vertical-align: middle;
+			padding-right: 10px;
+		}
+		
+	}
+	
 	.invoices-active {
-		color: $blue;
+		background: $blue;
 	}
 	
 	.invoices-due {
-		color: $red;
+		background: $red;
 	}
 	
 	.invoices-draft {
-		color: $grayLight;
+		background: $grayLight;
 	}
 	
 	.invoices-closed {
-		color: $green;
+		background: $green;
 	}
 		
 }

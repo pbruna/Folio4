@@ -26,6 +26,15 @@ class InvoiceItem < ActiveRecord::Base
     quantity * price
   end
   
+  def invoice_in_clp?
+    invoice.in_clp?
+  end
+  
+  def price_precision
+    return 0 if invoice_in_clp?
+    2
+  end
+  
   private
   
   def permform_calculations

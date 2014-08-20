@@ -2,7 +2,7 @@
 	<div class="invoice-total-number">
 		<ul class="unstyled inline">
 			<li style="text-align: left"><span data-bind="text: invoice_currency_label"><%= @invoice.currency.upcase%></span></li>
-			<li style="width: 150px;" data-bind="text: original_currency_total().formatMoney(0)"><%= round_number_and_delimiter(@invoice.original_currency_total)%></li>
+			<li style="width: 150px;" data-bind="text: formated_original_total() "><%= number_with_precision(@invoice.original_currency_total, precision: @invoice.price_precision, delimiter: ".")%></li>
 		</ul>
 		<% if input_disabled? %>
 			<% if @invoice.taxed? || @invoice.currency != "CLP" %>
@@ -11,7 +11,7 @@
 						<li class="<%= 'currency-rate-border' if @invoice.taxed? %>">
 							<div class="left">Cambio</div>
 							<div class="right">
-								<%= "$ " + round_number_and_delimiter(@invoice.currency_convertion_rate) %>
+								<%= "$ " + number_with_delimiter(@invoice.currency_convertion_rate) %>
 							</div>
 						</li>
 					<% end %>

@@ -148,7 +148,7 @@ class InvoicesController < ApplicationController
     def prices_to_numbers
       return params if params["invoice"]["invoice_items_attributes"].nil?
       params["invoice"]["invoice_items_attributes"].each do |key,value|
-        price = params["invoice"]["invoice_items_attributes"][key]["price"].to_s.gsub(/\$\s+/,"").gsub(/\./,"").to_i
+        price = params["invoice"]["invoice_items_attributes"][key]["price"].to_s.gsub(/\$\s+/,"").gsub(/\./,"").gsub(/,/,".").to_f
         params["invoice"]["invoice_items_attributes"][key]["price"] = price
       end
       params

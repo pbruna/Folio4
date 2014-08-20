@@ -29,7 +29,7 @@ module ApplicationHelper
   end
   
   def round_number_and_delimiter(number)
-    number_with_delimiter(number.ceil)
+    number_with_delimiter(number.round)
   end
   
   def search_add_record_link(path, title, data = {})
