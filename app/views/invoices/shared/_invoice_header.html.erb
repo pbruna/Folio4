@@ -13,7 +13,7 @@
 	</ul>
 	<% if input_disabled? %>
 		<h4>
-			Venta # <%= @invoice.number %>
+			Venta <%= index_invoice_number_display(@invoice) %>
 		</h4>
 	<% else %>
 		<h4>Nueva Venta </h4>
