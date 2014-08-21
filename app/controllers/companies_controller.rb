@@ -57,6 +57,17 @@ class CompaniesController < ApplicationController
     @company = current_account.companies.find(params[:id])
   end
   
+  def destroy
+    @company = current_account.companies.find(params[:id])
+    if @company.destroy
+      flash[:notice] = "Empresa eliminada correctamente"
+      redirect_to companies_path()
+    else
+      flash[:error] = "No se puede eliminar esta empresa"
+      redirect_to @company
+    end
+  end
+  
   def show
     @company = current_account.companies.find(params[:id])
   end

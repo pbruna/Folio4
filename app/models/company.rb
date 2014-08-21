@@ -6,9 +6,15 @@ class Company < ActiveRecord::Base
   scope :for_account, -> {where(account_id: Account.current_id)}
   
   has_attached_file :avatar, :styles => { :large => "300x300>", :medium => "150x150>", :thumb => "60x60>" }, default_url: :default_avatar_url
-  validates_presence_of :rut, :name, :address, :province, :city
+  validates_presence_of :rut, :name, :address, :province, :city, :account_id
   validates_uniqueness_of :rut, :scope => [:account_id]
   validates_with RutValidator
+  
+  before_destroy :check_if_empty
+  
+  def empty?
+    !invoices.any?
+  end
   
   def contacts_in_alphabetycal_order(contact_name_like)
     return contacts.order("name") if contact_name_like.nil?
@@ -55,6 +61,10 @@ class Company < ActiveRecord::Base
     4.5
   end
   
+  def payment_days_median
+    invoices.closed.map {|i| i.payment_days}.median.round
+  end
+  
   def total_due
     invoices.due.to_a.sum(&:total).to_i
   end
@@ -75,5 +85,9 @@ class Company < ActiveRecord::Base
   def random_string
     (0...17).map{ ('a'..'z').to_a[rand(26)] }.join
   end
+  
+  def check_if_empty
+    empty?
+  end  
   
 end

@@ -10,6 +10,11 @@
 				<li>
 					<%= link_to "#{fa_icon "edit"} Editar empresa".html_safe, edit_company_path(@company) %>
 				</li>
+				<% if @company.empty? %>
+					<li>
+						<%= link_to "#{fa_icon "trash-o"} Borrar empresa".html_safe, "#", data: {toggle: "modal", target: "#delete-company-#{@company.id}-modal"}, class: "invoices-due"  %>
+					</li>
+				<% end %>
 			</ul>
 	</div>
 	<h3><%= @company.name %></h3>

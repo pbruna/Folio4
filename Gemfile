@@ -99,3 +99,4 @@ gem 'aws-sdk'
 gem 'asset_sync', group: :assets
 gem 'griddler'
 gem 'griddler-mailgun'
+gem "simple_stats"

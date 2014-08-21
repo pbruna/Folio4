@@ -280,6 +280,7 @@ GEM
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_stats (1.1.0)
     slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -376,6 +377,7 @@ DEPENDENCIES
   sdoc
   selenium-webdriver
   simple_form (~> 3.0.0.rc)
+  simple_stats
   sqlite3
   turbolinks
   turn

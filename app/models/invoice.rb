@@ -263,6 +263,10 @@ class Invoice < ActiveRecord::Base
     self.save
   end
   
+  def payment_days
+    (close_date - due_date).to_i
+  end
+  
   def set_due_date_and_reminder
     date = active_date || Date.today
     self.due_date = date + due_days
