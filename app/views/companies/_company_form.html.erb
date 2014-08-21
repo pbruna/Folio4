@@ -10,7 +10,12 @@
 		
 		  <div class="actions">
 		    <%= f.button :submit, "Guardar", :class => "btn btn-success"  %>
-			 o <%= link_to "Cancelar", companies_path(), :class => "cancel-link" %>
+			 o 
+			 <% if @company.new_record? %>
+				 <%= link_to "Cancelar", companies_path(), :class => "cancel-link" %>
+			 <% else %>
+				 <%= link_to "Cancelar", company_path(@company), :class => "cancel-link" %>
+			 <% end %>
 		  </div>
 		
 <% end %>

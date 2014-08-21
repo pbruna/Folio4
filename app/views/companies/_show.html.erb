@@ -2,13 +2,13 @@
 	<div class="action-links pull-right">
 		<ul class="inline">
 				<li>
-					<%= link_to "Nueva Venta", new_invoice_path(:company_id => @company.id) %>
+					<%= link_to "#{fa_icon "plus"} Nueva Venta".html_safe, new_invoice_path(:company_id => @company.id) %>
 				</li>
-				<li>
+				<!-- <li>
 					<%= link_to " Nueva Compra", edit_company_path(@company) %>
-				</li>
+				</li> -->
 				<li>
-					<%= link_to " Editar empresa", edit_company_path(@company) %>
+					<%= link_to "#{fa_icon "edit"} Editar empresa".html_safe, edit_company_path(@company) %>
 				</li>
 			</ul>
 	</div>

@@ -198,6 +198,13 @@ $ ->
 			$("#search_sorted_direction").val($(".dropdown-sorter.sorted-direction a.selected").data("sorted-direction"))
 			$("#status_search").submit()
 			
+		# Envía la busqueda según los campos, respetando el orden
+		$("#status_search input[type=submit]").click (e) ->
+			e.preventDefault()
+			$("#search_sorted_by").val($(".dropdown-sorter.sorted-by a.selected").data("sorted-by"))
+			$("#search_sorted_direction").val($(".dropdown-sorter.sorted-direction a.selected").data("sorted-direction"))
+			$("#status_search").submit()
+			
 		# Activamos los Tooltips de ayuda en el pago de abonos
 		$("#invoice-total .invoice-advances span").tooltip()
 		

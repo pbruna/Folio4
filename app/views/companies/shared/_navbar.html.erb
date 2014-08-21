@@ -6,9 +6,9 @@
 		<li class="<%= (url_for == invoices_company_path(@company)) ? "active" : '' %>">
 			<%= link_to "Ventas", invoices_company_path(@company) %>
 		</li>
-		<li class="<%= (url_for == expenses_company_path(@company)) ? "active" : '' %>">
+		<!-- <li class="<%= (url_for == expenses_company_path(@company)) ? "active" : '' %>">
 			<%= link_to "Compras", expenses_company_path(@company) %>
-		</li>
+		</li> -->
 		<li class="<%= (url_for == contacts_company_path(@company)) ? "active" : '' %>">
 			<%= link_to "Contactos", contacts_company_path(@company) %>
 		</li>

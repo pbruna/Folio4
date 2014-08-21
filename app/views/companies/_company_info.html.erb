@@ -19,24 +19,40 @@
 					<h5>Ventas</h5>
 				</div>
 				<div class="row span7 totals-kpi-box-body">
-					<div class="total-kpi">
-						<span class="total-kpi-title">Activas</span>
-						<div class="total-kpi-value">$ 943.434.344</div>
-					</div>
-					<div class="total-kpi">
-						<span class="total-kpi-title">Vencidas</span>
-						<div class="total-kpi-value">$ 43.434.344</div>
-					</div>
-					<div class="total-kpi">
-						<span class="total-kpi-title">Nos deben</span>
-						<div class="total-kpi-value">$ 986.434.344</div>
-					</div>
+					<% unless @company.invoices.any? %>
+						<div class="alert alert-block blank-slate" style="min-height: 0px; border: 1px dashed gray; padding-bottom: 40px">
+							<div class="blank-slate-text">
+								<p>
+									Aun no tienes ventas para esta Empresa, pero cuando las tengas aquí podrá ver un resumen de éstas.
+								</p>
+							</div>
+						</div>
+					<% else %>
+						<div class="total-kpi">
+							<span class="total-kpi-title invoice-active">Activas</span>
+							<div class="total-kpi-value">
+								<%= number_to_currency @company.total_active %>
+							</div>
+						</div>
+						<div class="total-kpi">
+							<span class="total-kpi-title invoice-due">Vencidas</span>
+							<div class="total-kpi-value">
+								<%= number_to_currency @company.total_due %>
+							</div>
+						</div>
+						<div class="total-kpi">
+							<span class="total-kpi-title invoice-closed">Ventas totales</span>
+							<div class="total-kpi-value">
+								<%= number_to_currency @company.total_closed %>
+							</div>
+						</div>
+					<% end %>
 				</div>
 			</div>
 			
-			<div class="span7 totals-kpi-box">
+			<!-- <div class="span7 totals-kpi-box">
 				<div class="totals-kpi-box-header">
-					<h5>Gastos</h5>
+					<h5>Pagos</h5>
 				</div>
 				<div class="row span7 totals-kpi-box-body">
 					<div class="total-kpi">
@@ -52,7 +68,8 @@
 						<div class="total-kpi-value">$ 645.334</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
+				
 		</div>
 	</div>
 

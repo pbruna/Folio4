@@ -333,14 +333,13 @@ class Invoice < ActiveRecord::Base
   
   # Búsqueda simple
   def self.search(params)
-    Rails.logger.debug("AQUI #{params}")
     params = Hash.new(nil) if params.nil?
     query_items = params["query_items"].nil? ? {} : params["query_items"].delete_if {|k,v| v.empty?}
     start_date = Date.parse(query_items.delete("start_date")) unless query_items["start_date"].nil?
     end_date = Date.parse(query_items.delete("end_date")) unless query_items["end_date"].nil?
     status = params["status"].nil? ? "all_invoices" : params["status"]
-    sorted_by = params["sorted_by"].nil? ? "active_date" : params["sorted_by"]
-    sorted_direction = params["sorted_direction"].nil? ? "DESC" : params["sorted_direction"]
+    sorted_by = (params["sorted_by"].nil? || params["sorted_by"].empty?) ? "active_date" : params["sorted_by"]
+    sorted_direction = (params["sorted_direction"].nil? || params["sorted_direction"].empty?) ? "DESC" : params["sorted_direction"]
     results = send(status).where(query_items)
     if start_date && end_date.nil?
       results = results.where("active_date >= ?", start_date)

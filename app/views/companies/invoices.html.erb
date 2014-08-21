@@ -3,6 +3,7 @@
 <%= render partial: "companies/shared/navbar" %>
 
 
+
 <div class="row document">
 	
 	<div class="span8">
@@ -12,6 +13,15 @@
 		<div id="invoices">
 			<%= render partial: "invoices/invoices_table", locals: {invoices: @invoices} %>
 		</div>
+		<% if @invoices.size < 1%>
+			<div class="alert alert-block blank-slate" style="min-height: 0px; border: 1px dashed gray; padding-bottom: 40px">
+				<div class="blank-slate-text">
+					<p>
+						Aun no tienes ventas para esta Empresa, pero cuando las tengas apareceran aquí.
+					</p>
+				</div>
+			</div>
+		<% end %>
 	</div>
 	<div id="side-menu" class="span3" style="margin-top: 14px">
 		<%= form_tag invoices_path(), id: "status_search", method: :get, remote: true do |f|%>
