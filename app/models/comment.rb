@@ -50,7 +50,7 @@ class Comment < ActiveRecord::Base
   def notification_email_subject
     object = commentable
     object_name = commentable.class.model_name.human.titleize # Translated
-    "[Nuevo Comentario] #{object_name} ##{object.number} - #{object.subject}"
+    "[Nuevo Comentario] #{object_name} ##{object.number} - #{object.subject} - #{object.company.name}"
   end
   
   private
