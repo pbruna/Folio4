@@ -15,9 +15,11 @@
 				</div>
 		</div>
 		<div class="row span7 totals-kpi-box">
-			<div class="pull-right totals-kpi-box-header">
-				<h5 style="margin-right: 10px; font-weight: normal">Paga generalmente en <strong><%= @company.payment_days_median %> días</strong></h5>
-			</div>
+			<% unless @company.empty? %>
+				<div class="pull-right totals-kpi-box-header">
+					<h5 style="margin-right: 10px; font-weight: normal">Paga generalmente en <strong><%= @company.payment_days_median %> días</strong></h5>
+				</div>
+			<% end %>
 				<div class="totals-kpi-box-header">
 					<h5>Ventas</h5>
 				</div>
