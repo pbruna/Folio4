@@ -30,7 +30,7 @@ class InvoiceItemTest < ActiveSupport::TestCase
     @invoice_item.quantity = 2
     @invoice.save
     assert_equal(13, @invoice_item.price.to_i)
-    assert_equal(27, @invoice_item.total.to_i)
+    assert_equal(26, @invoice_item.total.to_i)
   end
   
 
