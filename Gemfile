@@ -49,7 +49,6 @@ group :development do
   gem 'pry'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 end
 
 # Use ActiveModel has_secure_password
@@ -63,7 +62,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 gem 'devise', :git => "https://github.com/plataformatec/devise"
 gem 'unicorn'
 gem 'unicorn-rails'
