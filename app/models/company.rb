@@ -63,6 +63,7 @@ class Company < ActiveRecord::Base
   
   def payment_days_median
     return nil if empty?
+    return nil if invoices.closed.empty?
     invoices.closed.map {|i| i.payment_days}.median.round
   end
   
