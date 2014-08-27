@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823000300) do
+ActiveRecord::Schema.define(version: 20140827113854) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20140823000300) do
     t.string   "author_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_users_ids"
+    t.string   "company_users_ids"
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id"

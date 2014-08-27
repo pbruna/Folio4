@@ -23,12 +23,7 @@
 						<%= f.hidden_field :commentable_type, value: object.class.to_s %>
 					</div>
 					<div class="comment-body-footer">
-						<div class="comment-email-alert">
-			  				<label class='checkbox'>
-								<%= check_box_tag "comment[notify_account_users]", nil, false %>
-								Notificar por correo a todos los usuarios de Folio.
-							</label>
-						</div>
+						<%= render :partial => 'comments/comment_suscribers' %>
 						<div class="form-actions">
 							<%= f.submit "Comentar", class: "btn btn-success"%>
 						</div>

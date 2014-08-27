@@ -125,18 +125,21 @@
 	}
 	
 	.comment-body-footer {
+		
 		.form-actions {
-			margin: 0px;
 			background-color: white;
 			border-top: none;
-			padding: 0px 17px 20px;
-			text-align: right;
+			padding-top: 5px;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			padding-bottom: 10px;
 		}
 		
-		.comment-email-alert {
-			float: left;
-			color: #777777;
+		.comment-email-suscribers {
+			color: #000;
 			margin-left: 20px;
+			font-size: 13px;
+			margin-top: -15px;
 		}
 		
 	}

@@ -8,7 +8,7 @@
 /.bundle
 
 #Ignore Vagrant
-/.vagrant
+/.vagrant/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

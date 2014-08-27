@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   attr_accessor :notify_account_users
   belongs_to :commentable, polymorphic: true
   belongs_to :author, polymorphic: true
+  serialize :account_users_ids
+  serialize :company_users_ids
   
   after_create :notify
   
@@ -14,13 +16,27 @@ class Comment < ActiveRecord::Base
     author.account
   end
   
+  def account_suscribers
+    return [] if account_users_ids.nil?
+    User.find account_users_ids
+  end
+  
   def author_name
     return author.email if author.name.nil?
     author.name
   end
   
+  def commentable_contact
+    commentable.contact
+  end
+  
   def contacts_emails
     account_emails
+  end
+  
+  def company_suscribers
+    return [] if company_users_ids.nil?
+    Contact.find company_users_ids
   end
   
   def email_reply_to
@@ -42,10 +58,28 @@ class Comment < ActiveRecord::Base
     commentable.account.users_emails_array
   end
   
+  def default_suscribers
+    [author, commentable_contact]
+  end
+  
   def encoded_account_id
     Base64.strict_encode64(account_id.to_s)
   end
   
+  def last_comment
+    commentable.comments.last
+  end
+  
+  def last_commentable_suscribers
+    return suscribers if last_comment.nil?
+    last_comment.suscribers
+  end
+  
+  def suscribers
+    list = account_suscribers + company_suscribers
+    return default_suscribers if list.empty?
+    list
+  end
   
   def notification_email_subject
     object = commentable
