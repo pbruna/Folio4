@@ -13,7 +13,12 @@ class Comment < ActiveRecord::Base
   
   
   def account
-    author.account
+    commentable.account
+  end
+  
+  def company
+    return nil if commentable.company.nil?
+    commentable.company
   end
   
   def account_suscribers
@@ -75,16 +80,22 @@ class Comment < ActiveRecord::Base
     last_comment.suscribers
   end
   
-  def suscribers
-    list = account_suscribers + company_suscribers
-    return default_suscribers if list.empty?
-    list
+  def possible_suscribers
+    company_contacts = company.contacts
+    account_users = account.users
+    account_users + company_contacts
   end
   
   def notification_email_subject
     object = commentable
     object_name = commentable.class.model_name.human.titleize # Translated
     "[Nuevo Comentario] #{object_name} ##{object.number} - #{object.subject} - #{object.company.name}"
+  end
+  
+  def suscribers
+    list = account_suscribers + company_suscribers
+    return default_suscribers if list.empty?
+    list
   end
   
   private

@@ -4,6 +4,26 @@
 		<span class="comment-suscribers-list">
 			<%= comment_default_suscribers_list @comment %>
 		</span>
-		(<%= link_to "modificar", "#" %>)
+		(<%= link_to "modificar", "#", data: {behavior: "expand_on_click" } %>)
+	</div>
+	<div class="comment-select-suscribers expanded-content" style="display: none;">
+		<p class="coment-select-suscribers-title">
+			<strong>Enviar comentario por correo a:</strong>
+		</p>
+		<div class="comment-global-suscribers">
+			<%= link_to "Seleccionar a todos", "#" %> | 
+			<%= link_to "Desmarcar a todos", "#" %> 
+			<span class="label-select-company disable"><%= link_to current_account.name, "#" %></span> 
+			<span class="label-select-company enable"><%= link_to @comment.company.name, "#" %></span>
+			<ul class="comment-suscribers-list">
+				<% @comment.possible_suscribers.each do |suscriber| %>
+					<li>
+						<label class="checkbox">
+							<%= check_box_tag  ""%><%= suscriber.full_name %>
+						</label>
+						</li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 </div>

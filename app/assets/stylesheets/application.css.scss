@@ -189,6 +189,13 @@ a:hover.link-expense {
 	border: 1px solid #666;
 }
 
+.label-tag {
+	@extend .label;
+	background: white;
+	color: #666;
+	border: #999 solid 1px;
+}
+
 .pagination {
 	text-align: center;
 }

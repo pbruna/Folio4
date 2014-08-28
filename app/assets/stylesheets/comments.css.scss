@@ -142,6 +142,68 @@
 			margin-top: -15px;
 		}
 		
+		ul.comment-suscribers-list {
+			@extend .unstyled;
+			@extend .inline;
+			margin-left: -5px;
+			margin-top: 5px;
+			
+			li {
+				color: #000;
+				margin: 0 0 5px 0px;
+				width: 150px;
+				margin-bottom: 0px;
+				
+				label {
+					font-size: 13px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					margin-bottom: 0px;
+				}
+			}
+			
+		}
+		
+		.comment-select-suscribers {
+			p.coment-select-suscribers-title {
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+			
+			.comment-global-suscribers {
+				color: grey;
+				
+				.label-select-company {
+					@extend .label;
+					margin-left: 5px;
+					border: #999 solid 1px;
+				}
+				
+				.disable {
+					background: white;
+					color: #666;
+				}
+				
+				.enable {
+					background: black;
+					color: white;
+					
+					a {
+						color: white;
+						font-size: 12px;
+					}
+					
+				}
+				
+				a {
+					color: grey;
+					font-size: 12px;
+				}
+			}
+			
+		}
+		
 	}
 	
 

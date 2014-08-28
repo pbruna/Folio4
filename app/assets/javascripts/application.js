@@ -72,6 +72,12 @@ $(function () {
 	// # en Invoice#Index Sidebar
 	
 	$(".invoices-index-autocomplete").autocomplete().autocomplete("widget").addClass("invoices-index-autocomplete");
+	
+	$("a[data-behavior=expand_on_click]").on('click', function(e){
+		e.preventDefault();
+		$(this).parent().hide();
+		$(this).parent().next(".expanded-content").show();
+	});
 
 });
 
