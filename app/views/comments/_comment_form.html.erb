@@ -7,10 +7,17 @@
 			<%= form_for @comment, remote: true do |f| -%>
 				<div class="comment-body">
 					<div class="comment-body-header">
+						<div class="comment-body-header-options">
+							<% unless current_account.nil? %>
+								<label class="checkbox">
+									<%= f.check_box :private %>
+									Ocultar al cliente
+								</label>
+							<% end %>
+						</div>
 						<div class="comment-body-header-text">
 							Agregar comentario
 						</div>
-						<div classs="comment-body-header-menu"></div>
 					</div>
 					<div class="comment-error-block">
 						No fue posible agregar el comentario, por favor prueba nuevamente.

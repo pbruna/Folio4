@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
     commentable.company
   end
   
-  def account_suscribers
+  def account_subscribers
     return [] if account_users_ids.nil?
     User.find account_users_ids
   end
@@ -39,7 +39,7 @@ class Comment < ActiveRecord::Base
     account_emails
   end
   
-  def company_suscribers
+  def company_subscribers
     return [] if company_users_ids.nil?
     Contact.find company_users_ids
   end
@@ -63,7 +63,7 @@ class Comment < ActiveRecord::Base
     commentable.account.users_emails_array
   end
   
-  def default_suscribers
+  def default_subscribers
     [author, commentable_contact]
   end
   
@@ -75,12 +75,12 @@ class Comment < ActiveRecord::Base
     commentable.comments.last
   end
   
-  def last_commentable_suscribers
-    return suscribers if last_comment.nil?
-    last_comment.suscribers
+  def last_commentable_subscribers
+    return subscribers if last_comment.nil?
+    last_comment.subscribers
   end
   
-  def possible_suscribers
+  def possible_subscribers
     company_contacts = company.contacts
     account_users = account.users
     account_users + company_contacts
@@ -92,9 +92,9 @@ class Comment < ActiveRecord::Base
     "[Nuevo Comentario] #{object_name} ##{object.number} - #{object.subject} - #{object.company.name}"
   end
   
-  def suscribers
-    list = account_suscribers + company_suscribers
-    return default_suscribers if list.empty?
+  def subscribers
+    list = account_subscribers + company_subscribers
+    return default_subscribers if list.empty?
     list
   end
   

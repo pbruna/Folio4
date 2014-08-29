@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   
   before_destroy :check_owner
   before_create  :active_user
+
+  alias_method :organization, :account
   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "60x60>" }, default_url: :default_avatar_url
   
@@ -43,6 +45,10 @@ class User < ActiveRecord::Base
   
   def owner?
     id == account.owner_id
+  end
+  
+  def organization_id
+    organization.id
   end
   
   def account_subdomain
