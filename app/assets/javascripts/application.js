@@ -73,7 +73,7 @@ $(function () {
 	
 	$(".invoices-index-autocomplete").autocomplete().autocomplete("widget").addClass("invoices-index-autocomplete");
 	
-	$("a[data-behavior=expand_on_click]").on('click', function(e){
+	$(document).on('click', "a[data-behavior=expand_on_click]", function(e){
 		e.preventDefault();
 		$(this).parent().hide();
 		$(this).parent().next(".expanded-content").show();

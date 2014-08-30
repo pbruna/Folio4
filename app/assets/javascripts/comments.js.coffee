@@ -7,7 +7,7 @@ $ ->
 	$(".comment-selectable-subscriber-checkbox").on "change", () ->
       update_organizations_labels()
 
-	$("#comment_private").on "change", () ->
+	$(document).on "change", "#comment_private", () ->
       if $(this).prop "checked"
         $("[data-organization-type='company']").hide()
       else
@@ -52,13 +52,16 @@ $ ->
 	
 	update_organizations_labels()
 	
-	$("#new_comment a[data-behavior=subscriber_select_all]").on "click", (e) ->
+	window.update_organizations_labels = () ->
+		update_organizations_labels()
+	
+	$(document).on "click", "#new_comment a[data-behavior=subscriber_select_all]", (e) ->
 	  toggle_subscribers(e, true)
 	  
-	$("#new_comment a[data-behavior=subscriber_select_none]").on "click", (e) ->
+	$(document).on "click", "#new_comment a[data-behavior=subscriber_select_none]", (e) ->
 	  toggle_subscribers(e, false)
 	  
-	$("#new_comment a[data-behavior=subscriber_select_organization]").on "click", (e) ->
+	$(document).on "click", "#new_comment a[data-behavior=subscriber_select_organization]", (e) ->
 	  e.preventDefault()
 	  org_id = $(this).data("organization-id")
 	  checked = !all_organization_selectd(org_id)

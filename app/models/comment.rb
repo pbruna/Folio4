@@ -1,13 +1,15 @@
 require "base64"
 
 class Comment < ActiveRecord::Base
-  attr_accessor :notify_account_users
+  attr_accessor :subscribers_ids
+  
   belongs_to :commentable, polymorphic: true
   belongs_to :author, polymorphic: true
   serialize :account_users_ids
   serialize :company_users_ids
   
   after_create :notify
+  before_create :set_subscribers
   
   validates_presence_of :message, :author_type, :author_id, :commentable_id, :commentable_type
   
@@ -33,10 +35,6 @@ class Comment < ActiveRecord::Base
   
   def commentable_contact
     commentable.contact
-  end
-  
-  def contacts_emails
-    account_emails
   end
   
   def company_subscribers
@@ -76,7 +74,7 @@ class Comment < ActiveRecord::Base
   end
   
   def last_commentable_subscribers
-    return subscribers if last_comment.nil?
+    return default_subscribers if last_comment.nil?
     last_comment.subscribers
   end
   
@@ -93,16 +91,27 @@ class Comment < ActiveRecord::Base
   end
   
   def subscribers
-    list = account_subscribers + company_subscribers
-    return default_subscribers if list.empty?
-    list
+    list = Array.new
+    list << account_subscribers
+    list << company_subscribers
+    list.flatten
+  end
+  
+  def subscribers_emails
+    subscribers.map {|s| s.email }
   end
   
   private
   
   def notify
-    return unless notify_account_users
+    return if subscribers_emails.empty?
     CommentMailer.delay.comment_notification(id)
+  end
+  
+  def set_subscribers
+    return if subscribers_ids.nil?
+    self.account_users_ids = subscribers_ids[:account]
+    self.company_users_ids = subscribers_ids[:company] unless private?
   end
   
 end

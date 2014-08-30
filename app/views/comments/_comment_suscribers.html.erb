@@ -2,7 +2,7 @@
 	<div class="comment-default-subscribers">
 		Tu comentario se enviará a: 
 		<span class="comment-subscribers-list">
-			<%= comment_default_subscribers_list @comment %>
+			<%= comment_default_subscribers_list comment %>
 		</span>
 		(<%= link_to "modificar", "#", data: {behavior: "expand_on_click" } %>)
 	</div>
@@ -19,15 +19,15 @@
 				<span class="label-select-organization" data-organization-id="<%= current_account.id%>">
 					<%= link_to current_account.name, "#", data: {behavior: "subscriber_select_organization", organization_id: current_account.id} %>
 				</span> 
-				<span class="label-select-organization" data-organization-type="company" data-organization-id="<%= @comment.company.id%>">
-					<%= link_to @comment.company.name, "#", data: {behavior: "subscriber_select_organization", organization_id: @comment.company.id} %>
+				<span class="label-select-organization" data-organization-type="company" data-organization-id="<%= comment.company.id%>">
+					<%= link_to comment.company.name, "#", data: {behavior: "subscriber_select_organization", organization_id: comment.company.id} %>
 				</span>
 			</div>
 			<ul class="comment-selectable-subscribers-list">
-				<% @comment.possible_subscribers.each do |subscriber| %>
+				<% comment.possible_subscribers.each do |subscriber| %>
 					<li data-organization-type="<%=subscriber.organization.class.to_s.downcase%>">
 						<label class="checkbox" data-subscriber-id="<%= subscriber.id %>" title="<%= subscriber.full_name %>">
-							<%= check_box_tag  "comment[subscribers][#{subscriber.organization.class.to_s.downcase}][]", subscriber.id, is_selected?(@comment, subscriber.id), class: "comment-selectable-subscriber-checkbox", data: {"subscriber-organization-id" => subscriber.organization_id }%><%= subscriber.full_name %>
+							<%= check_box_tag  "comment[subscribers_ids][#{subscriber.organization.class.to_s.downcase}][]", subscriber.id, is_selected?(comment, subscriber.id), class: "comment-selectable-subscriber-checkbox", data: {"subscriber-organization-id" => subscriber.organization_id }%><%= subscriber.full_name %>
 						</label>
 						</li>
 				<% end %>

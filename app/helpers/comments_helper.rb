@@ -2,7 +2,9 @@ module CommentsHelper
   
   def comment_default_subscribers_list(comment)
     names = comment.last_commentable_subscribers.map {|user| user.full_name}
+    return "nadie" if names.empty?
     last_name = names.pop
+    return last_name if names.empty?
     "#{names.join(", ")} y #{last_name}"
   end
   
