@@ -1,0 +1,8 @@
+<% if comment.has_attachments? %>
+	
+	<div class="comment-attachments">
+		<%= fa_icon "paperclip" %> 
+		<%= link_to "Tiene #{comment.attachments.count} " + "adjunto".pluralize(comment.attachments.count), "#{comment_object_path(comment)}/attachments" %>
+	</div>
+
+<% end %>

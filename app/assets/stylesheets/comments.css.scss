@@ -142,6 +142,16 @@
 	
 	.comment-body-footer {
 		
+		.comment-attachments {
+			background: #f7f7f7;
+			padding: 6px 10px 6px;
+			border-radius: 3px 3px 0 0;
+			border-top: 1px solid #eee;
+			
+			a {font-size: 13px;}
+			
+		}
+		
 		.form-actions {
 			background-color: white;
 			border-top: none;

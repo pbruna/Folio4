@@ -8,9 +8,18 @@ module CommentsHelper
     "#{names.join(", ")} y #{last_name}"
   end
   
-  def is_selected?(comment, subscriber_id)
-    subscribers_ids = comment.last_commentable_subscribers.map {|user| user.id}
-    subscribers_ids.include? subscriber_id
+  def last_comment_subscribers(comment)
+    comment.last_commentable_subscribers.map {|user| user.id}
+  end
+  
+  def is_selected?(last_subscribers, subscriber_id)
+    last_subscribers.include? subscriber_id
+  end
+  
+  def comment_object_path(comment)
+    object_type = comment.commentable.class.to_s.downcase
+    object_id = comment.commentable.id
+    send("#{object_type}_path", object_id)
   end
   
 end

@@ -16,18 +16,21 @@
 				<%= link_to "Desmarcar a todos", "#", data: {behavior: "subscriber_select_none"} %> 
 			</div>
 			<div>
-				<span class="label-select-organization" data-organization-id="<%= current_account.id%>">
-					<%= link_to current_account.name, "#", data: {behavior: "subscriber_select_organization", organization_id: current_account.id} %>
+				<span class="label-select-organization" data-organization-id="<%= @current_account.id%>">
+					<%= link_to @current_account.name, "#", data: {behavior: "subscriber_select_organization", organization_id: @current_account.id} %>
 				</span> 
 				<span class="label-select-organization" data-organization-type="company" data-organization-id="<%= comment.company.id%>">
 					<%= link_to comment.company.name, "#", data: {behavior: "subscriber_select_organization", organization_id: comment.company.id} %>
 				</span>
 			</div>
 			<ul class="comment-selectable-subscribers-list">
+				<% last_comment_subs = last_comment_subscribers(comment)%>
 				<% comment.possible_subscribers.each do |subscriber| %>
-					<li data-organization-type="<%=subscriber.organization.class.to_s.downcase%>">
+					<% @org_type = subscriber.organization.class.to_s.downcase %>
+					
+					<li data-organization-type="<%=@org_type%>">
 						<label class="checkbox" data-subscriber-id="<%= subscriber.id %>" title="<%= subscriber.full_name %>">
-							<%= check_box_tag  "comment[subscribers_ids][#{subscriber.organization.class.to_s.downcase}][]", subscriber.id, is_selected?(comment, subscriber.id), class: "comment-selectable-subscriber-checkbox", data: {"subscriber-organization-id" => subscriber.organization_id }%><%= subscriber.full_name %>
+							<%= check_box_tag  "comment[subscribers_ids][#{@org_type}][]", subscriber.id, is_selected?(last_comment_subs, subscriber.id), class: "comment-selectable-subscriber-checkbox", data: {"subscriber-organization-id" => subscriber.organization_id }%><%= subscriber.full_name %>
 						</label>
 						</li>
 				<% end %>

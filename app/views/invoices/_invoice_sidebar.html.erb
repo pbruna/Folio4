@@ -56,7 +56,7 @@
 					<%= fa_icon "calendar"%>Recordatorios
 					<div class="invoice-option-explain">
 						<small>
-							<%= I18n.l @invoice.notification_date, format: :short %> a <%= current_user.name %> y <%= @invoice.contact_name %>
+							<%= I18n.l @invoice.notification_date, format: :short %> a <%= @current_user.name %> y <%= @invoice.contact_name %>
 						</small>
 					</div>
 				</li>

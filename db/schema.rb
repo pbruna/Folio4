@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829191724) do
+ActiveRecord::Schema.define(version: 20140830212406) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140829191724) do
     t.string   "account_users_ids"
     t.string   "company_users_ids"
     t.boolean  "private",           default: false
+    t.boolean  "from_email",        default: false
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id"

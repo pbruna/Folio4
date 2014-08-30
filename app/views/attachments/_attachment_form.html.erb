@@ -1,7 +1,7 @@
-<div id="show-attachment-body" style="<%= "display: none;" unless object.attachments.any?%>">
+<div id="show-attachment-body" style="<%= "display: none;" unless object.all_attachments.any?%>">
 	<a class="btn-addfiles">Agregar archivos</a>
 </div>
-<div class="attachment attachment-form" style="<%= "display: none;" if object.attachments.any?%>">
+<div class="attachment attachment-form" style="<%= "display: none;" if object.all_attachments.any?%>">
 	<%= form_for Attachment.new, :html => { :multipart => true  } do |f| %>
 	<div class="attachment-body">
 		<div class="attachment-body-header">
@@ -29,8 +29,8 @@
 			<div class="form-actions">
 				<%= f.hidden_field :attachable_id, value: object.id %>
 				<%= f.hidden_field :attachable_type, value: object.class.to_s %>
-				<%= f.hidden_field :author_id, value: current_user.id %>
-				<%= f.hidden_field :author_type, value: current_user.class.to_s %>
+				<%= f.hidden_field :author_id, value: @current_user.id %>
+				<%= f.hidden_field :author_type, value: @current_user.class.to_s %>
 				<%= f.button "Cancelar", class: "btn", name: "cancel" %>
 				<%= f.submit "Aceptar", class: "btn btn-success" %>
 			</div>

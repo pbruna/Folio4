@@ -133,7 +133,8 @@ class InvoicesController < ApplicationController
   end
   
   def show
-    @invoice = current_account.invoices.find(params[:id])
+    @invoice = current_account.invoices.includes(:comments).find(params[:id])
+    @comments = @invoice.comments
     @comment = @invoice.comments.build(author_id: current_user.id, author_type: current_user.class.to_s)
   end
   

@@ -5,10 +5,12 @@ class Comment < ActiveRecord::Base
   
   belongs_to :commentable, polymorphic: true
   belongs_to :author, polymorphic: true
+  has_many :attachments, as: :attachable, dependent: :destroy
   serialize :account_users_ids
   serialize :company_users_ids
   
   after_create :notify
+  before_validation :complete_attachment_fields
   before_create :set_subscribers
   
   validates_presence_of :message, :author_type, :author_id, :commentable_id, :commentable_type
@@ -47,6 +49,10 @@ class Comment < ActiveRecord::Base
     host = "app.folio.cl"
     mailbox = "#{object_name}-#{commentable.id}-#{encoded_account_id}"
     "#{mailbox}@#{host}"
+  end
+  
+  def has_attachments?
+    attachments.any?
   end
   
   def object_name
@@ -90,6 +96,27 @@ class Comment < ActiveRecord::Base
     "[Nuevo Comentario] #{object_name} ##{object.number} - #{object.subject} - #{object.company.name}"
   end
   
+  def self.new_from_email(email)
+    return false if email.nil? # Si no hay correo no hacemos nada
+    comment_metadata = metadata_from_email_to_field(email)
+    comment_author = comment_author_from_email(email, comment_metadata[:account_id])
+    comment_metadata.delete(:account_id) # El comment no tiene este campo
+    # Si no hay author no hacemos nada, puede que no haya
+    # porque no se encontró una cuenta valida
+    return false unless comment_author
+    # Tenemos que crear el comentario desde el objeto (Factura por ahora) 
+    object = comment_metadata[:commentable_type].constantize.find(comment_metadata[:commentable_id])
+    comment = object.comments.new comment_metadata.merge comment_author
+    comment.message = email.body.html_safe
+    comment.from_email = true
+    if email.attachments.any?
+      email.attachments.each do |attachment|
+        comment.attachments.new(resource: attachment)
+      end
+    end
+    comment
+  end
+  
   def subscribers
     list = Array.new
     list << account_subscribers
@@ -103,15 +130,65 @@ class Comment < ActiveRecord::Base
   
   private
   
+  def self.metadata_from_email_to_field(email)
+    ary = email.to.first[:token].split(/-/)
+    ary[0] = ary[0].titleize
+    ary[2] = decode_account_id(ary[2])
+    keys = [:commentable_type, :commentable_id, :account_id]
+    comment_metadata = Hash.new
+    ary.each_with_index {|el,index| comment_metadata[keys[index]] = el }
+    comment_metadata
+  end
+  
+  def self.comment_author_from_email(email, account_id)
+    account = Account.find(account_id)
+    return false if account.nil?
+    author = Hash.new()
+    user = account.users.find_by(email: email.from[:email])
+    if user
+      author[:author_id] = user.id
+      author[:author_type] = user.class.to_s
+      return author
+    end
+    contact = account.contacts.find_by(email: email.from[:email])
+    if contact
+      author[:author_id] = contact.id
+      author[:author_type] = contact.class.to_s
+      return author
+    end
+    return false
+  end
+  
+  def self.decode_account_id(b64_string)
+    Base64.strict_decode64(b64_string).to_i
+  end
+  
   def notify
     return if subscribers_emails.empty?
     CommentMailer.delay.comment_notification(id)
   end
   
   def set_subscribers
+    self.subscribers_ids = set_subscribers_from_email if from_email?
     return if subscribers_ids.nil?
     self.account_users_ids = subscribers_ids[:account]
     self.company_users_ids = subscribers_ids[:company] unless private?
+  end
+  
+  def set_subscribers_from_email
+    subscribers_ids = Hash.new
+    subscribers_ids[:account] = last_comment.account_users_ids
+    subscribers_ids[:company] = last_comment.company_users_ids
+    subscribers_ids
+  end
+  
+  def complete_attachment_fields
+    return unless attachments.any?
+    attachments.each do |att|
+      att.author_id ||= author_id
+      att.author_type ||= author_type
+      att.account_id ||= account.id
+    end
   end
   
 end

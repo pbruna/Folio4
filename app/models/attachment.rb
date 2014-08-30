@@ -3,6 +3,7 @@ class Attachment < ActiveRecord::Base
     belongs_to :author, polymorphic: true
     belongs_to :account
     validates :resource, :attachment_presence => true
+    validates_presence_of :author_id, :author_type, :account_id
     
     has_attached_file :resource
     

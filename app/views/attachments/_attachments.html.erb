@@ -1,7 +1,7 @@
 <%= render partial: "attachments/attachment_form", locals: {object: object} %>
 
 <div id="attachments">
-	<table class="table-attachments" style="<%= "display: none;" unless object.attachments.any?%>">
+	<table class="table-attachments" style="<%= "display: none;" unless object.all_attachments.any?%>">
 		<thead>
 			<tr>
 				<th>Nombre</th>
@@ -11,7 +11,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%= render object.attachments.reverse_date %>
+			<% object.all_attachments.each do |attachment| %>
+				<%= render partial: "attachments/attachment", locals: {attachment: attachment}  %>
+			<% end %>
 		</tbody>
 	</table>
 </div>

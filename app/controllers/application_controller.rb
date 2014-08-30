@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include UrlHelper
   before_action :authenticate_user!
   before_action :set_account
+  before_action :set_user
   around_action :scope_current_account, :unless => :devise_controller?
   protect_from_forgery with: :exception
   layout :layout_by_resource
@@ -43,6 +44,10 @@ class ApplicationController < ActionController::Base
 
     def set_account
       @current_account = current_account
+    end
+    
+    def set_user
+      @current_user = current_user
     end
 
     def authenticate_user!(opts={})

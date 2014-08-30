@@ -1,4 +1,8 @@
 Folio::Application.routes.draw do
+  # Handle incoming email
+  mount_griddler
+  
+  # Handle users authentication
   devise_for :users, :path_names => {:sign_up => "register"}
   devise_scope :user do
     constraints(Subdomain) do
@@ -17,6 +21,7 @@ Folio::Application.routes.draw do
     patch 'invoices/:id/pay' => "invoices#pay", :as => :pay_invoice
     patch 'invoices/:id/activate' => "invoices#activate", :as => :activate_invoice
     get 'invoices/:id/clone' => "invoices#clone", :as => :clone_invoice
+    get 'invoices/:id/attachments', to: redirect("/invoices/%{id}#invoice-attachments")
     resources :accounts, :only => [:show, :edit, :index, :update, :check_invoice_number_availability] do
 
     end
@@ -42,6 +47,6 @@ Folio::Application.routes.draw do
     root :to => "accounts#dashboard"
   end
   
-  resources :accounts, :only => [:new, :create] , :constraints => { :subdomain => /(app|www)/ }
+  resources :accounts, :only => [:new, :create] , :constraints => { :subdomain => /(app|www|folio)/ }
   
 end

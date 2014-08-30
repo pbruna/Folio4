@@ -1,7 +1,6 @@
 class Invoice < ActiveRecord::Base
   attr_accessor :new_state
-  
-  
+    
   include AASM
 
   STATUS_NAME = %w(active draft closed)
@@ -76,6 +75,14 @@ class Invoice < ActiveRecord::Base
       close_date = Date.today
     end
     
+  end
+  
+  def all_attachments
+    [attachments + all_comments_attachments].flatten
+  end
+  
+  def all_comments_attachments
+    comments.includes(:attachments).map {|c| c.attachments.flatten if c.attachments.any? }.compact.flatten
   end
   
   def run_activation_jobs

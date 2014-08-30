@@ -12,7 +12,7 @@ class Account < ActiveRecord::Base
 
   validates_uniqueness_of :subdomain
   validates_presence_of :subdomain, :name
-  validates_format_of :subdomain, :with => /^((?!^(www|folio|app)).)*$/i, :message => "No puedes usar ese nombre", multiline: true
+  validates_format_of :subdomain, :with => /^((?!^(www|folio|app|dev)).)*$/i, :message => "No puedes usar ese nombre", multiline: true
   validate :check_users_number # The account must have at least one user
 
   after_save :initialize_account
@@ -23,7 +23,7 @@ class Account < ActiveRecord::Base
   end
 
   def self.subdomain_available?(subdomain)
-    return false if "/^((?!^(www|folio|app)).)*$/i".match(subdomain)
+    return false if "/^((?!^(www|folio|app|dev)).)*$/i".match(subdomain)
     !exists?(:subdomain => subdomain.downcase)
   end
   

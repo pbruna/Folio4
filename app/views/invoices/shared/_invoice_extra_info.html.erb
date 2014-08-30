@@ -5,7 +5,7 @@
 	</ul>
 	<div class="tab-content" style="overflow: hidden;">
 		<div id="invoice-comments" class="tab-pane active">
-			<%= render partial: "comments/comments", locals: {object: @invoice} %>
+			<%= render partial: "comments/comments", locals: {comments: @comments, object: @invoice} %>
 		</div>
 		<div id="invoice-attachments" class="tab-pane">
 			<%= render partial: "attachments/attachments", locals: {object: @invoice} %>

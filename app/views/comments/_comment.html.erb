@@ -8,9 +8,12 @@
 			<div class="comment-body">
 				<div class="comment-body-header">
 					<div class="comment-body-header-options">
-						<% unless current_account.nil? %>
+						<% unless @current_account.nil? %>
 							<% if comment.private? %>
 								<%= fa_icon "lock" %>
+							<% end %>
+							<% if comment.from_email? %>
+								<%= fa_icon "envelope" %>
 							<% end %>
 						<% end %>
 					</div>
@@ -24,6 +27,7 @@
 					<%= textarea_display comment.message %>
 				</div>
 				<div class="comment-body-footer">
+					<%= render partial: "comments/attachments", locals: {comment: comment}%>
 				</div>
 			</div>
 			<div class="comment-bridge"></div>
