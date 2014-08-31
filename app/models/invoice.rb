@@ -5,7 +5,7 @@ class Invoice < ActiveRecord::Base
 
   STATUS_NAME = %w(active draft closed)
   CURRENCIES = %w(CLP UF USD)
-  TAX_RATE = 19
+  TAX_RATE = 19.0
   self.per_page = 10
   
   # Asociatons
@@ -306,8 +306,8 @@ class Invoice < ActiveRecord::Base
   def calculate_tax
     self.total = net_total
     return unless self.taxed?
-    self.tax_total = (net_total * TAX_RATE/100)
-    self.total = tax_total + net_total
+    self.total = (net_total * (1 + TAX_RATE/100)).round
+    self.tax_total = total - net_total
   end
   
   def calculate_net_total_from_currency_total
