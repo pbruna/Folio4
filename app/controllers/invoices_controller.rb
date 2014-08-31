@@ -102,7 +102,8 @@ class InvoicesController < ApplicationController
   end
 
   def index
-    @invoices = current_account.invoices_search(params[:search]).page(params[:page])
+    @invoices_total_resume = @current_account.invoices_search(params[:search])
+    @invoices = @invoices_total_resume.page(params[:page])
     params.delete(:controller)
     params.delete(:action)
     params.delete("_")

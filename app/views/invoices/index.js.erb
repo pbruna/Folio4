@@ -1,5 +1,5 @@
 $(".invoices-sorter-menu").data("search-params", "<%= @search_params %>");
 $("#invoices").html("<%= escape_javascript(render partial: 'invoices_table', locals: {invoices: @invoices}) %>");
-// $("#invoices-sidebar-total-resume").html("<%= escape_javascript(render partial: 'invoices/sidebar/invoice_total_resume', locals: {invoices: @invoices}) %>");
+$("#invoices-sidebar-total-resume").html("<%= escape_javascript(render partial: 'invoices/sidebar/invoice_total_resume', locals: {invoices_total_resume: @invoices_total_resume}) %>");
 $(".invoices-remove-search-filter").show();
 $("#invoices").effect("highlight", {color: "whiteSmoke"});

@@ -1,10 +1,10 @@
 <div id="invoices-sidebar-total-resume">
 	<h5 class="section-title">Resumen de Totales</h5>
 	<table id="invoices-totals-resume-table">
-		<%= totals_resume_invoices_row("due", @current_account.invoices.total_due) %>
-		<%= totals_resume_invoices_row("active", @current_account.invoices.total_active) %>
-		<%= totals_resume_invoices_row("draft", @current_account.invoices.total_draft) %>
-		<%= totals_resume_invoices_row("closed", @current_account.invoices.total_closed) %>
+		<%= totals_resume_invoices_row("due", @invoices_total_resume.total_due) %>
+		<%= totals_resume_invoices_row("active", @invoices_total_resume.total_active) %>
+		<%= totals_resume_invoices_row("draft", @invoices_total_resume.total_draft) %>
+		<%= totals_resume_invoices_row("closed", @invoices_total_resume.total_closed) %>
 	</table>
 	<%= hidden_field_tag "search[sorted_by]" %>
 	<%= hidden_field_tag "search[sorted_direction]" %>
