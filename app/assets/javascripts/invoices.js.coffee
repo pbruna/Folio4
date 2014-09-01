@@ -219,6 +219,7 @@ $ ->
 		$(".currency").autoNumeric('init', autonumeric_options)
 		
 		$("#company_name").bind "railsAutocomplete.select", (event, data) ->
+			event.preventDefault
 			$("#invoice_company_id").trigger("change")
 			return
 		

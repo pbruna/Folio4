@@ -29,10 +29,10 @@ GIT
 
 GIT
   remote: https://github.com/pbruna/rails4-autocomplete
-  revision: b8fe1c338a07db66423eca843a52f8c51216463b
+  revision: afb91718653edea7af2cb323cbb90b23c60e9757
   branch: master
   specs:
-    rails4-autocomplete (1.0.9.8)
+    rails4-autocomplete (1.0.9.9)
       rails (>= 3.0)
 
 GIT
@@ -183,7 +183,7 @@ GEM
     high_voltage (2.1.0)
     hike (1.2.3)
     htmlentities (4.3.2)
-    i18n (0.6.9)
+    i18n (0.6.11)
     inflecto (0.0.2)
     ipaddress (0.8.0)
     jbuilder (1.0.2)
@@ -311,7 +311,7 @@ GEM
     turn (0.9.7)
       ansi
       minitest (~> 4)
-    tzinfo (0.3.39)
+    tzinfo (0.3.41)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)

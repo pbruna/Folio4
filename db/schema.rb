@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830212406) do
+ActiveRecord::Schema.define(version: 20140901110259) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140830212406) do
     t.integer  "author_id"
     t.string   "author_type"
     t.integer  "account_id"
+    t.string   "original_file_name"
   end
 
   add_index "attachments", ["account_id"], name: "index_attachments_on_account_id"

@@ -1,6 +1,8 @@
 <% unless attachment.id.nil? %>
 <tr id="attachment-<%= attachment.id %>">
-	<td class="attachment-name"><%= attachment.name %></td>
+	<td class="attachment-name">
+		<%= attachment.original_file_name %>
+	</td>
 	<td class="attachment-details"><%= I18n.l attachment.created_at.to_date, format: :dd_MM_yy %></td>
 	<td class="attachment-details"><%= attachment.author_name %></td>
 	<td class="attachment-actions">

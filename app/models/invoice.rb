@@ -22,7 +22,7 @@ class Invoice < ActiveRecord::Base
   
   #Callbacks
   before_validation :set_due_date_and_reminder, if: :draft?
-  before_validation :permform_calculations
+  before_validation :perform_calculations
   before_update :close_invoice_if_total_payed_match_total
   
   # Solo borramos si esta en Draft
@@ -384,7 +384,7 @@ class Invoice < ActiveRecord::Base
   end
   
   
-  def permform_calculations
+  def perform_calculations
     set_currency_convertion_rate(currency.downcase)
     calculate_original_currency_total_from_invoice_items
     calculate_net_total_from_currency_total
