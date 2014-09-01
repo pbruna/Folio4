@@ -1,7 +1,7 @@
 $(".comment-form").remove();
 $("#invoice-comments").append("<%= escape_javascript(render(partial: 'comments/comment_form', locals: {object: @comment.commentable, comment: @comment_new})) %>");
 update_organizations_labels();
-$("#comments").append("<%= escape_javascript(render(:partial => 'comments/comment', :locals => {:comment => @comment})) %>");
+$("#comments").append("<%= escape_javascript(render(:partial => 'comments/comment', :locals => {:comment => @comment, object: @comment.commentable})) %>");
 $("#comment-<%= @comment.id %>").hide();
 $("#comment-<%= @comment.id %>").fadeIn();
 $("#new_comment")[0].reset();

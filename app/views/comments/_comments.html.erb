@@ -1,6 +1,5 @@
 <div id="comments">
-	
-	<%= render comments %>
-	
+	<%= render partial: "comments/comment", collection: comments,  locals: {object: object} %>
 </div>
+
 <%= render partial: "comments/comment_form", locals: {object: object, comment: @comment} %>

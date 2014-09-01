@@ -2,7 +2,7 @@
 	
 	<div class="comment-attachments">
 		<%= fa_icon "paperclip" %> 
-		<%= link_to "Tiene #{comment.attachments.count} " + "adjunto".pluralize(comment.attachments.count), "#{comment_object_path(comment)}/attachments" %>
+		<%= link_to "Ver adjuntos", "#{comment_object_path(object)}/attachments" %>
 	</div>
 
 <% end %>

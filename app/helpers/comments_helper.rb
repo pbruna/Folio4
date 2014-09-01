@@ -16,10 +16,21 @@ module CommentsHelper
     last_subscribers.include? subscriber_id
   end
   
-  def comment_object_path(comment)
-    object_type = comment.commentable.class.to_s.downcase
-    object_id = comment.commentable.id
+  def comment_object_path(commentable)
+    object_type = commentable.class.to_s.downcase
+    object_id = commentable.id
     send("#{object_type}_path", object_id)
+  end
+  
+  def organization_type(subscriber)
+    return "account" if subscriber.class.to_s.downcase == "user"
+    return "company" if subscriber.class.to_s.downcase == "contact"
+  end
+  
+  def get_organization_id(object,subscriber)
+    org_type = organization_type(subscriber)
+    return object.account_id if org_type == "account"
+    object.company_id
   end
   
 end

@@ -30,7 +30,8 @@
 						<%= f.hidden_field :commentable_type, value: object.class.to_s %>
 					</div>
 					<div class="comment-body-footer">
-						<%= render :partial => 'comments/comment_suscribers', locals: {comment: comment} %>
+						<%= render :partial => 'comments/comment_suscribers', locals: {comment: comment, object: object} %>
+
 						<div class="form-actions">
 							<%= f.submit "Agregar comentario", class: "btn btn-success"%>
 						</div>

@@ -1,7 +1,7 @@
-<div id="show-attachment-body" style="<%= "display: none;" unless object.all_attachments.any?%>">
+<div id="show-attachment-body" style="<%= "display: none;" unless attachments.any?%>">
 	<a class="btn-addfiles">Agregar archivos</a>
 </div>
-<div class="attachment attachment-form" style="<%= "display: none;" if object.all_attachments.any?%>">
+<div class="attachment attachment-form" style="<%= "display: none;" if attachments.any?%>">
 	<%= form_for Attachment.new, :html => { :multipart => true  } do |f| %>
 	<div class="attachment-body">
 		<div class="attachment-body-header">

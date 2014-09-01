@@ -8,7 +8,7 @@
 			<%= render partial: "comments/comments", locals: {comments: @comments, object: @invoice} %>
 		</div>
 		<div id="invoice-attachments" class="tab-pane">
-			<%= render partial: "attachments/attachments", locals: {object: @invoice} %>
+			<%= render partial: "attachments/attachments", locals: {attachments: @attachments, object: @invoice} %>
 		</div>
 	</div>
 </div>

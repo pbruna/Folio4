@@ -1,14 +1,9 @@
 <div class="row document">
 	<div class="row span9">
 		<div id="invoice">
-			
 			<%= render :partial => 'invoices/shared/invoice_header'%>
-			
 			<%= render :partial => 'shared/flash' %>
-			
 			<%= render :partial => 'invoices/shared/show_invoice_details'%>
-
-
 			<div style="padding-left: 15px; margin-top: 10px;">
 				<a type="button" class="" href="#" data-toggle="collapse" 						data-target="#invoice-<%= @invoice.id %>-details">
 					Información adicional
@@ -17,7 +12,6 @@
 			
 			<div id="invoice-<%= @invoice.id %>-details" class="collapse">
 				<%= render :partial => "invoices/shared/show_invoice_items" %>
-			
 				<%= render :partial => "invoices/shared/invoice_total"%>
 			</div>
 			

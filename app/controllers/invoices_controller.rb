@@ -134,8 +134,10 @@ class InvoicesController < ApplicationController
   end
   
   def show
-    @invoice = current_account.invoices.includes(:comments).find(params[:id])
+    @invoice = @current_account.invoices.includes(:reminder, :invoice_items, :account, :company,comments: [:author, :attachments ], attachments: [:author]).find(params[:id])
+    @invoice_items = @invoice.invoice_items
     @comments = @invoice.comments
+    @attachments = @invoice.all_attachments
     @comment = @invoice.comments.build(author_id: current_user.id, author_type: current_user.class.to_s)
   end
   

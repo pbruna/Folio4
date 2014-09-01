@@ -27,7 +27,7 @@
 					<%= textarea_display comment.message %>
 				</div>
 				<div class="comment-body-footer">
-					<%= render partial: "comments/attachments", locals: {comment: comment}%>
+					<%= render partial: "comments/attachments", locals: {comment: comment, object: object}%>
 				</div>
 			</div>
 			<div class="comment-bridge"></div>

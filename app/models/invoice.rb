@@ -85,6 +85,10 @@ class Invoice < ActiveRecord::Base
     comments.includes(:attachments).map {|c| c.attachments.flatten if c.attachments.any? }.compact.flatten
   end
   
+  def last_comment
+    comments.last
+  end
+  
   def run_activation_jobs
     schedule_reminder
     activation_notification_email

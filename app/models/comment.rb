@@ -76,7 +76,7 @@ class Comment < ActiveRecord::Base
   end
   
   def last_comment
-    commentable.comments.last
+    commentable.last_comment
   end
   
   def last_commentable_subscribers

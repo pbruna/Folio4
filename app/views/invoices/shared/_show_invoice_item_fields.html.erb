@@ -9,9 +9,9 @@
 		<%= invoice_item.quantity %>
 	</td>
 	<td style="text-align: center; width: 100px;">
-		<%= number_to_currency invoice_item.price, precision: invoice_item.price_precision %>
+		<%= number_to_currency invoice_item.price, precision: @invoice.price_precision %>
 	</td>
 	<td style="text-align: center; width: 100px;">
-		<%= number_to_currency invoice_item.total, precision: invoice_item.price_precision %>
+		<%= number_to_currency invoice_item.total, precision: @invoice.price_precision %>
 	</td>
 </tr>

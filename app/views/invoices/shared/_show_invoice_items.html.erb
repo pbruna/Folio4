@@ -16,6 +16,6 @@
 		<!-- <tbody data-bind="foreach: invoice_items items-fields-template"> -->
 		<tbody data-bind="template: { name: 'items-fields-template', foreach: invoice_items}"></tbody>
 			<tr></tr>
-			<%= render partial: "invoices/shared/show_invoice_item_fields", collection: @invoice.invoice_items, as: :invoice_item %>
+			<%= render partial: "invoices/shared/show_invoice_item_fields", collection: @invoice_items, as: :invoice_item %>
 	</table>
 </div>
