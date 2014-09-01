@@ -33,7 +33,7 @@ class InvoiceItem < ActiveRecord::Base
   
   def price_precision
     return 0 if invoice_in_clp?
-    2
+    4
   end
   
   private

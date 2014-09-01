@@ -184,7 +184,7 @@ class Invoice < ActiveRecord::Base
   
   def price_precision
     return 0 if in_clp?
-    2
+    3
   end
   
   def dte_attachment

@@ -17,7 +17,7 @@ class InvoiceItem
 	constructor: (invoice_item,invoice) ->
 		@currency_decimals = ko.computed =>
 			return 0 if invoice.invoice_currency().toLocaleLowerCase() == "clp"
-			return 2
+			return 3
 			
 		@price = ko.observable(parseFloat(invoice_item.price).formatMoney(@currency_decimals()))
 		@quantity = ko.observable(invoice_item.quantity)
@@ -55,7 +55,7 @@ class Invoice
 	constructor: (invoice) ->
 		@invoice_taxed = ko.observable(invoice.taxed) 
 		@invoice_currency = ko.observable(invoice.currency)
-		@invoice_company_id = ko.observable(invoice.company_id)
+		@invoice_company_id =ko.observable(invoice.company_id)
 		@invoice_contact_id = ko.observable(invoice.contact_id)
 		@reminder = new Reminder invoice.reminder
 
@@ -144,7 +144,7 @@ class Invoice
 				total
 		
 		@formated_original_total = ko.computed =>
-			decimals = 2
+			decimals = 3
 			if @invoice_currency().toLocaleLowerCase() == "clp"
 				decimals = 0
 			return @original_currency_total().formatMoney(decimals)

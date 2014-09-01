@@ -21,7 +21,7 @@
 		<%= f.text_field :quantity, disabled: input_disabled?, style: "width: 30px", data: {bind: "value: quantity, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][quantity]'}"} %>
 	</td>
 	<td>
-		<%= f.text_field :price, disabled: input_disabled?, style: "width: 80%", data: {bind: "value: price, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][price]'}", autonumeric: {aSep: '.', aDec: ',', aSign: '', aPad: "false"}}, class: "currency" %>
+		<%= f.text_field :price, disabled: input_disabled?, style: "width: 80%", data: {bind: "value: price, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][price]'}"}, class: "currency" %>
 	</td>
 	<td>
 		<%= f.text_field :total, disabled: true, style: "width: 80%", data: {bind: "value: total, attr: {name: 'invoice[invoice_items_attributes][' + $index() + '][total]'}"}, class: "currency" %>
