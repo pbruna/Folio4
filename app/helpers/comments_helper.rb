@@ -1,7 +1,8 @@
 module CommentsHelper
   
   def comment_default_subscribers_list(comment)
-    names = comment.last_commentable_subscribers.map {|user| user.full_name}
+    # El compat es para eliminar nil's del array
+    names = comment.last_commentable_subscribers.map {|user| user.full_name unless user.nil?}.compact
     return "nadie" if names.empty?
     last_name = names.pop
     return last_name if names.empty?
