@@ -15,7 +15,8 @@ class AttachmentsController < ApplicationController
   end
   
   def destroy
-    @attachment = current_account.attachments.find(params[:id])
+    @attachment = current_account.attachments.includes(:attachable => [:attachments]).find(params[:id])
+    @object_attachments = @attachment.attachable.attachments
     respond_to do |format|
       @attachment.destroy
       format.html {redirect_to attachments_path}
