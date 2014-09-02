@@ -270,6 +270,11 @@ GEM
       chunky_png (~> 1.3.0)
     rubyzip (1.1.4)
     rut_chileno (0.5)
+    s3_direct_upload (0.1.7)
+      coffee-rails (>= 3.1)
+      jquery-fileupload-rails (~> 0.4.1)
+      rails (>= 3.1)
+      sass-rails (>= 3.1)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -380,6 +385,7 @@ DEPENDENCIES
   remotipart (~> 1.2)
   ruby_identicon
   rut_chileno
+  s3_direct_upload
   sass-rails (~> 4.0.2)
   sdoc
   selenium-webdriver

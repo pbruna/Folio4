@@ -100,3 +100,4 @@ gem 'asset_sync', group: :assets
 gem 'griddler'
 gem 'griddler-mailgun'
 gem "simple_stats"
+gem 's3_direct_upload'
