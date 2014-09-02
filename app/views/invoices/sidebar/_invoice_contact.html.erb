@@ -5,6 +5,10 @@
 		
 		<%= f.select :contact_id, options_from_collection_for_select(@invoice.company_contacts, 'id', 'name'), {}, data: {bind: "options:invoice_contacts, optionsText:'name', optionsValue:'id', value:invoice_contact_id, visible:invoice_contacts().length > 0"}, class: "no-validate" %>
 
+		<div data-bind="if: remove_contact_id_nil()">
+			<%= f.hidden_field :contact_id, value: "nil" %>
+		</div>
+
 		<p style="text-align: center">
 			<a data-toggle="modal" data-target="#invoice-contact-modal" data-bind="attr: {href: '/contacts/new_from_modal?company_id=' + invoice_company_id()} , visible: invoice_company_id()">
 				Agregar contacto

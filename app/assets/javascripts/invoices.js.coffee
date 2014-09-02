@@ -148,6 +148,11 @@ class Invoice
 			if @invoice_currency().toLocaleLowerCase() == "clp"
 				decimals = 0
 			return @original_currency_total().formatMoney(decimals)
+			
+		@remove_contact_id_nil = ko.computed =>
+			if @invoice_contacts().length < 1
+  			  return true
+			return false
 
 window.Invoice = Invoice
 
@@ -208,7 +213,7 @@ $ ->
 		# Activamos los Tooltips de ayuda en el pago de abonos
 		$("#invoice-total .invoice-advances span").tooltip()
 		
-		autonumeric_options = {aSep: '.', aDec: ',', aSign: '', aPad: "false", mDec: 2}
+		autonumeric_options = {aSep: '.', aDec: ',', aSign: '', aPad: "false", mDec: 3}
 		# Este if es para que solo se aplique el Binding the Knockout si es que existe
 		# el formulario
 		if $("#invoice.invoice-form").length > 0

@@ -1,0 +1,3880 @@
+
+---
+accounts:
+  columns:
+  - id
+  - name
+  - subdomain
+  - owner_id
+  - plan_id
+  - created_at
+  - updated_at
+  - rut
+  - address
+  - city
+  - phone
+  - country
+  records: 
+  - - 2
+    - zbox
+    - zbox
+    - 7
+    - 1
+    - 2013-09-05 14:24:42.000000000 Z
+    - 2013-09-05 14:24:42.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 3
+    - Masev
+    - masev
+    - 8
+    - 1
+    - 2013-09-05 14:29:01.000000000 Z
+    - 2013-09-05 15:11:10.000000000 Z
+    - 76.530.890-9
+    - General Holley 2363, OF. 1301
+    - Santiago
+    - "(+56-2) 2963 9271"
+    - Chile
+  - - 4
+    - ITLinux
+    - itlinux
+    - 12
+    - 1
+    - 2014-08-04 17:04:32.000000000 Z
+    - 2014-08-04 17:04:32.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 5
+    - Start
+    - start
+    - 13
+    - 1
+    - 2014-08-04 23:13:34.000000000 Z
+    - 2014-08-04 23:13:34.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 7
+    - www
+    - empresa
+    - 16
+    - 1
+    - 2014-08-09 13:51:46.000000000 Z
+    - 2014-08-09 13:51:46.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 
+
+---
+attachments:
+  columns:
+  - id
+  - name
+  - category
+  - attachable_id
+  - attachable_type
+  - created_at
+  - updated_at
+  - resource_file_name
+  - resource_content_type
+  - resource_file_size
+  - resource_updated_at
+  - author_id
+  - author_type
+  - account_id
+  - original_file_name
+  records: 
+  - - 6
+    - 
+    - invoice
+    - 6
+    - Invoice
+    - 2014-06-06 18:46:19.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-06 18:46:17.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 8
+    - 
+    - invoice
+    - 4
+    - Invoice
+    - 2014-06-06 23:19:18.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-06 23:19:17.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 9
+    - 
+    - invoice
+    - 7
+    - Invoice
+    - 2014-06-06 23:21:29.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-06 23:21:28.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 10
+    - 
+    - invoice
+    - 8
+    - Invoice
+    - 2014-06-08 01:17:17.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-08 01:17:16.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 11
+    - 
+    - invoice
+    - 9
+    - Invoice
+    - 2014-06-08 01:30:36.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-08 01:30:35.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 12
+    - 
+    - invoice
+    - 11
+    - Invoice
+    - 2014-06-08 01:34:52.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-08 01:34:52.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 13
+    - 
+    - invoice
+    - 12
+    - Invoice
+    - 2014-06-23 22:58:02.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-23 22:58:01.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 14
+    - 
+    - invoice
+    - 10
+    - Invoice
+    - 2014-06-23 23:00:07.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-23 23:00:06.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 16
+    - 
+    - invoice
+    - 18
+    - Invoice
+    - 2014-06-27 22:31:35.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-06-27 22:31:34.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 17
+    - 
+    - invoice
+    - 21
+    - Invoice
+    - 2014-07-04 17:54:36.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Lista-Precios-Zimbra.xls
+    - application/octet-stream
+    - 344576
+    - 2014-07-04 17:54:35.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 18
+    - 
+    - invoice
+    - 19
+    - Invoice
+    - 2014-07-04 20:40:57.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Lista-Precios-Zimbra.xls
+    - application/octet-stream
+    - 344576
+    - 2014-07-04 20:40:57.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 20
+    - 
+    - 
+    - 
+    - 
+    - 2014-07-22 17:04:53.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:04:53.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 21
+    - 
+    - 
+    - 
+    - 
+    - 2014-07-22 17:07:10.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:07:10.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 22
+    - 
+    - 
+    - 
+    - 
+    - 2014-07-22 17:07:44.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:07:44.000000000 Z
+    - 
+    - 
+    - 3
+    - 
+  - - 26
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 17:33:23.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:33:23.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 27
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 17:36:58.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:36:58.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 28
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 17:40:47.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:40:47.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 29
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 17:48:40.000000000 Z
+    - 2014-07-23 18:16:55.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 17:48:40.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 58
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 21:47:30.000000000 Z
+    - 2014-07-22 21:47:30.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_20.32.47.png
+    - image/png
+    - 13147
+    - 2014-07-22 21:47:30.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 59
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 21:51:53.000000000 Z
+    - 2014-07-22 21:51:53.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_20.32.47.png
+    - image/png
+    - 13147
+    - 2014-07-22 21:51:53.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 60
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-22 21:51:53.000000000 Z
+    - 2014-07-22 21:51:53.000000000 Z
+    - Captura_de_pantalla_2014-07-21_a_la(s)_12.35.47.png
+    - image/png
+    - 24931
+    - 2014-07-22 21:51:53.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 72
+    - 
+    - 
+    - 13
+    - Invoice
+    - 2014-07-23 18:29:55.000000000 Z
+    - 2014-07-23 18:29:55.000000000 Z
+    - Lista-Precios-Zimbra.xls
+    - application/octet-stream
+    - 344576
+    - 2014-07-23 18:29:55.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 76
+    - 
+    - 
+    - 22
+    - Invoice
+    - 2014-07-23 18:36:12.000000000 Z
+    - 2014-07-23 18:36:12.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-07-23 18:36:12.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+  - - 82
+    - 
+    - 
+    - 10
+    - Invoice
+    - 2014-08-04 19:06:00.000000000 Z
+    - 2014-08-04 19:06:00.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-08-04 19:06:00.000000000 Z
+    - 10
+    - User
+    - 3
+    - 
+  - - 83
+    - 
+    - 
+    - 10
+    - Invoice
+    - 2014-08-04 19:06:00.000000000 Z
+    - 2014-08-04 19:06:00.000000000 Z
+    - Cotizacion-RedHat-FOH-1SO-2014073101-v2.pdf
+    - application/pdf
+    - 178402
+    - 2014-08-04 19:06:00.000000000 Z
+    - 10
+    - User
+    - 3
+    - 
+  - - 84
+    - 
+    - 
+    - 10
+    - Invoice
+    - 2014-08-04 19:06:00.000000000 Z
+    - 2014-08-04 19:06:00.000000000 Z
+    - presetacion_libro.ppt
+    - application/vnd.ms-powerpoint
+    - 3146752
+    - 2014-08-04 19:06:00.000000000 Z
+    - 10
+    - User
+    - 3
+    - 
+  - - 85
+    - 
+    - 
+    - 27
+    - Invoice
+    - 2014-08-04 23:22:50.000000000 Z
+    - 2014-08-04 23:22:50.000000000 Z
+    - Plan_Folio.pdf
+    - application/pdf
+    - 82356
+    - 2014-08-04 23:22:50.000000000 Z
+    - 13
+    - User
+    - 5
+    - 
+  - - 86
+    - 
+    - 
+    - 27
+    - Invoice
+    - 2014-08-04 23:22:58.000000000 Z
+    - 2014-08-04 23:22:58.000000000 Z
+    - postfix-log.msc-thesis.pdf
+    - application/pdf
+    - 876566
+    - 2014-08-04 23:22:58.000000000 Z
+    - 13
+    - User
+    - 5
+    - 
+  - - 102
+    - 
+    - 
+    - 25
+    - Invoice
+    - 2014-08-14 11:30:04.000000000 Z
+    - 2014-08-14 11:30:04.000000000 Z
+    - postfix-log.msc-thesis.pdf
+    - application/pdf
+    - 876566
+    - 2014-08-14 11:30:04.000000000 Z
+    - 8
+    - User
+    - 3
+    - 
+
+---
+comments:
+  columns:
+  - id
+  - subject
+  - message
+  - commentable_id
+  - commentable_type
+  - author_id
+  - author_type
+  - created_at
+  - updated_at
+  - account_users_ids
+  - company_users_ids
+  - private
+  - from_email
+  records: 
+  - - 1
+    - 
+    - dadadada
+    - 
+    - 
+    - 
+    - 
+    - 2014-07-17 18:06:23.000000000 Z
+    - 2014-07-17 18:06:23.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 2
+    - 
+    - dadadada
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-17 18:06:51.000000000 Z
+    - 2014-07-17 18:06:51.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 3
+    - 
+    - Wacho dos
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-17 18:51:46.000000000 Z
+    - 2014-07-17 18:51:46.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 4
+    - 
+    - Nuevo comentario
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:35:35.000000000 Z
+    - 2014-07-18 18:35:35.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 5
+    - 
+    - "Otro más nuevo.\r\nCon salto de línea."
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:36:30.000000000 Z
+    - 2014-07-18 18:36:30.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 6
+    - 
+    - Probando más comentarios
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:39:11.000000000 Z
+    - 2014-07-18 18:39:11.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 7
+    - 
+    - Donde queda este comentario?
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:40:38.000000000 Z
+    - 2014-07-18 18:40:38.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 8
+    - 
+    - Funciona ahora=?
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:41:13.000000000 Z
+    - 2014-07-18 18:41:13.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 9
+    - 
+    - y ahora
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:41:45.000000000 Z
+    - 2014-07-18 18:41:45.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 10
+    - 
+    - Otra vez
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 18:41:56.000000000 Z
+    - 2014-07-18 18:41:56.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 11
+    - 
+    - "Este comentario debería ser enviado por corrreo.\r\nEsta es una nueva línea.\r\n\r\nEsta
+      línea son dos saltos."
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 20:54:39.000000000 Z
+    - 2014-07-18 20:54:39.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 12
+    - 
+    - "Este comentario debería ser enviado por corrreo. \r\nEsta es una nueva línea.
+      \r\n\r\nEsta línea son dos saltos.\r\n\r\n\r\nEsta línea son tres saltos."
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 20:58:35.000000000 Z
+    - 2014-07-18 20:58:35.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 13
+    - 
+    - "Este comentario debería ser enviado por corrreo. \r\nEsta es una nueva línea.
+      \r\n\r\nEsta línea son dos saltos. \r\n\r\n\r\n\r\nNueva prueba."
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 21:01:31.000000000 Z
+    - 2014-07-18 21:01:31.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 14
+    - 
+    - "Este comentario debería ser enviado por corrreo. \r\nEsta es una nueva línea.
+      \r\n\r\nEsta línea son dos saltos. \r\n\r\n\r\n\r\nNueva prueba."
+    - 6
+    - Invoice
+    - 8
+    - User
+    - 2014-07-18 21:02:57.000000000 Z
+    - 2014-07-18 21:02:57.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 15
+    - 
+    - 'Comentario en factura #42'
+    - 10
+    - Invoice
+    - 8
+    - User
+    - 2014-07-20 14:05:52.000000000 Z
+    - 2014-07-20 14:05:52.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 16
+    - 
+    - Hola prueba de un comentario
+    - 7
+    - Invoice
+    - 8
+    - User
+    - 2014-07-22 00:04:01.000000000 Z
+    - 2014-07-22 00:04:01.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 17
+    - 
+    - El cliente esta esperando que envíen la factura.
+    - 21
+    - Invoice
+    - 8
+    - User
+    - 2014-07-23 21:04:14.000000000 Z
+    - 2014-07-23 21:04:14.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 18
+    - 
+    - "Se la envío cuando llegue del sur.\r\nAndo puro /%$%&."
+    - 21
+    - Invoice
+    - 9
+    - User
+    - 2014-07-23 21:07:06.000000000 Z
+    - 2014-07-23 21:07:06.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 19
+    - 
+    - No debería enviar correo
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-07-30 00:11:56.000000000 Z
+    - 2014-07-30 00:11:56.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 20
+    - 
+    - Este no debería enviar correo
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-07-30 00:17:56.000000000 Z
+    - 2014-07-30 00:17:56.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 21
+    - 
+    - Este debería enviar correo
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-07-30 00:18:26.000000000 Z
+    - 2014-07-30 00:18:26.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 22
+    - 
+    - Gabriel pagará cuando reciba la factura
+    - 27
+    - Invoice
+    - 13
+    - User
+    - 2014-08-04 23:20:56.000000000 Z
+    - 2014-08-04 23:20:56.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 23
+    - 
+    - Probando comentario con Mandrill
+    - 25
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 19:11:56.000000000 Z
+    - 2014-08-08 19:11:56.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 24
+    - 
+    - Probando la generación de la imagen del template default
+    - 25
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 19:14:16.000000000 Z
+    - 2014-08-08 19:14:16.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 25
+    - 
+    - El anterior no funcionó.
+    - 25
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 19:26:02.000000000 Z
+    - 2014-08-08 19:26:02.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 26
+    - 
+    - Comentarios
+    - 18
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:07:31.000000000 Z
+    - 2014-08-08 23:07:31.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 27
+    - 
+    - comentario 2
+    - 18
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:12:44.000000000 Z
+    - 2014-08-08 23:12:44.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 28
+    - 
+    - comentario 3
+    - 18
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:13:27.000000000 Z
+    - 2014-08-08 23:13:27.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 29
+    - 
+    - comentario 4
+    - 18
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:16:53.000000000 Z
+    - 2014-08-08 23:16:53.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 30
+    - 
+    - comentario 5
+    - 18
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:19:19.000000000 Z
+    - 2014-08-08 23:19:19.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 31
+    - 
+    - "Pruebas de dirección.\r\nSalto de linea\r\n\r\n2 saltos"
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:47:33.000000000 Z
+    - 2014-08-08 23:47:33.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 32
+    - 
+    - "Pruebas de dirección. \r\nSalto de linea \r\n\r\n\r\n3 saltos\r\n1salto"
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:48:17.000000000 Z
+    - 2014-08-08 23:48:17.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 33
+    - 
+    - "Pruebas de dirección. \r\nSalto de linea \r\n\r\n\r\n3 saltos \r\n1salto"
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:49:48.000000000 Z
+    - 2014-08-08 23:49:48.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 34
+    - 
+    - "Pruebas de dirección. \r\nSalto de linea \r\n\r\n\r\n3 saltos \r\n1salto"
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:51:34.000000000 Z
+    - 2014-08-08 23:51:34.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 35
+    - 
+    - "Pruebas de dirección. \r\nSalto de linea \r\n\r\n\r\n3 saltos \r\n1salto"
+    - 24
+    - Invoice
+    - 8
+    - User
+    - 2014-08-08 23:55:09.000000000 Z
+    - 2014-08-08 23:55:09.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 36
+    - 
+    - A ver que sale de este comentario
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:13:01.000000000 Z
+    - 2014-08-11 11:13:01.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 37
+    - 
+    - Nuevo comemment
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:30:59.000000000 Z
+    - 2014-08-11 11:30:59.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 38
+    - 
+    - Ultimo comment
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:32:59.000000000 Z
+    - 2014-08-11 11:32:59.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 39
+    - 
+    - Nueva prueba de comentario
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:42:44.000000000 Z
+    - 2014-08-11 11:42:44.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 40
+    - 
+    - Ultima prueba
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:45:01.000000000 Z
+    - 2014-08-11 11:45:01.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 41
+    - 
+    - Probando margen
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:46:20.000000000 Z
+    - 2014-08-11 11:46:20.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 42
+    - 
+    - Otro más
+    - 29
+    - Invoice
+    - 16
+    - User
+    - 2014-08-11 11:47:47.000000000 Z
+    - 2014-08-11 11:47:47.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 43
+    - 
+    - Prueba comentario con nuevo asunto
+    - 31
+    - Invoice
+    - 8
+    - User
+    - 2014-08-21 01:52:15.000000000 Z
+    - 2014-08-21 01:52:15.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 44
+    - 
+    - Nueva prueba con nuevo asunto
+    - 31
+    - Invoice
+    - 8
+    - User
+    - 2014-08-21 01:53:36.000000000 Z
+    - 2014-08-21 01:53:36.000000000 Z
+    - 
+    - 
+    - false
+    - false
+  - - 45
+    - 
+    - Ahora sí, en realidad la hice con el detalle que me dio Andrés no había mirado
+      la propuesta, pondre mas cuidado.
+    - 31
+    - Invoice
+    - 8
+    - User
+    - 2014-08-21 02:15:04.000000000 Z
+    - 2014-08-21 02:15:04.000000000 Z
+    - 
+    - 
+    - false
+    - false
+
+---
+companies:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  - rut
+  - address
+  - city
+  - province
+  - phone
+  - industry
+  - account_id
+  - avatar_file_name
+  - avatar_content_type
+  - avatar_file_size
+  - avatar_updated_at
+  - alias
+  - country
+  records: 
+  - - 1
+    - ACME S.A.
+    - 2013-09-18 00:34:49.000000000 Z
+    - 2014-07-04 17:34:21.000000000 Z
+    - 76.530.890-9
+    - General Holley 2363
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 3
+    - logoITLinux.png
+    - image/png
+    - 6862
+    - 2013-10-08 00:52:00.000000000 Z
+    - 
+    - 
+  - - 2
+    - Fabrica de Cerveza Artesanal La Resaca
+    - 2013-09-18 00:38:00.000000000 Z
+    - 2014-07-04 17:37:06.000000000 Z
+    - 13.834.853-9
+    - General Holley 2363
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 3
+    - logoITLinux.png
+    - image/png
+    - 6862
+    - 2013-10-08 00:46:56.000000000 Z
+    - 
+    - 
+  - - 3
+    - ZBox
+    - 2013-09-18 00:49:54.000000000 Z
+    - 2013-09-18 00:49:54.000000000 Z
+    - 13.834.853-9
+    - General Holley 2363
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 4
+    - Corazones Services LTDA.
+    - 2013-10-13 00:31:02.000000000 Z
+    - 2014-07-04 17:34:40.000000000 Z
+    - 12.454.782-2
+    - Pedro de Valdivia
+    - La Calera
+    - La Calera
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 5
+    - Empresa de Aseo Los Venegas
+    - 2013-10-16 11:10:59.000000000 Z
+    - 2014-07-04 20:16:22.000000000 Z
+    - 17.752.882-K
+    - General Holley 2363
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 6
+    - Diario El Hocicón
+    - 2014-07-04 20:19:59.000000000 Z
+    - 2014-07-04 20:19:59.000000000 Z
+    - 21.499.149-7
+    - Calle sin nombre
+    - Pelotillehue
+    - Pelotillehue
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 7
+    - IT Linux
+    - 2014-07-30 11:40:26.000000000 Z
+    - 2014-07-30 11:40:26.000000000 Z
+    - 12.425.915-0
+    - General Holley 2363
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 8
+    - Proyecto Educativo Integral Colegios Padre Hurtado y Teresita de los Andes SA
+    - 2014-07-30 13:25:57.000000000 Z
+    - 2014-07-30 13:25:57.000000000 Z
+    - 21.065.392-9
+    - General Holley
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 10
+    - Gabriel Yáñez Inc
+    - 2014-08-04 23:15:02.000000000 Z
+    - 2014-08-04 23:15:02.000000000 Z
+    - 13.763.321-3
+    - Nogales
+    - Nogales
+    - Nogales
+    - 
+    - 
+    - 5
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 11
+    - IT Linux
+    - 2014-08-11 11:07:57.000000000 Z
+    - 2014-08-11 11:07:57.000000000 Z
+    - 76.530.890-9
+    - General Holley 2363
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 7
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 12
+    - La Carcel 120
+    - 2014-08-21 02:48:19.000000000 Z
+    - 2014-08-21 02:48:19.000000000 Z
+    - 23.317.655-9
+    - La carcel
+    - Santiago
+    - Providencia
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+
+---
+contacts:
+  columns:
+  - id
+  - name
+  - email
+  - phone
+  - company_id
+  - created_at
+  - updated_at
+  - mobile_phone
+  - title
+  - description
+  records: 
+  - - 2
+    - Gabriela Garrido
+    - ggarrido@gmail.com
+    - 
+    - 2
+    - 2014-05-26 01:52:27.000000000 Z
+    - 2014-05-26 01:52:27.000000000 Z
+    - 
+    - 
+    - 
+  - - 3
+    - Daniel Eugenin
+    - deugenin@gmail.com
+    - 
+    - 1
+    - 2014-05-26 02:47:09.000000000 Z
+    - 2014-07-30 16:18:28.000000000 Z
+    - 
+    - COO
+    - 
+  - - 12
+    - federico
+    - f@g.com
+    - 
+    - 4
+    - 2014-05-27 15:52:41.000000000 Z
+    - 2014-05-27 15:52:41.000000000 Z
+    - 
+    - 
+    - 
+  - - 13
+    - Fernando Gómez
+    - fgomez@gmail.com
+    - 
+    - 5
+    - 2014-06-18 22:39:23.000000000 Z
+    - 2014-06-18 22:39:23.000000000 Z
+    - 
+    - 
+    - 
+  - - 14
+    - Patricio Bruna
+    - pbruna@gmail.com
+    - 
+    - 8
+    - 2014-07-30 15:34:57.000000000 Z
+    - 2014-07-30 15:34:57.000000000 Z
+    - 
+    - 
+    - 
+  - - 16
+    - Gabriela Garrido
+    - ggarrido@masev.cl
+    - "(+56-2) 2963 9271"
+    - 8
+    - 2014-07-30 16:03:39.000000000 Z
+    - 2014-07-30 16:13:13.000000000 Z
+    - '88996618'
+    - 
+    - "Es la encargada de todos los pagos dentro de la coorporación.\r\nEsto es otra
+      línea."
+  - - 17
+    - Gabriela Garrido
+    - ggarrido@masev.cl
+    - '88996618'
+    - 1
+    - 2014-07-30 16:35:49.000000000 Z
+    - 2014-07-31 01:06:32.000000000 Z
+    - 2963 9270
+    - Jefa de Sucursal
+    - "Esta es la primera línea.\r\nEsta es la segunda."
+  - - 30
+    - Gabriel Yánes
+    - gyanez@start.cl
+    - ''
+    - 10
+    - 2014-08-04 23:15:27.000000000 Z
+    - 2014-08-04 23:15:27.000000000 Z
+    - ''
+    - Big Boss
+    - ''
+  - - 32
+    - Juan F
+    - jf@gmail.com
+    - ''
+    - 11
+    - 2014-08-11 11:08:14.000000000 Z
+    - 2014-08-11 11:08:14.000000000 Z
+    - ''
+    - Jefecito
+    - ''
+  - - 33
+    - Pedro Yalez
+    - py@gmail.com
+    - ''
+    - 11
+    - 2014-08-11 11:10:28.000000000 Z
+    - 2014-08-11 11:10:28.000000000 Z
+    - ''
+    - Testing
+    - ''
+  - - 34
+    - Fran Pisco
+    - fp@gmail.com
+    - ''
+    - 11
+    - 2014-08-11 11:11:21.000000000 Z
+    - 2014-08-11 11:11:21.000000000 Z
+    - ''
+    - ''
+    - ''
+  - - 35
+    - Patricio Bruna
+    - pbruna@masev.cl
+    - ''
+    - 2
+    - 2014-08-12 13:54:57.000000000 Z
+    - 2014-08-12 13:54:57.000000000 Z
+    - ''
+    - Pruebas
+    - ''
+  - - 36
+    - Juan Herrera
+    - jh@masev.com
+    - ''
+    - 8
+    - 2014-08-12 15:07:35.000000000 Z
+    - 2014-08-12 15:07:35.000000000 Z
+    - ''
+    - ''
+    - ''
+
+---
+delayed_jobs:
+  columns:
+  - id
+  - priority
+  - attempts
+  - handler
+  - last_error
+  - run_at
+  - locked_at
+  - failed_at
+  - locked_by
+  - queue
+  - created_at
+  - updated_at
+  records: 
+  - - 69
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer
+      object: !ruby/class 'ReminderMailer'
+      method_name: :invoice_due_notification
+      args:
+      - 134
+    - 
+    - 2014-08-26 13:00:00.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-04 23:22:09.000000000 Z
+    - 2014-08-04 23:22:09.000000000 Z
+  - - 70
+    - 0
+    - 19
+    - "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'InvoiceMailer'\nmethod_name:
+      :activation_notification\nargs:\n- !ruby/ActiveRecord:Invoice\n  attributes:\n
+      \   id: 27\n    number: 1\n    tax_total: 1691796.214\n    net_total: 8904190.6\n
+      \   total: 10595986.814\n    company_id: 10\n    contact_id: 30\n    account_id:
+      5\n    created_at: 2014-08-04 23:18:28.548457000 Z\n    updated_at: 2014-08-04
+      23:18:28.548457000 Z\n    taxed: true\n    due_date: 2014-09-03\n    active_date:
+      2014-08-04\n    close_date: \n    subject: Abortos varios de mi viejo\n    tax_id:
+      \n    tax_name: \n    tax_rate: \n    aasm_state: active\n    currency: UF\n
+      \   due_days: 30\n    currency_convertion_rate: 24065.38\n    original_currency_total:
+      370.0\n    total_payed: 0.0\n"
+    - |-
+      undefined method `resource' for nil:NilClass
+      /Users/pbruna/Proyectos/RAILS4/Folio4/Folio4RailsApp/app/models/invoice.rb:184:in `dte_attachment_url'
+      /Users/pbruna/Proyectos/RAILS4/Folio4/Folio4RailsApp/app/views/invoice_mailer/activation_notification.html.erb:11:in `_app_views_invoice_mailer_activation_notification_html_erb__2796455050895071796_70135432049040'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/template.rb:143:in `block in render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications.rb:161:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/template.rb:141:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications.rb:159:in `block in instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications.rb:159:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:17:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/renderer.rb:42:in `render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/renderer.rb:23:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:127:in `_render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:97:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:757:in `block in collect_responses'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:771:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:771:in `each_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:753:in `collect_responses'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:693:in `mail'
+      /Users/pbruna/Proyectos/RAILS4/Folio4/Folio4RailsApp/app/mailers/invoice_mailer.rb:9:in `activation_notification'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/base.rb:189:in `process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/callbacks.rb:373:in `_run__1409432272034461205__process_action__callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/callbacks.rb:80:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/callbacks.rb:17:in `process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/base.rb:136:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:44:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:503:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:497:in `initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:480:in `new'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:480:in `method_missing'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/performable_mailer.rb:6:in `perform'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:105:in `block in invoke_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:102:in `invoke_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in `block (2 levels) in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/timeout.rb:66:in `timeout'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in `block in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:206:in `run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in `block in reserve_and_run_one_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in `reserve_and_run_one_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:190:in `block in work_off'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in `times'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in `work_off'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:154:in `block (4 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:153:in `block (3 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:152:in `block (2 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in `loop'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in `block in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in `block (2 levels) in <class:ClearLocks>'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `block (2 levels) in add'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `block in add'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:150:in `start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/tasks.rb:9:in `block (2 levels) in <top (required)>'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:240:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:240:in `block in execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:235:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:235:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:179:in `block in invoke_with_call_chain'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:172:in `invoke_with_call_chain'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:165:in `invoke'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:150:in `invoke_task'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `block in top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:115:in `run_with_threads'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:100:in `top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:78:in `block in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:176:in `standard_exception_handling'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:75:in `run'
+      bin/rake:4:in `<main>'
+    - 2014-08-22 14:03:36.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-04 23:22:09.000000000 Z
+    - 2014-08-21 01:51:30.000000000 Z
+  - - 83
+    - 0
+    - 9
+    - |
+      --- !ruby/object:Delayed::PerformableMailer
+      object: !ruby/class 'AccountMailer'
+      method_name: :register_welcome
+      args:
+      - 15
+    - |-
+      undefined method `subdomain' for nil:NilClass
+      /Users/pbruna/Proyectos/RAILS4/Folio4/Folio4RailsApp/app/views/account_mailer/register_welcome.html.erb:5:in `_app_views_account_mailer_register_welcome_html_erb__2937178495324614083_70135467802700'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/template.rb:143:in `block in render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications.rb:161:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/template.rb:141:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications.rb:159:in `block in instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/notifications.rb:159:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/template_renderer.rb:17:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/renderer.rb:42:in `render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/action_view/renderer/renderer.rb:23:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:127:in `_render_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:97:in `render'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:757:in `block in collect_responses'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:771:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:771:in `each_template'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:753:in `collect_responses'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:693:in `mail'
+      /Users/pbruna/Proyectos/RAILS4/Folio4/Folio4RailsApp/app/mailers/account_mailer.rb:7:in `register_welcome'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/base.rb:189:in `process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/callbacks.rb:373:in `_run__1120599801740956613__process_action__callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/callbacks.rb:80:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/callbacks.rb:17:in `process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/base.rb:136:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:44:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:503:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:497:in `initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:480:in `new'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:480:in `method_missing'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/performable_mailer.rb:6:in `perform'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:105:in `block in invoke_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:102:in `invoke_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in `block (2 levels) in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/timeout.rb:66:in `timeout'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in `block in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:206:in `run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in `block in reserve_and_run_one_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in `reserve_and_run_one_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:190:in `block in work_off'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in `times'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in `work_off'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:154:in `block (4 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:153:in `block (3 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:152:in `block (2 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in `loop'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in `block in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in `block (2 levels) in <class:ClearLocks>'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `block (2 levels) in add'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `block in add'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:150:in `start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/tasks.rb:9:in `block (2 levels) in <top (required)>'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:240:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:240:in `block in execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:235:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:235:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:179:in `block in invoke_with_call_chain'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:172:in `invoke_with_call_chain'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:165:in `invoke'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:150:in `invoke_task'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `block in top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:115:in `run_with_threads'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:100:in `top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:78:in `block in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:176:in `standard_exception_handling'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:75:in `run'
+      bin/rake:4:in `<main>'
+    - 2014-08-21 03:40:56.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-09 13:32:57.000000000 Z
+    - 2014-08-21 01:51:30.000000000 Z
+  - - 96
+    - 0
+    - 4
+    - |
+      --- !ruby/object:Delayed::PerformableMailer
+      object: !ruby/class 'UserMailer'
+      method_name: :welcome_email
+      args:
+      - 21
+      - fgHnp1r4kr1sJhuEPsWx
+    - |-
+      Couldn't find User with id=21
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activerecord-4.0.4/lib/active_record/relation/finder_methods.rb:199:in `raise_record_not_found_exception!'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activerecord-4.0.4/lib/active_record/relation/finder_methods.rb:285:in `find_one'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activerecord-4.0.4/lib/active_record/relation/finder_methods.rb:269:in `find_with_ids'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activerecord-4.0.4/lib/active_record/relation/finder_methods.rb:36:in `find'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activerecord-deprecated_finders-1.0.3/lib/active_record/deprecated_finders/relation.rb:122:in `find'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activerecord-4.0.4/lib/active_record/querying.rb:3:in `find'
+      /Users/pbruna/Proyectos/RAILS4/Folio4/Folio4RailsApp/app/mailers/user_mailer.rb:11:in `welcome_email'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/base.rb:189:in `process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/callbacks.rb:373:in `_run__897811464687343572__process_action__callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/activesupport-4.0.4/lib/active_support/callbacks.rb:80:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/callbacks.rb:17:in `process_action'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/base.rb:136:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.4/lib/abstract_controller/rendering.rb:44:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:503:in `process'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:497:in `initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:480:in `new'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionmailer-4.0.4/lib/action_mailer/base.rb:480:in `method_missing'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/performable_mailer.rb:6:in `perform'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:105:in `block in invoke_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:102:in `invoke_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in `block (2 levels) in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/timeout.rb:66:in `timeout'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in `block in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:206:in `run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in `block in reserve_and_run_one_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in `reserve_and_run_one_job'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:190:in `block in work_off'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in `times'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in `work_off'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:154:in `block (4 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:153:in `block (3 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:152:in `block (2 levels) in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in `loop'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in `block in start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in `block (2 levels) in <class:ClearLocks>'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `block (2 levels) in add'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in `block in initialize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in `block in add'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in `run_callbacks'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:150:in `start'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/delayed_job-4.0.1/lib/delayed/tasks.rb:9:in `block (2 levels) in <top (required)>'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:240:in `call'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:240:in `block in execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:235:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:235:in `execute'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:179:in `block in invoke_with_call_chain'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:172:in `invoke_with_call_chain'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/task.rb:165:in `invoke'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:150:in `invoke_task'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `each'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:106:in `block in top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:115:in `run_with_threads'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:100:in `top_level'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:78:in `block in run'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:176:in `standard_exception_handling'
+      /Users/pbruna/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/rake-10.3.2/lib/rake/application.rb:75:in `run'
+      bin/rake:4:in `<main>'
+    - 2014-08-21 01:58:19.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-12 17:12:51.000000000 Z
+    - 2014-08-21 01:53:58.000000000 Z
+  - - 100
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer
+      object: !ruby/class 'ReminderMailer'
+      method_name: :invoice_due_notification
+      args:
+      - 138
+    - 
+    - 2014-09-09 12:00:00.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-21 11:02:55.000000000 Z
+    - 2014-08-21 11:02:55.000000000 Z
+  - - 101
+    - 0
+    - 0
+    - "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'InvoiceMailer'\nmethod_name:
+      :activation_notification\nargs:\n- !ruby/ActiveRecord:Invoice\n  attributes:\n
+      \   id: 30\n    number: 56\n    tax_total: 60072605.500886\n    net_total: 316171607.8994\n
+      \   total: 376244213.400286\n    company_id: 2\n    contact_id: 2\n    account_id:
+      3\n    created_at: 2014-08-19 18:12:17.271873000 Z\n    updated_at: 2014-08-20
+      19:50:06.590527000 Z\n    taxed: true\n    due_date: 2014-09-18\n    active_date:
+      2014-08-19\n    close_date: \n    subject: Sin reminder\n    tax_id: \n    tax_name:
+      \n    tax_rate: \n    aasm_state: active\n    currency: USD\n    due_days: 30\n
+      \   currency_convertion_rate: 583.09\n    original_currency_total: 542234.66\n
+      \   total_payed: 0.0\n"
+    - 
+    - 2014-08-21 11:02:55.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-21 11:02:55.000000000 Z
+    - 2014-08-21 11:02:55.000000000 Z
+  - - 102
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer
+      object: !ruby/class 'ReminderMailer'
+      method_name: :invoice_due_notification
+      args:
+      - 138
+    - 
+    - 2014-09-09 12:00:00.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-21 11:03:13.000000000 Z
+    - 2014-08-21 11:03:13.000000000 Z
+  - - 103
+    - 0
+    - 0
+    - "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'InvoiceMailer'\nmethod_name:
+      :activation_notification\nargs:\n- !ruby/ActiveRecord:Invoice\n  attributes:\n
+      \   id: 30\n    number: 57\n    tax_total: 60072605.500886\n    net_total: 316171607.8994\n
+      \   total: 376244213.400286\n    company_id: 2\n    contact_id: 2\n    account_id:
+      3\n    created_at: 2014-08-19 18:12:17.271873000 Z\n    updated_at: 2014-08-20
+      19:50:06.590527000 Z\n    taxed: true\n    due_date: 2014-09-18\n    active_date:
+      2014-08-19\n    close_date: \n    subject: Sin reminder\n    tax_id: \n    tax_name:
+      \n    tax_rate: \n    aasm_state: active\n    currency: USD\n    due_days: 30\n
+      \   currency_convertion_rate: 583.09\n    original_currency_total: 542234.66\n
+      \   total_payed: 0.0\n"
+    - 
+    - 2014-08-21 11:03:13.000000000 Z
+    - 
+    - 
+    - 
+    - 
+    - 2014-08-21 11:03:13.000000000 Z
+    - 2014-08-21 11:03:13.000000000 Z
+
+---
+invoice_items:
+  columns:
+  - id
+  - account_id
+  - quantity
+  - description
+  - price
+  - total
+  - invoice_id
+  - created_at
+  - updated_at
+  - type
+  records: 
+  - - 3
+    - 
+    - 1
+    - Instalación servidor Endian
+    - 1.0
+    - 1.0
+    - 3
+    - 2014-02-13 00:48:48.000000000 Z
+    - 2014-02-13 00:48:48.000000000 Z
+    - Servicio
+  - - 4
+    - 
+    - 1
+    - dadada
+    - 23.0
+    - 23.0
+    - 4
+    - 2014-02-13 00:50:04.000000000 Z
+    - 2014-02-13 00:50:04.000000000 Z
+    - Producto
+  - - 5
+    - 
+    - 10
+    - Deberia tener IVA
+    - 1000.0
+    - 10000.0
+    - 5
+    - 2014-02-13 00:52:18.000000000 Z
+    - 2014-02-13 00:52:18.000000000 Z
+    - Producto
+  - - 6
+    - 
+    - 1
+    - Producto
+    - 2343.0
+    - 2343.0
+    - 6
+    - 2014-03-08 14:40:48.000000000 Z
+    - 2014-03-08 14:40:48.000000000 Z
+    - Producto
+  - - 7
+    - 
+    - 3
+    - Servicio
+    - 1989.0
+    - 5967.0
+    - 6
+    - 2014-03-08 14:40:48.000000000 Z
+    - 2014-07-06 17:31:21.000000000 Z
+    - Servicio
+  - - 8
+    - 
+    - 20
+    - ''
+    - 12.0
+    - 240.0
+    - 7
+    - 2014-04-05 23:20:34.000000000 Z
+    - 2014-04-05 23:20:34.000000000 Z
+    - Producto
+  - - 9
+    - 
+    - 20
+    - ''
+    - 12.0
+    - 240.0
+    - 7
+    - 2014-04-05 23:25:55.000000000 Z
+    - 2014-04-05 23:25:55.000000000 Z
+    - Producto
+  - - 10
+    - 
+    - 20
+    - ''
+    - 12.0
+    - 240.0
+    - 7
+    - 2014-04-05 23:26:25.000000000 Z
+    - 2014-04-05 23:26:25.000000000 Z
+    - Producto
+  - - 11
+    - 
+    - 20
+    - ''
+    - 12.0
+    - 240.0
+    - 7
+    - 2014-04-05 23:26:25.000000000 Z
+    - 2014-04-05 23:26:25.000000000 Z
+    - Producto
+  - - 12
+    - 
+    - 1
+    - Controlador Aero
+    - 3654.0
+    - 3654.0
+    - 8
+    - 2014-04-05 23:27:40.000000000 Z
+    - 2014-05-13 02:50:45.000000000 Z
+    - Producto
+  - - 24
+    - 
+    - 23
+    - ghvhgh
+    - 232.0
+    - 5336.0
+    - 4
+    - 2014-04-05 23:40:16.000000000 Z
+    - 2014-04-05 23:40:16.000000000 Z
+    - Producto
+  - - 34
+    - 
+    - 22
+    - dada
+    - 233.0
+    - 5126.0
+    - 3
+    - 2014-05-12 01:18:41.000000000 Z
+    - 2014-05-12 01:18:41.000000000 Z
+    - Producto
+  - - 35
+    - 
+    - 1
+    - Secador de pelos
+    - 203.0
+    - 203.0
+    - 8
+    - 2014-05-13 02:50:45.000000000 Z
+    - 2014-05-13 02:50:45.000000000 Z
+    - Producto
+  - - 36
+    - 
+    - 1
+    - Es precio en UF
+    - 22.0
+    - 22.0
+    - 9
+    - 2014-05-28 02:15:42.000000000 Z
+    - 2014-05-28 02:15:42.000000000 Z
+    - Producto
+  - - 37
+    - 
+    - 2
+    - en pesos
+    - 23030.0
+    - 46060.0
+    - 10
+    - 2014-05-28 23:44:15.000000000 Z
+    - 2014-05-28 23:44:15.000000000 Z
+    - Producto
+  - - 38
+    - 
+    - 12
+    - Probando
+    - 233.0
+    - 2796.0
+    - 11
+    - 2014-06-08 01:34:41.000000000 Z
+    - 2014-06-08 01:34:41.000000000 Z
+    - Producto
+  - - 39
+    - 
+    - 32
+    - Probando 2
+    - 233.0
+    - 7456.0
+    - 11
+    - 2014-06-08 01:34:41.000000000 Z
+    - 2014-06-08 01:34:41.000000000 Z
+    - Producto
+  - - 40
+    - 
+    - 12
+    - 1ddsada
+    - 22.0
+    - 264.0
+    - 12
+    - 2014-06-21 19:51:17.000000000 Z
+    - 2014-06-21 19:51:17.000000000 Z
+    - Producto
+  - - 41
+    - 
+    - 230
+    - es una prueba
+    - 233.0
+    - 53590.0
+    - 13
+    - 2014-06-23 23:02:17.000000000 Z
+    - 2014-06-23 23:02:17.000000000 Z
+    - Producto
+  - - 46
+    - 
+    - 10
+    - Licencias de Zimbra
+    - 5.0
+    - 50.0
+    - 18
+    - 2014-06-27 22:30:06.000000000 Z
+    - 2014-06-27 22:30:06.000000000 Z
+    - Producto
+  - - 47
+    - 
+    - 1
+    - Instalación de Zimbra
+    - 100.0
+    - 100.0
+    - 18
+    - 2014-06-27 22:30:06.000000000 Z
+    - 2014-06-27 22:30:06.000000000 Z
+    - Servicio
+  - - 48
+    - 
+    - 23
+    - dadad
+    - 3330.0
+    - 76590.0
+    - 19
+    - 2014-06-30 16:59:29.000000000 Z
+    - 2014-06-30 16:59:29.000000000 Z
+    - Producto
+  - - 49
+    - 
+    - 5
+    - Mantención Mensual de Bodegas
+    - 30.0
+    - 150.0
+    - 20
+    - 2014-07-04 17:52:00.000000000 Z
+    - 2014-07-04 17:52:00.000000000 Z
+    - Servicio
+  - - 50
+    - 
+    - 20
+    - Frenos
+    - 2330.0
+    - 46600.0
+    - 21
+    - 2014-07-04 17:54:27.000000000 Z
+    - 2014-07-04 17:54:27.000000000 Z
+    - Producto
+  - - 51
+    - 
+    - 1
+    - Deberia tener IVA
+    - 1000.0
+    - 1000.0
+    - 22
+    - 2014-07-07 21:29:32.000000000 Z
+    - 2014-07-24 01:29:20.000000000 Z
+    - Producto
+  - - 54
+    - 
+    - 23
+    - dadad
+    - 3330.0
+    - 76590.0
+    - 24
+    - 2014-07-24 01:33:25.000000000 Z
+    - 2014-07-24 01:33:25.000000000 Z
+    - Producto
+  - - 55
+    - 
+    - 5
+    - Mantención Mensual de Bodegas
+    - 30.0
+    - 150.0
+    - 25
+    - 2014-07-24 22:04:49.000000000 Z
+    - 2014-07-24 22:04:49.000000000 Z
+    - Servicio
+  - - 56
+    - 
+    - 1000
+    - Cervezas
+    - 500.0
+    - 500000.0
+    - 26
+    - 2014-07-25 22:12:31.000000000 Z
+    - 2014-07-25 22:12:31.000000000 Z
+    - Producto
+  - - 57
+    - 
+    - 1
+    - Aborto 1
+    - 350.0
+    - 350.0
+    - 27
+    - 2014-08-04 23:18:28.000000000 Z
+    - 2014-08-04 23:18:28.000000000 Z
+    - Servicio
+  - - 58
+    - 
+    - 20
+    - Condones
+    - 1.0
+    - 20.0
+    - 27
+    - 2014-08-04 23:18:28.000000000 Z
+    - 2014-08-04 23:18:28.000000000 Z
+    - Producto
+  - - 59
+    - 
+    - 1
+    - Aborto 1
+    - 350.0
+    - 350.0
+    - 28
+    - 2014-08-04 23:24:27.000000000 Z
+    - 2014-08-04 23:24:27.000000000 Z
+    - Servicio
+  - - 60
+    - 
+    - 20
+    - Condones
+    - 1.0
+    - 20.0
+    - 28
+    - 2014-08-04 23:24:27.000000000 Z
+    - 2014-08-04 23:24:27.000000000 Z
+    - Producto
+  - - 61
+    - 
+    - 120
+    - Proband
+    - 2330.0
+    - 279600.0
+    - 29
+    - 2014-08-11 11:12:38.000000000 Z
+    - 2014-08-11 11:12:38.000000000 Z
+    - Producto
+  - - 62
+    - 
+    - 22
+    - dadad
+    - 22323.16
+    - 491109.52
+    - 30
+    - 2014-08-19 18:12:17.000000000 Z
+    - 2014-08-20 19:50:06.000000000 Z
+    - Producto
+  - - 63
+    - 
+    - 1
+    - aaa
+    - 12.53
+    - 12.53
+    - 31
+    - 2014-08-20 16:46:29.000000000 Z
+    - 2014-09-01 23:06:16.000000000 Z
+    - Producto
+  - - 64
+    - 
+    - 1
+    - bbb
+    - 12.5
+    - 12.5
+    - 31
+    - 2014-08-20 16:46:29.000000000 Z
+    - 2014-08-21 12:02:00.000000000 Z
+    - Producto
+  - - 65
+    - 
+    - 22
+    - ''
+    - 2323.87
+    - 51125.14
+    - 30
+    - 2014-08-20 19:48:11.000000000 Z
+    - 2014-08-20 19:50:06.000000000 Z
+    - Producto
+  - - 66
+    - 
+    - 1
+    - dadad
+    - 12.0
+    - 12.0
+    - 32
+    - 2014-09-01 23:06:50.000000000 Z
+    - 2014-09-02 10:14:00.000000000 Z
+    - Producto
+  - - 67
+    - 
+    - 2
+    - dadad
+    - 13.0
+    - 26.0
+    - 32
+    - 2014-09-01 23:06:50.000000000 Z
+    - 2014-09-02 10:14:00.000000000 Z
+    - Producto
+
+---
+invoices:
+  columns:
+  - id
+  - number
+  - tax_total
+  - net_total
+  - total
+  - company_id
+  - contact_id
+  - account_id
+  - created_at
+  - updated_at
+  - taxed
+  - due_date
+  - active_date
+  - close_date
+  - subject
+  - tax_id
+  - tax_name
+  - tax_rate
+  - aasm_state
+  - currency
+  - due_days
+  - currency_convertion_rate
+  - original_currency_total
+  - total_payed
+  records: 
+  - - 5
+    - 41
+    - 1900.0
+    - 10000.0
+    - 11900.0
+    - 1
+    - 3
+    - 3
+    - 2014-02-13 00:52:18.000000000 Z
+    - 2014-07-07 21:09:03.000000000 Z
+    - true
+    - 2014-03-15
+    - 2014-07-07
+    - 
+    - Prueba con IVA
+    - 
+    - 
+    - 
+    - cancelled
+    - CLP
+    - 30
+    - 1.0
+    - 10000.0
+    - 0.0
+  - - 6
+    - 14
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1
+    - 3
+    - 3
+    - 2014-03-08 14:40:48.000000000 Z
+    - 2014-07-26 22:08:47.000000000 Z
+    - true
+    - 2014-04-07
+    - 2014-03-08
+    - 2014-07-26
+    - Prueba de Factura
+    - 
+    - 
+    - 
+    - closed
+    - UF
+    - 30
+    - 1.0
+    - 0.0
+    - 237709477.0
+  - - 7
+    - 1
+    - 91.0
+    - 960.0
+    - 960.0
+    - 2
+    - 2
+    - 3
+    - 2014-04-05 23:20:34.000000000 Z
+    - 2014-07-24 01:20:58.000000000 Z
+    - false
+    - 2014-05-05
+    - 2014-04-05
+    - 2014-07-23
+    - Prueba de Factura
+    - 
+    - 
+    - 
+    - closed
+    - CLP
+    - 30
+    - 1.0
+    - 960.0
+    - 960.0
+  - - 8
+    - 24
+    - 403672.0
+    - 2124590.0
+    - 2528262.0
+    - 2
+    - 2
+    - 3
+    - 2014-04-05 23:27:40.000000000 Z
+    - 2014-07-04 21:17:04.000000000 Z
+    - true
+    - 2014-06-11
+    - 2014-05-12
+    - 
+    - Prueba
+    - 
+    - 
+    - 
+    - cancelled
+    - USD
+    - 30
+    - 550.84
+    - 3857.0
+    - 0.0
+  - - 9
+    - 23
+    - 0.0
+    - 528836.0
+    - 528836.0
+    - 4
+    - 12
+    - 3
+    - 2014-05-28 02:15:42.000000000 Z
+    - 2014-07-06 19:15:48.000000000 Z
+    - false
+    - 2014-06-26
+    - 2014-05-27
+    - 2014-07-06
+    - Prueba de Factura con contacto - borrador sin numero
+    - 
+    - 
+    - 
+    - closed
+    - UF
+    - 30
+    - 24038.0
+    - 22.0
+    - 528836.0
+  - - 10
+    - 42
+    - 0.0
+    - 46060.0
+    - 46060.0
+    - 5
+    - 13
+    - 3
+    - 2014-05-28 23:44:15.000000000 Z
+    - 2014-07-07 21:04:24.000000000 Z
+    - false
+    - 2014-06-27
+    - 2014-07-07
+    - 2014-07-07
+    - Prueba duplicación
+    - 
+    - 
+    - 
+    - closed
+    - CLP
+    - 30
+    - 1.0
+    - 46060.0
+    - 46060.0
+  - - 11
+    - 26
+    - 46827834.0
+    - 246462283.0
+    - 293290117.0
+    - 4
+    - 12
+    - 3
+    - 2014-06-08 01:34:41.000000000 Z
+    - 2014-07-07 17:23:26.000000000 Z
+    - true
+    - 2014-07-07
+    - 2014-06-07
+    - 2014-07-07
+    - Prueba de Email
+    - 
+    - 
+    - 
+    - closed
+    - UF
+    - 30
+    - 24040.4
+    - 10252.0
+    - 293290117.0
+  - - 12
+    - 28
+    - 0.0
+    - 264.0
+    - 264.0
+    - 1
+    - 3
+    - 3
+    - 2014-06-21 19:51:17.000000000 Z
+    - 2014-07-06 19:17:16.000000000 Z
+    - false
+    - 2014-07-21
+    - 2014-06-21
+    - 2014-07-06
+    - Prueba de ingreso con recordatorio activado
+    - 
+    - 
+    - 
+    - closed
+    - CLP
+    - 30
+    - 1.0
+    - 264.0
+    - 264.0
+  - - 13
+    - 29
+    - 10182.0
+    - 53590.0
+    - 63772.0
+    - 1
+    - 1
+    - 3
+    - 2014-06-23 23:02:17.000000000 Z
+    - 2014-07-09 16:08:02.000000000 Z
+    - true
+    - 2014-07-23
+    - 2014-06-23
+    - 2014-07-09
+    - Prueba de envio de correo
+    - 
+    - 
+    - 
+    - closed
+    - CLP
+    - 30
+    - 1.0
+    - 53590.0
+    - 63772.0
+  - - 18
+    - 30
+    - 684673.0
+    - 3603542.0
+    - 4288214.0
+    - 1
+    - 3
+    - 3
+    - 2014-06-27 22:30:06.000000000 Z
+    - 2014-06-30 16:58:10.000000000 Z
+    - true
+    - 2014-07-27
+    - 2014-06-27
+    - 
+    - Prueba de nueva factua
+    - 
+    - 
+    - 
+    - cancelled
+    - UF
+    - 30
+    - 24023.6
+    - 150.0
+    - 0.0
+  - - 19
+    - 40
+    - 8205638.0
+    - 43187569.0
+    - 51393207.0
+    - 1
+    - 1
+    - 3
+    - 2014-06-30 16:59:29.000000000 Z
+    - 2014-07-24 16:39:27.000000000 Z
+    - true
+    - 2014-07-30
+    - 2014-06-30
+    - 
+    - prueba para ver si se cancela en draft
+    - 
+    - 
+    - 
+    - active
+    - USD
+    - 30
+    - 563.88
+    - 76590.0
+    - 31393207.0
+  - - 20
+    - 48
+    - 0.0
+    - 3608526.0
+    - 3608526.0
+    - 2
+    - 2
+    - 3
+    - 2014-07-04 17:52:00.000000000 Z
+    - 2014-07-24 22:04:31.000000000 Z
+    - false
+    - 2014-08-03
+    - 2014-07-04
+    - 
+    - Servicio Mensual de Mantención de Bodegas
+    - 
+    - 
+    - 
+    - active
+    - UF
+    - 30
+    - 24056.8
+    - 150.0
+    - 0.0
+  - - 21
+    - 50
+    - 0.0
+    - 26276808.0
+    - 26276808.0
+    - 4
+    - 12
+    - 3
+    - 2014-07-04 17:54:27.000000000 Z
+    - 2014-07-24 23:00:05.000000000 Z
+    - false
+    - 2014-08-03
+    - 2014-07-04
+    - 
+    - Repuestos para Moticletas
+    - 
+    - 
+    - 
+    - active
+    - USD
+    - 30
+    - 563.88
+    - 46600.0
+    - 0.0
+  - - 22
+    - 44
+    - 4570800.0
+    - 24056840.0
+    - 28627640.0
+    - 1
+    - 3
+    - 3
+    - 2014-07-07 21:29:32.000000000 Z
+    - 2014-07-24 23:31:42.000000000 Z
+    - true
+    - 2014-08-06
+    - 2014-07-07
+    - 
+    - Prueba con IVA y Duplicado 42
+    - 
+    - 
+    - 
+    - active
+    - UF
+    - 30
+    - 24056.8
+    - 1000.0
+    - 0.0
+  - - 24
+    - 41
+    - 8203164.0
+    - 43174549.0
+    - 51377713.0
+    - 1
+    - 1
+    - 3
+    - 2014-07-24 01:33:25.000000000 Z
+    - 2014-07-24 01:33:25.000000000 Z
+    - true
+    - 2014-08-22
+    - 2014-07-23
+    - 
+    - prueba para ver si se cancela en draft
+    - 
+    - 
+    - 
+    - draft
+    - USD
+    - 30
+    - 563.71
+    - 76590.0
+    - 0.0
+  - - 25
+    - 55
+    - 0.0
+    - 3613182.0
+    - 3613182.0
+    - 2
+    - 2
+    - 3
+    - 2014-07-24 22:04:49.000000000 Z
+    - 2014-08-21 11:03:49.000000000 Z
+    - false
+    - 2014-08-23
+    - 2014-07-24
+    - 2014-08-21
+    - Servicio Mensual de Mantención de Bodegas
+    - 
+    - 
+    - 
+    - closed
+    - UF
+    - 30
+    - 24087.9
+    - 150.0
+    - 3613182.0
+  - - 26
+    - 56
+    - 0.0
+    - 500000.0
+    - 500000.0
+    - 2
+    - 2
+    - 3
+    - 2014-07-25 22:12:31.000000000 Z
+    - 2014-07-25 22:12:39.000000000 Z
+    - false
+    - 2014-06-05
+    - 2014-05-06
+    - 
+    - Prueba de Factura Vencida
+    - 
+    - 
+    - 
+    - active
+    - CLP
+    - 30
+    - 1.0
+    - 500000.0
+    - 0.0
+  - - 27
+    - 1
+    - 1691796.0
+    - 8904191.0
+    - 10595987.0
+    - 10
+    - 30
+    - 5
+    - 2014-08-04 23:18:28.000000000 Z
+    - 2014-08-04 23:24:12.000000000 Z
+    - true
+    - 2014-09-03
+    - 2014-08-04
+    - 2014-08-04
+    - Abortos varios de mi viejo
+    - 
+    - 
+    - 
+    - closed
+    - UF
+    - 30
+    - 24065.4
+    - 370.0
+    - 10595986.0
+  - - 28
+    - 2
+    - 1691796.0
+    - 8904191.0
+    - 10595987.0
+    - 10
+    - 30
+    - 5
+    - 2014-08-04 23:24:27.000000000 Z
+    - 2014-08-04 23:24:34.000000000 Z
+    - true
+    - 2014-09-03
+    - 2014-08-04
+    - 
+    - Abortos varios de mi viejo
+    - 
+    - 
+    - 
+    - draft
+    - UF
+    - 30
+    - 24065.4
+    - 370.0
+    - 0.0
+  - - 29
+    - 1
+    - 53124.0
+    - 279600.0
+    - 332724.0
+    - 11
+    - 32
+    - 7
+    - 2014-08-11 11:12:38.000000000 Z
+    - 2014-08-11 11:12:38.000000000 Z
+    - true
+    - 2014-09-10
+    - 2014-08-11
+    - 
+    - Probando correo responsive
+    - 
+    - 
+    - 
+    - draft
+    - CLP
+    - 30
+    - 1.0
+    - 279600.0
+    - 0.0
+  - - 30
+    - 57
+    - 60072606.0
+    - 316171608.0
+    - 376244213.0
+    - 2
+    - 2
+    - 3
+    - 2014-08-19 18:12:17.000000000 Z
+    - 2014-08-21 11:04:15.000000000 Z
+    - true
+    - 2014-09-18
+    - 2014-08-19
+    - 2014-08-21
+    - Sin reminder
+    - 
+    - 
+    - 
+    - closed
+    - USD
+    - 30
+    - 583.09
+    - 542235.0
+    - 376244213.0
+  - - 31
+    - 1
+    - 114499.0
+    - 602624.0
+    - 717123.0
+    - 8
+    - 14
+    - 3
+    - 2014-08-20 16:46:29.000000000 Z
+    - 2014-09-01 23:06:16.000000000 Z
+    - true
+    - 2014-09-19
+    - 2014-08-20
+    - 
+    - Prueba con decimales
+    - 
+    - 
+    - 
+    - draft
+    - UF
+    - 30
+    - 24105.0
+    - 25.0
+    - 0.0
+  - - 32
+    - 1
+    - 7.0
+    - 38.0
+    - 45.0
+    - 8
+    - 14
+    - 3
+    - 2014-09-01 23:06:50.000000000 Z
+    - 2014-09-02 10:14:00.000000000 Z
+    - true
+    - 2014-10-01
+    - 2014-09-01
+    - 
+    - a ver
+    - 
+    - 
+    - 
+    - draft
+    - CLP
+    - 30
+    - 1.0
+    - 38.0
+    - 0.0
+
+---
+plans:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - trial
+    - 2013-09-04 22:28:41.000000000 Z
+    - 2013-09-04 22:28:41.000000000 Z
+  - - 2
+    - pyme
+    - 2013-09-04 22:28:41.000000000 Z
+    - 2013-09-04 22:28:41.000000000 Z
+  - - 3
+    - trial
+    - 2013-09-05 14:20:03.000000000 Z
+    - 2013-09-05 14:20:03.000000000 Z
+  - - 4
+    - pyme
+    - 2013-09-05 14:20:03.000000000 Z
+    - 2013-09-05 14:20:03.000000000 Z
+  - - 5
+    - trial
+    - 2014-06-21 18:56:04.000000000 Z
+    - 2014-06-21 18:56:04.000000000 Z
+  - - 6
+    - trial
+    - 2014-06-21 18:58:23.000000000 Z
+    - 2014-06-21 18:58:23.000000000 Z
+  - - 7
+    - trial
+    - 2014-08-09 13:23:07.000000000 Z
+    - 2014-08-09 13:23:07.000000000 Z
+  - - 8
+    - pyme
+    - 2014-08-09 13:23:07.000000000 Z
+    - 2014-08-09 13:23:07.000000000 Z
+  - - 9
+    - trial
+    - 2014-08-09 13:26:40.000000000 Z
+    - 2014-08-09 13:26:40.000000000 Z
+  - - 10
+    - pyme
+    - 2014-08-09 13:26:40.000000000 Z
+    - 2014-08-09 13:26:40.000000000 Z
+
+---
+reminders:
+  columns:
+  - id
+  - notification_date
+  - remindable_id
+  - remindable_type
+  - sent
+  - created_at
+  - updated_at
+  - notification_days
+  - due_date
+  - subject
+  - message
+  - active
+  - account_users_ids
+  - company_users_ids
+  records: 
+  - - 26
+    - 2014-06-17
+    - 10
+    - Invoice
+    - false
+    - 2014-05-28 23:44:15.000000000 Z
+    - 2014-06-23 23:00:07.000000000 Z
+    - 
+    - 2014-06-27
+    - Recordatorio vencimiento Factura 29
+    - "Hola Fernando Gómez, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 13
+  - - 33
+    - 2014-07-27
+    - 8
+    - Invoice
+    - false
+    - 2014-05-30 01:25:18.000000000 Z
+    - 2014-06-24 01:45:19.000000000 Z
+    - 
+    - 2014-06-11
+    - Recordatorio vencimiento Factura 1
+    - "Hola Gabriela Garrido, \r\nEl siguiente mensaje es para recordar que tienes
+      una factura que vencerá pronto."
+    - false
+    - 
+    - 
+  - - 41
+    - 2014-04-29
+    - 7
+    - Invoice
+    - false
+    - 2014-06-02 16:41:21.000000000 Z
+    - 2014-06-02 16:41:21.000000000 Z
+    - 
+    - 2014-05-05
+    - Recordatorio vencimiento Factura 1
+    - 
+    - false
+    - 
+    - 
+  - - 71
+    - 2014-06-03
+    - 3
+    - Invoice
+    - false
+    - 2014-06-06 16:44:21.000000000 Z
+    - 2014-06-06 16:44:22.000000000 Z
+    - 
+    - 2014-06-10
+    - Recordatorio vencimiento Factura 11
+    - 
+    - true
+    - 
+    - 
+  - - 73
+    - 2014-06-03
+    - 3
+    - Invoice
+    - false
+    - 2014-06-06 16:44:56.000000000 Z
+    - 2014-06-06 16:44:56.000000000 Z
+    - 
+    - 2014-06-10
+    - Recordatorio vencimiento Factura 11
+    - 
+    - false
+    - 
+    - 
+  - - 80
+    - 2014-04-01
+    - 6
+    - Invoice
+    - false
+    - 2014-06-06 18:46:37.000000000 Z
+    - 2014-07-06 17:31:21.000000000 Z
+    - 
+    - 2014-04-07
+    - Recordatorio vencimiento Factura 14
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - false
+    - 
+    - 
+  - - 81
+    - 2014-04-01
+    - 6
+    - Invoice
+    - false
+    - 2014-06-06 18:47:00.000000000 Z
+    - 2014-06-06 18:47:00.000000000 Z
+    - 
+    - 2014-04-07
+    - Recordatorio vencimiento Factura 14
+    - 
+    - false
+    - 
+    - 
+  - - 82
+    - 2014-03-04
+    - 5
+    - Invoice
+    - false
+    - 2014-06-06 18:49:41.000000000 Z
+    - 2014-07-07 21:09:03.000000000 Z
+    - 
+    - 2014-03-15
+    - Recordatorio vencimiento Factura 12
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - false
+    - 
+    - 
+  - - 83
+    - 2014-03-04
+    - 5
+    - Invoice
+    - false
+    - 2014-06-06 18:49:50.000000000 Z
+    - 2014-06-06 18:49:50.000000000 Z
+    - 
+    - 2014-03-15
+    - Recordatorio vencimiento Factura 12
+    - 
+    - false
+    - 
+    - 
+  - - 88
+    - 2014-04-29
+    - 4
+    - Invoice
+    - false
+    - 2014-06-06 23:17:34.000000000 Z
+    - 2014-06-06 23:17:34.000000000 Z
+    - 
+    - 2014-05-05
+    - Recordatorio vencimiento Factura 12
+    - 
+    - false
+    - 
+    - 
+  - - 90
+    - 2014-04-29
+    - 4
+    - Invoice
+    - false
+    - 2014-06-06 23:19:19.000000000 Z
+    - 2014-06-06 23:19:19.000000000 Z
+    - 
+    - 2014-05-05
+    - Recordatorio vencimiento Factura 10
+    - 
+    - false
+    - 
+    - 
+  - - 92
+    - 2014-04-29
+    - 7
+    - Invoice
+    - false
+    - 2014-06-06 23:21:30.000000000 Z
+    - 2014-06-06 23:21:30.000000000 Z
+    - 
+    - 2014-05-05
+    - Recordatorio vencimiento Factura 1
+    - 
+    - false
+    - 
+    - 
+  - - 93
+    - 2014-06-03
+    - 8
+    - Invoice
+    - false
+    - 2014-06-06 23:47:41.000000000 Z
+    - 2014-06-06 23:47:41.000000000 Z
+    - 
+    - 2014-06-11
+    - Recordatorio vencimiento Factura 24
+    - 
+    - false
+    - 
+    - 
+  - - 95
+    - 2014-06-03
+    - 8
+    - Invoice
+    - false
+    - 2014-06-08 01:17:18.000000000 Z
+    - 2014-06-08 01:17:18.000000000 Z
+    - 
+    - 2014-06-11
+    - Recordatorio vencimiento Factura 24
+    - 
+    - false
+    - 
+    - 
+  - - 97
+    - 2014-06-17
+    - 9
+    - Invoice
+    - false
+    - 2014-06-08 01:30:37.000000000 Z
+    - 2014-06-08 01:30:37.000000000 Z
+    - 
+    - 2014-06-26
+    - Recordatorio vencimiento Factura 23
+    - 
+    - false
+    - 
+    - 
+  - - 106
+    - 2014-07-01
+    - 11
+    - Invoice
+    - false
+    - 2014-06-08 01:52:48.000000000 Z
+    - 2014-06-08 01:52:48.000000000 Z
+    - 
+    - 2014-07-07
+    - Recordatorio vencimiento Factura 26
+    - 
+    - false
+    - 
+    - 
+  - - 119
+    - 2014-08-29
+    - 12
+    - Invoice
+    - false
+    - 2014-06-21 20:01:20.000000000 Z
+    - 2014-06-26 00:15:01.000000000 Z
+    - 
+    - 2014-07-21
+    - Recordatorio vencimiento Factura 27
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 3
+  - - 120
+    - 2014-07-19
+    - 13
+    - Invoice
+    - false
+    - 2014-06-23 23:02:17.000000000 Z
+    - 2014-06-24 01:41:24.000000000 Z
+    - 
+    - 2014-07-23
+    - Recordatorio vencimiento Factura 29
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 1
+  - - 125
+    - 2014-07-15
+    - 18
+    - Invoice
+    - false
+    - 2014-06-27 22:30:06.000000000 Z
+    - 2014-06-27 22:31:36.000000000 Z
+    - 
+    - 2014-07-27
+    - Recordatorio vencimiento Factura 30
+    - "Hola Daniel Eugenin, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 3
+  - - 126
+    - 2014-07-22
+    - 19
+    - Invoice
+    - false
+    - 2014-06-30 16:59:29.000000000 Z
+    - 2014-07-04 20:40:58.000000000 Z
+    - 
+    - 2014-07-30
+    - Recordatorio vencimiento Factura 40
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 1
+  - - 127
+    - 2014-07-22
+    - 20
+    - Invoice
+    - false
+    - 2014-07-04 17:52:00.000000000 Z
+    - 2014-07-24 22:04:31.000000000 Z
+    - 
+    - 2014-08-03
+    - Recordatorio vencimiento Factura 48
+    - "Hola Gabriela Garrido, \r\nEl siguiente mensaje es para recordar que tienes
+      una factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 2
+  - - 128
+    - 2014-07-22
+    - 21
+    - Invoice
+    - false
+    - 2014-07-04 17:54:27.000000000 Z
+    - 2014-07-24 23:00:04.000000000 Z
+    - 
+    - 2014-08-03
+    - Recordatorio vencimiento Factura 50
+    - "Hola federico, \r\nEl siguiente mensaje es para recordar que tienes una factura
+      que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 12
+  - - 129
+    - 2014-07-29
+    - 22
+    - Invoice
+    - false
+    - 2014-07-07 21:29:32.000000000 Z
+    - 2014-07-24 23:31:41.000000000 Z
+    - 
+    - 2014-08-06
+    - Recordatorio vencimiento Factura 44
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 3
+  - - 131
+    - 2014-08-12
+    - 24
+    - Invoice
+    - false
+    - 2014-07-24 01:33:25.000000000 Z
+    - 2014-07-24 01:33:25.000000000 Z
+    - 
+    - 2014-08-22
+    - Recordatorio vencimiento Factura 41
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - false
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 1
+  - - 132
+    - 2014-08-12
+    - 25
+    - Invoice
+    - false
+    - 2014-07-24 22:04:49.000000000 Z
+    - 2014-07-25 01:15:12.000000000 Z
+    - 
+    - 2014-08-23
+    - Recordatorio vencimiento Factura 55
+    - "Hola Gabriela Garrido, \r\nEl siguiente mensaje es para recordar que tienes
+      una factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 2
+  - - 133
+    - 2014-05-27
+    - 26
+    - Invoice
+    - false
+    - 2014-07-25 22:12:31.000000000 Z
+    - 2014-07-25 22:12:38.000000000 Z
+    - 
+    - 2014-06-05
+    - Recordatorio vencimiento Factura 56
+    - "Hola Gabriela Garrido, \r\nEl siguiente mensaje es para recordar que tienes
+      una factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+    - |
+      ---
+      - 2
+  - - 134
+    - 2014-08-26
+    - 27
+    - Invoice
+    - false
+    - 2014-08-04 23:18:28.000000000 Z
+    - 2014-08-04 23:22:09.000000000 Z
+    - 
+    - 2014-09-03
+    - Recordatorio vencimiento Factura 1
+    - "Hola Gabriel Yánes, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 13
+      - 14
+    - |
+      ---
+      - 30
+  - - 135
+    - 2014-08-26
+    - 28
+    - Invoice
+    - false
+    - 2014-08-04 23:24:27.000000000 Z
+    - 2014-08-04 23:24:34.000000000 Z
+    - 
+    - 2014-09-03
+    - Recordatorio vencimiento Factura 2
+    - "Hola Gabriel Yánes, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - false
+    - |
+      ---
+      - 13
+      - 14
+    - |
+      ---
+      - 30
+  - - 138
+    - 2014-09-09
+    - 30
+    - Invoice
+    - false
+    - 2014-08-19 18:14:19.000000000 Z
+    - 2014-08-21 11:03:13.000000000 Z
+    - 
+    - 2014-09-18
+    - Recordatorio vencimiento Factura 57
+    - "Hola Gabriela Garrido, \r\nEl siguiente mensaje es para recordar que tienes
+      una factura que vencerá pronto."
+    - true
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+      - 19
+      - 20
+      - 22
+    - |
+      ---
+      - 2
+  - - 139
+    - 2014-09-09
+    - 31
+    - Invoice
+    - false
+    - 2014-08-20 16:46:29.000000000 Z
+    - 2014-09-01 23:06:16.000000000 Z
+    - 
+    - 2014-09-19
+    - Recordatorio vencimiento Factura 1
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - false
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+      - 19
+      - 20
+      - 22
+    - |
+      ---
+      - 14
+  - - 140
+    - 2014-09-23
+    - 32
+    - Invoice
+    - false
+    - 2014-09-01 23:06:50.000000000 Z
+    - 2014-09-02 10:14:00.000000000 Z
+    - 
+    - 2014-10-01
+    - Recordatorio vencimiento Factura 1
+    - "Hola Patricio Bruna, \r\nEl siguiente mensaje es para recordar que tienes una
+      factura que vencerá pronto."
+    - false
+    - |
+      ---
+      - 8
+      - 9
+      - 10
+      - 19
+      - 20
+      - 22
+    - |
+      ---
+      - 14
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - account_id
+  - name
+  - created_at
+  - updated_at
+  - last_name
+  - active
+  - avatar_file_name
+  - avatar_content_type
+  - avatar_file_size
+  - avatar_updated_at
+  records: 
+  - - 7
+    - pbruna@zbox.cl
+    - "$2a$10$YSu3P3rkwcD4dlm.g1hajeNtBKNhYvL8EiSsIgqrtqpTLZsPheVtW"
+    - 
+    - 
+    - 
+    - 1
+    - 2013-09-05 14:24:42.000000000 Z
+    - 2013-09-05 14:24:42.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 2
+    - 
+    - 2013-09-05 14:24:42.000000000 Z
+    - 2013-09-05 14:24:42.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 8
+    - pbruna@masev.cl
+    - "$2a$10$6Unf4jF14iZPmWwOK9zpzewSuheIoWCL9Fe4M4jMOgUt5dKtvo8me"
+    - 
+    - 
+    - 
+    - 46
+    - 2014-09-01 23:05:12.000000000 Z
+    - 2014-08-19 17:48:56.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 3
+    - Patricio Bruna
+    - 2013-09-05 14:29:01.000000000 Z
+    - 2014-09-01 23:05:12.000000000 Z
+    - 
+    - true
+    - daniel_eugenin.jpg
+    - image/jpeg
+    - 1323
+    - 2014-08-21 02:24:06.000000000 Z
+  - - 9
+    - agallardo@masev.cl
+    - "$2a$10$oIUrpEF34M/jhpWJ1bHt/.JAoBcyujTcoc7vIVc6s1MVBwY1dbgQi"
+    - Jys9BCTJtiscrDujB6Sc
+    - 
+    - 
+    - 1
+    - 2014-07-23 21:06:23.000000000 Z
+    - 2014-07-23 21:06:23.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 3
+    - Andrés Gallardo
+    - 2013-09-05 15:08:49.000000000 Z
+    - 2014-08-13 19:22:53.000000000 Z
+    - 
+    - false
+    - Captura_de_pantalla_2014-07-23_a_la(s)_17.05.16.png
+    - image/png
+    - 55770
+    - 2014-07-23 21:05:27.000000000 Z
+  - - 10
+    - pbruna@it-linux.cl
+    - "$2a$10$ffUUFX0vvvwJNdOuZn8EDelljGmmbS6mmRA5doQPch.pvnsY4Il5q"
+    - BCgTNTcZJQ83NPtTQyCr
+    - 
+    - 
+    - 2
+    - 2014-07-24 01:36:59.000000000 Z
+    - 2014-06-20 00:44:57.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 3
+    - Juan González
+    - 2014-06-20 00:43:44.000000000 Z
+    - 2014-08-08 16:08:48.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 12
+    - pbruna@itlinux.cl
+    - "$2a$10$tGl7K2zMWi.LhXu/EK96seXRN3BgwcnnOKuEUmpgNhT.rWOOOGra."
+    - 
+    - 
+    - 
+    - 1
+    - 2014-08-04 17:04:33.000000000 Z
+    - 2014-08-04 17:04:33.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 4
+    - 
+    - 2014-08-04 17:04:32.000000000 Z
+    - 2014-08-04 17:04:33.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 13
+    - pbruna@start.cl
+    - "$2a$10$GLYUJ5QJ0FAg27j46ImU2elvwfJH2lPrNafauJNqSb/xsem6q9WM."
+    - 
+    - 
+    - 
+    - 1
+    - 2014-08-04 23:13:34.000000000 Z
+    - 2014-08-04 23:13:34.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 5
+    - 
+    - 2014-08-04 23:13:34.000000000 Z
+    - 2014-08-04 23:13:34.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 14
+    - agallardo@start.cl
+    - "$2a$10$7.i8ekneCzfpSQ91Wkiqoeip9oCd.hQQiuRPBbZYD2KxOVj2q3tTq"
+    - f0c13c1121d5b99c08d29119a412eaf99541b9fc927d83825ba531e46fa4e541
+    - 2014-08-04 23:19:32.000000000 Z
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 5
+    - Andrés Gallardo
+    - 2014-08-04 23:19:32.000000000 Z
+    - 2014-08-04 23:19:32.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 15
+    - pbruna@gmail.com
+    - "$2a$10$yqDNiN2RE.2pzdeCkBQtTe8YYS6vJNrSLEv.2VodRTTGGuh3u/TqK"
+    - 
+    - 
+    - 
+    - 1
+    - 2014-08-09 13:32:57.000000000 Z
+    - 2014-08-09 13:32:57.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 6
+    - 
+    - 2014-08-09 13:32:57.000000000 Z
+    - 2014-08-09 13:32:57.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 16
+    - pbruna@masev.cl
+    - "$2a$10$mGLkb8X2/jCCzL8XpN9M9eVy8I0oIRTHPW9twQNqsBD8Ab9UOPvzW"
+    - 
+    - 
+    - 
+    - 1
+    - 2014-08-09 13:51:46.000000000 Z
+    - 2014-08-09 13:51:46.000000000 Z
+    - 127.0.0.1
+    - 127.0.0.1
+    - 7
+    - 
+    - 2014-08-09 13:51:46.000000000 Z
+    - 2014-08-09 13:51:46.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 17
+    - pbruna@gmail.com
+    - "$2a$10$NOEbOMI4/8bFxgkyNjGrz.VFaBI0Zau.tl3YPb7Nbrt/Dgxmxm94C"
+    - 7339538da50392265eb8270ac36922911cb10f497f9b7acaaa482ded27c6eb6c
+    - 2014-08-11 10:47:20.000000000 Z
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 7
+    - Patricio Bruna
+    - 2014-08-11 10:47:20.000000000 Z
+    - 2014-08-11 10:47:20.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 18
+    - g@masev.cl
+    - "$2a$10$J9HcYv4SYLfRqkI.BlemhOlXKDmyXIs4XPA4kfgBhKQop1uczYWM6"
+    - b5ded0a86ec667495bb366ad8491ba7becc7b4933d4af0bd4660cf83736d6c4c
+    - 2014-08-11 10:49:23.000000000 Z
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 7
+    - Gabriela Garrido
+    - 2014-08-11 10:49:23.000000000 Z
+    - 2014-08-11 10:49:23.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 19
+    - p@jaime.cl
+    - "$2a$10$sGc5sJhFWvBsDWgNdpjIauDX/02u55qIuujSFa.c1ymcewzRyNiiW"
+    - c853a27dbdb84cc22810ec47e92c352c2d9517e3cfc9ec467e86d392405f76bd
+    - 2014-08-12 15:58:18.000000000 Z
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 3
+    - Pedro Jaime
+    - 2014-08-12 15:58:18.000000000 Z
+    - 2014-08-12 16:29:11.000000000 Z
+    - 
+    - true
+    - juan.png
+    - image/png
+    - 319
+    - 2014-08-12 16:28:58.000000000 Z
+  - - 20
+    - a@a.com
+    - "$2a$10$KM6mNmLw7tTgMVqRlF7Gm.ds2SYV7D0BqfB4nVutuERVnhEplrqoC"
+    - 28fd7b6ccc426cbadcb2e6de53dec83281e0a2c6d5d0f2500604189cff7a635a
+    - 2014-08-12 16:33:46.000000000 Z
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 3
+    - Desde Amazon
+    - 2014-08-12 16:33:46.000000000 Z
+    - 2014-08-12 16:33:46.000000000 Z
+    - 
+    - true
+    - 
+    - 
+    - 
+    - 
+  - - 22
+    - p@p.com
+    - "$2a$10$EMHCbL3W2.R.CA.JbOFAUODtOerEZCRXX5Y50hLXkLUQQrRpYJX3O"
+    - 6c9f8a639b5ea150a24287fe4e260f323734713fb941140b74bdac507c8f3eef
+    - 2014-08-12 17:21:54.000000000 Z
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 3
+    - Pedro F
+    - 2014-08-12 17:21:54.000000000 Z
+    - 2014-08-12 17:22:41.000000000 Z
+    - 
+    - true
+    - e74bdf1d313dd493ae0b28c1b5b5e5a5_400x400.jpeg
+    - image/jpeg
+    - 32697
+    - 2014-08-12 17:22:41.000000000 Z
