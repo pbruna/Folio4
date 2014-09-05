@@ -192,7 +192,7 @@ $ ->
 		sorter_menu_box("sorted-direction")
 			
 		# Envia la busqueda por estado al elegir un checkbox
-		$("#status_search input[type=checkbox]").change () ->
+		$(document).on "change", "#status_search input[type=checkbox]", () ->
 			checkedState = $(this).prop("checked")
 			#$(this).parent("div").children(".checkbox:checked").each ->
 			$("#invoices-totals-resume-table input[type=checkbox]:checked").each ->
