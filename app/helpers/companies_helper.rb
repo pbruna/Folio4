@@ -14,5 +14,16 @@ module CompaniesHelper
     content_tag(:span, "proveedor", :class => "label label-provider")
   end
   
+  def payment_days_message(company)
+    return if company.empty?
+    message = "Paga generalmente con <strong>#{company.payment_days_median} días de atraso</strong>"
+    message = "Cliente siempre paga al día" if company.payment_days_median < 1
+    content_tag :div, class: "pull-right totals-kpi-box-header" do 
+      content_tag :h5, class: "payment-days-message" do
+        message.html_safe
+      end
+    end
+  end
+  
   
 end
