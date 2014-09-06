@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'pp'
 
 class CompanyTest < ActiveSupport::TestCase
 
@@ -37,7 +38,7 @@ class CompanyTest < ActiveSupport::TestCase
                                     )
     @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 2, price: 1000)
     resource = File.new(Rails.root.to_s + "/test/fixtures/files/test-file.png")
-    @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource)
+    @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource, author_id: 10, author_type: "User", account_id: 10)
     @reminder = @invoice.build_reminder
     @invoice.save
     assert(!@company.destroy, "No se debería borrar")

@@ -31,7 +31,7 @@ class Invoice < ActiveRecord::Base
   
   # Validations
   validates_presence_of :company_id, :contact_id, :subject, :active_date, :due_days, :currency, :currency_convertion_rate
-  validates_numericality_of :contact_id, :greater_than => 0, message: "no existe"
+#  validates_numericality_of :contact_id, :greater_than => 0, message: "no existe"
   validates_numericality_of :due_days
   validates_numericality_of :total, :greater_than => 0
   validates_numericality_of :currency_convertion_rate, :greater_than => 0
@@ -91,8 +91,13 @@ class Invoice < ActiveRecord::Base
   end
   
   def run_activation_jobs
+    update_due_date
     schedule_reminder
     activation_notification_email
+  end
+  
+  def update_due_date
+    self.due_date = Date.today + due_days
   end
   
   def schedule_reminder

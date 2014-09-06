@@ -22,7 +22,7 @@ class InvoiceTest < ActiveSupport::TestCase
                                     )
     @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 2, price: 1000)
     resource = File.new(Rails.root.to_s + "/test/fixtures/files/test-file.png")
-    @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource)
+        @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource, author_id: 10, author_type: "User", account_id: 10)
     @reminder = @invoice.build_reminder
   end
   
@@ -135,7 +135,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.save
     @invoice.active
     @invoice.save
-    assert_equal("2014-07-22", @invoice.reminder.notification_date.to_s)
+    assert_equal("2014-09-23", @invoice.reminder.notification_date.to_s)
   end
 
   test "invoice should have a contact when active" do
@@ -230,6 +230,14 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 1, price: 12.4)
     @invoice.save
     assert_equal(38, @invoice.original_currency_total.to_i)
+  end
+  
+  test "Update due date when activating it" do
+    @invoice.save
+    @invoice.due_date = "12/03/2014"
+    @invoice.save
+    @invoice.active
+    assert_equal(Date.today + @invoice.due_days, @invoice.due_date)
   end
   
 end
