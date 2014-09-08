@@ -1,23 +1,28 @@
-FROM pbruna/centos-rails
+FROM phusion/passenger-ruby21:0.9.12
 MAINTAINER Patricio Bruna <pbruna@itlinux.cl>
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN rm -f /etc/service/nginx/down
+RUN mkdir -p /etc/service/memcached
+RUN mkdir -p /home/app/folio4
 
-ADD Gemfile /usr/src/app/
-ADD Gemfile.lock /usr/src/app/
+WORKDIR /home/app/folio4
+ADD Gemfile /home/app/folio4/
+ADD Gemfile.lock /home/app/folio4/
 RUN bundle install
 
-ADD . /usr/src/app
+# Aquí para que no moleste al cache
+ADD . /home/app/folio4
+ADD config/folio-nginx.conf /etc/nginx/sites-enabled/folio-nginx.conf
+ADD scripts/delayed_job.sh /etc/service/delayed_job/run
 
 ENV RAILS_ENV production
 
 RUN rake db:migrate
 RUN rake db:seed
 RUN rake assets:precompile
-RUN rake assets:sync
+#RUN rake assets:sync
 RUN rake tmp:create
 RUN rake tmp:clear
 
-EXPOSE 8080
-CMD ["rails", "server"]
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+CMD ["/sbin/my_init"]
