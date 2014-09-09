@@ -14,6 +14,7 @@ RUN bundle install
 ADD . /home/app/folio4
 ADD config/folio-nginx.conf /etc/nginx/sites-enabled/folio-nginx.conf
 ADD scripts/delayed_job.sh /etc/service/delayed_job/run
+RUN chown 9999:9999 -R /home/app/folio4
 
 ENV RAILS_ENV production
 
