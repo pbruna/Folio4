@@ -14,7 +14,6 @@ RUN bundle install
 ADD . /home/app/folio4
 ADD config/folio-nginx.conf /etc/nginx/sites-enabled/folio-nginx.conf
 ADD scripts/delayed_job.sh /etc/service/delayed_job/run
-RUN chown 9999:9999 -R /home/app/folio4
 
 ENV RAILS_ENV production
 
@@ -24,6 +23,7 @@ RUN rake assets:precompile
 #RUN rake assets:sync
 RUN rake tmp:create
 RUN rake tmp:clear
+RUN chown 9999:9999 -R /home/app/folio4
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 CMD ["/sbin/my_init"]
