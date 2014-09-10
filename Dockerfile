@@ -1,3 +1,5 @@
+# TODO Hacer que delayed_job suba como servicio
+
 FROM phusion/passenger-ruby21:0.9.12
 MAINTAINER Patricio Bruna <pbruna@itlinux.cl>
 
