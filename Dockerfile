@@ -13,6 +13,7 @@ RUN bundle install
 # Aquí para que no moleste al cache
 ADD . /home/app/folio4
 ADD config/folio-nginx.conf /etc/nginx/sites-enabled/folio-nginx.conf
+ADD config/folio-nginx-env.conf /etc/nginx/main.d/folio-nginx-env.conf
 ADD scripts/delayed_job.sh /etc/service/delayed_job/run
 ADD pbruna-ssh-key.pub /tmp/your_key
 RUN cat /tmp/your_key >> /root/.ssh/authorized_keys && rm -f /tmp/your_key
