@@ -359,7 +359,7 @@ class Invoice < ActiveRecord::Base
     start_date = Date.parse(query_items.delete("start_date")) unless query_items["start_date"].nil?
     end_date = Date.parse(query_items.delete("end_date")) unless query_items["end_date"].nil?
     status = params["status"].nil? ? "all_invoices" : params["status"]
-    total = params["total"]
+    total = params["total"].to_i
     sorted_by = (params["sorted_by"].nil? || params["sorted_by"].empty?) ? "active_date" : params["sorted_by"]
     sorted_direction = (params["sorted_direction"].nil? || params["sorted_direction"].empty?) ? "DESC" : params["sorted_direction"]
     results = send(status).where(query_items)
@@ -370,7 +370,7 @@ class Invoice < ActiveRecord::Base
     elsif start_date && end_date
       results = results.where(active_date: start_date..end_date)
     end
-    if total
+    unless total < 1
       results = results.where(total: (total.to_i - 1)..(total.to_i + 1))
     end
     results.order("#{sorted_by} #{sorted_direction}").includes(:company)
