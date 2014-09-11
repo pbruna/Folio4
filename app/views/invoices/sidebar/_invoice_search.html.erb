@@ -17,6 +17,10 @@
 		  <span class="add-on"><%= fa_icon "barcode"%></span>
 		  <%= text_field_tag "search[query_items][number]", nil, class: "prependedInput", placeholder: "Número de venta"%>
 		</div>
+		<div class="input-prepend">
+		  <span class="add-on"><%= fa_icon "dollar"%></span>
+		  <%= text_field_tag "search[total]", nil, class: "prependedInput", placeholder: "Total"%>
+		</div>
 		
 		<!-- <div class="input-prepend">
 		  <span class="add-on"><%= fa_icon "dollar"%></span>
