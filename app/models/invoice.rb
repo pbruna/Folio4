@@ -30,7 +30,7 @@ class Invoice < ActiveRecord::Base
   
   
   # Validations
-  validates_presence_of :company_id, :contact_id, :subject, :active_date, :due_days, :currency, :currency_convertion_rate
+  validates_presence_of :company_id, :subject, :active_date, :due_days, :currency, :currency_convertion_rate
 #  validates_numericality_of :contact_id, :greater_than => 0, message: "no existe"
   validates_numericality_of :due_days
   validates_numericality_of :total, :greater_than => 0
@@ -42,6 +42,7 @@ class Invoice < ActiveRecord::Base
   validates_presence_of :number, unless: :draft?
   validates_numericality_of :number, unless: :draft?
   validates :number, uniqueness: {scope: [:taxed, :account_id]}, unless: :draft?
+  validates :contact, presence: true
 
   #Scopes
   #default_scope { where(account_id: Account.current_id) }
