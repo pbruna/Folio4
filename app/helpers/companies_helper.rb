@@ -15,7 +15,7 @@ module CompaniesHelper
   end
   
   def payment_days_message(company)
-    return if company.empty?
+    return unless company.payment_days_median
     message = "Paga generalmente con <strong>#{company.payment_days_median} días de atraso</strong>"
     message = "Cliente siempre paga al día" if company.payment_days_median < 1
     content_tag :div, class: "pull-right totals-kpi-box-header" do 
