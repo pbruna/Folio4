@@ -19,6 +19,11 @@ module ApplicationHelper
     Rails.application.routes.recognize_path(url)[:controller]
   end
   
+  def page_title
+    return "Folio" unless current_account
+    return "Folio: #{current_account.name.titleize}"
+  end
+  
   def get_indicator_value_for(indicador)
     indicadores = Indicadores::Chile.new
     begin
