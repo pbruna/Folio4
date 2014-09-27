@@ -16,7 +16,7 @@
 	<table>
 		<tr class="small">
 			<td class="input-label"><label>Número</label></td>
-			<td><%= f.text_field :number, value: suggested_number(@invoice) %></td>
+			<td><%= f.text_field :number %></td>
 			<td class="input-label"><label>Fecha</label></td>
 			<td><%= f.text_field :active_date, value: suggested_active_date(@invoice), data: {"date-format" => "dd/mm/yyyy"} %></td>
 			<td class="input-label"><label>Vence en</label></td>
