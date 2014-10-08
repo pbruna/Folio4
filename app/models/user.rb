@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   def self.new_from_owner(account_id, user_params)
     @user = User.new(user_params)
     @user.account_id = account_id
-    token = @user.reset_password_token
+    token = @user.new_reset_password_token
     [@user, token]
   end
 
@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
     end
   end
   
-  def reset_password_token
+  def new_reset_password_token
     raw, enc = Devise.token_generator.generate(User, :reset_password_token)
     self.reset_password_token = enc
     self.reset_password_sent_at = Time.now.utc
