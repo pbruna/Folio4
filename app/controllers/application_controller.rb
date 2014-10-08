@@ -13,8 +13,6 @@ class ApplicationController < ActionController::Base
 
 
   def current_account
-    # return if current_user.nil?
-    # current_user.account
     return if request.subdomain.nil?
     Account.where(subdomain: request.subdomain).first
   end
