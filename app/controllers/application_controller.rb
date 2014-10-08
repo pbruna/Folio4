@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
 
 
   def current_account
-    return if current_user.nil?
-    current_user.account
+    # return if current_user.nil?
+    # current_user.account
+    return if request.subdomain.nil?
+    Account.where(subdomain: request.subdomain).first
   end
 
   def validate_owner!
@@ -43,7 +45,8 @@ class ApplicationController < ActionController::Base
     end
 
     def set_account
-      @current_account = current_account
+      Struct.new("FalseAccount", :id)
+      @current_account = current_account || Struct::FalseAccount.new(0)
     end
     
     def set_user

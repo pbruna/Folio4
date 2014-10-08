@@ -13,9 +13,9 @@
 	     </div>
 		<div class="control-group">
 	   	<%= f.input :password, :required => false, :label => false, :input_html => {:class => "login-field"}, :placeholder => 	"Contraseña" %>
+		<%= f.input :account_id, :as => :hidden, :input_html => { :value => @current_account.id }%>
 		</div>
 	  </div>
-
 	  <div class="actions">
 	    <%= f.button :submit, "Ingresar", :class => "btn btn-primary btn-large btn-block" %>
 	  </div>

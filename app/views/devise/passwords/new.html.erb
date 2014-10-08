@@ -8,6 +8,7 @@
   <div class="inputs">
 	<div class="control-group">
     	<%= f.input :email, :required => true, :label => false, :placeholder => "Email", :input_html => {:class => "login-field"},  error: false %>
+		<%= f.input :account_id, :as => :hidden, :input_html => { :value => @current_account.id }%>
 
 	</div>
   </div>
