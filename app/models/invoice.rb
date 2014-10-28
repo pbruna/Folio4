@@ -22,7 +22,7 @@ class Invoice < ActiveRecord::Base
   
   #Callbacks
   before_validation :set_due_date_and_reminder, if: :draft?
-  before_validation :perform_calculations
+  before_validation :perform_calculations, if: :draft?
   before_update :close_invoice_if_total_payed_match_total
   
   # Solo borramos si esta en Draft
