@@ -1,9 +1,5 @@
 <% if @attachment.new_record? %>
 alert('The attachment could not be uploaded: <%= j @attachment.errors.full_messages.join(', ').html_safe %>');
 <% else %>
-$("#<%= @uuid %> a").attr("href", "/attachments/<%= @attachment.id %>");
-$("#<%= @uuid %> a").attr("data-method","delete");
-$("#<%= @uuid %> a").attr("data-remote","true");
-$("#<%= @uuid %> a").attr("rel","nofollow");
-$("#<%= @uuid %>").attr("id","attachment-<%= @attachment.id %>");
+'<%= {uuid: @uuid, id: @attachment.id} %>'
 <% end %>

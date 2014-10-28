@@ -1,7 +1,7 @@
 <div id="show-attachment-body" style="<%= "display: none;" unless attachments.any?%>">
 	<a class="btn-addfiles">Agregar archivos</a>
 </div>
-<div class="attachment attachment-form" style="<%= "display: none;" if attachments.any?%>">
+<div class="attachment-form" style="<%= "display: none;" if attachments.any?%>">
 	<%= form_for Attachment.new, :html => { :multipart => true  } do |f| %>
 	<div class="attachment-body">
 		<div class="attachment-body-header">
@@ -31,8 +31,8 @@
 				<%= f.hidden_field :attachable_type, value: object.class.to_s %>
 				<%= f.hidden_field :author_id, value: @current_user.id %>
 				<%= f.hidden_field :author_type, value: @current_user.class.to_s %>
-				<%= f.button "Cancelar", class: "btn", name: "cancel" %>
-				<%= f.submit "Aceptar", class: "btn btn-success" %>
+				<%= f.button "Cancelar", class: "btn", name: "cancel", disabled: true %>
+				<%= f.submit "Aceptar", class: "btn btn-success", disabled: true %>
 			</div>
 		</div>
 	</div>
@@ -54,22 +54,32 @@
 			// Generamos un uuid para poder identificar el adjunto y
 			// así poder identificarlo por si el usuario lo quiere borrar
 			// Este uuid se usa en el template
-			var uuid = $.uuid();
 	        // Initialize the jQuery File Upload widget:
+			var uuid = "";
 			$('#new_attachment').fileupload({
-			  dataType: "script",
+			  dataType: "json",
 			  dropZone: ".attachment-body-content",
+			  autoUpload: false,
+			  add: function(e, data) {
+				uuid = $.uuid();
+				data.files[0].uuid = uuid;
+			    data.context = $(tmpl("template-upload", data.files[0]));
+			    $('#new_attachment .attachment-resources').append(data.context);
+			    return data.submit();
+			  },
 			  formData: function(){
 				  array = $('#new_attachment').serializeArray();
 				  array.push({name: "uuid", value: uuid});
 				  return array;
 			  },
-			  autoUpload: false,
-			  add: function(e, data) {
-				data.files[0].uuid = uuid;
-			    data.context = $(tmpl("template-upload", data.files[0]));
-			    $('#new_attachment .attachment-resources').append(data.context);
-			    return data.submit();
+			  done: function(e, data){
+				  result = data.result;
+				  console.log(result.id);
+				  console.log(result.uuid);
+				  Folio.update_attachment_id(result.uuid, result.id);
+			  },
+			  start: function(){
+			  	$("#new_attachment input[type=submit]").val("Subiendo...");
 			  },
 			  progress: function(e, data) {
 			    var progress;
@@ -85,9 +95,9 @@
 </div>
 
 <script id="template-upload" type="text/x-tmpl">
-<div id="{%= o.uuid %}">
+<div id="{%= o.uuid %}" class="attachment">
 	 <div class="upload">
-		 <%= link_to attachment_path(), class: "delete" do %>
+		 <%= link_to attachment_path(), remote: true, method: :delete, class: "delete" do %>
 		  <%= fa_icon "times-circle" %>
 		 <% end %>
 		 {%=o.name%}

@@ -10,6 +10,7 @@ class AttachmentsController < ApplicationController
     respond_to do |format|
       @attachment.save
       format.html {redirect_to attachment_path}
+      format.json { render :json => {uuid: @uuid, id: @attachment.id.to_s}}
       format.js 
     end
   end
