@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901230914) do
+ActiveRecord::Schema.define(version: 20141106181124) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20140901230914) do
     t.string   "city"
     t.string   "phone"
     t.string   "country"
+    t.string   "industry",          default: ""
+    t.boolean  "e_invoice_enabled", default: false
   end
 
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", unique: true, using: :btree

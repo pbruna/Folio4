@@ -74,8 +74,6 @@
 			  },
 			  done: function(e, data){
 				  result = data.result;
-				  console.log(result.id);
-				  console.log(result.uuid);
 				  Folio.update_attachment_id(result.uuid, result.id);
 			  },
 			  start: function(){

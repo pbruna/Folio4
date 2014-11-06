@@ -3,6 +3,9 @@
 		<%= @account.name.titleize %>
 		<br/>
 		<small><%= current_account.rut %></small>
+		<% unless current_account.industry.empty? %>
+			<br><small><%= current_account.industry.titleize %></small>
+		<% end %>
 	</h4>
 	
 	<address>

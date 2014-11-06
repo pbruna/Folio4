@@ -38,7 +38,7 @@ class Account < ActiveRecord::Base
   end
 
   def contact_info_complete?
-    attributes.detect {|k,v| v.blank? }.nil?
+    attributes.detect {|k,v| v.blank? unless k == "e_invoice_enabled" }.nil?
   end
   
   def companies_in_alphabetycal_order(company_name_like)

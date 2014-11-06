@@ -6,5 +6,8 @@
 			</li>
 		<% end %>
 		<li>El dueño de la cuenta es <%= link_to current_account.owner_name, user_path(current_account.owner) %> </li>
+		<% if current_account.e_invoice_enabled? %>
+			<li>Puede emitir documentos electrónicos</li>
+		<% end %>
 	</ul>
 </div>
