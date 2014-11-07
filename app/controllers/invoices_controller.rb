@@ -64,7 +64,6 @@ class InvoicesController < ApplicationController
 
   def create
     params = prices_to_numbers
-    Rails.logger.debug("------- PRECIO: #{params}--------------")
     @invoice = current_account.invoices.new(invoice_params)
     if @invoice.save
       flash.now[:notice] = "Venta guardada correctamente."
@@ -88,7 +87,6 @@ class InvoicesController < ApplicationController
   
   def update
     params = prices_to_numbers
-    Rails.logger.debug("------- PRECIO: #{params}--------------")
     @invoice = current_account.invoices.find(params[:id])
     if @invoice.update_invoice(invoice_params)
       flash.now[:notice] = "Venta actualizada correctamente"

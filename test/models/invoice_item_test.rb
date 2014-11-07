@@ -33,5 +33,25 @@ class InvoiceItemTest < ActiveSupport::TestCase
     assert_equal(26, @invoice_item.total.to_i)
   end
   
+  test "item should have a number, 1 for default" do
+    @invoice.save
+    assert_equal(1, @invoice.invoice_items.first.number)
+  end
+  
+  test "items should have consecutives numbers" do
+    invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 3, price: 1000)
+    @invoice.save
+    assert_equal(1, @invoice.invoice_items[0].number)
+    assert_equal(2, @invoice.invoice_items[1].number)
+  end
+  
+  test "items should still have consecutives numbers if i delete a items" do
+    invoice_item_2 = @invoice.invoice_items.build(type: "producto", quantity: 3, price: 1000)
+    invoice_item_3 = @invoice.invoice_items.build(type: "producto", quantity: 3, price: 1000)
+    @invoice.save
+    @invoice.invoice_items[1].destroy
+    assert_equal(1, @invoice.invoice_items[0].number)
+    assert_equal(2, @invoice.invoice_items[1].number)    
+  end
 
 end

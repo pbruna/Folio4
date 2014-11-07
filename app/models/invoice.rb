@@ -24,6 +24,7 @@ class Invoice < ActiveRecord::Base
   before_validation :set_due_date_and_reminder, if: :draft?
   before_validation :perform_calculations, if: :draft?
   before_update :close_invoice_if_total_payed_match_total
+  after_save :update_items_number
   
   # Solo borramos si esta en Draft
   before_destroy {|record| return false unless record.draft? }
@@ -414,7 +415,13 @@ class Invoice < ActiveRecord::Base
       self.currency_convertion_rate = indicadores.send(indicador)
     rescue Exception => e
     end
-    
+  end
+  
+  def update_items_number
+    invoice_items.each_with_index do |item,index| 
+      item.number = index + 1
+      item.save
+    end
   end
 
 end

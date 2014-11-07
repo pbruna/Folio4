@@ -23,7 +23,6 @@ class InvoiceItem < ActiveRecord::Base
   end
   
   def calculate_total
-    Rails.logger.debug("------- PRECIO: #{price}--------------")
     quantity * price
   end
   
@@ -41,5 +40,6 @@ class InvoiceItem < ActiveRecord::Base
   def permform_calculations
     self.total = calculate_total
   end
+  
   
 end

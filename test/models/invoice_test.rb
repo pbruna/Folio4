@@ -131,9 +131,9 @@ class InvoiceTest < ActiveSupport::TestCase
   
   test "update reminder date when activating invoice" do
     @invoice.save
-    @invoice.active_date = Date.parse("2014-07-01")
-    @invoice.save
     @invoice.active
+    @invoice.save
+    @invoice.active_date = Date.parse("2014-07-01")
     @invoice.save
     assert_equal("2014-09-23", @invoice.reminder.notification_date.to_s)
   end
