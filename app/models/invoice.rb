@@ -42,7 +42,7 @@ class Invoice < ActiveRecord::Base
   #validate :invoice_ready_for_payment
   validates_presence_of :number, unless: :draft?
   validates_numericality_of :number, unless: :draft?
-  validate :number_uniqueness
+  validate :number_uniqueness, unless: :active?
   validates :contact, presence: true
 
   #Scopes
