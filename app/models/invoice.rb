@@ -42,7 +42,7 @@ class Invoice < ActiveRecord::Base
   #validate :invoice_ready_for_payment
   validates_presence_of :number, unless: :draft?
   validates_numericality_of :number, unless: :draft?
-  validates :number, uniqueness: {scope: [:taxed, :account_id]}, unless: :draft?
+  validate :number_uniqueness
   validates :contact, presence: true
 
   #Scopes
@@ -422,6 +422,12 @@ class Invoice < ActiveRecord::Base
       item.number = index + 1
       item.save
     end
+  end
+  
+  def number_uniqueness
+    result = account.invoices.not_draft.where(taxed: self.taxed, number: self.number).any?
+    return unless result
+    errors.add(:number, "El número ya está usado")
   end
 
 end

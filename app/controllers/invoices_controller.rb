@@ -36,10 +36,9 @@ class InvoicesController < ApplicationController
   def activate
     @invoice = current_account.invoices.find(params[:id])
     @invoice.number = params[:number].to_i
+    @invoice.active
     respond_to do |format|
-      if @invoice.may_active?
-        @invoice.active
-        @invoice.save
+    if @invoice.save
         format.html {
           flash[:notice] = "Venta activada correctamente"
           redirect_to @invoice
