@@ -13,8 +13,12 @@
 			  <%= f.input :industry, label: false, placeholder: "Giro comercial" %>
 			  <%= f.input :address, label: false, placeholder: "Dirección" %>
 			  <%= f.input :city, label: false, placeholder: "Comuna" %>
+			   <%= f.input :e_invoice_regional_address, label: false, placeholder: "Región" %>
 			  <%= f.input :country, label: false, placeholder: "País" %>
 			  <%= f.input :phone, label: false, placeholder: "Teléfono" %>
+			  <% if @account.e_invoice_enabled? %>
+			  	<%= f.input :e_invoice_resolution_date, label: false, placeholder: "Fecha de Resolución F. Electrónica", as: :string, input_html: {data: {"date-format" => "dd/mm/yyyy"}} %>
+			  <% end %>
 			
 			
 			  <div class="actions">

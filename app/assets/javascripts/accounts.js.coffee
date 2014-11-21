@@ -18,4 +18,5 @@ jQuery ->
 				$(".actions input[type='submit']").prop("disabled", true)
 				$(".actions input[type='submit']").addClass("disable")
 				$(".actions input[type='submit']").removeClass("btn-primary")
-		
+	
+	$("#account_e_invoice_resolution_date").datepicker({language: "es", weekStart: 1, autoclose: true})

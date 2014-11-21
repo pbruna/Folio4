@@ -60,7 +60,10 @@ class AccountsController < ApplicationController
   private
 
     def account_params
-      params.require(:account).permit(:name, :city, :phone, :rut, :address, :subdomain, :country, :industry, :value, users_attributes: [:email, :password])
+      params.require(:account).permit(:name, :city, :phone, :rut, :address, 
+                  :subdomain, :country, :industry, :value,
+                  :e_invoice_regional_address, :e_invoice_resolution_date,
+                  users_attributes: [:email, :password])
     end
 
     def subdomain_params

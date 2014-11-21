@@ -1,5 +1,8 @@
+<% content_for :form_errors do %>
+<h1>Chupalo</h1>
+<% end %>
 <div id="<%= "activate-invoice-#{@invoice.id}-modal" %>" class="modal fade" style="display: none;">
-	<%= form_for @invoice, url: activate_invoice_path(@invoice) do |f| %>
+ <%= form_for @invoice, url: activate_invoice_path(@invoice) do |f| %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
