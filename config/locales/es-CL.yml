@@ -237,6 +237,7 @@ es-CL:
     drafts: borrador
     dues: vencidas
     closeds: pagadas
+    processing_dte: procesando DTE
 
   will_paginate:
     next_label: siguiente

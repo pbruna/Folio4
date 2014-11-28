@@ -61,7 +61,7 @@ class AccountsController < ApplicationController
 
     def account_params
       params.require(:account).permit(:name, :city, :phone, :rut, :address, 
-                  :subdomain, :country, :industry, :value,
+                  :subdomain, :country, :industry, :industry_code, :value,
                   :e_invoice_regional_address, :e_invoice_resolution_date,
                   users_attributes: [:email, :password])
     end

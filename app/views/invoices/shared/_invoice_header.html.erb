@@ -7,7 +7,7 @@
 		</li>
 		<li>
 			<span class="invoice-header-label invoice-label invoice-<%= @invoice.status %>">
-				<%= (I18n.t "invoice.#{@invoice.status}").humanize %>
+				<%= display_invoice_status(@invoice) %>
 			</span>
 		</li>
 	</ul>

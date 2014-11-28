@@ -5,6 +5,7 @@ class Invoice < ActiveRecord::Base
 
   STATUS_NAME = %w(active draft closed)
   CURRENCIES = %w(CLP UF USD)
+  DTE_TYPES = {taxed_invoice: 33, untaxed_invoice: 34, credit_note: 61}
   TAX_RATE = 19.0
   self.per_page = 10
   
@@ -15,16 +16,19 @@ class Invoice < ActiveRecord::Base
   has_one :reminder, as: :remindable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :dtes
   belongs_to :contact
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
   accepts_nested_attributes_for :reminder, :allow_destroy => true
   accepts_nested_attributes_for :attachments, :allow_destroy => true
+  accepts_nested_attributes_for :dtes, :allow_destroy => true
   
   #Callbacks
   before_validation :set_due_date_and_reminder, if: :draft?
-  before_validation :perform_calculations, if: :draft?
+  before_validation :perform_calculations
   before_update :close_invoice_if_total_payed_match_total
   after_save :update_items_number
+  after_save :generate_dte, if: :may_generate_dte?
   
   # Solo borramos si esta en Draft
   before_destroy {|record| return false unless record.draft? }
@@ -42,8 +46,9 @@ class Invoice < ActiveRecord::Base
   #validate :invoice_ready_for_payment
   validates_presence_of :number, unless: :draft?
   validates_numericality_of :number, unless: :draft?
-  validate :number_uniqueness, unless: :active?
+  validate :number_uniqueness
   validates :contact, presence: true
+  validates :po_number, numericality: true, allow_nil: true
 
   #Scopes
   #default_scope { where(account_id: Account.current_id) }
@@ -94,8 +99,12 @@ class Invoice < ActiveRecord::Base
   
   def run_activation_jobs
     update_due_date
-    schedule_reminder
-    activation_notification_email
+    # schedule_reminder
+    # activation_notification_email
+  end
+  
+  def run_cancelation_jobs
+    generate_dte(DTE_TYPES[:credit_note])
   end
   
   def update_due_date
@@ -150,6 +159,10 @@ class Invoice < ActiveRecord::Base
     
   end
   
+  def company_rut
+    company.rut
+  end
+  
   def company_name
     return "" if company_id.nil?
     company.name
@@ -167,6 +180,19 @@ class Invoice < ActiveRecord::Base
   
   def has_valid_number?
     account.check_invoice_number_availability(number,taxed)
+  end
+  
+  # Purchase order number
+  def has_po?
+    return !po_number.nil?
+  end
+  
+  def has_dte?
+    dtes.any?
+  end
+  
+  def has_dte_invoice?
+    !dte_invoice.nil?
   end
 
   def notification_date
@@ -229,25 +255,41 @@ class Invoice < ActiveRecord::Base
   end
   
   def last_used_number
-    last_active_invoice = invoices_for_account.active.last
-    return 0 if last_active_invoice.nil?
-    last_active_invoice.number
+    account.last_used_number
   end
   
   def may_edit?
     draft? || active?
   end
   
+  def may_generate_dte?
+    return false unless account.e_invoice_enabled?
+    return false if draft?
+    return false if closed?
+    return false if (cancelled? && dte_invoice.nil?) # Si no tiene un dte factura
+    true
+  end
+  
   
   def status
     return "draft" if new_record?
     return "due" if is_due?
+    return "processing_dte" if has_any_processing_dte?
     aasm_state
   end
   
   # Esta vencida si se pasó la fecha y está activa
   def is_due?
     due_date < Date.today && active?
+  end
+  
+  def dte_invoice
+    dtes.e_invoice.first
+  end
+  
+  def has_any_processing_dte?
+    return false unless has_dte?
+    dtes.not_processed.any?
   end
   
   def late_days
@@ -259,7 +301,6 @@ class Invoice < ActiveRecord::Base
   end
     
   def suggested_number
-    return 1 unless invoices_for_account.any?
     return last_used_number + 1
   end
   
@@ -286,6 +327,25 @@ class Invoice < ActiveRecord::Base
     (close_date - due_date).to_i
   end
   
+  def record_dte_result(dte)
+    dte = Dte.find(dte)
+    process_dte_comment(dte)
+    process_dte_pdf(dte)
+  end
+  
+  def process_dte_comment(dte)
+    message = dte.result_message
+    comment = comments.new_from_system({message: message, account_users_ids: account_users_ids, private: true})
+    comment.save
+  end
+  
+  def process_dte_pdf(dte)
+    return unless dte.ok?
+    return if dte.pdf_url.nil?
+    dte_pdf = attachments.new_from_system({url: dte.pdf_url, name: dte.dte_type})
+    dte_pdf.save
+  end
+  
   def set_due_date_and_reminder
     date = active_date || Date.today
     self.due_date = date + due_days
@@ -308,6 +368,10 @@ class Invoice < ActiveRecord::Base
   
   def account_users_ids
     account.users.map {|u| u.id}
+  end
+  
+  %w(rut name industry industry_code address city province).each do |m|
+    define_method("account_#{m}".to_sym) { account.send(m) }
   end
   
   def company_users_ids
@@ -425,9 +489,25 @@ class Invoice < ActiveRecord::Base
   end
   
   def number_uniqueness
-    result = account.invoices.not_draft.where(taxed: self.taxed, number: self.number).any?
-    return unless result
+    result = account.invoices.not_draft.where(taxed: self.taxed, number: self.number)
+    return unless result.any?
+    return if result.first.id == id
     errors.add(:number, "El número ya está usado")
+  end
+  
+  def generate_dte
+    tipo_dte = dte_to_generate
+    dte = Dte.new Dte.prepare_from_invoice(self, tipo_dte)
+    raise "DTE: #{dte.errors.messages.to_s}" unless dte.valid?
+    dte.save
+  end
+  
+  def dte_to_generate
+    return DTE_TYPES[:credit_note] if cancelled?
+    # Esta nota de credito por correccion de monto
+    return DTE_TYPES[:credit_note] if (active? && has_dte_invoice?)
+    # Solo nos interesa si es NC
+    nil
   end
 
 end

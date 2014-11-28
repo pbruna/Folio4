@@ -1,0 +1,18 @@
+<div id="dtes">
+	<br/>
+	<table class="table-attachments">
+		<thead>
+			<tr>
+				<th>Tipo</th>
+				<th>Folio</th>
+				<th>Fecha</th>
+				<th>Estado</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% dtes.each do |dte| %>
+				<%= render partial: "dtes/dte", locals: {dte: dte}  %>
+			<% end %>
+		</tbody>
+	</table>
+</div>

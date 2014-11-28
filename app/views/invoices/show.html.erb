@@ -1,6 +1,6 @@
 <div class="row document">
 	<div class="row span9">
-		<div id="invoice">
+		<div id="invoice" data-invoice-id="<%= @invoice.id %>">
 			<%= render :partial => 'invoices/shared/invoice_header'%>
 			<%= render :partial => 'shared/flash' %>
 			<%= render :partial => 'invoices/shared/show_invoice_details'%>

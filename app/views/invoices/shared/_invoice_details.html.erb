@@ -29,16 +29,22 @@
 		<table>
 			<tr class="small">
 				<td  style="width: 80px; padding-top: 10px;"><label>Moneda</label></td>
-				<td style="padding-top: 10px; width: 150px;">
+				<td style="padding-top: 10px; width: 135px;">
 					<%= f.select :currency, options_for_select(Invoice.currencies, @invoice.currency), {}, {data: {bind: "value: invoice_currency"}}%>
 				</td>
-				<td style="padding-top: 10px; width: 45px">
+				<td style="padding-top: 10px; width: 75px">
 					<label>IVA</label>
 				</td>
-				<td style="padding-top: 10px;">
+				<td style="padding-top: 10px; width: 135px;">
 					<%= f.select :taxed, options_for_select([["No", false], ["Si", true]], @invoice.taxed), {},  {data: {bind: "value: invoice_taxed"}} %>
 				</td>
-			
+				<td style="padding-top: 10px; width: 75px">
+					<label>O.C.</label>
+				</td>
+				<td style="padding-top: 10px;">
+					<td><%= f.text_field :po_number %></td>
+				</td>
+							
 			</tr>
 		</table>
 	<% end %>

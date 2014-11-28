@@ -1,7 +1,10 @@
 <div id="invoice-extra-info">
 	<ul class="nav nav-tabs">
 	  <li class="active"><a href="#invoice-comments" data-toggle="tab">Comentarios</a></li>
-	  <li><a href="#invoice-attachments" data-toggle="tab">Adjuntos</a></li>			  
+	  <li><a href="#invoice-attachments" data-toggle="tab">Adjuntos</a></li>
+	  <% if @invoice.has_dte? %>
+	  	<li><a href="#invoice-dtes" data-toggle="tab">DTEs</a></li>
+	  <% end %>
 	</ul>
 	<div class="tab-content" style="overflow: hidden;">
 		<div id="invoice-comments" class="tab-pane active">
@@ -10,5 +13,10 @@
 		<div id="invoice-attachments" class="tab-pane">
 			<%= render partial: "attachments/attachments", locals: {attachments: @attachments, object: @invoice} %>
 		</div>
+  	  <% if @invoice.has_dte? %>
+		<div id="invoice-dtes" class="tab-pane">
+			<%= render partial: "dtes/dtes", locals: {dtes: @dtes, object: @invoice} %>
+		</div>
+  	  <% end %>
 	</div>
 </div>

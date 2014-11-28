@@ -1,19 +1,22 @@
 require 'test_helper'
 
-class CommentTest < ActiveSupport::TestCase
+class DtesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   
   def setup
-    @plan = Plan.new(:name => "trial")
-    @plan.save
+    @request.host = "masev.test.host"
     @account = Account.new(
-                            :name => "Masev", :subdomain => "maseva", :rut => "76.530.890-9", 
+                            :name => "Masev", :subdomain => "masev", :rut => "76.530.890-9", 
                             address: "Eliodro Yañez 810", city: "Santiago",
                             e_invoice_enabled: true, e_invoice_resolution_date: "2014/01/01",
                             industry_code: 10398, industry: "Servicios Informaticos"
                             )
-    @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
+    @plan = Plan.new(:name => "trial")
+    @plan.save
+    @current_user = @account.users.build
+    @current_user.email = "test@test.com"
+    @current_user.password = "kdldlkdkdkd"
     @account.save
-    @user.save
     @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id )
     @company.save
     @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
@@ -28,32 +31,33 @@ class CommentTest < ActiveSupport::TestCase
         @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource, author_id: 10, author_type: "User", account_id: 10)
     @reminder = @invoice.build_reminder
     @invoice.save
+    @invoice.active
+    @invoice.save
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in @current_user
   end
   
   def teardown
-    ActionMailer::Base.deliveries = []
-    @dte.destroy if @dte
-    @invoice.destroy
     @account.destroy
+    @plan.destroy
+    sign_out @current_user
   end
   
-  test "should not send email to company if private" do
-    message = "Este es el mensaje"
-    comment = @invoice.comments.new_from_system({message: message, 
-              account_users_ids: @invoice.account_users_ids, company_users_ids: @invoice.company_users_ids,
-              private: true})
-    comment.save
-    assert(!comment.subscribers_emails.include?(@contact.email), "No deberia enviarse correo al cleinte")
+  def json
+      ActiveSupport::JSON.decode @response.body
   end
   
-  test "Comment from system with email" do
-    message = "Este es el mensaje"
-    comment = @invoice.comments.new_from_system({message: message, account_users_ids: @invoice.account_users_ids, private: true})
-    assert(comment.save, "Failure message.")
-    assert_equal(message, comment.message)
-    mail = ActionMailer::Base.deliveries.last
-    assert_not_nil(mail)
-    assert_equal(@user.email, mail['to'].to_s)
+  test "status return type should be json" do
+    get :status, {invoice_id: @invoice.id, format: "json"}
+    assert_equal(@invoice.id, json[0]["invoice_id"].to_i)
   end
+  
+  test "should return invoice_id and emmited true or false" do
+    get :status, {invoice_id: @invoice.id, format: "json"}
+    assert_not_nil(json[0]["invoice_id"])
+    assert_not_nil(json[0]["processed"])
+  end
+  
+  
   
 end

@@ -27,6 +27,11 @@ module InvoicesHelper
     f.select value, options_for_select(array) unless params[:action] == "show"
   end
   
+  def display_invoice_status(invoice)
+    status = I18n.t "invoice.#{@invoice.status}"
+    status.humanize.gsub(/dte/, "DTE...")
+  end
+  
   def input_disabled?
     return "disabled" if params[:action] == "show"
   end
@@ -70,6 +75,11 @@ module InvoicesHelper
   def suggested_number(invoice)
     return invoice.number if invoice.active? && !invoice.nil?
     return invoice.suggested_number
+  end
+  
+  def number_for_invoice(invoice)
+    number = current_account.e_invoice_enabled? ? invoice.suggested_number : invoice.number
+    number_field_tag(:number, number, data: {"validation-number-message" => "Tiene que ser un numero"})
   end
   
   def suggested_active_date(invoice)

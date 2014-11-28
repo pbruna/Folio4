@@ -9,15 +9,17 @@ class InvoiceTest < ActiveSupport::TestCase
   def setup
     @plan = Plan.new(:name => "trial")
     @plan.save
-    @account = Account.new(:name => "Masev", :subdomain => "maseva")
+    @account = Account.new(:name => "Masev", :subdomain => "maseva", :rut => "76.530.890-9", address: "Eliodro Yañez 810", city: "Santiago")
     @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
     @account.save
     @user.save
-    @contact = Contact.new(company_id: 10, name: "Patricio", email: "pbruna@itlinux.cl")
+    @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id )
+    @company.save
+    @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save
     @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
                                     active_date: "10/02/2014", due_days: 30, currency: "CLP", 
-                                    taxed: false, company_id: 10, total: 1000, net_total: 1000,
+                                    taxed: false, company_id: @company.id, total: 1000, net_total: 1000,
                                     contact_id: @contact.id 
                                     )
     @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 2, price: 1000)
@@ -28,6 +30,15 @@ class InvoiceTest < ActiveSupport::TestCase
   
   def teardown
     @invoice.delete
+    @account.delete
+  end
+  
+  def enable_account_for_dte
+    @account.e_invoice_enabled = true
+    @account.e_invoice_resolution_date = "2014/01/01"
+    @account.industry_code = 10398
+    @account.industry = "Servicios Informaticos"
+    @account.save
   end
   
   # test "suggested number should return the next invoice number" do
@@ -123,20 +134,20 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal("2014-03-04", reminder.notification_date.to_s)
   end
   
-  test "active reminder when activating invoice" do
-    @invoice.save
-    @invoice.active
-    assert(@invoice.reminder.active?, "Reminder debería estar activo")
-  end
+  # test "active reminder when activating invoice" do
+  #   @invoice.save
+  #   @invoice.active
+  #   assert(@invoice.reminder.active?, "Reminder debería estar activo")
+  # end
   
-  test "update reminder date when activating invoice" do
-    @invoice.save
-    @invoice.active
-    @invoice.save
-    @invoice.active_date = Date.parse("2014-07-01")
-    @invoice.save
-    assert_equal("2014-09-23", @invoice.reminder.notification_date.to_s)
-  end
+  # test "update reminder date when activating invoice" do
+  #   @invoice.save
+  #   @invoice.active
+  #   @invoice.save
+  #   @invoice.active_date = Date.parse("2014-07-01")
+  #   @invoice.save
+  #   assert_equal("2014-09-23", @invoice.reminder.notification_date.to_s)
+  # end
 
   test "invoice should have a contact when active" do
     @invoice.save
@@ -239,5 +250,60 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.active
     assert_equal(Date.today + @invoice.due_days, @invoice.due_date)
   end
+  
+  test "Dont generate DTE if the account is no enabled for it" do
+    @account.e_invoice_enabled = false
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    assert(!@invoice.has_dte?, "No debería generarse DTE")
+  end
+  
+  test "Generate DTE when the invoice is activated" do
+    enable_account_for_dte
+    assert(@invoice.may_active?, "No se puede activar")
+    @invoice.reload.account
+    @invoice.active
+    assert @invoice.save
+    assert(@invoice.has_dte?, "Deberia haberse generado un DTE")
+  end
+  
+  test "add the dte pdf as an attachment" do
+    enable_account_for_dte
+    @invoice.reload.account
+    @invoice.save
+    qty_of_attachments = @invoice.attachments.size
+    @invoice.active
+    @invoice.save
+    @dte = @invoice.dtes.last
+    assert_equal(qty_of_attachments + 1, @dte.reload.invoice.attachments.size)
+    pdf_attachment = @dte.reload.invoice.attachments.last
+    assert_equal(@dte.dte_type, pdf_attachment.name)
+  end
+  
+  test "generate DTE type 61 when we cancel and invoice" do
+    enable_account_for_dte
+    @invoice.reload.account
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    @invoice.cancel
+    @invoice.save
+    assert(@invoice.reload.dtes.size > 1, "No se creo la NC")
+    assert_equal(61, @invoice.dtes.last.tipo_dte)
+  end
+  
+  # test "generate DTE 61 if price change" do
+  #   enable_account_for_dte
+  #   @invoice.reload.account
+  #   @invoice.save
+  #   @invoice.active
+  #   @invoice.invoice_items.build(type: "producto", quantity: 4, price: 5000, description: "dada")
+  #   @invoice.save
+  #   assert(@invoice.reload.dtes.size > 1, "No se creo la NC")
+  #   assert_equal(61, @invoice.dtes.last.tipo_dte)
+  #   assert_equal(@invoice.net_total, @invoice.dtes.last.mnt_neto, "Precio NC tiene que ser igual que Factura")
+  #   assert_not_equal(@invoice.net_total.to_i, @invoice.dte_invoice.mnt_neto, "Precio DTE Invoice tiene que ser distinto que Factura")
+  # end
   
 end

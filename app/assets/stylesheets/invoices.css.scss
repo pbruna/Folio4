@@ -71,6 +71,11 @@ ul.ui-autocomplete {
 	background: $cancelled;
 }
 
+.invoice-processing_dte {
+	@extend .label;
+	@extend .label-warning;
+}
+
 #invoices {
 	
 	padding-right: 20px;
@@ -397,6 +402,10 @@ ul.ui-autocomplete {
 	}
 	
 	.invoice-status-active {
+		background: $blue;
+	}
+	
+	.invoice-status-processing_dte {
 		background: $blue;
 	}
 	

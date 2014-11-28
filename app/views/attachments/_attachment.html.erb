@@ -1,11 +1,7 @@
 <% unless attachment.id.nil? %>
 <tr id="attachment-<%= attachment.id %>" class="attachment">
 	<td class="attachment-name">
-		<%= attachment.original_file_name %>
-		<!-- <br/>
-		<span class="label-mini">
-			<%= link_to "Editar", edit_attachment_path(attachment), data: {attachment_id: attachment.id} %>
-		</span> -->
+		<%= display_attachment_name(attachment) %>
 	</td>
 	<td class="attachment-details"><%= I18n.l attachment.created_at.to_date, format: :dd_MM_yy %></td>
 	<td class="attachment-details"><%= attachment.author_name %></td>

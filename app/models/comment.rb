@@ -120,12 +120,20 @@ class Comment < ActiveRecord::Base
   def subscribers
     list = Array.new
     list << account_subscribers
-    list << company_subscribers
+    list << company_subscribers unless private?
     list.flatten
   end
   
   def subscribers_emails
     subscribers.map {|s| s.email }
+  end
+  
+  def self.new_from_system(hash={})
+    return false if hash.nil?
+    comment = new(hash)
+    comment.author_id = comment.commentable.account.owner_id
+    comment.author_type = "User"
+    comment
   end
   
   private

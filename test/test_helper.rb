@@ -20,3 +20,11 @@ class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
 end
+
+class Hash
+  def &(other)
+    result = {}
+    each {|k, v| result[k] = other[k] if other[k] != v }
+    result
+  end
+end

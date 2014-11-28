@@ -10,12 +10,9 @@
         <h4 class="modal-title">Activar venta</h4>
       </div>
       <div class="modal-body">
-			<div class="alert <%= 'alert-error' unless @invoice.has_valid_number? %>">
+			<div class="alert">
 				<p><strong>Confirme el número de la factura</strong></p>
-				<%= number_field_tag :number, @invoice.number, data: {"validation-number-message" => "Tiene que ser un numero"} %>
-				<% unless @invoice.has_valid_number? %>
-					<span style="margin-left: 10px;">Este número no esta disponible</span>
-				<% end %>
+				<%= number_for_invoice(@invoice) %>
 			</div>
       </div>
       <div class="modal-footer">

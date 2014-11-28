@@ -13,6 +13,11 @@
 					Vence <%= I18n.l @invoice.due_date, format: :dd_MM_yy %>
 				<% end %>
 			</li>
+			<li style="text-align: right;">
+				<% if @invoice.has_po? %>
+					Orden de Compra #<%= @invoice.po_number %>
+				<% end %>
+			</li>
 		</ul>
 	</div>
 	<div class="span5">

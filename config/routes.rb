@@ -22,9 +22,11 @@ Folio::Application.routes.draw do
     patch 'invoices/:id/activate' => "invoices#activate", :as => :activate_invoice
     get 'invoices/:id/clone' => "invoices#clone", :as => :clone_invoice
     get 'invoices/:id/attachments', to: redirect("/invoices/%{id}#invoice-attachments")
+    get 'dtes/status/:invoice_id' => "dtes#status", as: :status
     resources :accounts, :only => [:show, :edit, :index, :update, :check_invoice_number_availability] do
 
     end
+    resources :dtes
     resources :expenses
     resources :users
     resources :contacts

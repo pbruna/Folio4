@@ -14,6 +14,9 @@ class Account < ActiveRecord::Base
   validates_presence_of :subdomain, :name
   validates_format_of :subdomain, :with => /^((?!^(www|folio|app|dev)).)*$/i, :message => "No puedes usar ese nombre", multiline: true
   validate :check_users_number # The account must have at least one user
+  validates_presence_of :industry, :if => :e_invoice_enabled?
+  validates_presence_of :industry_code, :if => :e_invoice_enabled?
+  #validates_presence_of :e_invoice_resolution_date, :if => :e_invoice_enabled?
 
   after_save :initialize_account
   before_validation :clear_subdomain
@@ -31,6 +34,11 @@ class Account < ActiveRecord::Base
     value = number.to_i
     return !invoices.not_draft.taxed.where(number: value).any? if taxed.to_s == "true"
     return !invoices.not_draft.not_taxed.where(number: value).any?
+  end
+  
+  def last_used_number
+    return 0 unless invoices.not_draft.any?
+    invoices.not_draft.select(:number).order("number desc").limit(1).first.number
   end
 
   def owner

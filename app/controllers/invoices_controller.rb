@@ -137,12 +137,13 @@ class InvoicesController < ApplicationController
     @invoice_items = @invoice.invoice_items
     @comments = @invoice.comments
     @attachments = @invoice.all_attachments
+    @dtes = @invoice.dtes if @invoice.has_dte?
     @comment = @invoice.comments.build(author_id: current_user.id, author_type: current_user.class.to_s)
   end
   
   private
     def invoice_params
-      params.require(:invoice).permit(:id, :company_id, :new_state, :subject,:number, :active_date, :total_payed,
+      params.require(:invoice).permit(:id, :company_id, :po_number, :new_state, :subject,:number, :active_date, :total_payed,
       :due_days, :currency, :contact_id, :taxed,invoice_items_attributes: [:id, :type, :description, :quantity, :price, :total, :_destroy],
         reminder_attributes: [:notification_date, :subject, :message, :active, :id],
         attachments_attributes: [:name, :category, :resource])

@@ -1,0 +1,12 @@
+<% unless dte.id.nil? %>
+<tr id="dte-<%= dte.id %>" class="attachment">
+	<td class="attachment-name">
+		<%= dte.dte_type.titleize %>
+	</td>
+	<td class="attachment-details"><%= dte.folio %></td>
+	<td class="attachment-details"><%= I18n.l dte.created_at.to_date, format: :dd_MM_yy %></td>
+	<td class="attachment-details"><%= dte.status %></td>
+</td>
+</tr>
+
+<% end %>
