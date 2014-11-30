@@ -131,12 +131,17 @@ class Dte < ActiveRecord::Base
   def self.nc_attributes_for_cancelled(invoice)
     attrs = invoice.dte_invoice.dup.attributes
     attrs = attributes_for_nc(attrs)
+    attrs["cod_ref"] = 1
+    attrs["razon_ref"] = "ANULA DOCUMENTO DE LA REFERENCIA - Fact.Electronica N° #{invoice.dte_invoice.folio} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
+    attrs
   end
   
   def self.nc_attributes_for_price_change(invoice)
     attrs = process_invoice(invoice)
     attrs = attributes_for_nc(attrs)
     attrs["mnt_exe"] = attrs["mnt_neto"]
+    attrs["cod_ref"] = 3
+    attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{invoice.dte_invoice.folio} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
     attrs
   end
   

@@ -120,7 +120,8 @@ class DteTest < ActiveSupport::TestCase
     dte_invoice =  @invoice.dte_invoice
     attrs_intersection = dte_invoice.attributes & dte_nc.attributes
     assert_equal(Invoice::DTE_TYPES[:credit_note], dte_nc.tipo_dte)
-    diferente_fields = ["created_at", "fch_emis", "folio", "id", "tipo_dte", "updated_at"]
+    diferente_fields = ["cod_ref", "created_at", "fch_emis", "folio", "id", "razon_ref", "tipo_dte", "updated_at"]
+    assert_equal(1, dte_nc.cod_ref)
     assert_equal(attrs_intersection.keys.sort, diferente_fields)
   end
 
