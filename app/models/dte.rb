@@ -132,7 +132,7 @@ class Dte < ActiveRecord::Base
     attrs = invoice.dte_invoice.dup.attributes
     attrs = attributes_for_nc(attrs)
     attrs["cod_ref"] = 1
-    attrs["razon_ref"] = "ANULA DOCUMENTO DE LA REFERENCIA - Fact.Electronica N° #{invoice.dte_invoice.folio} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
+    attrs["razon_ref"] = "ANULA DOCUMENTO DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
     attrs
   end
   
@@ -141,7 +141,7 @@ class Dte < ActiveRecord::Base
     attrs = attributes_for_nc(attrs)
     attrs["mnt_exe"] = attrs["mnt_neto"]
     attrs["cod_ref"] = 3
-    attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{invoice.dte_invoice.folio} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
+    attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
     attrs
   end
   
@@ -153,6 +153,9 @@ class Dte < ActiveRecord::Base
     attrs["folio"] = suggest_nc_folio(attrs["account_id"])
     attrs["pdf_url"] = nil
     attrs["processed"] = false
+    attrs["folio_ref"] = invoice.dte_invoice.folio
+    attrs["fch_ref"] = invoice.dte_invoice.fch_emis
+    attrs["tpo_doc_ref"] = invoice.dte_invoice.tipo_dte
     attrs
   end
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130230255) do
+ActiveRecord::Schema.define(version: 20141201001413) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -169,6 +169,9 @@ ActiveRecord::Schema.define(version: 20141130230255) do
     t.text     "error_log"
     t.integer  "cod_ref"
     t.string   "razon_ref"
+    t.integer  "folio_ref"
+    t.date     "fch_ref"
+    t.integer  "tpo_doc_ref"
   end
 
   add_index "dtes", ["account_id"], name: "index_dtes_on_account_id"
