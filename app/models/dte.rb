@@ -146,6 +146,7 @@ class Dte < ActiveRecord::Base
   end
   
   def self.attributes_for_nc(attrs)
+    invoice = Invoice.find(attrs["invoice_id"])
     attrs["tipo_dte"] = 61
     attrs["error_log"] = nil
     attrs["fch_emis"] = Date.today
