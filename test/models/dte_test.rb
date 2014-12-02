@@ -68,7 +68,7 @@ class DteTest < ActiveSupport::TestCase
     @invoice.save
     @dte = Dte.new Dte.prepare_from_invoice(@invoice)
     assert_equal(33, @dte.tipo_dte)
-    assert_equal(@invoice.net_total, @dte.mnt_neto, "Neto")
+    assert_equal(@invoice.total, @dte.mnt_neto, "Neto")
     assert_equal(@invoice.net_total, @dte.mnt_exe, "Exento")
     assert_equal(@invoice.tax_rate, @dte.tasa_iva, "Tasa IVA")
     assert_equal(@invoice.tax_total, @dte.iva, "Total Iva")

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202200742) do
+ActiveRecord::Schema.define(version: 20141202225100) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -156,11 +156,11 @@ ActiveRecord::Schema.define(version: 20141202200742) do
     t.string   "cmna_origen",                                           null: false
     t.string   "rut_recep",                                             null: false
     t.string   "rzn_soc_recep",                                         null: false
-    t.integer  "mnt_neto",                                              null: false
-    t.integer  "mnt_exe",                                               null: false
+    t.integer  "mnt_neto",                              default: 0,     null: false
+    t.integer  "mnt_exe",                               default: 0,     null: false
     t.decimal  "tasa_iva",      precision: 6, scale: 2, default: 19.0
     t.integer  "iva",                                   default: 0
-    t.integer  "mnt_total"
+    t.integer  "mnt_total",                             default: 0
     t.string   "pdf_url"
     t.integer  "account_id",                                            null: false
     t.integer  "company_id",                                            null: false
