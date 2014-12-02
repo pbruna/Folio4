@@ -16,7 +16,7 @@ class Dte < ActiveRecord::Base
     "account_city" => "cmna_origen",
     "company_rut" => "rut_recep",
     "company_name" => "rzn_soc_recep",
-    "net_total" => "mnt_neto",
+    "net_total" => "mnt_exe",
     "tax_rate" => "tasa_iva",
     "tax_total" => "iva",
     "total" => "mnt_total",
@@ -125,7 +125,7 @@ class Dte < ActiveRecord::Base
     # Change code if taxed
     new_attributes["tipo_dte"] = invoice.taxed? ? 33 : 34
     # Because the Hash can have both calls to net_total
-    new_attributes["mnt_exe"] = new_attributes["mnt_neto"]
+    new_attributes["mnt_neto"] = new_attributes["mnt_total"]
     new_attributes
   end
   
@@ -145,7 +145,7 @@ class Dte < ActiveRecord::Base
   def self.nc_attributes_for_price_change(invoice)
     attrs = process_invoice(invoice)
     attrs = attributes_for_nc(attrs)
-    attrs["mnt_exe"] = attrs["mnt_neto"]
+    attrs["mnt_neto"] = attrs["mnt_total"]
     attrs["cod_ref"] = 3
     attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
     attrs
