@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201001413) do
+ActiveRecord::Schema.define(version: 20141202200742) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20141201001413) do
     t.date     "e_invoice_resolution_date"
     t.string   "e_invoice_regional_address"
     t.integer  "industry_code"
+    t.integer  "dte_nc_start_number",        default: 0
+    t.integer  "dte_invoice_start_number",   default: 0
   end
 
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", unique: true

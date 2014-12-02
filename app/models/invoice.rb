@@ -255,7 +255,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def last_used_number
-    account.last_used_number
+    account.invoice_last_used_number
   end
   
   def may_edit?
@@ -305,7 +305,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def update_invoice(params)
-      update_attributes(params)
+    update_attributes(params)
   end
   
   def default_reminder_subject
@@ -329,7 +329,7 @@ class Invoice < ActiveRecord::Base
   
   def record_dte_result(dte)
     dte = Dte.find(dte)
-    return unless dte.processed?
+    return if dte.processed?
     process_dte_comment(dte)
     process_dte_pdf(dte)
   end

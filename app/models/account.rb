@@ -8,6 +8,7 @@ class Account < ActiveRecord::Base
   has_many :companies, :dependent => :destroy
   has_many :contacts, through: :companies
   has_many :attachments, :dependent => :destroy
+  has_many :dtes, :dependent => :destroy
   accepts_nested_attributes_for :users, :allow_destroy => true
 
   validates_uniqueness_of :subdomain
@@ -36,9 +37,21 @@ class Account < ActiveRecord::Base
     return !invoices.not_draft.not_taxed.where(number: value).any?
   end
   
-  def last_used_number
-    return 0 unless invoices.not_draft.any?
+  def invoice_last_used_number
+    unless invoices.not_draft.any?
+      return (dte_invoice_start_number - 1) if e_invoice_enabled?
+      return 0
+    end
     invoices.not_draft.select(:number).order("number desc").limit(1).first.number
+  end
+  
+  def last_used_dte_nc_number
+    return (dte_nc_start_number - 1) unless has_dte_nc?
+    dtes_nc.last.folio
+  end
+  
+  def has_dte_nc?
+    dtes.dte_ncs.any?
   end
 
   def owner

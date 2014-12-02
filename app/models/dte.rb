@@ -34,11 +34,13 @@ class Dte < ActiveRecord::Base
   validates_presence_of :mnt_total, :account_id, :invoice_id
   validate :folio_validations
   
+  before_create :fix_rut_k
   after_save :send_to_provider_for_process 
   
   scope :not_processed, ->() {where.not(processed: true)}
   scope :processing, ->() {where.not(processed: true).last}
   scope :e_invoice, ->() {where(tipo_dte: [33, 34])}
+  scope :e_invoices, ->() {where(tipo_dte: [33, 34])}
   scope :dte_ncs, ->() {where(tipo_dte: 61)}
   
   def self.prepare_from_invoice(invoice, tipo_dte=nil)
@@ -51,9 +53,8 @@ class Dte < ActiveRecord::Base
   end
   
   def self.last_folio_for_nc(account_id)
-    last_nc = get_last_nc_for_account(account_id)
-    return 0 if last_nc.nil?
-    last_nc.folio
+    account = Account.find(account_id)
+    account.last_used_dte_nc_number
   end
   
   def self.get_last_nc_for_account(account_id)
@@ -90,7 +91,12 @@ class Dte < ActiveRecord::Base
   end
   
   private
-
+  
+  def fix_rut_k
+    self.rut_emisor = rut_emisor.gsub(/k$/, "K")
+    self.rut_recep = rut_recep.gsub(/k$/, "K")
+  end
+  
   def send_to_provider_for_process
     return if processed?
     DteProvider.delay(run_at: DTE_CHECK_INTERVAL_SECONDS.from_now).process(self, "provider_process_response")

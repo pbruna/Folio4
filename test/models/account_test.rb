@@ -12,6 +12,14 @@ class AccountTest < ActiveSupport::TestCase
     @account.destroy
     @plan.destroy
   end
+  
+  def enable_account_for_dte
+    @account.e_invoice_enabled = true
+    @account.e_invoice_resolution_date = "2014/01/01"
+    @account.industry_code = 10398
+    @account.industry = "Servicios Informaticos"
+    @account.save
+  end
 
   test "should not create account without a user" do
     assert_no_difference "Account.count" do
@@ -90,5 +98,16 @@ class AccountTest < ActiveSupport::TestCase
     @account.subdomain = "APp"
     assert(!@account.save, "Account saved")
   end
+  
+  test "the account should have starting numbers for dte if is e_invoice_enabled" do
+    @account.e_invoice_enabled = true
+    @account.dte_invoice_start_number = 20
+    @account.dte_nc_start_number = 20
+    @account.save
+    assert(@account.dte_nc_start_number > 0, "Debería ser mayor a cero")
+    assert(@account.dte_invoice_start_number > 0, "Debería ser mayor a cero")
+  end
+  
+ 
 
 end

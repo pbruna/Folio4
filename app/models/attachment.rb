@@ -42,9 +42,9 @@ class Attachment < ActiveRecord::Base
       author.name
     end
     
-    def name
-      read_attribute(:name) || resource_file_name
-    end
+    # def name
+    #   read_attribute(:name) || resource_file_name
+    # end
     
     def original_file_name
       read_attribute(:original_file_name) || name

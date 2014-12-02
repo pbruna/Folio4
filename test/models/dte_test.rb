@@ -7,7 +7,7 @@ class DteTest < ActiveSupport::TestCase
     @plan = Plan.new(:name => "trial")
     @plan.save
     @account = Account.new(
-                            :name => "Masev", :subdomain => "maseva", :rut => "76.530.890-9", 
+                            :name => "Masev", :subdomain => "maseva", :rut => "76.530.890-k", 
                             address: "Eliodro Yañez 810", city: "Santiago",
                             e_invoice_enabled: true, e_invoice_resolution_date: "2014/01/01",
                             industry_code: 10398, industry: "Servicios Informaticos"
@@ -120,21 +120,24 @@ class DteTest < ActiveSupport::TestCase
     dte_invoice =  @invoice.dte_invoice
     attrs_intersection = dte_invoice.attributes & dte_nc.attributes
     assert_equal(Invoice::DTE_TYPES[:credit_note], dte_nc.tipo_dte)
-    diferente_fields = ["cod_ref", "created_at", "fch_emis", "folio", "id", "razon_ref", "tipo_dte", "updated_at"]
+    diferente_fields = ["cod_ref", "created_at", "fch_emis", "fch_ref", "folio", "folio_ref", "id", "razon_ref", "tipo_dte", "tpo_doc_ref", "updated_at"]
     assert_equal(1, dte_nc.cod_ref)
     assert_equal(attrs_intersection.keys.sort, diferente_fields)
   end
+  
+  test "account.suggest_nc_folio should return a valid nc number to use" do
+    @account.dte_invoice_start_number = 20
+    @account.dte_nc_start_number = 20
+    @account.save
+    assert_equal(@account.dte_nc_start_number, Dte.suggest_nc_folio(@account.id))
+  end
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  test "Upcase k if rut ends in lowercase k" do
+    @invoice.active
+    @invoice.save
+    dte = @invoice.dte_invoice
+    assert_equal(dte.rut_emisor, "76.530.890-K")
+  end
   
   
   
