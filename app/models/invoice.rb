@@ -329,7 +329,7 @@ class Invoice < ActiveRecord::Base
   
   def record_dte_result(dte)
     dte = Dte.find(dte)
-    return if dte.processed?
+    return unless dte.processed?
     process_dte_comment(dte)
     process_dte_pdf(dte)
   end
