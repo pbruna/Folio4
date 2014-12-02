@@ -126,7 +126,7 @@ class Dte < ActiveRecord::Base
     new_attributes["tipo_dte"] = invoice.taxed? ? 33 : 34
     # Because the Hash can have both calls to net_total
     if new_attributes["tipo_dte"] == 33
-      new_attributes["mnt_neto"] = new_attributes["mnt_total"]
+      new_attributes["mnt_neto"] = new_attributes["mnt_exe"]
       new_attributes["mnt_exe"] = 0
     end
     new_attributes
@@ -151,7 +151,7 @@ class Dte < ActiveRecord::Base
     attrs["cod_ref"] = 3
     attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
     if invoice.dte_invoice.tipo_dte == 33
-      attrs["mnt_neto"] = attrs["mnt_total"]
+      attrs["mnt_neto"] = attrs["mnt_exe"]
       attrs["mnt_exe"] = 0
     end
     attrs
