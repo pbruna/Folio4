@@ -13,7 +13,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
     @account.save
     @user.save
-    @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id )
+    @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id, industry: "Servicios Informaticos" )
     @company.save
     @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save

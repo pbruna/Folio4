@@ -16,7 +16,10 @@ class Dte < ActiveRecord::Base
     "account_city" => "cmna_origen",
     "company_rut" => "rut_recep",
     "company_name" => "rzn_soc_recep",
-    "net_total" => "mnt_exe",
+    "company_address" => "dir_recep",
+    "company_province" => "cmna_recep",
+    "company_industry" => "giro_recep",
+    "net_total" => "mnt_neto",
     "tax_rate" => "tasa_iva",
     "tax_total" => "iva",
     "total" => "mnt_total",
@@ -30,12 +33,13 @@ class Dte < ActiveRecord::Base
   belongs_to :company
   
   validates_uniqueness_of :folio, scope: [:invoice_id, :tipo_dte]
-  validates_presence_of :fch_venc, :rut_emisor, :rzn_soc, :giro_emis, :acteco, :rut_recep, :mnt_neto
-  validates_presence_of :mnt_total, :account_id, :invoice_id
+  validates_presence_of :fch_venc, :rut_emisor, :rzn_soc, :giro_emis, :acteco, :rut_recep
+  validates_presence_of :mnt_total, :account_id, :invoice_id, :dir_recep, :cmna_recep, :giro_recep
+  validates_presence_of :mnt_neto, if: :taxed?
   validate :folio_validations
   
   before_create :fix_rut_k
-  after_save :send_to_provider_for_process 
+  after_save :send_to_provider_for_process, unless: :processed? 
   
   scope :not_processed, ->() {where.not(processed: true)}
   scope :processing, ->() {where.not(processed: true).last}
@@ -70,8 +74,13 @@ class Dte < ActiveRecord::Base
     tipo_dte == 61
   end
   
+  def taxed?
+    return tipo_dte == 33 if tipo_dte != 61
+    return invoice.dte_invoice.tipo_dte == 33
+  end
+  
   def nc_type
-    return DTE_TYPES[tipo_dte] if mnt_neto == invoice.dte_invoice.mnt_neto
+    return DTE_TYPES[tipo_dte] if mnt_total == invoice.dte_invoice.mnt_total
     DTE_TYPES["61b"]
   end
   
@@ -98,7 +107,6 @@ class Dte < ActiveRecord::Base
   end
   
   def send_to_provider_for_process
-    return if processed?
     DteProvider.delay(run_at: DTE_CHECK_INTERVAL_SECONDS.from_now).process(self, "provider_process_response")
   end
   
@@ -121,15 +129,12 @@ class Dte < ActiveRecord::Base
   end
   
   def self.process_invoice(invoice)
-    new_attributes = translate_attributes(invoice)
+    attrs = translate_attributes(invoice)
     # Change code if taxed
-    new_attributes["tipo_dte"] = invoice.taxed? ? 33 : 34
+    attrs["tipo_dte"] = invoice.taxed? ? 33 : 34
     # Because the Hash can have both calls to net_total
-    if new_attributes["tipo_dte"] == 33
-      new_attributes["mnt_neto"] = new_attributes["mnt_exe"]
-      new_attributes["mnt_exe"] = 0
-    end
-    new_attributes
+    attrs = calc_mnts(attrs, attrs["tipo_dte"])
+    attrs
   end
   
   def self.process_credit_note(invoice)
@@ -150,9 +155,15 @@ class Dte < ActiveRecord::Base
     attrs = attributes_for_nc(attrs)
     attrs["cod_ref"] = 3
     attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
-    if invoice.dte_invoice.tipo_dte == 33
-      attrs["mnt_neto"] = attrs["mnt_exe"]
-      attrs["mnt_exe"] = 0
+    attrs = calc_mnts(attrs, invoice.dte_invoice.tipo_dte)
+    attrs
+  end
+  
+  def self.calc_mnts(attrs, tipo_dte)
+    attrs["mnt_exe"] = 0 if tipo_dte == 33
+    if tipo_dte == 34
+      attrs["mnt_exe"] = attrs["mnt_total"]
+      attrs["mnt_neto"] = nil
     end
     attrs
   end

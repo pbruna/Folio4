@@ -15,7 +15,7 @@ class DteTest < ActiveSupport::TestCase
     @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
     @account.save
     @user.save
-    @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id )
+    @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id, industry: "Servicios Informaticos" )
     @company.save
     @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save
@@ -53,7 +53,10 @@ class DteTest < ActiveSupport::TestCase
     assert_equal(@invoice.account.city, @dte.cmna_origen)
     assert_equal(@invoice.company.rut, @dte.rut_recep)
     assert_equal(@invoice.company.name, @dte.rzn_soc_recep)
-    assert_equal(0, @dte.mnt_neto, "Neto")
+    assert_equal(@invoice.company.address, @dte.dir_recep, "Direccion")
+    assert_equal(@invoice.company.province, @dte.cmna_recep, "Comuna")
+    assert_equal(@invoice.company.industry, @dte.giro_recep, "Giro")
+    assert_equal(nil, @dte.mnt_neto, "Neto")
     assert_equal(@invoice.net_total, @dte.mnt_exe, "Exento")
     assert_equal(@invoice.tax_rate, @dte.tasa_iva, "Tasa IVA")
     assert_equal(@invoice.tax_total, @dte.iva, "Total Iva")
@@ -68,7 +71,7 @@ class DteTest < ActiveSupport::TestCase
     @invoice.save
     @dte = Dte.new Dte.prepare_from_invoice(@invoice)
     assert_equal(33, @dte.tipo_dte)
-    assert_equal(@invoice.total, @dte.mnt_neto, "Neto")
+    assert_equal(@invoice.net_total, @dte.mnt_neto, "Neto")
     assert_equal(0, @dte.mnt_exe, "Exento")
     assert_equal(@invoice.tax_rate, @dte.tasa_iva, "Tasa IVA")
     assert_equal(@invoice.tax_total, @dte.iva, "Total Iva")

@@ -167,6 +167,18 @@ class Invoice < ActiveRecord::Base
     return "" if company_id.nil?
     company.name
   end
+  
+  def company_address
+    company.address
+  end
+  
+  def company_province
+    company.province
+  end
+  
+  def company_industry
+    company.industry
+  end
 
   def company_contacts
     return [] unless company_has_contact?
