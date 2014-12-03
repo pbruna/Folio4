@@ -47,7 +47,7 @@ class Account < ActiveRecord::Base
   
   def last_used_dte_nc_number
     return (dte_nc_start_number - 1) unless has_dte_nc?
-    dtes_nc.last.folio
+    dtes.dte_ncs.last.folio
   end
   
   def has_dte_nc?
