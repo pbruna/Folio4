@@ -70,6 +70,9 @@ class DteTest < ActiveSupport::TestCase
     @invoice.taxed = true
     @invoice.save
     @dte = Dte.new Dte.prepare_from_invoice(@invoice)
+    assert_not_nil(@dte.cond_pago, "Condicion de Pago")
+    assert_equal(@contact.name, @dte.contacto)
+    assert_equal("#{@invoice.due_days} días", @dte.cond_pago)
     assert_equal(33, @dte.tipo_dte)
     assert_equal(@invoice.net_total, @dte.mnt_neto, "Neto")
     assert_equal(0, @dte.mnt_exe, "Exento")

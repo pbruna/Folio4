@@ -19,6 +19,8 @@ class Dte < ActiveRecord::Base
     "company_address" => "dir_recep",
     "company_province" => "cmna_recep",
     "company_industry" => "giro_recep",
+    "contact_name_titleize" => "contacto",
+    "cond_pago" => "cond_pago",
     "net_total" => "mnt_neto",
     "tax_rate" => "tasa_iva",
     "tax_total" => "iva",

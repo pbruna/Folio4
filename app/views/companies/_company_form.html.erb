@@ -3,7 +3,8 @@
 		defaults: { input_html: { class: 'input-xlarge' } } do |f| %>
 	
 		<%= f.input :rut, label: false, required: true, placeholder: "RUT", autofocus: true, :input_html => {:data => {:"validation-callback-callback"=>"Folio.check_rut_callback"}}  %>
-		<%= f.input :name, label: false, required: true, placeholder: "Nombre", autofocus: false  %>
+		<%= f.input :name, label: false, required: true, placeholder: "Razón Social", autofocus: false  %>
+		<%= f.input :industry, label: false, required: true, placeholder: "Giro", autofocus: false  %>
 		<%= f.input :address, label: false, required: true, placeholder: "Dirección", autofocus: false  %>
 		<%= f.input :province, label: false, required: true, placeholder: "Comuna", autofocus: false  %>
 		<%= f.input :city, label: false, required: true, placeholder: "Ciudad", autofocus: false  %>

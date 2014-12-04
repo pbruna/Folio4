@@ -97,6 +97,10 @@ class Invoice < ActiveRecord::Base
     comments.last
   end
   
+  def cond_pago
+    "#{due_days} días"
+  end
+  
   def run_activation_jobs
     update_due_date
     # schedule_reminder
@@ -251,7 +255,11 @@ class Invoice < ActiveRecord::Base
 
   def contact_name
     return "" unless has_contact?
-    contact.name
+    contact.full_name
+  end
+  
+  def contact_name_titleize
+    contact_name.titleize
   end
   
   def is_really_payed?
