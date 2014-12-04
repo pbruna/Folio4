@@ -103,18 +103,18 @@ class DteTest < ActiveSupport::TestCase
     assert_not_nil(@dte.processed?)
   end
   
-  test "After a dte is processed we add a comment on the invoice and send the email" do
-    @invoice.active
-    @invoice.save
-    comments = @invoice.comments.size
-    @dte = @invoice.dtes.last
-    @dte.processed = true
-    @dte.error_log = "El dte ha fallado"
-    assert @dte.save
-    mail = ActionMailer::Base.deliveries.last
-    assert_not_nil(mail)
-    assert_equal(@user.email, mail['to'].to_s)
-  end
+  # test "After a dte is processed we add a comment on the invoice and send the email" do
+  #   @invoice.active
+  #   @invoice.save
+  #   comments = @invoice.comments.size
+  #   @dte = @invoice.dtes.last
+  #   @dte.processed = true
+  #   @dte.error_log = "El dte ha fallado"
+  #   assert @dte.save
+  #   mail = ActionMailer::Base.deliveries.last
+  #   assert_not_nil(mail)
+  #   assert_equal(@user.email, mail['to'].to_s)
+  # end
   
   test "generate correct fields for dte 61 when invoice cancel" do
     @invoice.active

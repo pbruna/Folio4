@@ -346,12 +346,13 @@ class Invoice < ActiveRecord::Base
   def payment_days
     (close_date - due_date).to_i
   end
-  
+
+  # Activar Test en DTE
   def record_dte_result(dte)
-    dte = Dte.find(dte)
-    return unless dte.processed?
-    process_dte_comment(dte)
-    process_dte_pdf(dte)
+    # dte = Dte.find(dte)
+    # return unless dte.processed?
+    # process_dte_comment(dte)
+    # process_dte_pdf(dte)
   end
   
   def process_dte_comment(dte)
