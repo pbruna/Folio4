@@ -48,7 +48,6 @@ class Invoice < ActiveRecord::Base
   validates_numericality_of :number, unless: :draft?
   validate :number_uniqueness
   validates :contact, presence: true
-  validates :po_number, numericality: true, allow_nil: true
 
   #Scopes
   #default_scope { where(account_id: Account.current_id) }
