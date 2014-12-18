@@ -73,6 +73,7 @@ class Dte < ActiveRecord::Base
   end
   
   def check_status
+    return if self.reload.processed?
     # Como el SII se demora en procesar los DTEs, dejamos un trabajo en Background
     DteProvider.delay(run_at: DTE_CHECK_INTERVAL_SECONDS.from_now).check_dte_status self, "status_response"
   end
@@ -82,7 +83,7 @@ class Dte < ActiveRecord::Base
   end
   
   def status_response(dte_status)
-    return update_with_dte_provider_info(dte_status) if dte_status[:processed]
+    update_with_dte_provider_info(dte_status)
     # run again if it was not processed
     check_status
   end
