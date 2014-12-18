@@ -30,5 +30,7 @@ RUN rake tmp:create
 RUN rake tmp:clear
 RUN chown 9999:9999 -R /home/app/folio4
 
+RUN rm -rf /etc/service/memcached
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 CMD ["/sbin/my_init"]
