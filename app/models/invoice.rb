@@ -348,9 +348,8 @@ class Invoice < ActiveRecord::Base
 
   # Activar Test en DTE
   def record_dte_result(dte)
-    dte = Dte.find(dte)
-    return unless dte.processed?
-    # process_dte_comment(dte)
+    dte = dtes.reload.find(dte)
+    process_dte_comment(dte)
     process_dte_pdf(dte)
   end
   
@@ -362,8 +361,7 @@ class Invoice < ActiveRecord::Base
   
   def process_dte_pdf(dte)
     return unless dte.ok?
-    return if dte.pdf_url.nil?
-    dte_pdf = attachments.new_from_system({url: dte.pdf_url, name: dte.dte_type})
+    dte_pdf = attachments.new_from_dte({file: dte.pdf_file, name: "#{dte.folio} #{dte.dte_type}"})
     dte_pdf.save
   end
   

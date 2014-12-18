@@ -22,19 +22,24 @@ class Attachment < ActiveRecord::Base
       order('created_at DESC')
     end
     
-    def self.new_from_system(hash={})
+    def self.new_from_dte(hash={})
       return if hash.nil?
       attachment = new()
-      attachment.file_from_url hash[:url]
       attachment.name = hash[:name]
+      attachment.file_from_base64 hash[:file]
       attachment.author_id = attachment.attachable.account.owner_id
       attachment.account_id = attachment.attachable.account_id
       attachment.author_type = "User"
       attachment
     end
     
-    def file_from_url(url)
-      self.resource = URI.parse(url)
+    def file_from_base64(base64_string)
+      StringIO.open(Base64.strict_decode64(base64_string)) do |data|
+          data.class.class_eval { attr_accessor :original_filename, :content_type }
+          data.original_filename = "temp#{DateTime.now.to_i}.pdf"
+          data.content_type = "application/pdf" #TODO: get content type from file
+          self.resource = data
+      end
     end
     
     def author_name

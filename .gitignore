@@ -35,3 +35,4 @@
 /config/asset_sync.yml
 /config/initializers/smtp_config.rb
 /config/database.yml
+/config/gdexpress.yml

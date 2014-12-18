@@ -40,7 +40,8 @@ class InvoicesController < ApplicationController
     respond_to do |format|
     if @invoice.save
         format.html {
-          flash[:notice] = "Venta activada correctamente"
+          flash[:notice] = "Venta activada correctamente."
+          flash.now[:notice] << "\n Recibirá una notificación por email cuando el SII autorice la factura." if current_account.e_invoice_enabled?
           redirect_to @invoice
         }
         format.js { render 'show'}

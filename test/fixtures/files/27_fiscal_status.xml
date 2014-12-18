@@ -1,0 +1,5 @@
+<FiscalStatusResult xmlns="http://gdexpress.cl/api" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Data>DTE-3-700 Certificado Digital Invalido : ERROR CD: Falla verificacion de certificado: certificate has expired
+HED-1-845 DTE Sin Direccion del Receptor
+HED-1-846 DTE Sin Comuna del Receptor
+HED-1-844 DTE Sin Giro del Receptor
+</Data><Description i:nil="true"/><Result>0</Result><Status>9</Status><TrackId/></FiscalStatusResult>

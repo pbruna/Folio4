@@ -39,6 +39,8 @@ group :test do
   gem 'capybara'
   gem 'factory_girl'
   gem 'mocha'
+  gem 'webmock'
+  gem 'sinatra'
 end
 
 group :development do
@@ -101,3 +103,4 @@ gem 'griddler'
 gem 'griddler-mailgun'
 gem "simple_stats"
 gem 's3_direct_upload'
+gem 'gdexpress'

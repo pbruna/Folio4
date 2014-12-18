@@ -1,8 +1,8 @@
 class Dte < ActiveRecord::Base
 
   DTE_OK_MESSAGE = "El DTE se proceso correctamente y pueden verlo en la opción DTEs de la Venta"
-  DTE_FAILED_MESSAGE = "Ocurrió un problema al procesar el DTE, más información disponible en la pestaña DTEs"
-  DTE_CHECK_INTERVAL_SECONDS = 1
+  DTE_FAILED_MESSAGE = "Ocurrió un problema al procesar el DTE, más información disponible en la pestaña DTEs\n\n"
+  DTE_CHECK_INTERVAL_SECONDS = 30
   DTE_TYPES = {33 => "factura afecta", 34 => "factura exenta", 61 => "nota de credito", "61b" => "n.c. ajuste precio"}
   INVOICE_DTE_MAPPINGS = {
     "number" => "folio",
@@ -41,7 +41,7 @@ class Dte < ActiveRecord::Base
   validate :folio_validations
   
   before_create :fix_rut_k
-  after_save :send_to_provider_for_process, unless: :processed? 
+  after_create :send_to_provider_for_process
   
   scope :not_processed, ->() {where.not(processed: true)}
   scope :processing, ->() {where.not(processed: true).last}
@@ -72,6 +72,28 @@ class Dte < ActiveRecord::Base
     nc_type
   end
   
+  def check_status
+    # Como el SII se demora en procesar los DTEs, dejamos un trabajo en Background
+    DteProvider.delay(run_at: DTE_CHECK_INTERVAL_SECONDS.from_now).check_dte_status self, "status_response"
+  end
+  
+  def pdf_file
+    DteProvider.pdf_base64 self
+  end
+  
+  def status_response(dte_status)
+    return update_with_dte_provider_info(dte_status) if dte_status[:processed]
+    # run again if it was not processed
+    check_status
+  end
+  
+  def update_with_dte_provider_info(dte_status)
+    self.processed = dte_status[:processed]
+    self.error_log = dte_status[:log] unless dte_status[:accepted]
+    save
+    notify_invoice
+  end
+  
   def is_dte_nc?
     tipo_dte == 61
   end
@@ -98,7 +120,7 @@ class Dte < ActiveRecord::Base
   
   def result_message
     return DTE_OK_MESSAGE if ok?
-    return DTE_FAILED_MESSAGE
+    return DTE_FAILED_MESSAGE + "-------- LOG ------\n#{error_log}"
   end
   
   private
@@ -109,12 +131,15 @@ class Dte < ActiveRecord::Base
   end
   
   def send_to_provider_for_process
-    DteProvider.delay(run_at: DTE_CHECK_INTERVAL_SECONDS.from_now).process(self, "provider_process_response")
+    # Estamos usando la conexion por DB
+    # por lo tanto no enviamos nada, GDE lo viene a buscar de la db
+    # Igual llamamos a provider_process_response para seguir el proceso
+    provider_process_response true
   end
   
-  def provider_process_response(hash = {})
-    self.update_attributes hash
-    notify_invoice if processed?
+  def provider_process_response(response = false)
+    raise "DTE: El DTE no se pudo enviar para ser procesado" unless response
+    check_status    
   end
   
   def notify_invoice

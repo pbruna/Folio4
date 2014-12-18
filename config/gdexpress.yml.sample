@@ -1,0 +1,13 @@
+# config/aws.yml
+defaults: &defaults
+  api_token: "42AD15D8-5104-46E5-A772-6D7A52D02DF4"
+  dte_box: test.gdexpress.cl
+  environment: :testing
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  api_token: <%=ENV["GDE_ACCESS_KEY_ID"]%>
+  dte_box: <%=ENV["GDE_BOX_IP"]%>
+  environment: <%=ENV["GDE_BOX_ENVIRONMENT"]%>

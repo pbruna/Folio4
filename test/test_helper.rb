@@ -3,6 +3,10 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 require 'mocha/mini_test'
+require 'webmock/minitest'
+
+require 'fake_gd_express'
+
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
@@ -14,6 +18,11 @@ class ActiveSupport::TestCase
   #fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def setup
+    
+  end
+  
 end
 
 class ActionDispatch::IntegrationTest

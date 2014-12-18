@@ -7,6 +7,7 @@ class InvoiceTest < ActiveSupport::TestCase
   # end
   
   def setup
+    stub_request(:any, /#{Rails.configuration.gdexpress[:dte_box]}/).to_rack(FakeGdExpress)
     @plan = Plan.new(:name => "trial")
     @plan.save
     @account = Account.new(:name => "Masev", :subdomain => "maseva", :rut => "76.530.890-9", address: "Eliodro Yañez 810", city: "Santiago")
@@ -278,7 +279,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @dte = @invoice.dtes.last
     assert_equal(qty_of_attachments + 1, @dte.reload.invoice.attachments.size)
     pdf_attachment = @dte.reload.invoice.attachments.last
-    assert_equal(@dte.dte_type, pdf_attachment.name)
+    assert_equal("#{@dte.folio} #{@dte.dte_type}", pdf_attachment.name)
   end
   
   test "generate DTE type 61 when we cancel and invoice" do

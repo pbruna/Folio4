@@ -1,0 +1,127 @@
+<RecoverDocumentResult xmlns="http://gdexpress.cl/api" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Data>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;EnvioDTE version="1.0" xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sii.cl/SiiDte EnvioDTE_v10.xsd"&gt;
+  &lt;SetDTE ID="ID40133dd9f48f414db10d8002244afa51"&gt;
+    &lt;Caratula version="1.0"&gt;
+      &lt;RutEmisor&gt;76424135-5&lt;/RutEmisor&gt;
+      &lt;RutEnvia&gt;76129486-5&lt;/RutEnvia&gt;
+      &lt;RutReceptor&gt;76129486-5&lt;/RutReceptor&gt;
+      &lt;FchResol&gt;2014-09-10&lt;/FchResol&gt;
+      &lt;NroResol&gt;0&lt;/NroResol&gt;
+      &lt;TmstFirmaEnv&gt;2014-12-04T15:02:52&lt;/TmstFirmaEnv&gt;
+    &lt;SubTotDTE&gt;&lt;TpoDTE&gt;33&lt;/TpoDTE&gt;&lt;NroDTE&gt;1&lt;/NroDTE&gt;&lt;/SubTotDTE&gt;&lt;/Caratula&gt;
+  &lt;DTE version="1.0"&gt;
+	&lt;Documento ID="F28T33"&gt;
+		&lt;Encabezado&gt;
+			&lt;IdDoc&gt;
+				&lt;TipoDTE&gt;33&lt;/TipoDTE&gt;
+				&lt;Folio&gt;28&lt;/Folio&gt;
+				&lt;FchEmis&gt;2014-12-04&lt;/FchEmis&gt;
+				&lt;FmaPago&gt;1&lt;/FmaPago&gt;
+				&lt;FchCancel&gt;2013-02-01&lt;/FchCancel&gt;
+				&lt;FchVenc&gt;2015-01-03&lt;/FchVenc&gt;
+			&lt;/IdDoc&gt;
+			&lt;Emisor&gt;
+				&lt;RUTEmisor&gt;76424135-5&lt;/RUTEmisor&gt;
+				&lt;RznSoc&gt;Zbox SpA&lt;/RznSoc&gt;
+				&lt;GiroEmis&gt;Empresas de Servicios Integrales de Informática&lt;/GiroEmis&gt;
+				&lt;Acteco&gt;726000&lt;/Acteco&gt;
+				&lt;DirOrigen&gt;Padre Mariano 391, of 704&lt;/DirOrigen&gt;
+				&lt;CmnaOrigen&gt;Providencia&lt;/CmnaOrigen&gt;
+			&lt;/Emisor&gt;
+			&lt;Receptor&gt;
+				&lt;RUTRecep&gt;76397071-K&lt;/RUTRecep&gt;
+				&lt;RznSocRecep&gt;Tu mejor aliado E.I.R.L&lt;/RznSocRecep&gt;
+				&lt;GiroRecep&gt;Servicios Informaticos&lt;/GiroRecep&gt;
+				&lt;Contacto&gt;Carlos Basulto &lt;/Contacto&gt;
+				&lt;DirRecep&gt;San Antonio 378, of. 808&lt;/DirRecep&gt;
+				&lt;CmnaRecep&gt;Santiago&lt;/CmnaRecep&gt;
+			&lt;/Receptor&gt;
+			&lt;Totales&gt;
+				&lt;MntNeto&gt;4970000&lt;/MntNeto&gt;
+				&lt;MntExe&gt;0&lt;/MntExe&gt;
+				&lt;TasaIVA&gt;19&lt;/TasaIVA&gt;
+				&lt;IVA&gt;944300&lt;/IVA&gt;
+				&lt;MntTotal&gt;5914300&lt;/MntTotal&gt;
+			&lt;/Totales&gt;
+		&lt;/Encabezado&gt;
+		&lt;Detalle&gt;
+			&lt;NroLinDet&gt;1&lt;/NroLinDet&gt;
+			&lt;NmbItem&gt;Producto&lt;/NmbItem&gt;
+			&lt;DscItem&gt;Casillas Zbox Profesionales
+
+
+Contacto: Carlos Basulto &lt;/DscItem&gt;
+			&lt;QtyItem&gt;100&lt;/QtyItem&gt;
+			&lt;PrcItem&gt;19900&lt;/PrcItem&gt;
+			&lt;MontoItem&gt;1990000&lt;/MontoItem&gt;
+		&lt;/Detalle&gt;
+		&lt;Detalle&gt;
+			&lt;NroLinDet&gt;2&lt;/NroLinDet&gt;
+			&lt;NmbItem&gt;Producto&lt;/NmbItem&gt;
+			&lt;DscItem&gt;Casillas ZBox Basicas&lt;/DscItem&gt;
+			&lt;QtyItem&gt;200&lt;/QtyItem&gt;
+			&lt;PrcItem&gt;14900&lt;/PrcItem&gt;
+			&lt;MontoItem&gt;2980000&lt;/MontoItem&gt;
+		&lt;/Detalle&gt;
+		
+		&lt;TED version="1.0"&gt;&lt;DD&gt;&lt;RE&gt;76424135-5&lt;/RE&gt;&lt;TD&gt;33&lt;/TD&gt;&lt;F&gt;28&lt;/F&gt;&lt;FE&gt;2014-12-04&lt;/FE&gt;&lt;RR&gt;76397071-K&lt;/RR&gt;&lt;RSR&gt;Tu mejor aliado E.I.R.L&lt;/RSR&gt;&lt;MNT&gt;5914300&lt;/MNT&gt;&lt;IT1&gt;Producto&lt;/IT1&gt;&lt;CAF version="1.0"&gt;
+&lt;DA&gt;
+&lt;RE&gt;76424135-5&lt;/RE&gt;
+&lt;RS&gt;ZBOX SPA&lt;/RS&gt;
+&lt;TD&gt;33&lt;/TD&gt;
+&lt;RNG&gt;&lt;D&gt;1&lt;/D&gt;&lt;H&gt;50&lt;/H&gt;&lt;/RNG&gt;
+&lt;FA&gt;2014-09-15&lt;/FA&gt;
+&lt;RSAPK&gt;&lt;M&gt;7IdOCwjux7v6ytu/xiqEb/enmUrgfVQsaRvMofjqJYFoFxFKh3swezrcOL9HYcXj1d35zHIUhC5du7nXARugUw==&lt;/M&gt;&lt;E&gt;Aw==&lt;/E&gt;&lt;/RSAPK&gt;
+&lt;IDK&gt;100&lt;/IDK&gt;
+&lt;/DA&gt;
+&lt;FRMA algoritmo="SHA1withRSA"&gt;Js07U2faHqW1Dr36zVqaKrLmPUZxi8EuxG+2hPxeuIVGMyO6sh9HoX1PYdSV6GuY+Cpd4h198892Jb5d8ymSMg==&lt;/FRMA&gt;
+&lt;/CAF&gt;&lt;TSTED&gt;2014-12-04T15:02:24&lt;/TSTED&gt;&lt;/DD&gt;&lt;FRMT algoritmo="SHA1withRSA"&gt;Q4wZ7Wv18hnQjQFjKVOu6peo0RW9SZ/+GSjFHDRweBRIdiIxj//BM/0DnRNZAhCgnX4bmaiLZzrCe8CP+ka20Q==&lt;/FRMT&gt;&lt;/TED&gt;&lt;TmstFirma&gt;2014-12-04T15:02:24&lt;/TmstFirma&gt;
+	&lt;/Documento&gt;&lt;Signature xmlns="http://www.w3.org/2000/09/xmldsig#"&gt;&lt;SignedInfo&gt;&lt;CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /&gt;&lt;SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /&gt;&lt;Reference URI="#F28T33"&gt;&lt;Transforms&gt;&lt;Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /&gt;&lt;/Transforms&gt;&lt;DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /&gt;&lt;DigestValue&gt;qVSkohT9YsYvLw+9ub2M3llt1NM=&lt;/DigestValue&gt;&lt;/Reference&gt;&lt;/SignedInfo&gt;&lt;SignatureValue&gt;
+AqXO9HKUpOiQshQWMZi4IyH9hAfSRymggZPKzZP85WC6REGSFXTB8KCyuTkBTQzW
+CltALZFkPjGWpz42p7WMtWchG0wJ+D7fw86ukmasGsui17m/BVstLx+ip0j+o1an
+gH49i8uFuPf/rJFQwAN1Oy7uCGciY3lXLhC3PWv+eQ0=
+&lt;/SignatureValue&gt;&lt;KeyInfo&gt;&lt;KeyValue&gt;&lt;RSAKeyValue&gt;&lt;Modulus&gt;
+rgrKNQKvjJR1++ruo3gDcyyu8rChzIReNgrTTr5sIobajyyR6ed1zXlseRTdqbK6
+A3XWk3kdHlIlvW95beIiUl67e57YHqMOoQE5+M33D8AZFTyqpXBu8vl9czgftzYq
+7D1NWQnhnvCkCUbUpl+Aln/G3pXip07cH66SCL/rU3E=
+&lt;/Modulus&gt;&lt;Exponent&gt;AQAB&lt;/Exponent&gt;&lt;/RSAKeyValue&gt;&lt;/KeyValue&gt;&lt;X509Data&gt;&lt;X509Certificate&gt;
+MIIF7DCCBNSgAwIBAgIKbx2f5QAAAACw4zANBgkqhkiG9w0BAQUFADCB0jELMAkG
+A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH
+EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y
+aWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQDEydFLUNFUlRDSElMRSBDQSBGSVJN
+QSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEWGHNjbGllbnRlc0Bl
+LWNlcnRjaGlsZS5jbDAeFw0xMzA2MjAxNzE3MDFaFw0xNjA2MTkxNzE3MDFaMIGr
+MQswCQYDVQQGEwJDTDEjMCEGA1UECBMaTUVUUk9QT0xJVEFOQSBERSBTQU5USUFH
+TyAxETAPBgNVBAcTCFNhbnRpYWdvMREwDwYDVQQKEwhHREUgUy5BLjEKMAgGA1UE
+CwwBKjEhMB8GA1UEAxMYQ3Jpc3RpYW4gUm9qYXMgR3V0aWVycmV6MSIwIAYJKoZI
+hvcNAQkBFhNjcm9qYXNnQGhvdG1haWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GN
+ADCBiQKBgQCuCso1Aq+MlHX76u6jeANzLK7ysKHMhF42CtNOvmwihtqPLJHp53XN
+eWx5FN2psroDddaTeR0eUiW9b3lt4iJSXrt7ntgeow6hATn4zfcPwBkVPKqlcG7y
++X1zOB+3NirsPU1ZCeGe8KQJRtSmX4CWf8beleKnTtwfrpIIv+tTcQIDAQABo4IC
+azCCAmcwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIgtyDL4WTjGaF1Z0XguLc
+J4Hv7DxhgZrnFYav4BUCAWQCAQMwHQYDVR0OBBYEFMPMmCazNW4fT0FzaQQoXlBa
+mxEsMAsGA1UdDwQEAwIE8DAfBgNVHSMEGDAWgBR44T6f0hKzejyNzTAOU7NDKQez
+VTA+BgNVHR8ENzA1MDOgMaAvhi1odHRwOi8vY3JsLmUtY2VydGNoaWxlLmNsL2Vj
+ZXJ0Y2hpbGVjYUZFUy5jcmwwIwYDVR0RBBwwGqAYBggrBgEEAcEBAaAMFgoxMDk3
+NDM3Ny0xMCMGA1UdEgQcMBqgGAYIKwYBBAHBAQKgDBYKOTY5MjgxODAtNTCCAU0G
+A1UdIASCAUQwggFAMIIBPAYIKwYBBAHDUgUwggEuMC0GCCsGAQUFBwIBFiFodHRw
+Oi8vd3d3LmUtY2VydGNoaWxlLmNsL0NQUy5odG0wgfwGCCsGAQUFBwICMIHvHoHs
+AEMAZQByAHQAaQBmAGkAYwBhAGQAbwAgAEYAaQByAG0AYQAgAFMAaQBtAHAAbABl
+AC4AIABIAGEAIABzAGkAZABvACAAdgBhAGwAaQBkAGEAZABvACAAZQBuACAAZgBv
+AHIAbQBhACAAcAByAGUAcwBlAG4AYwBpAGEAbAAsACAAcQB1AGUAZABhAG4AZABv
+ACAAaABhAGIAaQBsAGkAdABhAGQAbwAgAGUAbAAgAEMAZQByAHQAaQBmAGkAYwBh
+AGQAbwAgAHAAYQByAGEAIAB1AHMAbwAgAHQAcgBpAGIAdQB0AGEAcgBpAG8wDQYJ
+KoZIhvcNAQEFBQADggEBACmohVhYRgL7/gtDYx0MJcfLS4fgF7lGFi6qrDmC4OLw
+4PPAsQBNxmgptLCzo1L5GNNZ16CIujZU9BGYJOYh6gDVZ2Sf1PC7gwpcdKcpP9fg
+FTlhtEMZZgQx+auurZa3DJAWn4xgmBSNV6JZj1gxCLgHlyGvaDVLu7WGlytX4CwA
+ZDBBz8v3wV/5zCz/w2YAeA45S0+3e6SEgDp1gKQn2aMwRoAYgOLekHFEMX80H4na
+ZprMNSpgWN6w6E4sO/vE8W7pNQFT7nMTU3AaFsfkt9muadFTpTAN3bzIDvQ+ik5B
+j4RImcu5qGNuDg3hE2/dfojZl+5dOnP0UkhhN22x+gU=
+&lt;/X509Certificate&gt;&lt;/X509Data&gt;&lt;/KeyInfo&gt;&lt;/Signature&gt;
+	
+&lt;/DTE&gt;&lt;/SetDTE&gt;
+&lt;Personalizados&gt;&lt;DocPersonalizado dteID="F28T33"&gt;
+			&lt;Impresion&gt;
+				&lt;Personalizado_01&gt;30 días&lt;/Personalizado_01&gt;
+			&lt;/Impresion&gt;
+		&lt;/DocPersonalizado&gt;&lt;/Personalizados&gt;&lt;/EnvioDTE&gt;</Data><Description i:nil="true"/><Result>0</Result></RecoverDocumentResult>

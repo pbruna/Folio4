@@ -4,6 +4,7 @@ require 'pp'
 class DteTest < ActiveSupport::TestCase
   
   def setup
+    stub_request(:any, /#{Rails.configuration.gdexpress[:dte_box]}/).to_rack(FakeGdExpress)
     @plan = Plan.new(:name => "trial")
     @plan.save
     @account = Account.new(
@@ -19,7 +20,7 @@ class DteTest < ActiveSupport::TestCase
     @company.save
     @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save
-    @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
+    @invoice = @account.invoices.new(number: 28, subject: "Prueba de Factura", 
                                     active_date: "10/02/2014", due_days: 30, currency: "CLP", 
                                     taxed: false, company_id: @company.id, total: 1000, net_total: 1000,
                                     contact_id: @contact.id 
@@ -103,18 +104,18 @@ class DteTest < ActiveSupport::TestCase
     assert_not_nil(@dte.processed?)
   end
   
-  # test "After a dte is processed we add a comment on the invoice and send the email" do
-  #   @invoice.active
-  #   @invoice.save
-  #   comments = @invoice.comments.size
-  #   @dte = @invoice.dtes.last
-  #   @dte.processed = true
-  #   @dte.error_log = "El dte ha fallado"
-  #   assert @dte.save
-  #   mail = ActionMailer::Base.deliveries.last
-  #   assert_not_nil(mail)
-  #   assert_equal(@user.email, mail['to'].to_s)
-  # end
+  test "After a dte is processed we add a comment on the invoice and send the email" do
+    @invoice.active
+    @invoice.save
+    comments = @invoice.comments.size
+    @dte = @invoice.dtes.last
+    @dte.processed = true
+    @dte.error_log = "El dte ha fallado"
+    assert @dte.save
+    mail = ActionMailer::Base.deliveries.last
+    assert_not_nil(mail)
+    assert_equal(@user.email, mail['to'].to_s)
+  end
   
   test "generate correct fields for dte 61 when invoice cancel" do
     @invoice.active

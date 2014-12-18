@@ -1,0 +1,34 @@
+<TrackingResult xmlns="http://gdexpress.cl/api" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Data>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+&lt;DocumentTracking id="59320"&gt;
+    &lt;StatusTrack&gt;
+        &lt;IdHistory&gt;405232&lt;/IdHistory&gt;
+        &lt;IdDocument&gt;59320&lt;/IdDocument&gt;
+        &lt;TimeStamp&gt;2014-12-02 20:10:57&lt;/TimeStamp&gt;
+        &lt;IdStatus&gt;1&lt;/IdStatus&gt;
+        &lt;Status&gt;Recibido&lt;/Status&gt;
+        &lt;Comments /&gt;
+        &lt;TrackId /&gt;
+    &lt;/StatusTrack&gt;
+    &lt;StatusTrack&gt;
+        &lt;IdHistory&gt;405233&lt;/IdHistory&gt;
+        &lt;IdDocument&gt;59320&lt;/IdDocument&gt;
+        &lt;TimeStamp&gt;2014-12-02 20:11:29&lt;/TimeStamp&gt;
+        &lt;IdStatus&gt;2&lt;/IdStatus&gt;
+        &lt;Status&gt;Enviado SII&lt;/Status&gt;
+        &lt;Comments&gt;Enviado al SII con TrackId: 28070116&lt;/Comments&gt;
+        &lt;TrackId /&gt;
+    &lt;/StatusTrack&gt;
+    &lt;StatusTrack&gt;
+        &lt;IdHistory&gt;405242&lt;/IdHistory&gt;
+        &lt;IdDocument&gt;59320&lt;/IdDocument&gt;
+        &lt;TimeStamp&gt;2014-12-02 20:14:06&lt;/TimeStamp&gt;
+        &lt;IdStatus&gt;6&lt;/IdStatus&gt;
+        &lt;Status&gt;Rechazado SII&lt;/Status&gt;
+        &lt;Comments&gt;DTE-3-700 Certificado Digital Invalido : ERROR CD: Falla verificacion de certificado: certificate has expired
+HED-1-845 DTE Sin Direccion del Receptor
+HED-1-846 DTE Sin Comuna del Receptor
+HED-1-844 DTE Sin Giro del Receptor
+&lt;/Comments&gt;
+        &lt;TrackId&gt;28070116&lt;/TrackId&gt;
+    &lt;/StatusTrack&gt;
+&lt;/DocumentTracking&gt;</Data><Description i:nil="true"/><Result>0</Result></TrackingResult>
