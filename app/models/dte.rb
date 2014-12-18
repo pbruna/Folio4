@@ -83,7 +83,7 @@ class Dte < ActiveRecord::Base
   end
   
   def status_response(dte_status)
-    update_with_dte_provider_info(dte_status)
+    update_with_dte_provider_info(dte_status) if self.reload.processed?
     # run again if it was not processed
     check_status
   end
