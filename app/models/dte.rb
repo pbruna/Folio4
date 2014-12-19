@@ -40,7 +40,6 @@ class Dte < ActiveRecord::Base
   validates_presence_of :mnt_neto, if: :taxed?
   validate :folio_validations
   
-  before_create :fix_rut_k
   after_create :send_to_provider_for_process
   
   scope :not_processed, ->() {where.not(processed: true)}
@@ -126,11 +125,17 @@ class Dte < ActiveRecord::Base
   
   private
   
-  def fix_rut_k
-    self.rut_emisor = rut_emisor.gsub(/k$/, "K")
-    self.rut_recep = rut_recep.gsub(/k$/, "K")
+  def self.normalize_rut_for_dte(attrs)
+    attrs["rut_emisor"] = fix_rut_format attrs["rut_emisor"]
+    attrs["rut_recep"] = fix_rut_format attrs["rut_recep"]
+    attrs
   end
   
+  def self.fix_rut_format(rut)
+    tmp_rut = rut.gsub(/\./,"")
+    tmp_rut.gsub(/k$/, "K")
+  end
+    
   def send_to_provider_for_process
     # Estamos usando la conexion por DB
     # por lo tanto no enviamos nada, GDE lo viene a buscar de la db
@@ -158,6 +163,7 @@ class Dte < ActiveRecord::Base
   
   def self.process_invoice(invoice)
     attrs = translate_attributes(invoice)
+    attrs = normalize_rut_for_dte(attrs)
     # Change code if taxed
     attrs["tipo_dte"] = invoice.taxed? ? 33 : 34
     # Because the Hash can have both calls to net_total

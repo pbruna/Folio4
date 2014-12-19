@@ -46,13 +46,13 @@ class DteTest < ActiveSupport::TestCase
     assert_equal(@invoice.active_date, @dte.fch_emis)
     assert_equal(1, @dte.fma_pago)
     assert_equal(@invoice.due_date, @dte.fch_venc)
-    assert_equal(@invoice.account.rut, @dte.rut_emisor)
+    assert_equal(@invoice.account.rut.gsub(/\./,"").gsub(/k$/, "K"), @dte.rut_emisor)
     assert_equal(@invoice.account.name, @dte.rzn_soc)
     assert_equal(@invoice.account.industry, @dte.giro_emis)
     assert_equal(@invoice.account.industry_code, @dte.acteco)
     assert_equal(@invoice.account.address, @dte.dir_origen)
     assert_equal(@invoice.account.city, @dte.cmna_origen)
-    assert_equal(@invoice.company.rut, @dte.rut_recep)
+    assert_equal(@invoice.company.rut.gsub(/\./,"").gsub(/k$/, "K"), @dte.rut_recep)
     assert_equal(@invoice.company.name, @dte.rzn_soc_recep)
     assert_equal(@invoice.company.address, @dte.dir_recep, "Direccion")
     assert_equal(@invoice.company.province, @dte.cmna_recep, "Comuna")
@@ -143,7 +143,7 @@ class DteTest < ActiveSupport::TestCase
     @invoice.active
     @invoice.save
     dte = @invoice.dte_invoice
-    assert_equal(dte.rut_emisor, "76.530.890-K")
+    assert_equal(dte.rut_emisor, "76530890-K")
   end
   
   
