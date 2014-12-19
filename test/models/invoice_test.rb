@@ -307,12 +307,24 @@ class InvoiceTest < ActiveSupport::TestCase
   #   assert_not_equal(@invoice.net_total.to_i, @invoice.dte_invoice.mnt_neto, "Precio DTE Invoice tiene que ser distinto que Factura")
   # end
   
-  test "the invoice suggested number should be based on the dte start number" do
+  test "the invoice suggested number should be based on the dte start number and if is taxed or not" do
     enable_account_for_dte
     @account.dte_invoice_start_number = 20
+    @account.dte_invoice_untaxed_start_number = 10
     @account.save
     @invoice.reload.account
+    assert_equal(@account.dte_invoice_untaxed_start_number, @invoice.suggested_number)
+    @invoice.taxed = true
     assert_equal(@account.dte_invoice_start_number, @invoice.suggested_number)
+  end
+  
+  
+  
+  test "update_activate_date_when_activated" do
+    @invoice.save
+    @invoice.active
+    @invoice.save
+    assert_equal(Date.today, @invoice.active_date)
   end
   
 end

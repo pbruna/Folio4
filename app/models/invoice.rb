@@ -101,6 +101,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def run_activation_jobs
+    update_active_date
     update_due_date
     # schedule_reminder
     # activation_notification_email
@@ -111,7 +112,11 @@ class Invoice < ActiveRecord::Base
   end
   
   def update_due_date
-    self.due_date = Date.today + due_days
+    self.due_date = active_date + due_days
+  end
+  
+  def update_active_date
+    self.active_date = Date.today
   end
   
   def schedule_reminder
@@ -274,7 +279,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def last_used_number
-    account.invoice_last_used_number
+    account.invoice_last_used_number taxed?
   end
   
   def may_edit?

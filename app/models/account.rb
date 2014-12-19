@@ -37,12 +37,15 @@ class Account < ActiveRecord::Base
     return !invoices.not_draft.not_taxed.where(number: value).any?
   end
   
-  def invoice_last_used_number
+  def invoice_last_used_number(taxed = false)
     unless invoices.not_draft.any?
-      return (dte_invoice_start_number - 1) if e_invoice_enabled?
+      return (dte_invoice_start_number - 1) if e_invoice_enabled? && taxed
+      return (dte_invoice_untaxed_start_number - 1) if e_invoice_enabled? && !taxed
       return 0
     end
-    invoices.not_draft.select(:number).order("number desc").limit(1).first.number
+    #invoices.not_draft.select(:number).order("number desc").limit(1).first.number
+    return invoices.taxed.select(:number).order("number desc").limit(1).first.number if taxed
+    return invoices.not_taxed.select(:number).order("number desc").limit(1).first.number unless taxed
   end
   
   def last_used_dte_nc_number
