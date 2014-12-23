@@ -178,9 +178,9 @@ ActiveRecord::Schema.define(version: 20141219184216) do
     t.integer  "folio_ref"
     t.date     "fch_ref"
     t.integer  "tpo_doc_ref"
-    t.string   "giro_recep",                                            null: false
-    t.string   "cmna_recep",                                            null: false
-    t.string   "dir_recep",                                             null: false
+    t.string   "giro_recep"
+    t.string   "cmna_recep"
+    t.string   "dir_recep"
     t.string   "contacto"
     t.string   "cond_pago"
   end
@@ -216,9 +216,9 @@ ActiveRecord::Schema.define(version: 20141219184216) do
 
   create_table "invoices", force: true do |t|
     t.integer  "number"
-    t.decimal  "tax_total",                precision: 10, scale: 0, default: 0
-    t.decimal  "net_total",                precision: 10, scale: 0, default: 0
-    t.decimal  "total",                    precision: 10, scale: 0, default: 0
+    t.decimal  "tax_total",                                         default: 0.0
+    t.decimal  "net_total",                                         default: 0.0
+    t.decimal  "total",                                             default: 0.0
     t.integer  "company_id"
     t.integer  "contact_id"
     t.integer  "account_id"
@@ -237,7 +237,7 @@ ActiveRecord::Schema.define(version: 20141219184216) do
     t.integer  "due_days",                                          default: 30
     t.float    "currency_convertion_rate",                          default: 1.0
     t.decimal  "original_currency_total",  precision: 20, scale: 4, default: 0.0
-    t.decimal  "total_payed",              precision: 10, scale: 0, default: 0
+    t.decimal  "total_payed",                                       default: 0.0
     t.string   "po_number"
   end
 

@@ -56,7 +56,24 @@ class Attachment < ActiveRecord::Base
     end
     
     def download_url
-      resource.url
+      return resource.url unless in_s3?
+      resource.s3_object.url_for(
+        :read, :secure => true, :expires => 300.minutes,
+        response_content_disposition: "attachment; filename='#{download_name}'"
+        ).to_s
+    end
+    
+    def in_s3?
+      !resource.url.match(/s3.amazonaws.com/).nil?
+    end
+    
+    def download_name
+      if name.nil?
+        return resource_file_name if original_file_name.nil?
+        original_file_name
+      else
+        name
+      end
     end
     
     private

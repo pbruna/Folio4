@@ -1,7 +1,9 @@
+<%= render partial: "attachments/preview", locals: {attachment: attachment}%>
+
 <% unless attachment.id.nil? %>
 <tr id="attachment-<%= attachment.id %>" class="attachment">
 	<td class="attachment-name">
-		<%= display_attachment_name(attachment) %>
+		<%= link_to display_attachment_name(attachment),  "#", data: {toggle: "modal", target: "#preview-attachment-#{attachment.id}-modal"}, class: "invoices-pay"  %>
 	</td>
 	<td class="attachment-details"><%= I18n.l attachment.created_at.to_date, format: :dd_MM_yy %></td>
 	<td class="attachment-details"><%= attachment.author_name %></td>
