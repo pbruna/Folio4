@@ -7,11 +7,7 @@
         <h4 class="modal-title"><%= display_attachment_name(attachment) %></h4>
       </div>
       <div class="modal-body" style="height: 400px;">
-			<object data="<%= attachment.download_url %>" type="<%= attachment.resource_content_type %>" width="100%" height="100%">
-
-			<p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href="/pdf/sample.pdf">click here to download the PDF file.</a></p>
-
-			</object>
+	          <embed src="<%= attachment.preview_url %>" type="<%= attachment.resource_content_type %>" name="plugin" width="100%" height="100%"/>
       </div>
       <div class="modal-footer">
   		<%= link_to attachment.download_url, class: "btn btn-primary" do %>

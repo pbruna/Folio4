@@ -51,6 +51,10 @@ class Attachment < ActiveRecord::Base
     #   read_attribute(:name) || resource_file_name
     # end
     
+    def content_type
+      resource.content_type
+    end
+    
     def original_file_name
       read_attribute(:original_file_name) || name
     end
@@ -60,6 +64,13 @@ class Attachment < ActiveRecord::Base
       resource.s3_object.url_for(
         :read, :secure => true, :expires => 300.minutes,
         response_content_disposition: "attachment; filename='#{download_name}'"
+        ).to_s
+    end
+    
+    def preview_url
+      resource.s3_object.url_for(
+        :read, :secure => true, :expires => 300.minutes,
+        response_content_disposition: "inline; filename='#{download_name}'"
         ).to_s
     end
     
