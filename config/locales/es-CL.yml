@@ -226,6 +226,8 @@ es-CL:
           price: "Precio"
           total: "Total"
           quantity: "Cantidad"
+      dte:
+          giro_recep: "Giro comercial cliente"
 
   invoice:
     active: activa

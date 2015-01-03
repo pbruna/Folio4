@@ -1,4 +1,7 @@
 class Dte < ActiveRecord::Base
+  
+  class InvalidDTE < StandardError
+  end
 
   DTE_OK_MESSAGE = "El DTE se proceso correctamente y pueden verlo en la opción DTEs de la Venta"
   DTE_FAILED_MESSAGE = "Ocurrió un problema al procesar el DTE, más información disponible en la pestaña DTEs\n\n"
@@ -49,8 +52,9 @@ class Dte < ActiveRecord::Base
   scope :dte_ncs, ->() {where(tipo_dte: 61)}
   
   def self.prepare_from_invoice(invoice, tipo_dte=nil)
-    return process_credit_note(invoice) if tipo_dte == 61
-    process_invoice(invoice)
+    dte = Dte.new process_credit_note(invoice) if tipo_dte == 61
+    dte = Dte.new process_invoice(invoice) unless tipo_dte == 61
+    raise InvalidDTE, pretty_error_msg(dte) unless dte.valid?
   end
   
   def self.suggest_nc_folio(account_id)
@@ -69,6 +73,12 @@ class Dte < ActiveRecord::Base
   def dte_type
     return DTE_TYPES[tipo_dte] unless is_dte_nc?
     nc_type
+  end
+  
+  def self.pretty_error_msg(dte)
+    field, errors = dte.errors.messages.first
+    translation = I18n.t "activerecord.attributes.dte.#{field}"
+    "#{translation.titleize}: #{errors.first}"
   end
   
   def check_status(status=false)
@@ -198,6 +208,7 @@ class Dte < ActiveRecord::Base
     if tipo_dte == 34
       attrs["mnt_exe"] = attrs["mnt_total"]
       attrs["mnt_neto"] = nil
+      attrs["tasa_iva"] = nil
     end
     attrs
   end

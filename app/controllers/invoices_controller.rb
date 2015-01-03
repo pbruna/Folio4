@@ -1,6 +1,7 @@
 class InvoicesController < ApplicationController
   autocomplete :company, :name, :full => true, :scopes => [:for_account]
   skip_before_filter :verify_authenticity_token, :only => :change_status
+  rescue_from Dte::InvalidDTE, with: :invalid_dte
 
   # Methods to get the invoice given their status_name
   # status_name defined in Invoice model
@@ -158,6 +159,12 @@ class InvoicesController < ApplicationController
       end
       params
     end
+    
+    def invalid_dte(exception)
+      flash[:error] = "No se puede generar el DTE.<p>#{exception.message}</p>".html_safe
+      redirect_to @invoice
+    end
+    
   
 
 end

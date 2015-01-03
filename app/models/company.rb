@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   scope :for_account, -> {where(account_id: Account.current_id)}
   
   has_attached_file :avatar, :styles => { :large => "300x300>", :medium => "150x150>", :thumb => "60x60>" }, default_url: :default_avatar_url
-  validates_presence_of :rut, :name, :address, :province, :city, :account_id
+  validates_presence_of :rut, :name, :address, :province, :city, :account_id, :industry
   validates_uniqueness_of :rut, :scope => [:account_id]
   validates_with RutValidator
   

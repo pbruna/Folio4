@@ -521,8 +521,7 @@ class Invoice < ActiveRecord::Base
   
   def generate_dte
     tipo_dte = dte_to_generate
-    dte = Dte.new Dte.prepare_from_invoice(self, tipo_dte)
-    raise "DTE: #{dte.errors.messages.to_s}" unless dte.valid?
+    dte = Dte.prepare_from_invoice(self, tipo_dte)
     dte.save
   end
   
