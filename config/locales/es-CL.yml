@@ -228,6 +228,9 @@ es-CL:
           quantity: "Cantidad"
       dte:
           giro_recep: "Giro comercial cliente"
+          folio: "folio"
+          invoice:
+              incorrect_status: "Estado de venta"
 
   invoice:
     active: activa

@@ -55,6 +55,7 @@ class Dte < ActiveRecord::Base
     dte = Dte.new process_credit_note(invoice) if tipo_dte == 61
     dte = Dte.new process_invoice(invoice) unless tipo_dte == 61
     raise InvalidDTE, pretty_error_msg(dte) unless dte.valid?
+    dte
   end
   
   def self.suggest_nc_folio(account_id)
@@ -78,7 +79,8 @@ class Dte < ActiveRecord::Base
   def self.pretty_error_msg(dte)
     field, errors = dte.errors.messages.first
     translation = I18n.t "activerecord.attributes.dte.#{field}"
-    "#{translation.titleize}: #{errors.first}"
+    #"#{translation.titleize}: #{errors.first}"
+    "#{translation}, #{errors.first}"
   end
   
   def check_status(status=false)
@@ -168,7 +170,7 @@ class Dte < ActiveRecord::Base
   end
   
   def validate_invoice_status
-    errors.add(:invoice, "La factura no puede ser ni borrador o pagada") unless (invoice.active? || invoice.cancelled?)
+    errors.add(:invoice, "incorrect_status") unless (invoice.active? || invoice.cancelled?)
   end
   
   def self.process_invoice(invoice)

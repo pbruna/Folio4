@@ -5,42 +5,20 @@ class DteTest < ActiveSupport::TestCase
   
   def setup
     stub_request(:any, /#{Rails.configuration.gdexpress[:dte_box]}/).to_rack(FakeGdExpress)
-    @plan = Plan.new(:name => "trial")
-    @plan.save
-    @account = Account.new(
-                            :name => "Masev", :subdomain => "maseva", :rut => "76.530.890-k", 
-                            address: "Eliodro Yañez 810", city: "Santiago",
-                            e_invoice_enabled: true, e_invoice_resolution_date: "2014/01/01",
-                            industry_code: 10398, industry: "Servicios Informaticos"
-                            )
-    @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
-    @account.save
-    @user.save
-    @company = Company.new(name: "Acme", rut: "13.834.853-9", address: "Eliodro Yañez 810", province: "Providencia", city: "Santiago", account_id: @account.id, industry: "Servicios Informaticos" )
-    @company.save
-    @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
-    @contact.save
-    @invoice = @account.invoices.new(number: 28, subject: "Prueba de Factura", 
-                                    active_date: "10/02/2014", due_days: 30, currency: "CLP", 
-                                    taxed: false, company_id: @company.id, total: 1000, net_total: 1000,
-                                    contact_id: @contact.id 
-                                    )
-    @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 2, price: 1000)
-    resource = File.new(Rails.root.to_s + "/test/fixtures/files/test-file.png")
-        @attachment = @invoice.attachments.build(category: Attachment.categories[:invoice], resource: resource, author_id: 10, author_type: "User", account_id: 10)
-    @reminder = @invoice.build_reminder
-    @invoice.save
+    fake_data
   end
   
   def teardown
     ActionMailer::Base.deliveries = []
-    @invoice.dtes.each {|d| d.destroy }
-    @invoice.destroy
-    @account.destroy
+    @invoice.dtes.each {|d| d.delete }
+    @invoice.delete
+    @account.delete
   end
   
   test "dte_from_invoice untaxed should copy correctly" do
-    @dte = Dte.new Dte.prepare_from_invoice(@invoice)
+    @invoice.active
+    @invoice.save
+    @dte = @invoice.dtes.first
     assert_equal(34, @dte.tipo_dte)
     assert_equal(@invoice.number, @dte.folio)
     assert_equal(@invoice.active_date, @dte.fch_emis)
@@ -69,8 +47,9 @@ class DteTest < ActiveSupport::TestCase
   
   test "dte_from_invoice taxed should copy the data correctly" do
     @invoice.taxed = true
+    @invoice.active
     @invoice.save
-    @dte = Dte.new Dte.prepare_from_invoice(@invoice)
+    @dte = @invoice.dtes.first
     assert_not_nil(@dte.cond_pago, "Condicion de Pago")
     assert_equal(@contact.name, @dte.contacto)
     assert_equal("#{@invoice.due_days} días", @dte.cond_pago)
@@ -83,18 +62,20 @@ class DteTest < ActiveSupport::TestCase
   end
   
   test "only save a dte if it exists or is created from an active invoice" do
-    @dte = Dte.new Dte.prepare_from_invoice(@invoice)
-    assert(!@dte.save, "No se debería guardar porque la factura esta en borrador.")
+    assert_raise(Dte::InvalidDTE) { 
+      Dte.prepare_from_invoice(@invoice)
+    }
   end
   
   test "Dont create same type DTE" do
+    @invoice.number = 8383
     @invoice.active
     assert(@invoice.save, "No se guardo")
     assert(@invoice.valid?, "Failure message.")
     assert(@invoice.has_dte?, "No tiene DTE")
-    @dte = Dte.new Dte.prepare_from_invoice(@invoice)
-    @dte.save
-    assert(!@dte.save, "No Se debería guardar DTE del mismo tipo porque la factura ya creo uno al activarlo.")
+    assert_raise(Dte::InvalidDTE) { 
+      @dte = Dte.prepare_from_invoice(@invoice)
+    }
   end
   
   test "after create we should chceck if it wast processed" do

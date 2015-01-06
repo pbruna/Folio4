@@ -20,8 +20,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @contact.save
     @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
                                     active_date: "10/02/2014", due_days: 30, currency: "CLP", 
-                                    taxed: false, company_id: @company.id, total: 1000, net_total: 1000,
-                                    contact_id: @contact.id 
+                                    taxed: false, company_id: @company.id, contact_id: @contact.id 
                                     )
     @invoice_item = @invoice.invoice_items.build(type: "producto", quantity: 2, price: 1000)
     resource = File.new(Rails.root.to_s + "/test/fixtures/files/test-file.png")
@@ -318,13 +317,40 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal(@account.dte_invoice_start_number, @invoice.suggested_number)
   end
   
-  
-  
   test "update_activate_date_when_activated" do
     @invoice.save
     @invoice.active
     @invoice.save
     assert_equal(Date.today, @invoice.active_date)
   end
+
+  test "should update total if draft and is edited" do
+    @invoice.currency = "USD"
+    @invoice.taxed = false
+    @invoice.currency_convertion_rate = 500
+    @invoice.save
+    original_total = @invoice.total
+    @invoice.currency_convertion_rate = 534
+    assert @invoice.save
+    new_total = @invoice.reload.total
+    assert_not_equal(original_total, new_total)
+  end
+
+  
+  test "should not update price if open and total_amount has not changed" do
+    @invoice.currency = "USD"
+    @invoice.taxed = false
+    @invoice.currency_convertion_rate = 500
+    @invoice.active
+    @invoice.save
+    original_total = @invoice.total
+    @invoice.currency_convertion_rate = 534
+    @invoice.total_payed = original_total
+    @invoice.save
+    new_total = @invoice.reload.total
+    assert_equal(original_total, new_total)
+  end
+  
+  
   
 end

@@ -14,7 +14,7 @@
 				<% end %>
 			</li>
 			<li style="text-align: right;">
-				<% if @invoice.has_po? %>
+				<% if @invoice.po_number? %>
 					Orden de Compra #<%= @invoice.po_number %>
 				<% end %>
 			</li>

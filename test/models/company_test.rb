@@ -4,15 +4,7 @@ require 'pp'
 class CompanyTest < ActiveSupport::TestCase
 
   def setup
-    @plan = Plan.new(:name => "trial")
-    @plan.save
-    @account = Account.new(:name => "Masev", :subdomain => "maseva")
-    @user = @account.users.new(email: "pbruna@gmail.com", password: "172626292")
-    @account.save
-    @user.save
-    @contact = Contact.new(company_id: 10, name: "Patricio", email: "pbruna@itlinux.cl")
-    @contact.save
-    @company = Company.new(:name => "Acme", :address => "Test", :province => "Test", :city => "Test", :rut => "13.834.853-9", :account_id => @account.id)
+    fake_data
   end
 
 

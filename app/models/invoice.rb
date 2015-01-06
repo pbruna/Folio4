@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
   has_one :reminder, as: :remindable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many :dtes
+  has_many :dtes, dependent: :destroy
   belongs_to :contact
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
   accepts_nested_attributes_for :reminder, :allow_destroy => true
@@ -25,7 +25,7 @@ class Invoice < ActiveRecord::Base
   
   #Callbacks
   before_validation :set_due_date_and_reminder, if: :draft?
-  before_validation :perform_calculations
+  before_validation :perform_calculations, if: :amounts_changed?
   before_update :close_invoice_if_total_payed_match_total
   after_save :update_items_number
   after_save :generate_dte, if: :may_generate_dte?
@@ -54,6 +54,7 @@ class Invoice < ActiveRecord::Base
   scope :for_account, ->(account_id) {where(:id => account_id)}
   scope :active, ->() {where("aasm_state = ? and due_date >= ?", "active", Date.today )}
   scope :due, ->() {where("aasm_state = ? and due_date < ?", "active", Date.today )}
+  scope :open, ->() {where("aasm_state = ?", "active")}
   scope :draft, ->() {where(aasm_state: "draft")}
   scope :not_draft, ->() {where.not(aasm_state: "draft")}
   scope :closed, ->() {where(aasm_state: "closed")}
@@ -202,13 +203,12 @@ class Invoice < ActiveRecord::Base
     account.check_invoice_number_availability(number,taxed)
   end
   
-  # Purchase order number
-  def has_po?
-    return !po_number.nil?
-  end
-  
   def has_dte?
     dtes.any?
+  end
+  
+  def has_payment?
+    total_payed > 0
   end
   
   def has_dte_invoice?
@@ -267,7 +267,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def is_really_payed?
-    return total_payed.to_i == total.to_i
+    return total_payed.to_i >= total.to_i
   end
   
   def invoices_for_account
@@ -351,7 +351,6 @@ class Invoice < ActiveRecord::Base
     (close_date - due_date).to_i
   end
 
-  # Activar Test en DTE
   def record_dte_result(dte)
     dte = dtes.reload.find(dte)
     process_dte_comment(dte)
@@ -392,6 +391,13 @@ class Invoice < ActiveRecord::Base
   
   def account_users_ids
     account.users.map {|u| u.id}
+  end
+  
+  def amounts_changed?
+    return true if draft?
+    
+    # Hubo en cambio en los montos si cambio el total en moneda original
+    !changes["original_currency_total"].nil?
   end
   
   %w(rut name industry industry_code address city province).each do |m|
@@ -497,7 +503,7 @@ class Invoice < ActiveRecord::Base
   
   def set_currency_convertion_rate(indicador)
     indicador = "dolar" if indicador == "usd"
-    self.currency_convertion_rate = 1
+    self.currency_convertion_rate ||= 1
     indicadores = Indicadores::Chile.new
     begin
       self.currency_convertion_rate = indicadores.send(indicador)
