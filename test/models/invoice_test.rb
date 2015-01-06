@@ -350,7 +350,12 @@ class InvoiceTest < ActiveSupport::TestCase
     new_total = @invoice.reload.total
     assert_equal(original_total, new_total)
   end
-  
+
+  test "si la factura es afecta tax_rate no debería ser nil" do
+    @invoice.taxed = true
+    @invoice.save
+    assert_equal(Invoice::TAX_RATE, @invoice.tax_rate)
+  end
   
   
 end

@@ -412,6 +412,7 @@ class Invoice < ActiveRecord::Base
   def calculate_tax
     self.total = net_total
     return unless self.taxed?
+    self.tax_rate = TAX_RATE
     self.total = (net_total * (1 + TAX_RATE/100)).round
     self.tax_total = total - net_total
   end
