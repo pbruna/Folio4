@@ -34,7 +34,7 @@ class Attachment < ActiveRecord::Base
     end
     
     def file_from_base64(base64_string)
-      StringIO.open(Base64.strict_decode64(base64_string)) do |data|
+      StringIO.open(Base64.decode64(base64_string)) do |data|
           data.class.class_eval { attr_accessor :original_filename, :content_type }
           data.original_filename = "temp#{DateTime.now.to_i}.pdf"
           data.content_type = "application/pdf" #TODO: get content type from file
