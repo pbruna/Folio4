@@ -79,6 +79,9 @@
 			  start: function(){
 			  	$("#new_attachment input[type=submit]").val("Subiendo...");
 			  },
+			  fail: function(e, data){
+				  Airbrake.push(data)
+			  },
 			  progress: function(e, data) {
 			    var progress;
 			    if (data.context) {

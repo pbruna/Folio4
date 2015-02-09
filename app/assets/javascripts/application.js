@@ -29,11 +29,13 @@
 //= require jquery-uuid
 //= require pagination
 //= require jquery.ui.autocomplete.html.js
+//= require airbrake-shim
 //= require_tree .
 
 var Folio = Folio || {};
 
 $(function () { 
+
 	$("input,select,textarea").not("[type=submit],.no-validate").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
 	$('.file-inputs').bootstrapFileInput();
 	

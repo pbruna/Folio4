@@ -68,6 +68,7 @@ class Attachment < ActiveRecord::Base
     end
     
     def preview_url
+      return resource.url unless in_s3?
       resource.s3_object.url_for(
         :read, :secure => true, :expires => 300.minutes,
         response_content_disposition: "inline; filename='#{download_name}'"
