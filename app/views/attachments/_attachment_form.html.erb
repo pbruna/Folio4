@@ -80,7 +80,8 @@
 			  	$("#new_attachment input[type=submit]").val("Subiendo...");
 			  },
 			  fail: function(e, data){
-				  Airbrake.push(data)
+				  console.log(data);
+				  // Airbrake.push(data);
 			  },
 			  progress: function(e, data) {
 			    var progress;

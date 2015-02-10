@@ -33,7 +33,6 @@
 //= require_tree .
 
 var Folio = Folio || {};
-var Airbrake = Airbrake || {};
 
 $(function () { 
 
