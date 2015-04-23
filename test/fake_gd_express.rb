@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'pp'
 
 class FakeGdExpress < Sinatra::Base
   
@@ -10,9 +11,15 @@ class FakeGdExpress < Sinatra::Base
                  "RecoverXml" => "recover_xml"
                }
   
-  get '/api/Core.svc/Core/:method/:ambiente/:rut_emisor/:tipo_dete/:folio' do
+  get '/api/Core.svc/Core/:method/:ambiente/:rut_emisor/:tipo_dte/:folio' do
     return access_denied unless authenticate(env)
-    xml_response 200, params[:method], 28
+    xml_response 200, params[:method], params[:folio]
+  end
+  
+  # Para archivos PDF
+  get '/api/Core.svc/Core/:method/:ambiente/:rut_emisor/:rut_emisor/:tipo_dte/:folio' do
+    return access_denied unless authenticate(env)
+    xml_response 200, params[:method], params[:folio]
   end
 
   private

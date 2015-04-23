@@ -396,6 +396,9 @@ class Invoice < ActiveRecord::Base
   def amounts_changed?
     return true if draft?
     
+    # Es diferente la nueva suma de items que el total guardado?
+    return original_currency_total.to_i != calculate_original_currency_total_from_invoice_items.to_i
+    
     # Hubo en cambio en los montos si cambio el total en moneda original
     !changes["original_currency_total"].nil?
   end

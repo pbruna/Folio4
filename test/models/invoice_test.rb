@@ -18,7 +18,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @company.save
     @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save
-    @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
+    @invoice = @account.invoices.new(number: 28, subject: "Prueba de Factura", 
                                     active_date: "10/02/2014", due_days: 30, currency: "CLP", 
                                     taxed: false, company_id: @company.id, contact_id: @contact.id 
                                     )
@@ -130,7 +130,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.save
     reminder = @invoice.reminder
     assert_equal("Date", reminder.notification_date.class.to_s)
-    assert_equal("Recordatorio vencimiento Factura 20", reminder.subject)
+    assert_equal("Recordatorio vencimiento Factura #{@invoice.number}", reminder.subject)
     assert_equal("2014-03-04", reminder.notification_date.to_s)
   end
   
@@ -281,17 +281,17 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal("#{@dte.folio} #{@dte.dte_type}", pdf_attachment.name)
   end
   
-  test "generate DTE type 61 when we cancel and invoice" do
-    enable_account_for_dte
-    @invoice.reload.account
-    @invoice.save
-    @invoice.active
-    @invoice.save
-    @invoice.cancel
-    @invoice.save
-    assert(@invoice.reload.dtes.size > 1, "No se creo la NC")
-    assert_equal(61, @invoice.dtes.last.tipo_dte)
-  end
+  # test "generate DTE type 61 when we cancel and invoice" do
+#     enable_account_for_dte
+#     @invoice.reload.account
+#     @invoice.save
+#     @invoice.active
+#     @invoice.save
+#     @invoice.cancel
+#     @invoice.save
+#     assert(@invoice.reload.dtes.size > 1, "No se creo la NC")
+#     assert_equal(61, @invoice.dtes.last.tipo_dte)
+#   end
   
   # test "generate DTE 61 if price change" do
   #   enable_account_for_dte
@@ -349,6 +349,17 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice.save
     new_total = @invoice.reload.total
     assert_equal(original_total, new_total)
+  end
+  
+  test "should_update_price_if_edit_an_active_invoice" do
+    @invoice.active
+    @invoice.save
+    original_total = @invoice.total
+    item = @invoice.invoice_items.first
+    item.quantity = 3
+    item.save
+    @invoice.save
+    assert(original_total < @invoice.total, "Should be lesser: #{original_total} < #{@invoice.total}")
   end
 
   test "si la factura es afecta tax_rate no debería ser nil" do

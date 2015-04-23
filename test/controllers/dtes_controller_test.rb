@@ -4,6 +4,7 @@ class DtesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   
   def setup
+    stub_request(:any, /#{Rails.configuration.gdexpress[:dte_box]}/).to_rack(FakeGdExpress)
     @request.host = "masev.test.host"
     @account = Account.new(
                             :name => "Masev", :subdomain => "masev", :rut => "76.530.890-9", 
@@ -21,7 +22,7 @@ class DtesControllerTest < ActionController::TestCase
     @company.save
     @contact = Contact.new(company_id: @company.id, name: "Patricio", email: "pbruna@itlinux.cl")
     @contact.save
-    @invoice = @account.invoices.new(number: 20, subject: "Prueba de Factura", 
+    @invoice = @account.invoices.new(number: 28, subject: "Prueba de Factura", 
                                     active_date: "10/02/2014", due_days: 30, currency: "CLP", 
                                     taxed: false, company_id: @company.id, total: 1000, net_total: 1000,
                                     contact_id: @contact.id 
