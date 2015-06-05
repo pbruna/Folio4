@@ -10,6 +10,18 @@ class FakeGdExpress < Sinatra::Base
                  "RecoverPdf" => "recover_pdf",
                  "RecoverXml" => "recover_xml"
                }
+
+   # Esto es para que devuelva la Nota de Credito
+   get '/api/Core.svc/Core/FiscalStatus/:ambiente/:rut_emisor/61/:folio' do
+     return access_denied unless authenticate(env)
+     xml_response 200, "FiscalStatus", 28
+   end
+   
+   # Para archivos PDF de NC
+   get '/api/Core.svc/Core/RecoverPdf/:ambiente/:rut_emisor/:rut_emisor/61/:folio' do
+     return access_denied unless authenticate(env)
+     xml_response 200, "RecoverPdf", 28
+   end
   
   get '/api/Core.svc/Core/:method/:ambiente/:rut_emisor/:tipo_dte/:folio' do
     return access_denied unless authenticate(env)

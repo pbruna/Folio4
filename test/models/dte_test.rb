@@ -98,20 +98,20 @@ class DteTest < ActiveSupport::TestCase
     assert_equal(@user.email, mail['to'].to_s)
   end
   
-  # test "generate correct fields for dte 61 when invoice cancel" do
-  #   @invoice.active
-  #   @invoice.save
-  #   @invoice.cancel
-  #   @invoice.save
-  #   assert(@invoice.reload.dtes.size > 1, "No se creo la NC")
-  #   dte_nc = @invoice.dtes.last
-  #   dte_invoice =  @invoice.dte_invoice
-  #   attrs_intersection = dte_invoice.attributes & dte_nc.attributes
-  #   assert_equal(Invoice::DTE_TYPES[:credit_note], dte_nc.tipo_dte)
-  #   diferente_fields = ["cod_ref", "created_at", "fch_ref", "folio", "folio_ref", "id", "razon_ref", "tipo_dte", "tpo_doc_ref", "updated_at"]
-  #   assert_equal(1, dte_nc.cod_ref)
-  #   assert_equal(attrs_intersection.keys.sort, diferente_fields)
-  # end
+  test "generate correct fields for dte 61 when invoice cancel" do
+    @invoice.active
+    @invoice.save
+    @invoice.cancel
+    @invoice.save
+    assert(@invoice.reload.dtes.size > 1, "No se creo la NC")
+    dte_nc = @invoice.dtes.last
+    dte_invoice =  @invoice.dte_invoice
+    attrs_intersection = dte_invoice.attributes & dte_nc.attributes
+    assert_equal(Invoice::DTE_TYPES[:credit_note], dte_nc.tipo_dte)
+    diferente_fields = ["cod_ref", "created_at", "fch_ref", "folio", "folio_ref", "id", "razon_ref", "tipo_dte", "tpo_doc_ref", "updated_at"]
+    assert_equal(1, dte_nc.cod_ref)
+    assert_equal(attrs_intersection.keys.sort, diferente_fields)
+  end
   
   test "account.suggest_nc_folio should return a valid nc number to use" do
     @account.dte_invoice_start_number = 20
@@ -127,9 +127,65 @@ class DteTest < ActiveSupport::TestCase
     assert_equal(dte.rut_emisor, "76530890-K")
   end
   
+  test "NC: When price doest not change the amount should be 0 and the REF" do
+    @invoice.active
+    @invoice.save
+    item = @invoice.invoice_items.first
+    item.description = "Cambio de descripcion"
+    @invoice.save
+    nc = @invoice.dtes.dte_ncs.first
+    assert_equal(0, nc.mnt_total)
+    assert_equal(nil, nc.mnt_neto)
+    assert_equal(0, nc.mnt_exe)
+    assert_equal(0, nc.iva)
+    assert_equal("SE CORRIGE TEXTO DE LA REFERENCIA - Fact.Electronica N° #{nc.folio_ref} del #{@invoice.dte_invoice.fch_emis.to_s(:db)}", nc.razon_ref)
+  end
   
+  test "NC Taxed: When price doest not change the amount should be 0 and the REF" do
+    @invoice.taxed = true
+    @invoice.active
+    @invoice.save
+    item = @invoice.invoice_items.first
+    item.description = "Cambio de descripcion"
+    @invoice.save
+    nc = @invoice.dtes.dte_ncs.first
+    assert_equal(0, nc.mnt_total)
+    assert_equal(0, nc.mnt_neto)
+    assert_equal(0, nc.mnt_exe)
+    assert_equal(0, nc.iva)
+    assert_equal("SE CORRIGE TEXTO DE LA REFERENCIA - Fact.Electronica N° #{nc.folio_ref} del #{@invoice.dte_invoice.fch_emis.to_s(:db)}", nc.razon_ref)
+  end
   
+  test "NC UNTAXED: Correct amounts when price change" do
+    @invoice.active
+    @invoice.save
+    item = @invoice.invoice_items.first
+    item.price = (item.price / 2)
+    @invoice.save
+    nc = @invoice.dtes.dte_ncs.first
+    dte_invoice = @invoice.dte_invoice
+    assert_equal((dte_invoice.mnt_total - @invoice.total), nc.mnt_total)
+    assert_equal(nil, nc.mnt_neto)
+    assert_equal((dte_invoice.mnt_exe - @invoice.net_total), nc.mnt_exe)
+    assert_equal(0, nc.iva)
+    assert_equal("SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{nc.folio_ref} del #{@invoice.dte_invoice.fch_emis.to_s(:db)}", nc.razon_ref)
+  end
   
+  test "NC TAXED: Correct amounts when price change" do
+    @invoice.taxed = true
+    @invoice.active
+    @invoice.save
+    item = @invoice.invoice_items.first
+    item.price = (item.price / 2)
+    @invoice.save
+    nc = @invoice.dtes.dte_ncs.first
+    dte_invoice = @invoice.dte_invoice
+    assert_equal((dte_invoice.mnt_total - @invoice.total), nc.mnt_total, "Total")
+    assert_equal((dte_invoice.mnt_neto - @invoice.net_total), nc.mnt_neto, "Neto")
+    assert_equal(0, nc.mnt_exe, "Exento")
+    assert_equal((dte_invoice.iva - @invoice.tax_total), nc.iva, "IVA")
+    assert_equal("SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{nc.folio_ref} del #{@invoice.dte_invoice.fch_emis.to_s(:db)}", nc.razon_ref)
+  end
   
   
   

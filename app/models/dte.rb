@@ -200,12 +200,33 @@ class Dte < ActiveRecord::Base
     attrs = process_invoice(invoice)
     attrs = attributes_for_nc(attrs)
     attrs["cod_ref"] = 3
-    attrs["razon_ref"] = "SE CORRIGE MONTO DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
-    attrs = calc_mnts(attrs, invoice.dte_invoice.tipo_dte)
+    attrs["razon_ref"] = nc_message(invoice, attrs)
+    attrs = calc_nc_mnts(attrs, invoice.dte_invoice.tipo_dte)
+    attrs
+  end
+  
+  def self.nc_changed_mnt?(invoice, attrs)
+    invoice.dte_invoice.mnt_total.to_i != invoice.total
+  end
+  
+  def self.nc_message(invoice, attrs)
+    text = nc_changed_mnt?(invoice, attrs) ? "MONTO" : "TEXTO"
+    "SE CORRIGE #{text} DE LA REFERENCIA - Fact.Electronica N° #{attrs["folio_ref"]} del #{invoice.dte_invoice.fch_emis.to_s(:db)}"
+  end
+  
+  def self.calc_nc_mnts(attrs, tipo_dte)
+    invoice = Invoice.find(attrs["invoice_id"])
+    attrs["mnt_total"] = invoice.dte_invoice.mnt_total.to_i - invoice.total
+    attrs["mnt_neto"] = invoice.dte_invoice.mnt_neto.to_i - invoice.net_total
+    attrs["iva"] = invoice.dte_invoice.iva.to_i - invoice.tax_total
+    attrs["mnt_neto"] = nil if tipo_dte == 34
+    attrs["tasa_iva"] = nil if tipo_dte == 34
+    attrs["mnt_exe"] = tipo_dte == 33 ? 0 : attrs["mnt_total"]
     attrs
   end
   
   def self.calc_mnts(attrs, tipo_dte)
+    invoice = Invoice.find(attrs["invoice_id"])
     attrs["mnt_exe"] = 0 if tipo_dte == 33
     if tipo_dte == 34
       attrs["mnt_exe"] = attrs["mnt_total"]
