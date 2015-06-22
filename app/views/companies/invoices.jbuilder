@@ -1,0 +1,1 @@
+json.invoices @invoices, :number, :total, :active_date, :status
