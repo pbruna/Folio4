@@ -67,6 +67,9 @@ class Company < ActiveRecord::Base
     invoices.closed.map {|i| i.payment_days}.median.round
   end
   
+  # Esto es para buscar por rut o id en 
+  # invoices_controller
+  # http://masev.folio4.dev/companies/12454782-2/invoices.json
   def self.find_by_id_or_rut(value)
     if value.match(/-/)
       result = where(rut: format_rut(value)).first
