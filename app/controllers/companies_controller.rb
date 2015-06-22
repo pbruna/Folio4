@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
   end
   
   def invoices
-    @company = current_account.companies.find(params[:id])
+    @company = current_account.companies.find_by_id_or_rut(params[:id])
     params[:search] = {company_id: @company.id}
     @invoices_total_resume = @company.invoices_search(params[:search])
     @invoices = @invoices_total_resume.page(params[:page]) 
@@ -70,7 +70,7 @@ class CompaniesController < ApplicationController
   end
   
   def show
-    @company = current_account.companies.find(params[:id])
+    @company = current_account.companies.find_by_id_or_rut(params[:id])
   end
 
 
