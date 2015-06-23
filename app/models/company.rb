@@ -73,7 +73,7 @@ class Company < ActiveRecord::Base
   def self.find_by_id_or_rut(value)
     if value.match(/-/)
       result = where(rut: format_rut(value)).first
-      fail ActiveRecord::RecordNotFound if result.empty?
+      fail ActiveRecord::RecordNotFound if result.nil?
       result
     else
       find(value)
