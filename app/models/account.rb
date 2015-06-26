@@ -44,8 +44,13 @@ class Account < ActiveRecord::Base
       return 0
     end
     #invoices.not_draft.select(:number).order("number desc").limit(1).first.number
-    return invoices.open.taxed.order("number desc").select(:number).limit(1).first.number if taxed
-    return invoices.open.not_taxed.order("number desc").select(:number).limit(1).first.number unless taxed
+    result = 0
+    if taxed 
+      result = invoices.open.taxed.order("number desc").select(:number).limit(1).first.number
+    else
+      result = invoices.open.not_taxed.order("number desc").select(:number).limit(1).first.number
+    end
+    result.nil? ? 0 : result
   end
   
   def last_used_dte_nc_number
