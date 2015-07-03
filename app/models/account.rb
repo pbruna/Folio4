@@ -23,20 +23,20 @@ class Account < ActiveRecord::Base
   before_validation :clear_subdomain
 
   def self.per_page
-    
+
   end
 
   def self.subdomain_available?(subdomain)
     return false if "/^((?!^(www|folio|app|dev)).)*$/i".match(subdomain)
     !exists?(:subdomain => subdomain.downcase)
   end
-  
+
   def check_invoice_number_availability(number, taxed)
     value = number.to_i
     return !invoices.not_draft.taxed.where(number: value).any? if taxed.to_s == "true"
     return !invoices.not_draft.not_taxed.where(number: value).any?
   end
-  
+
   def invoice_last_used_number(taxed = false)
     unless invoices.not_draft.any?
       return (dte_invoice_start_number - 1) if e_invoice_enabled? && taxed
@@ -45,19 +45,19 @@ class Account < ActiveRecord::Base
     end
     #invoices.not_draft.select(:number).order("number desc").limit(1).first.number
     result = 0
-    if taxed 
-      result = invoices.open.taxed.order("number desc").select(:number).limit(1).first.number
+    if taxed
+      result = invoices.open.taxed.order("number desc").select(:number).limit(1).first
     else
-      result = invoices.open.not_taxed.order("number desc").select(:number).limit(1).first.number
+      result = invoices.open.not_taxed.order("number desc").select(:number).limit(1).first
     end
-    result.nil? ? 0 : result
+    result.nil? ? 0 : result.number
   end
-  
+
   def last_used_dte_nc_number
     return (dte_nc_start_number - 1) unless has_dte_nc?
     dtes.dte_ncs.last.folio
   end
-  
+
   def has_dte_nc?
     dtes.dte_ncs.any?
   end
@@ -69,7 +69,7 @@ class Account < ActiveRecord::Base
   def contact_info_complete?
     attributes.detect {|k,v| v.blank? unless k == "e_invoice_enabled" }.nil?
   end
-  
+
   def companies_in_alphabetycal_order(company_name_like)
     companies.in_alphabetycal_order(company_name_like)
   end
@@ -85,11 +85,11 @@ class Account < ActiveRecord::Base
   def has_data?
     invoices.any? || expenses.any?
   end
-  
+
   def has_invoices?
     invoices.any?
   end
-  
+
   def invoices_search(params)
     invoices.search(params)
   end
@@ -109,24 +109,24 @@ class Account < ActiveRecord::Base
   def self.current_id
     Thread.current[:tenant_id]
   end
-  
+
   # Invoice totals
   def total_due
     invoices.total_due
   end
-  
+
   def total_active
     invoices.total_active
   end
-  
+
   def total_closed
     invoices.total_closed
   end
-  
+
   def total_draft
     invoices.total_draft
   end
-  
+
   def users_emails_array
     users.map {|u| u.email}
   end
