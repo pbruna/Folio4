@@ -1,0 +1,33 @@
+<div id="money_account_form" class="col-lg-12"
+    data-money-account="<%= @money_account.to_json %>">
+
+	<%= simple_form_for(@money_account,
+			html: {class: 'form-horizontal'},
+			defaults: { input_html: { class: 'input-xlarge' },
+									label_input: { class: 'col-sm-2' }
+			 }) do |f| %>
+
+	  <%= f.input :name, required: true, autofocus: true %>
+	  <%= f.input :number, required: true %>
+	  <%= f.input :bank_name, required: true %>
+	  <%= f.input :type_id, collection: MoneyAccount.types,
+	              label_method: :name, value_method: :id,
+	              selected: @money_account.type_id,
+	              prompt: 'Tipo de cuenta'
+	   %>
+		 <div rv-show="money_account.is_credit < type_id">
+		 	<%= f.input :total_credit_clp, as: :string %>
+		 	<%= f.input :total_credit_usd, as: :string %>
+		</div>
+	  <div class="actions offset2">
+	    <%= f.button :submit, "Guardar", :class => "btn btn-success"  %>
+		 o
+		 <% if @money_account.new_record? %>
+			 <%= link_to "Cancelar", money_accounts_path(), :class => "cancel-link" %>
+		 <% else %>
+			 <%= link_to "Cancelar", money_account_path(@money_account), :class => "cancel-link" %>
+		 <% end %>
+	  </div>
+
+	<% end %>
+</div>

@@ -4,26 +4,26 @@ module ApplicationHelper
     return if current_user.nil?
     current_user.account
   end
-  
+
   def navbar_menu_link(title, url)
     html_class = controller_for_url(request.url) == controller_for_url(url) ? "active" : "inactive"
     content_tag(:li, (link_to title, url), :class => html_class)
   end
-  
+
   def menu_link(title, path)
     html_class = request.path == path ? "active" : "inactive"
     content_tag(:li, (link_to title, path), :class => html_class)
   end
-  
+
   def controller_for_url(url)
     Rails.application.routes.recognize_path(url)[:controller]
   end
-  
+
   def page_title
     return "Folio" unless current_account
     return "Folio: #{current_account.name.titleize}"
   end
-  
+
   def get_indicator_value_for(indicador)
     indicadores = Indicadores::Chile.new
     begin
@@ -32,13 +32,13 @@ module ApplicationHelper
       0
     end
   end
-  
+
   def round_number_and_delimiter(number)
     number_with_delimiter(number.round)
   end
-  
+
   def search_add_record_link(path, title, data = {})
-    	link_to content_tag(:i, nil, :class => "icon-plus icon-white").html_safe+" #{title}", path, :class => "btn btn-success", data: data
+    	link_to content_tag(:i, nil, :class => "fa fa-plus").html_safe+" #{title}", path, :class => "btn btn-success", data: data
   end
 
   def render_modal(options=Hash.new(""))
@@ -48,9 +48,9 @@ module ApplicationHelper
   def render_modal_form(options=Hash.new(""))
     render partial: "shared/modal_form", locals: {options: options}
   end
-  
+
   def textarea_display(text)
       text.gsub(/\n/, "<br/>").html_safe
   end
-  
+
 end

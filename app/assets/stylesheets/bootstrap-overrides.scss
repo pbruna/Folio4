@@ -13,7 +13,7 @@ body {
 	width: 1000px;
 	.navbar-inner {
 		border-color: #0265b0;
-		
+
 		.brand {
 			padding: 0px;
 			margin-left: 10px;
@@ -26,8 +26,8 @@ body {
 	.navbar-inverse .navbar-inner {
 		background: rgb(2,101,176);
 	}
-	
-	
+
+
 	#main-navbar {
 		margin-left: 20px;
 		margin-top: -57px;
@@ -39,56 +39,80 @@ body {
 			border-right: 1px solid rgb(237,237,237);
 			border-top: 1px solid rgb(237,237,237);
 		}
-		
+
 		.nav-tabs > li > a {
 			text-decoration: none;
 			font-weight: bold;
 			color: white;
 		}
-		
+
 		.nav-tabs > li > a:hover {
 			color: #16a085;
 			background: whitesmoke;
 			border-bottom: 1px solid white;
 		}
 	}
-	
+
 	.pre-main-navbar {
 		font-family: 'Lato';
 		font-size: 13px;
 		font-weight: bold;
 		margin-bottom: 30px;
-		
+
 		li {
 			padding: 0px;
 			padding-left: 3px;
 		}
-		
+
 		li:nth-child(n):after {
 			content: "|";
 			margin-left: 5px;
 		}
-		
+
 		li:last-child:after {
 			content: "";
 		}
-		
+
 		.account-menu {
 			margin-right: 10px;
 		}
-	}	
-}
-
-.form-horizontal .controls {
-	margin-left: 0px;
+	}
 }
 
 .form-horizontal {
+	.actions {
+		padding: 15px;
+	}
+
+	.controls {
+		margin-left: 0px;
+	}
+
  div.checkbox.inline {
     .control-label {
       text-align: left;
     }
   }
+
+	.form-group {
+		margin-bottom: 10px;
+	}
+
+	label, input {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.help-block {
+		display: inline;
+		margin-left: 10px;
+		color: $red;
+	}
+
+	select.input-xlarge {
+		width: 284px;
+	}
+
 }
 
 .ui-helper-hidden-accessible { display:none; }

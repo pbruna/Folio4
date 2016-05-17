@@ -45,6 +45,7 @@ Folio::Application.routes.draw do
         get 'due'
       end
     end
+    resources :money_accounts
     get '/dashboard' => 'accounts#dashboard', :as => :dashboard
     root :to => "accounts#dashboard"
   end

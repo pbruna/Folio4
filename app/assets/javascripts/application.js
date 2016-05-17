@@ -15,7 +15,6 @@
 //= require jquery.ui.all
 //= require jquery.Rut.min
 //= require autocomplete-rails
-//= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.es.js
 //= require jqBootstrapValidation
@@ -30,15 +29,17 @@
 //= require pagination
 //= require jquery.ui.autocomplete.html.js
 //= require airbrake-shim
+//= require rivets.bundled.min
+//= require accounting.min.js
 //= require_tree .
 
 var Folio = Folio || {};
 
-$(function () { 
+$(function () {
 
 	$("input,select,textarea").not("[type=submit],.no-validate").jqBootstrapValidation({autoAdd: {helpBlocks: false, helpInline: true}});
 	$('.file-inputs').bootstrapFileInput();
-	
+
 	// Mostramos el calendario cuando deben seleccionar una fecha
 	$(".date-input").datepicker({language: "es", weekStart: 1, autoclose: true})
 
@@ -49,32 +50,32 @@ $(function () {
 		var form = $(this).data("formid");
 		$("#"+form).submit();
 	});
-	
+
 	$("#edit-company-contact-modal button[data-submit='submit']").click(function() {
 		$("form[id^='edit_contact_']").submit();
 	});
 
 	// Esto permite que un modal que carga datos remotos
-	// se destruya cuando se presione cancelar, y que al 
+	// se destruya cuando se presione cancelar, y que al
 	// mostrarlo de nuevo empiece con una ventana limpia
 	$(".modal").on('hidden', function(){$(this).removeData('modal')})
-	
+
 	// Esto permite activar el tab correspondiente en las facturas
 	var url = document.location.toString();
 	if (url.match(/#\w+/)) {
 	    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-	} 
+	}
 
 	// Change hash for page-reload
 	$('.nav-tabs a').on('shown', function (e) {
 	    window.location.hash = e.target.hash;
 	})
-	
+
 	// # Agrega la clase invoices-index-autocomplete al autocomplete de nombre de la empresa
 	// # en Invoice#Index Sidebar
-	
+
 	$(".invoices-index-autocomplete").autocomplete().autocomplete("widget").addClass("invoices-index-autocomplete");
-	
+
 	$(document).on('click', "a[data-behavior=expand_on_click]", function(e){
 		e.preventDefault();
 		$(this).parent().hide();

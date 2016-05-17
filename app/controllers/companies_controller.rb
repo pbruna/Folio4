@@ -3,28 +3,29 @@ class CompaniesController < ApplicationController
   def index
     @companies = current_account.companies_in_alphabetycal_order(params[:company_name_like])
     respond_to do |format|
-      format.html 
+      format.html
       format.js
+      format.json { render :json => @companies }
     end
   end
-  
+
   def invoices
     @company = current_account.companies.find_by_id_or_rut(params[:id])
     params[:search] = {company_id: @company.id}
     @invoices_total_resume = @company.invoices_search(params[:search])
-    @invoices = @invoices_total_resume.page(params[:page]) 
+    @invoices = @invoices_total_resume.page(params[:page])
     @search_params = params.to_param
   end
-  
+
   def expenses
     @company = current_account.companies.find(params[:id])
   end
-  
+
   def contacts
     @company = current_account.companies.find(params[:id])
     @contacts = @company.contacts_in_alphabetycal_order(params[:contact_name_like])
     respond_to do |format|
-      format.html 
+      format.html
       format.js
     end
   end
@@ -43,7 +44,7 @@ class CompaniesController < ApplicationController
       render "new"
     end
   end
-  
+
   def update
     @company = current_account.companies.find(params[:id])
     if @company.update_attributes(company_params)
@@ -53,11 +54,11 @@ class CompaniesController < ApplicationController
       render "edit"
     end
   end
-  
+
   def edit
     @company = current_account.companies.find(params[:id])
   end
-  
+
   def destroy
     @company = current_account.companies.find(params[:id])
     if @company.destroy
@@ -68,9 +69,14 @@ class CompaniesController < ApplicationController
       redirect_to @company
     end
   end
-  
+
   def show
     @company = current_account.companies.find_by_id_or_rut(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render :json => @company }
+    end
   end
 
 

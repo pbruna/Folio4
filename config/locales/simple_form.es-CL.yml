@@ -11,7 +11,14 @@ es-CL:
     error_notification:
       default_message: "Por favor corrige los siguientes errores:"
     # Labels and hints examples
-    # labels:
+    labels:
+      money_account:
+        bank_name: Institución / Banco
+        name: Nombre de la cuenta
+        number: Número de cuenta
+        total_credit_clp: Crédito en CLP
+        total_credit_usd: Crédito en US$
+        type_id: Tipo de cuenta
     #   defaults:
     #     password: 'Password'
     #   user:
@@ -23,4 +30,3 @@ es-CL:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
-

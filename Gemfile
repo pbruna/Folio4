@@ -68,7 +68,7 @@ gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1
 gem 'devise', :git => "https://github.com/plataformatec/devise"
 gem 'unicorn'
 gem 'unicorn-rails'
-gem 'simple_form', "~> 3.0.0.rc"
+gem 'simple_form', "~> 3.1"
 gem 'bourbon'
 gem 'bootstrap-sass', "~> 2.3.2"
 gem 'flat-ui-sass', :git => "https://github.com/kebab-project/flat-ui-sass"
@@ -94,7 +94,7 @@ gem 'underscore-rails'
 gem 'will_paginate', '~> 3.0.5'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'airbrake'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.20'
 gem 'rake'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk'

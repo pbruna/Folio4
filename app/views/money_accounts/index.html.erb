@@ -1,0 +1,23 @@
+<% if @money_accounts.any? %>
+	<% content_for :sub_navbar do %>
+		<div class="action-links pull-right" style="margin-top: -5px">
+			<%= search_add_record_link(new_money_account_path, "Agregar cuenta") %>
+		</div>
+
+		<%= render partial: "invoices/shared/subnav_sorter", locals: {search_params: {}} %>
+	<% end %>
+
+
+	<div class="row document">
+		<%= render partial: 'shared/flash' %>
+		<div id="money_accounts" class="span8">
+			<%= render partial: "money_accounts/index/money_accounts_table",
+					locals: {money_accounts: @money_accounts} %>
+		</div>
+		<div id="side-menu" class="span3">
+			<%= render partial: "invoices/sidebar/invoice_total_resume", locals: {invoices: @invoices} %>
+		</div>
+	</div>
+<% else %>
+	<%= render :partial => "blank_slate" %>
+<% end %>

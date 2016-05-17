@@ -1,0 +1,34 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+money_account_types = <%= MoneyAccount.types_as_hash.to_json.html_safe %>
+
+load_money_account = () ->
+  money_account = $("#money_account_form").data("money-account")
+  money_account.is_credit = () ->
+    if money_account_types[@.type_id]
+      return true if money_account_types[@.type_id].credit
+      return false
+    else
+      return false
+
+  return money_account
+
+prepare_money_account_form = () ->
+  return unless $("#money_account_form").data("money-account")
+  money_account = load_money_account()
+
+  rivets.bind($("#money_account_form"), { money_account: money_account })
+
+  $("#money_account_type_id").change () ->
+    account_type_id = $(@).val()
+    money_account.type_id = parseInt(account_type_id)
+
+  $("#money_account_total_credit_clp, #money_account_total_credit_usd").change () ->
+    unformat_val = accounting.unformat($(@).val())
+    format_val = accounting.formatMoney(unformat_val, '', 0, '.')
+    $(@).val(format_val)
+
+$ ->
+  prepare_money_account_form()

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+visa:
+  name: visa
+  number: 12345678
+  account_id: 1
+  bank_name: banco de chile
+  type_id: 3
+  total_credit_clp: 1000
+  total_credit_usd: 1000
+
+corriente:
+  name: corriente
+  number: 12345679
+  account_id: 1
+  bank_name: banco de chile
+  type_id: 1
+  total_credit_clp: 0
+  total_credit_usd: 0

@@ -1,9 +1,11 @@
+//@import "bootstrap-sprockets";
 @import "bootstrap";
 //@import "bootstrap-responsive";
 @import "devise";
 @import "bootstrap-overrides";
 @import "font-awesome";
 @import "datepicker";
+@import "colors";
 @import "document";
 @import "accounts";
 @import "users";
@@ -16,22 +18,22 @@
 
 .main {
 	padding-left: 0px;
-	
+
 	.nav-pills > li > a.no-hover:hover {
 		background: none;
 	}
-	
+
 	.page_header {
 		border-bottom: 1px solid #eee;
 		margin-bottom: 20px;
-		
+
 		.nav {
 			margin-bottom: 0px;
 		}
-		
+
 		.no-hover {
 			margin-top: -10px;
-		}	
+		}
 	}
 }
 
@@ -41,7 +43,7 @@
 	padding-bottom: 60px;
 	min-height: 300px;
 	font-size: 18px;
-	
+
 	h3, h4, h5 {
 		margin: 0px;
 		color: rgb(62,77,108);
@@ -52,33 +54,33 @@
 		font-size: 20px;
 		color: rgb(119,187,65);
 	}
-	
+
 	h5 {
 		margin-top: 30px;
 		font-size: 15px;
 	}
-	
+
 	p {
 		margin-bottom: 10px;
 	}
-	
+
 	.blank-slate-text {
 		text-align: justify;
 	}
-	
+
 	.blank-slate-example {
 		float: right;
 		text-align: center;
 		margin-left: 30px;
 		margin-top: 10px;
 		width: 350px;
-		
+
 		img {
-			
-			
+
+
 		}
 	}
-	
+
 }
 
 .cancel-link {
@@ -96,55 +98,55 @@
 	border-left: 1px solid #C9C4C4;
 	border-bottom: 1px solid #C9C4C4;
 	margin-bottom: 0px;
-	
+
 	.nav-tabs {
 		border-bottom: none;
 	}
-	
+
 	.navbar {
 		padding-top: 5px;
 		padding-right: 25px;
 		padding-left: 25px;
 		margin-bottom: 0px;
 		padding-bottom: 5px;
-				
+
 		.action-links {
 			margin-left: 20px;
 			margin-right: 15px;
 			top: 25px;
 			position: relative;
-			
+
 			.btn {
 				margin-top: -5px;
 			}
 
-			
+
 		}
-		
+
 		form {
 			margin: 0px;
 		}
-		
+
 		.search {
 			padding: 8px;
 			width: 28.5em;
 			margin-top: 15px;
 		}
-		
+
 	}
-	
+
 	.sub-navbar-menu-tab {
 		margin-top: 15px;
 		border-top: 1px solid #C9C4C4;
 		padding-top: 15px;
 		padding-bottom: 0px;
-		
+
 		 li {
 			margin-bottom: -2px;
 		}
-		
+
 	}
-	
+
 }
 
 .link-success {
@@ -152,7 +154,7 @@
 }
 
 a:hover.link-success {
-	color: #3B753B;	
+	color: #3B753B;
 };
 
 .link-edit {
@@ -175,7 +177,7 @@ a:hover.link-expense {
 	.modal-header {
 		border-bottom: none;
 	}
-	
+
 	.modal-body {
 		font-size: 18px;
 		padding: 20px;
@@ -202,13 +204,13 @@ a:hover.link-expense {
 	padding-left:4px;
 	padding-right:4px;
 	padding: 2px;
-	
+
 	a {
 		color: white;
 		font-size: 11px;
 		font-weight: normal;
 	}
-	
+
 }
 
 .pagination {
@@ -219,5 +221,3 @@ a:hover.link-expense {
 	cursor: pointer;
 	color: #0088cc;
 }
-
-
