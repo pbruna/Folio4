@@ -1,2 +1,5 @@
 .git
 Docker/*
+tmp/*
+log/*
+public/production/*
