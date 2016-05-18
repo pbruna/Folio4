@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.Rut.min
+//= require bootstrap
 //= require autocomplete-rails
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.es.js

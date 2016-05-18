@@ -6,10 +6,10 @@
 
 <div id="invoice-sidebar" class="span3">
 	<%= render partial: "invoices/show_partials/sidebar_total" %>
-	
-	<div class="invoice-actions">		
+
+	<div class="invoice-actions">
 		<ul class="unstyled">
-			
+
 			<!-- <li>
 				<%= fa_icon "calendar"%>
 				<%= link_to " Agregar recordatorio", clone_invoice_path(@invoice) %>
@@ -19,13 +19,13 @@
 					<%= link_to "Activar venta", "#", data: {toggle: "modal", target: "#activate-invoice-#{@invoice.id}-modal"}, class: "invoices-pay"  %>
 				</li>
 			<% end %>
-			
+
 			<% if @invoice.active? %>
 				<li><%= fa_icon "dollar"%>
 					<%= link_to "Recibir pago", "#", data: {toggle: "modal", target: "#pay-invoice-#{@invoice.id}-modal"}, class: "invoices-pay"  %>
 				</li>
 			<% end %>
-			
+
 			<% if @invoice.may_edit? %>
 				<li><%= fa_icon "edit"%><%= link_to " Editar venta", edit_invoice_path(@invoice) %></li>
 			<% end %>
@@ -33,22 +33,22 @@
 				<%= fa_icon "camera"%>
 				<%= link_to " Duplicar venta", clone_invoice_path(@invoice) %>
 			</li>
-			
+
 			<% if @invoice.draft? %>
 				<li><%= fa_icon "trash-o"%>
 					<%= link_to "Borrar venta", "#", data: {toggle: "modal", target: "#delete-invoice-#{@invoice.id}-modal"}, class: "invoices-due"  %>
 				</li>
 			<% end %>
-			
+
 			<% if @invoice.may_cancel? %>
 				<li><%= fa_icon "trash-o"%>
 					<%= link_to "Anular venta", "#", data: {toggle: "modal", target: "#cancel-invoice-#{@invoice.id}-modal"}, class: "invoices-due"  %>
 				</li>
 			<% end %>
-			
+
 		</ul>
 	</div>
-	
+
 	<div class="invoice-actions">
 		<ul class="unstyled">
 			<% unless @invoice.closed? %>
@@ -72,12 +72,12 @@
 			</li> -->
 		</ul>
 	</div>
-	
+
 	<!-- <div class="invoice-attachments">
 		<h5>Documentos</h5>
 		<div id="invoice-attachment-drop-zone">
 			<strong>+</strong> Arrastra tus archivos
 		</div>
 	</div> -->
-	
+
 </div>
