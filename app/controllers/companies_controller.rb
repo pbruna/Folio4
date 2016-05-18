@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json { render :json => @companies }
+      format.json
     end
   end
 
@@ -75,7 +75,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json { render :json => @company }
+      format.json
     end
   end
 
