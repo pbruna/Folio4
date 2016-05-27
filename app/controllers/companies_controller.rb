@@ -14,6 +14,7 @@ class CompaniesController < ApplicationController
     params[:search] = {company_id: @company.id}
     @invoices_total_resume = @company.invoices_search(params[:search])
     @invoices = @invoices_total_resume.page(params[:page])
+    @invoices = @invoices.where.not(aasm_state: params[:exclude]) if params[:exclude]
     @search_params = params.to_param
   end
 

@@ -1,6 +1,8 @@
 json.array! @invoices do |invoice|
   json.number invoice.number
-  json.link "http://#{current_account.subdomain}.folio.cl/companies/#{current_account.id}/#{invoice.id}"
+  dte = invoice.attachments.where('name LIKE ? or name LIKE ?', '%factura%', '%nota%').last
+  dte_link = dte ? dte.download_url : ''
+  json.link dte_link
   json.date invoice.active_date
   json.total invoice.total.to_i
   json.status_name invoice.status
