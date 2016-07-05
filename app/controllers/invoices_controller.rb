@@ -21,7 +21,7 @@ class InvoicesController < ApplicationController
       format.js {render :template => "invoice_activation_modal", layout: false}
     end
   end
-  
+
   def cancel
     @invoice = current_account.invoices.find(params[:id])
     if @invoice.cancel!
@@ -31,31 +31,32 @@ class InvoicesController < ApplicationController
       flash.now[:error] = "No es posible anular esta venta."
       redirect_to invoice_path(@invoice)
     end
-      
+
   end
-  
+
   def activate
     @invoice = current_account.invoices.find(params[:id])
     @invoice.number = params[:number].to_i
     @invoice.active
     respond_to do |format|
-    if @invoice.save
-        format.html {
-          flash[:notice] = "Venta activada correctamente."
-          flash.now[:notice] << "\n Recibirá una notificación por email cuando el SII autorice la factura." if current_account.e_invoice_enabled?
-          redirect_to @invoice
-        }
-        format.js { render 'show'}
+    if @invoice.save && !@invoice.draft?
+      format.html {
+        flash[:notice] = "Venta activada correctamente."
+        flash.now[:notice] << "\n Recibirá una notificación por email cuando el SII autorice la factura." if current_account.e_invoice_enabled?
+        redirect_to @invoice
+      }
+      format.js { render 'show'}
       else
+        errors = '<ul>' + @invoice.errors.messages.values.map { |v| "<li>#{v}</li>" }.join('') + '</ul>'
         format.html {
-          flash[:error] = "No se pudo activar la venta"
-          redirect_to @invoice 
+          flash[:error] = "No se pudo activar la venta<br/> #{errors}".html_safe
+          redirect_to @invoice
         }
         format.js { render 'change_status_error'}
       end
     end
   end
-  
+
   def clone
     source_invoice = current_account.invoices.find(params[:id])
     @invoice = source_invoice.clone!
@@ -66,15 +67,19 @@ class InvoicesController < ApplicationController
   def create
     params = prices_to_numbers
     @invoice = current_account.invoices.new(invoice_params)
-    if @invoice.save
-      flash.now[:notice] = "Venta guardada correctamente."
-      redirect_to invoice_path(@invoice)
-    else
-      flash.now[:error] = "No pudimos guardar esta venta, por favor corrige los errores indicados."
-      render 'new'
+    respond_to do |format|
+      if @invoice.save
+        flash[:notice] = "Venta guardada correctamente."
+        format.html {redirect_to invoice_path(@invoice)}
+        format.json
+      else
+        flash.now[:error] = "No pudimos guardar esta venta, por favor corrige los errores indicados."
+        format.html {render 'new'}
+        format.json
+      end
     end
   end
-  
+
   def destroy
     @invoice = current_account.invoices.find(params[:id])
     if @invoice.destroy
@@ -85,7 +90,7 @@ class InvoicesController < ApplicationController
       redirect_to @invoice
     end
   end
-  
+
   def update
     params = prices_to_numbers
     @invoice = current_account.invoices.find(params[:id])
@@ -96,8 +101,8 @@ class InvoicesController < ApplicationController
       flash.now[:error] = "No pudimos guardar esta venta, por favor corrige los errores indicados."
       render 'edit'
     end
-  end  
-  
+  end
+
   def edit
     @invoice = current_account.invoices.find(params[:id])
   end
@@ -114,14 +119,14 @@ class InvoicesController < ApplicationController
       format.js
     end
   end
-  
+
   def new
     @invoice = current_account.invoices.new
     @invoice.invoice_items.build
     @invoice.build_reminder
     @invoice.company_id = params[:company_id] unless params[:company_id].nil?
   end
-  
+
   def pay
     @invoice = current_account.invoices.find(params[:id])
     if @invoice.pay(invoice_params[:total_payed])
@@ -133,7 +138,7 @@ class InvoicesController < ApplicationController
       redirect_to @invoice
     end
   end
-  
+
   def show
     @invoice = @current_account.invoices.includes(:reminder, :invoice_items, :account, :company,comments: [:author, :attachments ], attachments: [:author]).find(params[:id])
     @invoice_items = @invoice.invoice_items
@@ -142,7 +147,7 @@ class InvoicesController < ApplicationController
     @dtes = @invoice.dtes if @invoice.has_dte?
     @comment = @invoice.comments.build(author_id: current_user.id, author_type: current_user.class.to_s)
   end
-  
+
   private
     def invoice_params
       params.require(:invoice).permit(:id, :company_id, :po_number, :new_state, :subject,:number, :active_date, :total_payed,
@@ -150,7 +155,7 @@ class InvoicesController < ApplicationController
         reminder_attributes: [:notification_date, :subject, :message, :active, :id],
         attachments_attributes: [:name, :category, :resource])
     end
-    
+
     def prices_to_numbers
       return params if params["invoice"]["invoice_items_attributes"].nil?
       params["invoice"]["invoice_items_attributes"].each do |key,value|
@@ -159,12 +164,12 @@ class InvoicesController < ApplicationController
       end
       params
     end
-    
+
     def invalid_dte(exception)
       flash[:error] = "No se puede generar el DTE.<p>#{exception.message}</p>".html_safe
       redirect_to @invoice
     end
-    
-  
+
+
 
 end

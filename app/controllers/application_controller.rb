@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :set_account
   before_action :set_user
   around_action :scope_current_account, :unless => :devise_controller?
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   layout :layout_by_resource
 
 
@@ -46,7 +47,7 @@ class ApplicationController < ActionController::Base
       Struct.new("FalseAccount", :id)
       @current_account = current_account || Struct::FalseAccount.new(0)
     end
-    
+
     def set_user
       @current_user = current_user
     end

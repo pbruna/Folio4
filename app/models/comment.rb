@@ -36,7 +36,7 @@ class Comment < ActiveRecord::Base
   end
 
   def commentable_contact
-    commentable.contact
+    commentable.contact || nil
   end
 
   def company_subscribers
@@ -68,7 +68,7 @@ class Comment < ActiveRecord::Base
   end
 
   def default_subscribers
-    [author, commentable_contact]
+    [author, commentable_contact].compact
   end
 
   def encoded_account_id
